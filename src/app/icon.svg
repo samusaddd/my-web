@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>Samir Seddiqi</title>
+  <defs>
+    <linearGradient id="bg" x1="8" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0ea5e9" stop-opacity="0.8" />
+      <stop offset="1" stop-color="#6366f1" stop-opacity="0.75" />
+    </linearGradient>
+  </defs>
+  <rect x="6" y="6" width="52" height="52" rx="16" fill="#09090b" stroke="rgba(255,255,255,0.12)" />
+  <rect x="8" y="8" width="48" height="48" rx="14" fill="url(#bg)" opacity="0.28" />
+  <text
+    x="32"
+    y="38"
+    text-anchor="middle"
+    font-family="Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    font-size="26"
+    font-weight="700"
+    fill="white"
+  >
+    S
+  </text>
+</svg>
