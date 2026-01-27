@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: samir-site
+    env: node
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: 20.11.1
+      - key: NEXT_PUBLIC_SITE_URL
+        sync: false
