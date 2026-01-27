@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     images: [defaultOgImage],
   },
   icons: {
-    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    icon: [{ url: "/icon", type: "image/png" }],
   },
 };
 
