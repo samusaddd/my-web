@@ -51,7 +51,8 @@ export function SiteFooter() {
               </a>
             </p>
             <p className="text-xs text-white/55">
-              {siteConfig.book.title} — {siteConfig.book.award}. {siteConfig.book.distribution}.
+              {siteConfig.book.title} — a reflective literary work on silence, vulnerability, and the
+              need to be heard. {siteConfig.book.award}. {siteConfig.book.distribution}.
             </p>
           </div>
         </div>

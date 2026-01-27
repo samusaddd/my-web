@@ -48,7 +48,7 @@ const projects = [
     role: "Author",
     focus: "Writing as infrastructure",
     description:
-      "A writing project recognized with the Writer of the Year Award (2022). It reinforces the practice of turning complex realities into language that can travel across audiences and institutions.",
+      "A short reflective literary work written as a sequence of inner reflections on vulnerability, loneliness, and the need to be seen and heard. Recognized with the Writer of the Year Award (2022).",
     status: siteConfig.book.distribution,
   },
 ] as const;

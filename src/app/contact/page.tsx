@@ -87,16 +87,20 @@ export default function ContactPage() {
             <Badge>Book requests</Badge>
             <CardTitle className="text-2xl">{siteConfig.book.title}</CardTitle>
             <CardDescription className="text-white/75">
-              {siteConfig.book.award}. {siteConfig.book.distribution}.
+              {siteConfig.book.distribution}. {siteConfig.book.award}.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4 text-sm text-white/75">
             <p>
-              If you are requesting a copy for a reading group, institution, or press context, email
-              is the best channel.
+              A short reflective literary work on inner dialogue, silence, vulnerability, and the
+              need to be seen and heard.
+            </p>
+            <p>
+              The book is available free by request. The act of asking is intentional and mirrors the
+              theme of being heard.
             </p>
             <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-5">
-              <p className="text-xs uppercase tracking-[0.16em] text-white/45">Request via</p>
+              <p className="text-xs uppercase tracking-[0.16em] text-white/45">Request via email</p>
               <p className="mt-2 text-base font-semibold text-white">{siteConfig.email}</p>
             </div>
             <div className="flex flex-wrap gap-3">

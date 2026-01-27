@@ -71,7 +71,7 @@ const timeline = [
   {
     label: "2022",
     detail: siteConfig.book.award,
-    note: `Recognized for ${siteConfig.book.title}, reinforcing a commitment to careful, responsible writing.`,
+    note: `Recognized for ${siteConfig.book.title}, a reflective literary work on silence, vulnerability, and the need to be heard.`,
   },
   {
     label: "Now",

@@ -50,7 +50,8 @@ const credibilityItems = [
   {
     title: siteConfig.book.title,
     detail: siteConfig.book.award,
-    description: "A writing practice that prioritizes clarity, responsibility, and long-term legibility.",
+    description:
+      "A reflective literary work on inner dialogue, vulnerability, loneliness, and the need to be heard.",
   },
 ] as const;
 
@@ -173,12 +174,13 @@ export default function HomePage() {
         motionClassName="surface grid gap-8 p-8 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:p-10"
       >
         <div className="space-y-5">
-          <Badge variant="accent">{siteConfig.book.award}</Badge>
+          <Badge variant="accent">{siteConfig.book.distribution}</Badge>
           <h2 className="max-w-xl">{siteConfig.book.title}</h2>
           <p className="text-base text-white/75">
-            A book about being heard when systems move faster than people can process. It is shared
-            carefully and intentionally.
+            A short reflective literary work centered on inner dialogue, emotional isolation, and the
+            human need to be seen and heard.
           </p>
+          <p className="text-sm text-white/65">{siteConfig.book.award}</p>
           <div className="flex flex-wrap gap-3">
             <ButtonLink href={`mailto:${siteConfig.email}`} variant="secondary">
               Request a copy
@@ -191,7 +193,8 @@ export default function HomePage() {
         <div className="space-y-4 rounded-3xl border border-white/10 bg-black/30 p-6">
           <p className="text-sm font-semibold text-white">Distribution</p>
           <p className="text-sm text-white/75">
-            {siteConfig.book.distribution}. Requests are handled directly via email.
+            {siteConfig.book.distribution}. Requesting is intentional and reinforces the theme of
+            being heard.
           </p>
           <Divider />
           <p className="text-xs uppercase tracking-[0.16em] text-white/45">Contact</p>
