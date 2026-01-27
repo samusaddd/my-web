@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { MotionCard } from "@/components/motion/motion-card";
 import { MotionSection } from "@/components/motion/motion-section";
+import { JsonLd } from "@/components/seo/JsonLd";
 import {
   Badge,
   ButtonLink,
@@ -11,26 +12,30 @@ import {
   CardTitle,
   Divider,
 } from "@/components/ui";
-import { siteConfig } from "@/lib/site";
+import { absoluteUrl, siteConfig } from "@/lib/site";
+
+const canonicalUrl = absoluteUrl("/");
+const ogImage = absoluteUrl("/opengraph-image");
 
 export const metadata: Metadata = {
   title: "Home",
   description:
     "Samir Seddiqi builds calm, institution-ready infrastructure across product, writing, and civic collaboration.",
-  alternates: { canonical: "/" },
+  alternates: { canonical: canonicalUrl },
   openGraph: {
+    type: "website",
     title: `${siteConfig.name} — VitaAvanza`,
     description:
       "Calm, institution-ready infrastructure across product, writing, and civic collaboration.",
-    url: siteConfig.url,
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: siteConfig.name }],
+    url: canonicalUrl,
+    images: [{ url: ogImage, width: 1200, height: 630, alt: siteConfig.name }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${siteConfig.name} — VitaAvanza`,
     description:
       "Calm, institution-ready infrastructure across product, writing, and civic collaboration.",
-    images: ["/opengraph-image"],
+    images: [ogImage],
   },
 };
 
@@ -74,8 +79,23 @@ const highlights = [
 ] as const;
 
 export default function HomePage() {
+  const personJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: siteConfig.name,
+    url: canonicalUrl,
+    sameAs: [siteConfig.linkedin],
+    jobTitle: "Founder & CEO",
+    worksFor: {
+      "@type": "Organization",
+      name: "VitaAvanza",
+    },
+  } as const;
+
   return (
     <>
+      <JsonLd data={personJsonLd} id="person-jsonld-home" />
+
       <MotionSection
         className="pt-16 sm:pt-24"
         motionClassName="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]"

@@ -10,19 +10,30 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui";
-import { siteConfig } from "@/lib/site";
+import { absoluteUrl, siteConfig } from "@/lib/site";
+
+const canonicalUrl = absoluteUrl("/projects");
+const ogImage = absoluteUrl("/opengraph-image");
 
 export const metadata: Metadata = {
   title: "Projects",
   description:
     "Selected work across VitaAvanza, institutional collaboration, and writing as infrastructure.",
-  alternates: { canonical: "/projects" },
+  alternates: { canonical: canonicalUrl },
   openGraph: {
     title: `Projects — ${siteConfig.name}`,
     description:
       "Selected work across VitaAvanza, institutional collaboration, and writing as infrastructure.",
-    url: `${siteConfig.url}/projects`,
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Samir Seddiqi Projects" }],
+    type: "website",
+    url: canonicalUrl,
+    images: [{ url: ogImage, width: 1200, height: 630, alt: "Samir Seddiqi Projects" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Projects — ${siteConfig.name}`,
+    description:
+      "Selected work across VitaAvanza, institutional collaboration, and writing as infrastructure.",
+    images: [ogImage],
   },
 };
 

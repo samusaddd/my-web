@@ -5,23 +5,27 @@ import { MotionLink } from "@/components/motion/motion-link";
 import { MotionSection } from "@/components/motion/motion-section";
 import { Badge, CardContent, CardDescription, CardHeader, CardTitle, Section } from "@/components/ui";
 import { getAllPosts } from "@/lib/posts";
-import { siteConfig } from "@/lib/site";
+import { absoluteUrl, siteConfig } from "@/lib/site";
+
+const canonicalUrl = absoluteUrl("/blog");
+const ogImage = absoluteUrl("/opengraph-image");
 
 export const metadata: Metadata = {
   title: "Blog",
   description: "Essays on writing, product clarity, and institutional infrastructure.",
-  alternates: { canonical: "/blog" },
+  alternates: { canonical: canonicalUrl },
   openGraph: {
     title: `Blog — ${siteConfig.name}`,
     description: "Essays on writing, product clarity, and institutional infrastructure.",
-    url: `${siteConfig.url}/blog`,
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Samir Seddiqi Blog" }],
+    type: "website",
+    url: canonicalUrl,
+    images: [{ url: ogImage, width: 1200, height: 630, alt: "Samir Seddiqi Blog" }],
   },
   twitter: {
     card: "summary_large_image",
     title: `Blog — ${siteConfig.name}`,
     description: "Essays on writing, product clarity, and institutional infrastructure.",
-    images: ["/opengraph-image"],
+    images: [ogImage],
   },
 };
 

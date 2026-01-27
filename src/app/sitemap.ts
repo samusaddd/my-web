@@ -1,26 +1,34 @@
 import type { MetadataRoute } from "next";
 
 import { getAllPosts } from "@/lib/posts";
-import { navLinks, siteConfig } from "@/lib/site";
+import { absoluteUrl } from "@/lib/site";
 
-function toAbsoluteUrl(pathname: string) {
-  return pathname === "/" ? siteConfig.url : `${siteConfig.url}${pathname}`;
-}
+const staticRoutes = [
+  { pathname: "/", changeFrequency: "weekly", priority: 1 },
+  { pathname: "/about", changeFrequency: "monthly", priority: 0.8 },
+  { pathname: "/book", changeFrequency: "monthly", priority: 0.8 },
+  { pathname: "/projects", changeFrequency: "monthly", priority: 0.8 },
+  { pathname: "/resume", changeFrequency: "monthly", priority: 0.8 },
+  { pathname: "/blog", changeFrequency: "monthly", priority: 0.7 },
+  { pathname: "/contact", changeFrequency: "monthly", priority: 0.7 },
+] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes: MetadataRoute.Sitemap = navLinks.map((link) => ({
-    url: toAbsoluteUrl(link.href),
-    lastModified: new Date(),
-    changeFrequency: link.href === "/" ? "weekly" : "monthly",
-    priority: link.href === "/" ? 1 : 0.7,
+  const now = new Date();
+
+  const staticEntries: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
+    url: absoluteUrl(route.pathname),
+    lastModified: now,
+    changeFrequency: route.changeFrequency,
+    priority: route.priority,
   }));
 
-  const posts = getAllPosts().map((post) => ({
-    url: toAbsoluteUrl(`/blog/${post.slug}`),
-    lastModified: new Date(post.date),
-    changeFrequency: "monthly" as const,
+  const postEntries: MetadataRoute.Sitemap = getAllPosts().map((post) => ({
+    url: absoluteUrl(`/blog/${post.slug}`),
+    lastModified: new Date(post.lastModified),
+    changeFrequency: "yearly",
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...posts];
+  return [...staticEntries, ...postEntries];
 }

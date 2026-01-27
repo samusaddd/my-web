@@ -10,19 +10,30 @@ import {
   CardTitle,
   Divider,
 } from "@/components/ui";
-import { siteConfig } from "@/lib/site";
+import { absoluteUrl, siteConfig } from "@/lib/site";
+
+const canonicalUrl = absoluteUrl("/resume");
+const ogImage = absoluteUrl("/opengraph-image");
 
 export const metadata: Metadata = {
   title: "Resume",
   description:
     "Resume overview for Samir Seddiqi, including competencies, education, and civic engagement. CV available for download.",
-  alternates: { canonical: "/resume" },
+  alternates: { canonical: canonicalUrl },
   openGraph: {
     title: `Resume — ${siteConfig.name}`,
     description:
       "Competencies, education, and civic engagement. CV available for download.",
-    url: `${siteConfig.url}/resume`,
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Samir Seddiqi Resume" }],
+    type: "website",
+    url: canonicalUrl,
+    images: [{ url: ogImage, width: 1200, height: 630, alt: "Samir Seddiqi Resume" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Resume — ${siteConfig.name}`,
+    description:
+      "Competencies, education, and civic engagement. CV available for download.",
+    images: [ogImage],
   },
 };
 

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { MotionCard } from "@/components/motion/motion-card";
 import { MotionLink } from "@/components/motion/motion-link";
 import { MotionSection } from "@/components/motion/motion-section";
+import { JsonLd } from "@/components/seo/JsonLd";
 import {
   Badge,
   ButtonLink,
@@ -12,19 +13,30 @@ import {
   CardTitle,
   Divider,
 } from "@/components/ui";
-import { siteConfig } from "@/lib/site";
+import { absoluteUrl, siteConfig } from "@/lib/site";
+
+const canonicalUrl = absoluteUrl("/book");
+const ogImage = absoluteUrl("/opengraph-image");
 
 export const metadata: Metadata = {
   title: "Book",
   description:
     "Can You Hear Me? is a short reflective literary work on inner dialogue, vulnerability, loneliness, and the need to be seen and heard. Writer of the Year Award (2022). Free by request.",
-  alternates: { canonical: "/book" },
+  alternates: { canonical: canonicalUrl },
   openGraph: {
     title: `${siteConfig.book.title} — ${siteConfig.name}`,
     description:
       "A short reflective literary work on silence, vulnerability, and the need to be seen and heard. Free by request.",
-    url: `${siteConfig.url}/book`,
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: siteConfig.book.title }],
+    type: "website",
+    url: canonicalUrl,
+    images: [{ url: ogImage, width: 1200, height: 630, alt: siteConfig.book.title }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.book.title} — ${siteConfig.name}`,
+    description:
+      "A short reflective literary work on silence, vulnerability, and the need to be seen and heard. Free by request.",
+    images: [ogImage],
   },
 };
 
@@ -47,8 +59,27 @@ const whyItMatters = [
 ] as const;
 
 export default function BookPage() {
+  const bookJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    name: siteConfig.book.title,
+    author: {
+      "@type": "Person",
+      name: siteConfig.name,
+    },
+    datePublished: "2024",
+    inLanguage: "en",
+    url: canonicalUrl,
+    award: siteConfig.book.award,
+    isAccessibleForFree: true,
+    description:
+      "A short reflective literary work written as a sequence of reflections on inner dialogue, vulnerability, loneliness, and the human need to be seen and heard.",
+  } as const;
+
   return (
     <>
+      <JsonLd data={bookJsonLd} id="book-jsonld" />
+
       <MotionSection
         className="pt-16 sm:pt-24"
         motionClassName="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]"

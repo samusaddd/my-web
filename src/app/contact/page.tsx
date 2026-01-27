@@ -12,17 +12,27 @@ import {
   CardTitle,
   Divider,
 } from "@/components/ui";
-import { siteConfig } from "@/lib/site";
+import { absoluteUrl, siteConfig } from "@/lib/site";
+
+const canonicalUrl = absoluteUrl("/contact");
+const ogImage = absoluteUrl("/opengraph-image");
 
 export const metadata: Metadata = {
   title: "Contact",
   description: "Direct, email-first contact for collaboration, institutional work, and book requests.",
-  alternates: { canonical: "/contact" },
+  alternates: { canonical: canonicalUrl },
   openGraph: {
     title: `Contact — ${siteConfig.name}`,
     description: "Direct, email-first contact for collaboration, institutional work, and book requests.",
-    url: `${siteConfig.url}/contact`,
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Contact Samir Seddiqi" }],
+    type: "website",
+    url: canonicalUrl,
+    images: [{ url: ogImage, width: 1200, height: 630, alt: "Contact Samir Seddiqi" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Contact — ${siteConfig.name}`,
+    description: "Direct, email-first contact for collaboration, institutional work, and book requests.",
+    images: [ogImage],
   },
 };
 

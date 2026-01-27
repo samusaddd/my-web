@@ -8,9 +8,10 @@ import remarkGfm from "remark-gfm";
 import { MotionLink } from "@/components/motion/motion-link";
 import { MotionH2, MotionH3, MotionH4 } from "@/components/motion/motion-prose";
 import { MotionSection } from "@/components/motion/motion-section";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { Badge, ButtonLink, Divider } from "@/components/ui";
 import { getPostBySlug, getPostSlugs } from "@/lib/posts";
-import { siteConfig } from "@/lib/site";
+import { absoluteUrl, siteConfig } from "@/lib/site";
 
 function formatDate(date: string) {
   return new Intl.DateTimeFormat("en-US", {
@@ -37,27 +38,31 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     };
   }
 
-  const title = `${post.title} — Blog`;
+  const canonicalUrl = absoluteUrl(`/blog/${post.slug}`);
+  const ogImage = absoluteUrl("/opengraph-image");
+  const publishedTime = new Date(post.date).toISOString();
+  const title = post.title;
   const description = post.summary || siteConfig.description;
-  const url = `${siteConfig.url}/blog/${post.slug}`;
 
   return {
     title,
     description,
-    alternates: { canonical: `/blog/${post.slug}` },
+    alternates: { canonical: canonicalUrl },
     openGraph: {
       title,
       description,
-      url,
+      url: canonicalUrl,
       type: "article",
-      publishedTime: post.date,
-      images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: post.title }],
+      publishedTime,
+      authors: [siteConfig.name],
+      tags: post.tags.length ? post.tags : undefined,
+      images: [{ url: ogImage, width: 1200, height: 630, alt: post.title }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: ["/opengraph-image"],
+      images: [ogImage],
     },
   };
 }
@@ -65,6 +70,30 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const post = getPostBySlug(params.slug);
   if (!post) notFound();
+
+  const canonicalUrl = absoluteUrl(`/blog/${post.slug}`);
+  const publishedTime = new Date(post.date).toISOString();
+  const description = post.summary || siteConfig.description;
+  const blogPostingJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    datePublished: publishedTime,
+    dateModified: post.lastModified,
+    author: {
+      "@type": "Person",
+      name: siteConfig.name,
+      url: absoluteUrl("/"),
+    },
+    publisher: {
+      "@type": "Person",
+      name: siteConfig.name,
+    },
+    description,
+    keywords: post.tags,
+    url: canonicalUrl,
+    mainEntityOfPage: canonicalUrl,
+  } as const;
 
   const { content } = await compileMDX({
     source: post.content,
@@ -87,6 +116,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <MotionSection className="pt-16 sm:pt-24" containerClassName="max-w-3xl">
+      <JsonLd data={blogPostingJsonLd} id={`blogposting-jsonld-${post.slug}`} />
       <article className="space-y-10">
         <header className="space-y-6">
           <div className="flex flex-wrap items-center gap-3 text-sm text-white/65">
