@@ -20,7 +20,7 @@ export default function Icon() {
           alignItems: "center",
           backgroundColor: "#05070d",
           backgroundImage:
-            "radial-gradient(120px 120px at -10% -20%, rgba(56,189,248,0.32), transparent 65%), radial-gradient(140px 140px at 120% -10%, rgba(99,102,241,0.28), transparent 68%)",
+            "radial-gradient(circle at -10% -20%, rgba(56,189,248,0.32), transparent 65%), radial-gradient(circle at 120% -10%, rgba(99,102,241,0.28), transparent 68%)",
           border: "1px solid rgba(255,255,255,0.12)",
           borderRadius: 18,
           color: "white",
@@ -41,4 +41,3 @@ export default function Icon() {
     size,
   );
 }
-

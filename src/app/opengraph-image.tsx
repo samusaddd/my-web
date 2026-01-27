@@ -24,8 +24,8 @@ export default function OpenGraphImage() {
           padding: "72px",
           backgroundColor: "#05070d",
           backgroundImage: [
-            "radial-gradient(900px 520px at -10% -30%, rgba(56,189,248,0.18), transparent 62%)",
-            "radial-gradient(860px 520px at 120% -20%, rgba(99,102,241,0.16), transparent 64%)",
+            "radial-gradient(circle at -10% -30%, rgba(56,189,248,0.18), transparent 62%)",
+            "radial-gradient(circle at 120% -20%, rgba(99,102,241,0.16), transparent 64%)",
             "linear-gradient(120deg, rgba(255,255,255,0.05), rgba(255,255,255,0))",
           ].join(", "),
           color: "white",
