@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 
 import { cn } from "@/lib/cn";
+import { createTransition, fadeDown } from "@/lib/motion";
 import { navLinks, siteConfig } from "@/lib/site";
 
 function MenuIcon({ open }: { open: boolean }) {
@@ -36,6 +37,7 @@ function MenuIcon({ open }: { open: boolean }) {
 export function MobileNav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const reducedMotion = useReducedMotion() ?? false;
 
   const activeHref = useMemo(() => {
     if (!pathname) return "/";
@@ -56,13 +58,15 @@ export function MobileNav() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [open]);
 
+  const menuVariants = fadeDown(10, reducedMotion);
+
   return (
     <div className="md:hidden">
       <button
         aria-controls="mobile-menu"
         aria-expanded={open}
         aria-label={open ? "Close navigation menu" : "Open navigation menu"}
-        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-white shadow-[0_15px_40px_-25px_rgba(15,23,42,0.8)] transition hover:bg-white/[0.1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
+        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-white shadow-[0_15px_40px_-25px_rgba(15,23,42,0.8)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[1px] hover:bg-white/[0.1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
         onClick={() => setOpen((value) => !value)}
         type="button"
       >
@@ -78,17 +82,18 @@ export function MobileNav() {
             exit={{ opacity: 0 }}
             initial={{ opacity: 0 }}
             onClick={() => setOpen(false)}
-            transition={{ duration: 0.2 }}
+            transition={createTransition(0.4, reducedMotion)}
           >
             <motion.nav
-              animate={{ opacity: 1, y: 0 }}
+              animate="visible"
               aria-label="Mobile"
               className="mx-4 mt-20 rounded-3xl border border-white/10 bg-zinc-950/95 p-6 shadow-[0_30px_80px_-40px_rgba(15,23,42,0.95)]"
-              exit={{ opacity: 0, y: -12 }}
+              exit="hidden"
               id="mobile-menu"
-              initial={{ opacity: 0, y: -12 }}
+              initial="hidden"
               onClick={(event) => event.stopPropagation()}
-              transition={{ duration: 0.22, ease: "easeOut" }}
+              transition={createTransition(0.5, reducedMotion)}
+              variants={menuVariants}
             >
               <div className="flex flex-col gap-2">
                 {navLinks.map((link) => {

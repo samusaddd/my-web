@@ -5,7 +5,10 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
-import { Badge, ButtonLink, Divider, Section, TextLink } from "@/components/ui";
+import { MotionLink } from "@/components/motion/motion-link";
+import { MotionH2, MotionH3, MotionH4 } from "@/components/motion/motion-prose";
+import { MotionSection } from "@/components/motion/motion-section";
+import { Badge, ButtonLink, Divider } from "@/components/ui";
 import { getPostBySlug, getPostSlugs } from "@/lib/posts";
 import { siteConfig } from "@/lib/site";
 
@@ -66,7 +69,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { content } = await compileMDX({
     source: post.content,
     components: {
-      a: (props) => <TextLink {...props} />,
+      a: ({ href, ...props }) => <MotionLink href={href ?? "#"} {...props} />,
+      h2: (props) => <MotionH2 {...props} />,
+      h3: (props) => <MotionH3 {...props} />,
+      h4: (props) => <MotionH4 {...props} />,
     },
     options: {
       mdxOptions: {
@@ -80,7 +86,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   });
 
   return (
-    <Section className="pt-16 sm:pt-24" containerClassName="max-w-3xl">
+    <MotionSection className="pt-16 sm:pt-24" containerClassName="max-w-3xl">
       <article className="space-y-10">
         <header className="space-y-6">
           <div className="flex flex-wrap items-center gap-3 text-sm text-white/65">
@@ -125,7 +131,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </ButtonLink>
         </div>
       </article>
-    </Section>
+    </MotionSection>
   );
 }
-

@@ -98,7 +98,7 @@ body::after {
   }
 
   .prose-institution {
-    @apply prose prose-invert max-w-none prose-headings:font-serif prose-headings:text-white prose-headings:tracking-tight prose-p:text-white/80 prose-a:text-sky-200 prose-a:no-underline hover:prose-a:text-sky-100 prose-strong:text-white prose-code:rounded prose-code:bg-white/10 prose-code:px-1.5 prose-code:py-0.5 prose-pre:border prose-pre:border-white/10 prose-pre:bg-black/40 prose-pre:shadow-soft prose-blockquote:border-white/20 prose-blockquote:text-white/70;
+    @apply prose prose-invert max-w-none prose-headings:scroll-mt-28 prose-headings:font-serif prose-headings:text-white prose-headings:tracking-tight prose-p:my-5 prose-p:leading-8 prose-p:text-white/80 prose-h2:mt-14 prose-h2:mb-4 prose-h3:mt-10 prose-h3:mb-3 prose-a:text-sky-200 prose-a:no-underline hover:prose-a:text-sky-100 prose-strong:text-white prose-code:rounded prose-code:bg-white/10 prose-code:px-1.5 prose-code:py-0.5 prose-pre:border prose-pre:border-white/10 prose-pre:bg-black/40 prose-pre:shadow-soft prose-blockquote:border-white/20 prose-blockquote:text-white/70;
   }
 
   .heading-anchor {

@@ -3,7 +3,7 @@ import { Inter, Playfair_Display } from "next/font/google";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
-import { PageTransition } from "@/components/motion/page-transition";
+import { MotionLayout } from "@/components/motion/motion-layout";
 import { cn } from "@/lib/cn";
 import { siteConfig } from "@/lib/site";
 
@@ -66,7 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="relative flex min-h-screen flex-col">
           <SiteHeader />
           <main className="flex-1" id="main-content">
-            <PageTransition>{children}</PageTransition>
+            <MotionLayout>{children}</MotionLayout>
           </main>
           <SiteFooter />
         </div>

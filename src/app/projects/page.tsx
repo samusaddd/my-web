@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 
-import { FadeIn } from "@/components/motion/fade-in";
+import { MotionCard } from "@/components/motion/motion-card";
+import { MotionSection } from "@/components/motion/motion-section";
 import {
   Badge,
   ButtonLink,
-  Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-  Section,
 } from "@/components/ui";
 import { siteConfig } from "@/lib/site";
 
@@ -57,66 +56,71 @@ const projects = [
 export default function ProjectsPage() {
   return (
     <>
-      <Section className="pt-16 sm:pt-24">
-        <FadeIn className="mx-auto flex max-w-4xl flex-col gap-6 text-center">
-          <Badge variant="accent" className="mx-auto">
-            Selected Projects
-          </Badge>
-          <h1>Work designed to be credible in serious rooms</h1>
-          <p className="mx-auto max-w-3xl text-base text-white/75 sm:text-lg">
-            These projects are organized around a single standard: they should remain clear,
-            trustworthy, and useful as complexity increases and stakeholders multiply.
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <ButtonLink href="/resume" variant="secondary">
-              Resume
-            </ButtonLink>
-            <ButtonLink href="/contact" variant="outline">
-              Contact
-            </ButtonLink>
-          </div>
-        </FadeIn>
-      </Section>
-
-      <Section className="pt-0" containerClassName="max-w-6xl">
-        <div className="grid gap-6 lg:grid-cols-3">
-          {projects.map((project, index) => (
-            <FadeIn className="h-full" delay={index * 0.05} key={project.title}>
-              <Card className="flex h-full flex-col">
-                <CardHeader className="space-y-4">
-                  <div className="flex items-center justify-between text-xs uppercase tracking-[0.14em] text-white/45">
-                    <span>{project.role}</span>
-                    <span className="rounded-full border border-white/10 px-3 py-1 text-[11px] text-white/70">
-                      {project.status}
-                    </span>
-                  </div>
-                  <CardTitle className="text-2xl">{project.title}</CardTitle>
-                  <CardDescription className="text-white/75">{project.focus}</CardDescription>
-                </CardHeader>
-                <CardContent className="mt-4 flex-1 text-sm text-white/75">
-                  {project.description}
-                </CardContent>
-              </Card>
-            </FadeIn>
-          ))}
-        </div>
-      </Section>
-
-      <Section className="pt-0" containerClassName="max-w-5xl">
-        <FadeIn className="surface flex flex-col gap-4 p-8 md:flex-row md:items-center md:justify-between md:p-10">
-          <div className="space-y-2">
-            <Badge>Institution-ready note</Badge>
-            <h2 className="text-3xl">Project briefs include governance by default</h2>
-            <p className="max-w-2xl text-sm text-white/75">
-              The intention is to make collaboration easier for partners, teams, and institutions by
-              making decisions explicit, traceable, and calm to review.
-            </p>
-          </div>
-          <ButtonLink href="/blog" variant="ghost">
-            Read the writing
+      <MotionSection
+        className="pt-16 sm:pt-24"
+        motionClassName="mx-auto flex max-w-4xl flex-col gap-6 text-center"
+      >
+        <Badge variant="accent" className="mx-auto">
+          Selected Projects
+        </Badge>
+        <h1>Work designed to be credible in serious rooms</h1>
+        <p className="mx-auto max-w-3xl text-base text-white/75 sm:text-lg">
+          These projects are organized around a single standard: they should remain clear,
+          trustworthy, and useful as complexity increases and stakeholders multiply.
+        </p>
+        <div className="flex flex-wrap justify-center gap-3">
+          <ButtonLink href="/resume" variant="secondary">
+            Resume
           </ButtonLink>
-        </FadeIn>
-      </Section>
+          <ButtonLink href="/contact" variant="outline">
+            Contact
+          </ButtonLink>
+        </div>
+      </MotionSection>
+
+      <MotionSection
+        className="pt-0"
+        containerClassName="max-w-6xl"
+        delayChildren={0.03}
+        motionClassName="grid gap-6 lg:grid-cols-3"
+        staggerChildren={0.08}
+      >
+        {projects.map((project) => (
+          <MotionCard className="flex h-full flex-col" key={project.title}>
+            <CardHeader className="space-y-4">
+              <div className="flex items-center justify-between text-xs uppercase tracking-[0.14em] text-white/45">
+                <span>{project.role}</span>
+                <span className="rounded-full border border-white/10 px-3 py-1 text-[11px] text-white/70">
+                  {project.status}
+                </span>
+              </div>
+              <CardTitle className="text-2xl">{project.title}</CardTitle>
+              <CardDescription className="text-white/75">{project.focus}</CardDescription>
+            </CardHeader>
+            <CardContent className="mt-4 flex-1 text-sm text-white/75">
+              {project.description}
+            </CardContent>
+          </MotionCard>
+        ))}
+      </MotionSection>
+
+      <MotionSection
+        className="pt-0"
+        containerClassName="max-w-5xl"
+        motionClassName="surface flex flex-col gap-4 p-8 md:flex-row md:items-center md:justify-between md:p-10"
+      >
+        <div className="space-y-2">
+          <Badge>Institution-ready note</Badge>
+          <h2 className="text-3xl">Project briefs include governance by default</h2>
+          <p className="max-w-2xl text-sm text-white/75">
+            The intention is to make collaboration easier for partners, teams, and institutions by
+            making decisions explicit, traceable, and calm to review.
+          </p>
+        </div>
+        <ButtonLink href="/blog" variant="ghost">
+          Read the writing
+        </ButtonLink>
+      </MotionSection>
     </>
   );
 }
