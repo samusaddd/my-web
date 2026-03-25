@@ -15,6 +15,8 @@ import {
 } from "@/components/ui";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
+export const dynamic = "force-dynamic";
+
 const canonicalUrl = absoluteUrl("/");
 const ogImage = absoluteUrl("/opengraph-image");
 
