@@ -23,14 +23,14 @@ const serif = Playfair_Display({
 });
 
 const metadataBase = new URL(siteConfig.url);
-const defaultTitle = `${siteConfig.name} — VitaAvanza`;
+const defaultTitle = `${siteConfig.name} | VitaAvanza and Life Navigation`;
 const defaultOgImage = absoluteUrl("/opengraph-image");
 
 export const metadata: Metadata = {
   metadataBase,
   title: {
     default: defaultTitle,
-    template: `%s — ${siteConfig.name}`,
+    template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   applicationName: siteConfig.name,
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
         url: defaultOgImage,
         width: 1200,
         height: 630,
-        alt: `${siteConfig.name} — Author • Founder & CEO`,
+        alt: `${siteConfig.name} | Founder of VitaAvanza`,
       },
     ],
   },

@@ -6,47 +6,57 @@ import { useReducedMotion } from "framer-motion";
 
 import { cn } from "@/lib/cn";
 
-const particles = [
-  { x: 12, y: 20, size: 6, delay: "0.4s" },
-  { x: 25, y: 60, size: 8, delay: "1.2s" },
-  { x: 38, y: 27, size: 5, delay: "1.8s" },
-  { x: 49, y: 74, size: 7, delay: "0.8s" },
-  { x: 63, y: 24, size: 8, delay: "1.5s" },
-  { x: 72, y: 44, size: 6, delay: "0.2s" },
-  { x: 84, y: 18, size: 10, delay: "1.1s" },
-  { x: 88, y: 68, size: 7, delay: "1.9s" },
-  { x: 94, y: 36, size: 5, delay: "0.7s" },
-] as const;
+type Point = {
+  angle: number;
+  orbit: number;
+  stretch: number;
+  speed: number;
+  phase: number;
+  size: number;
+  mix: number;
+  jitter: number;
+};
 
-const ribbons = [
-  "M -6 78 C 16 56, 34 58, 52 44 S 86 18, 126 26",
-  "M -2 94 C 12 82, 28 76, 46 78 S 78 88, 124 64",
-  "M 22 8 C 40 18, 60 20, 78 16 S 104 8, 126 14",
-  "M 6 42 C 18 34, 32 32, 48 34 S 82 44, 118 32",
-] as const;
+const TAU = Math.PI * 2;
 
-const columns = [
-  { left: "56%", top: "12%", height: "72%" },
-  { left: "72%", top: "18%", height: "58%" },
-  { left: "86%", top: "9%", height: "66%" },
-] as const;
+function mixColor(from: readonly number[], to: readonly number[], amount: number) {
+  return [
+    Math.round(from[0] + (to[0] - from[0]) * amount),
+    Math.round(from[1] + (to[1] - from[1]) * amount),
+    Math.round(from[2] + (to[2] - from[2]) * amount),
+  ] as const;
+}
 
 export function HeroBackground({ className }: { className?: string }) {
   const reducedMotion = useReducedMotion() ?? false;
-  const ref = useRef<HTMLDivElement | null>(null);
+  const fieldRef = useRef<HTMLDivElement | null>(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
-    const element = ref.current;
-    const host = element?.parentElement;
+    const field = fieldRef.current;
+    const canvas = canvasRef.current;
+    const host = field?.parentElement;
 
-    if (!element || !host || reducedMotion) {
+    if (!field || !canvas || !host) {
+      return;
+    }
+
+    const context = canvas.getContext("2d");
+    if (!context) {
       return;
     }
 
     let frame = 0;
     let active = true;
+    let width = 0;
+    let height = 0;
+    let points: Point[] = [];
+    let desktop = false;
 
-    const state = {
+    const cyan = [34, 211, 238] as const;
+    const violet = [168, 85, 247] as const;
+
+    const pointer = {
       currentX: 50,
       currentY: 50,
       targetX: 50,
@@ -57,50 +67,199 @@ export function HeroBackground({ className }: { className?: string }) {
       targetShiftY: 0,
     };
 
+    const setFieldVars = () => {
+      field.style.setProperty("--hero-x", `${pointer.currentX}%`);
+      field.style.setProperty("--hero-y", `${pointer.currentY}%`);
+      field.style.setProperty("--hero-shift-x", `${pointer.currentShiftX}px`);
+      field.style.setProperty("--hero-shift-y", `${pointer.currentShiftY}px`);
+    };
+
+    const createPoints = () => {
+      const minDimension = Math.min(width, height);
+      const count = width >= 1280 ? 96 : width >= 900 ? 74 : 48;
+      const maxOrbit = minDimension * (desktop ? 0.34 : 0.25);
+
+      points = Array.from({ length: count }, () => ({
+        angle: Math.random() * TAU,
+        orbit: minDimension * 0.06 + Math.random() * maxOrbit,
+        stretch: 0.45 + Math.random() * 0.55,
+        speed: 0.00018 + Math.random() * 0.00038,
+        phase: Math.random() * TAU,
+        size: 1.1 + Math.random() * 2.2,
+        mix: Math.random(),
+        jitter: 8 + Math.random() * 18,
+      }));
+    };
+
+    const resize = () => {
+      const bounds = host.getBoundingClientRect();
+      width = Math.max(1, bounds.width);
+      height = Math.max(1, bounds.height);
+      desktop = width >= 960;
+
+      const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.8);
+      canvas.width = Math.floor(width * pixelRatio);
+      canvas.height = Math.floor(height * pixelRatio);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+
+      createPoints();
+      setFieldVars();
+      draw(performance.now());
+    };
+
+    const draw = (time: number) => {
+      context.clearRect(0, 0, width, height);
+
+      const centerX =
+        width * (desktop ? 0.74 : 0.5) + pointer.currentShiftX * (desktop ? 0.85 : 0.42);
+      const centerY =
+        height * (desktop ? 0.44 : 0.5) + pointer.currentShiftY * (desktop ? 0.52 : 0.34);
+
+      const rendered = points.map((point) => {
+        const angle = point.angle + time * point.speed;
+        const orbit = point.orbit + Math.sin(time * 0.00085 + point.phase) * point.jitter;
+        const x =
+          centerX +
+          Math.cos(angle) * orbit +
+          Math.cos(time * 0.00045 + point.phase) * 18 +
+          pointer.currentShiftX * 0.08;
+        const y =
+          centerY +
+          Math.sin(angle + point.phase * 0.32) * orbit * point.stretch +
+          Math.sin(time * 0.00055 + point.phase) * 12 +
+          pointer.currentShiftY * 0.06;
+
+        return { ...point, x, y };
+      });
+
+      context.save();
+      context.globalCompositeOperation = "lighter";
+
+      context.lineWidth = 1;
+      context.strokeStyle = "rgba(255,255,255,0.06)";
+      for (let index = 0; index < 3; index += 1) {
+        context.beginPath();
+        context.ellipse(
+          centerX,
+          centerY,
+          Math.min(width, height) * (0.16 + index * 0.09),
+          Math.min(width, height) * (0.09 + index * 0.05),
+          -0.36,
+          0,
+          TAU,
+        );
+        context.stroke();
+      }
+
+      for (let outer = 0; outer < rendered.length; outer += 1) {
+        for (let inner = outer + 1; inner < rendered.length; inner += 1) {
+          const dx = rendered[outer].x - rendered[inner].x;
+          const dy = rendered[outer].y - rendered[inner].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          const threshold = desktop ? 118 : 86;
+
+          if (distance > threshold) {
+            continue;
+          }
+
+          const alpha = (1 - distance / threshold) * 0.18;
+          const mix = (rendered[outer].mix + rendered[inner].mix) / 2;
+          const [r, g, b] = mixColor(cyan, violet, mix);
+
+          context.strokeStyle = `rgba(${r}, ${g}, ${b}, ${alpha})`;
+          context.beginPath();
+          context.moveTo(rendered[outer].x, rendered[outer].y);
+          context.lineTo(rendered[inner].x, rendered[inner].y);
+          context.stroke();
+        }
+      }
+
+      rendered.forEach((point) => {
+        const [r, g, b] = mixColor(cyan, violet, point.mix);
+        context.fillStyle = `rgba(${r}, ${g}, ${b}, 0.82)`;
+        context.beginPath();
+        context.arc(point.x, point.y, point.size, 0, TAU);
+        context.fill();
+
+        context.fillStyle = "rgba(255,255,255,0.7)";
+        context.beginPath();
+        context.arc(point.x, point.y, point.size * 0.32, 0, TAU);
+        context.fill();
+      });
+
+      context.restore();
+    };
+
     const tick = () => {
-      state.currentX += (state.targetX - state.currentX) * 0.08;
-      state.currentY += (state.targetY - state.currentY) * 0.08;
-      state.currentShiftX += (state.targetShiftX - state.currentShiftX) * 0.08;
-      state.currentShiftY += (state.targetShiftY - state.currentShiftY) * 0.08;
+      pointer.currentX += (pointer.targetX - pointer.currentX) * 0.08;
+      pointer.currentY += (pointer.targetY - pointer.currentY) * 0.08;
+      pointer.currentShiftX += (pointer.targetShiftX - pointer.currentShiftX) * 0.08;
+      pointer.currentShiftY += (pointer.targetShiftY - pointer.currentShiftY) * 0.08;
 
-      element.style.setProperty("--hero-x", `${state.currentX}%`);
-      element.style.setProperty("--hero-y", `${state.currentY}%`);
-      element.style.setProperty("--hero-shift-x", `${state.currentShiftX}px`);
-      element.style.setProperty("--hero-shift-y", `${state.currentShiftY}px`);
+      setFieldVars();
+      draw(performance.now());
 
-      if (active) {
+      if (active && !reducedMotion) {
         frame = window.requestAnimationFrame(tick);
       }
     };
 
     const handlePointerMove = (event: PointerEvent) => {
-      const bounds = element.getBoundingClientRect();
+      const bounds = host.getBoundingClientRect();
       const x = ((event.clientX - bounds.left) / bounds.width) * 100;
       const y = ((event.clientY - bounds.top) / bounds.height) * 100;
 
-      state.targetX = Math.max(0, Math.min(100, x));
-      state.targetY = Math.max(0, Math.min(100, y));
-      state.targetShiftX = ((x - 50) / 50) * 14;
-      state.targetShiftY = ((y - 50) / 50) * 10;
+      pointer.targetX = Math.max(0, Math.min(100, x));
+      pointer.targetY = Math.max(0, Math.min(100, y));
+      pointer.targetShiftX = ((x - 50) / 50) * (desktop ? 34 : 18);
+      pointer.targetShiftY = ((y - 50) / 50) * (desktop ? 22 : 14);
+
+      if (reducedMotion) {
+        pointer.currentX = pointer.targetX;
+        pointer.currentY = pointer.targetY;
+        pointer.currentShiftX = pointer.targetShiftX;
+        pointer.currentShiftY = pointer.targetShiftY;
+        setFieldVars();
+        draw(performance.now());
+      }
     };
 
-    const reset = () => {
-      state.targetX = 50;
-      state.targetY = 50;
-      state.targetShiftX = 0;
-      state.targetShiftY = 0;
+    const resetPointer = () => {
+      pointer.targetX = 50;
+      pointer.targetY = 50;
+      pointer.targetShiftX = 0;
+      pointer.targetShiftY = 0;
+
+      if (reducedMotion) {
+        pointer.currentX = 50;
+        pointer.currentY = 50;
+        pointer.currentShiftX = 0;
+        pointer.currentShiftY = 0;
+        setFieldVars();
+        draw(performance.now());
+      }
     };
 
+    window.addEventListener("resize", resize);
     host.addEventListener("pointermove", handlePointerMove);
-    host.addEventListener("pointerleave", reset);
+    host.addEventListener("pointerleave", resetPointer);
 
-    frame = window.requestAnimationFrame(tick);
+    resize();
+
+    if (reducedMotion) {
+      draw(performance.now());
+    } else {
+      frame = window.requestAnimationFrame(tick);
+    }
 
     return () => {
       active = false;
       window.cancelAnimationFrame(frame);
+      window.removeEventListener("resize", resize);
       host.removeEventListener("pointermove", handlePointerMove);
-      host.removeEventListener("pointerleave", reset);
+      host.removeEventListener("pointerleave", resetPointer);
     };
   }, [reducedMotion]);
 
@@ -108,60 +267,13 @@ export function HeroBackground({ className }: { className?: string }) {
     <div
       aria-hidden="true"
       className={cn("hero-field pointer-events-none absolute inset-0 overflow-hidden", className)}
-      ref={ref}
+      ref={fieldRef}
     >
-      <div className="hero-mesh absolute inset-0" />
-      <div className="hero-grid-fade absolute inset-0" />
-      <div className="hero-glow hero-glow-primary absolute left-[-18%] top-[12%] h-[28rem] w-[28rem] rounded-full" />
-      <div className="hero-glow hero-glow-secondary absolute right-[-12%] top-[-10%] h-[28rem] w-[28rem] rounded-full" />
-      <div className="hero-glow hero-glow-tertiary absolute left-[30%] top-[48%] h-[20rem] w-[32rem] rounded-full" />
-      <div className="hero-sweep absolute left-[38%] top-[8%] hidden h-[82%] w-[48%] rounded-full md:block" />
-      <div className="hero-wave hero-wave-top absolute left-[44%] top-[14%] hidden h-[18rem] w-[30rem] rounded-full md:block" />
-      <div className="hero-wave hero-wave-bottom absolute left-[26%] top-[50%] hidden h-[16rem] w-[32rem] rounded-full md:block" />
-
-      <svg
-        className="hero-traces absolute inset-0 hidden h-full w-full md:block"
-        fill="none"
-        viewBox="0 0 120 100"
-      >
-        {ribbons.map((trace, index) => (
-          <path
-            className="hero-trace"
-            d={trace}
-            key={trace}
-            pathLength="1"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeWidth="1.05"
-            style={{ animationDelay: `${index * -2.4}s` }}
-          />
-        ))}
-      </svg>
-
-      {columns.map((column) => (
-        <span
-          className="hero-column absolute hidden w-px md:block"
-          key={`${column.left}-${column.top}`}
-          style={{ left: column.left, top: column.top, height: column.height }}
-        />
-      ))}
-
-      {particles.map((particle) => (
-        <span
-          className="hero-particle absolute rounded-full border border-white/15 bg-white/80"
-          key={`${particle.x}-${particle.y}`}
-          style={{
-            left: `${particle.x}%`,
-            top: `${particle.y}%`,
-            width: `${particle.size}px`,
-            height: `${particle.size}px`,
-            animationDelay: particle.delay,
-          }}
-        />
-      ))}
-
-      <div className="hero-focus-light absolute inset-0" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.025),transparent_22%,transparent_74%,rgba(255,255,255,0.015))]" />
+      <canvas className="hero-canvas absolute inset-0 h-full w-full" ref={canvasRef} />
+      <div className="hero-aurora hero-aurora-cyan absolute left-[-16%] top-[-8%] h-[32rem] w-[32rem] rounded-full" />
+      <div className="hero-aurora hero-aurora-violet absolute right-[-12%] top-[4%] h-[30rem] w-[30rem] rounded-full" />
+      <div className="hero-spotlight absolute inset-0" />
+      <div className="hero-vignette absolute inset-0" />
     </div>
   );
 }

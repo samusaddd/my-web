@@ -18,52 +18,51 @@ const ogImage = absoluteUrl("/opengraph-image");
 export const metadata: Metadata = {
   title: "Resume",
   description:
-    "Resume overview for Samir Seddiqi, including competencies, education, and civic engagement. CV available for download.",
+    "Founder profile for Samir Seddiqi across VitaAvanza, product strategy, discovery research, and institution-ready systems.",
   alternates: { canonical: canonicalUrl },
   openGraph: {
-    title: `Resume — ${siteConfig.name}`,
+    title: `Resume | ${siteConfig.name}`,
     description:
-      "Competencies, education, and civic engagement. CV available for download.",
+      "Founder profile across VitaAvanza, product strategy, discovery research, and institution-ready systems.",
     type: "website",
     url: canonicalUrl,
     images: [{ url: ogImage, width: 1200, height: 630, alt: "Samir Seddiqi Resume" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: `Resume — ${siteConfig.name}`,
+    title: `Resume | ${siteConfig.name}`,
     description:
-      "Competencies, education, and civic engagement. CV available for download.",
+      "Founder profile across VitaAvanza, product strategy, discovery research, and institution-ready systems.",
     images: [ogImage],
   },
 };
 
 const competencies = [
-  "Strategy and operations",
-  "Product direction",
+  "Founder leadership",
+  "Life-navigation product strategy",
+  "Discovery research",
   "Institutional collaboration",
   "Governance-aware design",
   "Writing and communication",
-  "Transition systems thinking",
 ] as const;
 
 const education = [
   {
-    title: "Economics & Management",
+    title: "Economics and Management",
     institution: "University of Trento",
-    detail: "A foundation in systems thinking, economic decision-making, and structured analysis.",
+    detail: "Foundation in systems thinking, economic decision-making, and structured analysis.",
   },
 ] as const;
 
-const civicEngagement = [
+const operatingSignals = [
   {
-    title: "Civic and institutional involvement",
+    title: "Company direction",
     detail:
-      "Participation in initiatives and conversations focused on youth transitions, public outcomes, and responsible system design.",
+      "Founder of VitaAvanza, building the operating layer around Mitra, DVI, and institution-ready coordination.",
   },
   {
-    title: "Writing in public",
-    detail:
-      "Using essays and structured notes to make decisions and trade-offs legible to broader audiences and partners.",
+    title: "Field discovery",
+    detail: `${siteConfig.discovery.total} interviews completed across immigrant and international-student populations before pilot rollout work.`,
   },
 ] as const;
 
@@ -77,10 +76,10 @@ export default function ResumePage() {
         <Badge variant="accent" className="mx-auto">
           Resume Overview
         </Badge>
-        <h1>Institution-ready leadership with product depth</h1>
+        <h1>Founder profile with product depth and institutional orientation</h1>
         <p className="mx-auto max-w-3xl text-base text-white/75 sm:text-lg">
-          I build systems that remain calm, credible, and useful as complexity increases. The work
-          connects strategy, product clarity, and institutional alignment.
+          The work connects strategy, discovery, product logic, and institution-ready execution. It
+          is designed for real systems, not idealized launch conditions.
         </p>
         <div className="flex flex-wrap justify-center gap-3">
           <ButtonLink href="/Samir-Seddiqi-CV.pdf" size="lg" download>
@@ -97,7 +96,7 @@ export default function ResumePage() {
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white/45">
             Key competencies
           </p>
-          <h2 className="max-w-3xl">Capabilities that travel across contexts</h2>
+          <h2 className="max-w-3xl">Capabilities that travel across product and institutional work</h2>
         </div>
 
         <MotionSection
@@ -114,7 +113,7 @@ export default function ResumePage() {
                 <CardTitle className="text-lg">{item}</CardTitle>
               </CardHeader>
               <CardContent className="text-sm text-white/70">
-                Built to support clarity, accountability, and collaboration under real constraints.
+                Built to support clarity, accountability, and forward motion under real constraints.
               </CardContent>
             </MotionCard>
           ))}
@@ -149,12 +148,12 @@ export default function ResumePage() {
         <MotionCard className="h-full">
           <CardHeader className="space-y-3">
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white/45">
-              Civic engagement
+              Operating signals
             </p>
-            <CardTitle className="text-2xl">Public-facing orientation</CardTitle>
+            <CardTitle className="text-2xl">Current direction</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6 text-sm text-white/75">
-            {civicEngagement.map((item, index) => (
+            {operatingSignals.map((item, index) => (
               <div className="space-y-2" key={item.title}>
                 <p className="text-base font-semibold text-white">{item.title}</p>
                 <p>{item.detail}</p>

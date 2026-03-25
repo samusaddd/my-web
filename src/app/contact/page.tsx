@@ -19,19 +19,22 @@ const ogImage = absoluteUrl("/opengraph-image");
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Direct, email-first contact for collaboration, institutional work, and book requests.",
+  description:
+    "For VitaAvanza demos, partnerships, institutional conversations, founder contact, and book requests.",
   alternates: { canonical: canonicalUrl },
   openGraph: {
-    title: `Contact — ${siteConfig.name}`,
-    description: "Direct, email-first contact for collaboration, institutional work, and book requests.",
+    title: `Contact | ${siteConfig.name}`,
+    description:
+      "For VitaAvanza demos, partnerships, institutional conversations, founder contact, and book requests.",
     type: "website",
     url: canonicalUrl,
     images: [{ url: ogImage, width: 1200, height: 630, alt: "Contact Samir Seddiqi" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: `Contact — ${siteConfig.name}`,
-    description: "Direct, email-first contact for collaboration, institutional work, and book requests.",
+    title: `Contact | ${siteConfig.name}`,
+    description:
+      "For VitaAvanza demos, partnerships, institutional conversations, founder contact, and book requests.",
     images: [ogImage],
   },
 };
@@ -46,10 +49,10 @@ export default function ContactPage() {
         <Badge variant="accent" className="mx-auto">
           Contact
         </Badge>
-        <h1>Direct, calm, and email-first</h1>
+        <h1>For demos, partnerships, and serious conversations</h1>
         <p className="mx-auto max-w-2xl text-base text-white/75 sm:text-lg">
-          The preferred channel is email. A short note on context and intent makes it easier to
-          respond with clarity and momentum.
+          Email is still the best channel. A short note about whether the context is VitaAvanza,
+          partnership, discovery, or the book helps keep the reply precise.
         </p>
       </MotionSection>
 
@@ -57,14 +60,15 @@ export default function ContactPage() {
         className="pt-0"
         containerClassName="max-w-5xl"
         delayChildren={0.02}
-        motionClassName="grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]"
+        motionClassName="grid gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]"
         staggerChildren={0.08}
       >
         <MotionCard className="flex h-full flex-col">
           <CardHeader className="space-y-3">
             <CardTitle className="text-2xl">Direct contact</CardTitle>
             <CardDescription className="text-white/75">
-              For collaboration, institutional work, and thoughtful introductions.
+              Founder contact for VitaAvanza, institutional conversations, and thoughtful
+              introductions.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-5 text-sm text-white/80">
@@ -89,25 +93,36 @@ export default function ContactPage() {
                 Connect on LinkedIn
               </MotionLink>
             </div>
+
+            <Divider />
+
+            <div className="space-y-2">
+              <p className="text-xs uppercase tracking-[0.16em] text-white/45">Good fit</p>
+              <ul className="list-disc space-y-2 pl-5 text-white/75">
+                <li>VitaAvanza demos and product conversations</li>
+                <li>University, public-body, or employer partnerships</li>
+                <li>Discovery, pilot, and institution-ready collaboration</li>
+              </ul>
+            </div>
           </CardContent>
         </MotionCard>
 
         <MotionCard className="flex h-full flex-col">
           <CardHeader className="space-y-3">
-            <Badge>Book requests</Badge>
+            <Badge>{siteConfig.book.distribution}</Badge>
             <CardTitle className="text-2xl">{siteConfig.book.title}</CardTitle>
             <CardDescription className="text-white/75">
-              {siteConfig.book.distribution}. {siteConfig.book.award}.
+              {siteConfig.book.award}. Available by request.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4 text-sm text-white/75">
             <p>
-              A short reflective literary work on inner dialogue, silence, vulnerability, and the
-              need to be seen and heard.
+              The book is the quieter side of the same work: vulnerability, being heard, and the
+              emotional layer that often sits underneath institutional pressure.
             </p>
             <p>
-              The book is available free by request. The act of asking is intentional and mirrors the
-              theme of being heard.
+              If you are requesting a copy, include the context and why it resonates. That makes the
+              exchange more human and intentional.
             </p>
             <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-5">
               <p className="text-xs uppercase tracking-[0.16em] text-white/45">Request via email</p>

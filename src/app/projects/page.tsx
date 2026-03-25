@@ -18,49 +18,57 @@ const ogImage = absoluteUrl("/opengraph-image");
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Selected work across VitaAvanza, institutional collaboration, and writing as infrastructure.",
+    "Selected work across VitaAvanza, Mitra, DVI, field discovery, and institution-ready system design.",
   alternates: { canonical: canonicalUrl },
   openGraph: {
-    title: `Projects — ${siteConfig.name}`,
+    title: `Projects | ${siteConfig.name}`,
     description:
-      "Selected work across VitaAvanza, institutional collaboration, and writing as infrastructure.",
+      "Selected work across VitaAvanza, Mitra, DVI, field discovery, and institution-ready system design.",
     type: "website",
     url: canonicalUrl,
     images: [{ url: ogImage, width: 1200, height: 630, alt: "Samir Seddiqi Projects" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: `Projects — ${siteConfig.name}`,
+    title: `Projects | ${siteConfig.name}`,
     description:
-      "Selected work across VitaAvanza, institutional collaboration, and writing as infrastructure.",
+      "Selected work across VitaAvanza, Mitra, DVI, field discovery, and institution-ready system design.",
     images: [ogImage],
   },
 };
 
 const projects = [
   {
-    title: "VitaAvanza",
-    role: "Founder & CEO",
-    focus: "Life navigation for transitions",
+    title: siteConfig.company.name,
+    role: "Founder",
+    focus: "Infrastructure for life navigation",
     description:
-      "An early-stage platform focused on students, young workers, and people navigating change. The work emphasizes calm guidance, credible structure, and institutional readiness.",
+      "The company-level operating layer being built in Trento to connect people in transition with institutions that need earlier, clearer visibility.",
     status: "Active",
   },
   {
-    title: "Civic and institutional collaboration",
-    role: "Strategy and product alignment",
-    focus: "Systems that must work under scrutiny",
+    title: "Mitra",
+    role: "Guidance layer",
+    focus: "Specialized intelligence",
     description:
-      "Ongoing involvement in civic and institutional contexts where clarity, governance, and public trust are part of the product brief. The goal is to make decisions legible and outcomes dependable.",
-    status: "Ongoing",
+      "Turns onboarding data, DVI posture, and institutional constraints into the next practical move rather than generic advice.",
+    status: "In build",
   },
   {
-    title: siteConfig.book.title,
-    role: "Author",
-    focus: "Writing as infrastructure",
+    title: "DVI",
+    role: "Explainable posture model",
+    focus: "Stability, load, growth, support",
     description:
-      "A short reflective literary work written as a sequence of inner reflections on vulnerability, loneliness, and the need to be seen and heard. Recognized with the Writer of the Year Award (2022).",
-    status: siteConfig.book.distribution,
+      "An explainable posture view designed to show reality clearly and early, without collapsing people into a black-box score.",
+    status: "In build",
+  },
+  {
+    title: "Field discovery and pilot design",
+    role: "Research and operating model",
+    focus: `${siteConfig.discovery.total} interviews and ${siteConfig.discovery.pilot}-person pilot direction`,
+    description:
+      "Structured discovery across immigrant and international-student populations used to shape product decisions and pilot logic.",
+    status: "Ongoing",
   },
 ] as const;
 
@@ -74,14 +82,14 @@ export default function ProjectsPage() {
         <Badge variant="accent" className="mx-auto">
           Selected Projects
         </Badge>
-        <h1>Work designed to be credible in serious rooms</h1>
+        <h1>Work that turns life-navigation theory into operating systems</h1>
         <p className="mx-auto max-w-3xl text-base text-white/75 sm:text-lg">
-          These projects are organized around a single standard: they should remain clear,
-          trustworthy, and useful as complexity increases and stakeholders multiply.
+          The projects here sit around one core effort: make VitaAvanza credible for real pressure,
+          real people, and serious institutional use.
         </p>
         <div className="flex flex-wrap justify-center gap-3">
-          <ButtonLink href="/resume" variant="secondary">
-            Resume
+          <ButtonLink href="/about" variant="secondary">
+            About
           </ButtonLink>
           <ButtonLink href="/contact" variant="outline">
             Contact
@@ -93,7 +101,7 @@ export default function ProjectsPage() {
         className="pt-0"
         containerClassName="max-w-6xl"
         delayChildren={0.03}
-        motionClassName="grid gap-6 lg:grid-cols-3"
+        motionClassName="grid gap-6 lg:grid-cols-2"
         staggerChildren={0.08}
       >
         {projects.map((project) => (
@@ -121,15 +129,15 @@ export default function ProjectsPage() {
         motionClassName="surface flex flex-col gap-4 p-8 md:flex-row md:items-center md:justify-between md:p-10"
       >
         <div className="space-y-2">
-          <Badge>Institution-ready note</Badge>
-          <h2 className="text-3xl">Project briefs include governance by default</h2>
+          <Badge>Operating note</Badge>
+          <h2 className="text-3xl">The project standard is institutional credibility</h2>
           <p className="max-w-2xl text-sm text-white/75">
-            The intention is to make collaboration easier for partners, teams, and institutions by
-            making decisions explicit, traceable, and calm to review.
+            The work is judged by whether it stays legible under scrutiny, not whether it looks
+            impressive in a demo.
           </p>
         </div>
-        <ButtonLink href="/blog" variant="ghost">
-          Read the writing
+        <ButtonLink href="/resume" variant="ghost">
+          Resume overview
         </ButtonLink>
       </MotionSection>
     </>

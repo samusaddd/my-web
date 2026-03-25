@@ -14,14 +14,14 @@ export function SiteFooter() {
         <div className="grid gap-10 md:grid-cols-[1.1fr_0.9fr_1fr]">
           <div className="space-y-3">
             <p className="text-sm font-semibold uppercase tracking-[0.12em] text-white/50">
-              Institutional Infrastructure
+              Founder Site
             </p>
             <p className="max-w-md text-sm text-white/75">
-              Strategy, product clarity, and civic alignment for people and institutions in
-              transition.
+              Personal site for the founder point of view behind VitaAvanza, life-navigation
+              infrastructure, and institution-ready system design.
             </p>
             <p className="text-xs text-white/50">
-              © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
+              Copyright {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
             </p>
           </div>
 
@@ -46,13 +46,17 @@ export function SiteFooter() {
               </a>
             </p>
             <p className="text-sm text-white/80">
-              <a className="underline decoration-white/30 underline-offset-4" href={siteConfig.linkedin} rel="noreferrer" target="_blank">
+              <a
+                className="underline decoration-white/30 underline-offset-4"
+                href={siteConfig.linkedin}
+                rel="noreferrer"
+                target="_blank"
+              >
                 LinkedIn
               </a>
             </p>
             <p className="text-xs text-white/55">
-              {siteConfig.book.title} — a reflective literary work on silence, vulnerability, and the
-              need to be heard. {siteConfig.book.award}. {siteConfig.book.distribution}.
+              {siteConfig.company.name}, {siteConfig.company.location}. {siteConfig.tagline}
             </p>
           </div>
         </div>
