@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { Engine } from "@/components/engine";
+import { HeroBackground } from "@/components/hero-background";
 import { MotionCard } from "@/components/motion/motion-card";
 import { MotionSection } from "@/components/motion/motion-section";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -79,28 +79,25 @@ const highlights = [
   },
 ] as const;
 
-const heroSignals = [
-  {
-    label: "Base",
-    value: "Trento, Italy",
-    description: "Working from an academic and civic context rather than a hype cycle.",
-  },
-  {
-    label: "Focus",
-    value: "Transition systems",
-    description: "Building calm products that stay legible for both people and institutions.",
-  },
-  {
-    label: "Method",
-    value: "Writing + product",
-    description: "Using structured language to make decisions clearer, calmer, and more durable.",
-  },
+const heroMeta = [
+  "Based in Trento, Italy",
+  "Product, writing, and systems",
+  "Building VitaAvanza",
 ] as const;
 
-const engineFacts = [
-  { label: "Primary domain", value: "Institutional clarity" },
-  { label: "Operating style", value: "Quiet but rigorous" },
-  { label: "Outputs", value: "Readable, stable, durable" },
+const heroThreads = [
+  {
+    title: "Product direction",
+    description: "Turning messy constraints into calm decisions, structures, and next steps.",
+  },
+  {
+    title: "Institutional fit",
+    description: "Keeping academic, civic, and operational realities visible from the start.",
+  },
+  {
+    title: "Language",
+    description: "Using writing to make serious work feel precise, readable, and trustworthy.",
+  },
 ] as const;
 
 export default function HomePage() {
@@ -123,83 +120,75 @@ export default function HomePage() {
 
       <MotionSection
         className="pt-16 sm:pt-24"
-        motionClassName="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[minmax(0,0.98fr)_minmax(0,1.02fr)]"
+        motionClassName="mx-auto max-w-6xl"
       >
-        <div className="space-y-8">
-          <div className="flex flex-wrap items-center gap-3">
-            <Badge variant="accent">Institutional Infrastructure</Badge>
-            <Badge>VitaAvanza</Badge>
-          </div>
+        <div className="hero-stage surface relative overflow-hidden px-6 py-8 sm:px-8 sm:py-10 lg:min-h-[38rem] lg:px-12 lg:py-12">
+          <HeroBackground />
 
-          <div className="space-y-6">
-            <h1 className="max-w-4xl">Calm systems for people and institutions in transition</h1>
-            <p className="max-w-2xl text-base text-white/75 sm:text-lg">
-              I work at the intersection of economics, product strategy, writing, and institutional
-              collaboration. The goal is simple: make serious work feel dependable, legible, and
-              ready for real-world complexity.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap gap-3">
-            <ButtonLink href="/projects" size="lg">
-              View Projects
-            </ButtonLink>
-            <ButtonLink href="/book" size="lg" variant="secondary">
-              The Book
-            </ButtonLink>
-            <ButtonLink href="/resume" size="lg" variant="outline">
-              Resume
-            </ButtonLink>
-          </div>
-
-          <div className="grid gap-3 sm:grid-cols-3">
-            {heroSignals.map((signal) => (
-              <div className="signal-chip" key={signal.label}>
-                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-white/45">
-                  {signal.label}
-                </p>
-                <p className="mt-2 text-base font-medium text-white">{signal.value}</p>
-                <p className="mt-2 text-sm text-white/62">{signal.description}</p>
+          <div className="relative z-10 grid gap-12 lg:grid-cols-[minmax(0,1.08fr)_minmax(18rem,0.92fr)] lg:items-end">
+            <div className="space-y-8">
+              <div className="flex flex-wrap items-center gap-3">
+                <Badge variant="accent">Institutional Infrastructure</Badge>
+                <Badge>VitaAvanza</Badge>
               </div>
-            ))}
+
+              <div className="space-y-6">
+                <h1 className="max-w-4xl">Calm systems for people and institutions in transition</h1>
+                <p className="max-w-2xl text-base text-white/75 sm:text-lg">
+                  I work across product, writing, and institutional collaboration. The aim is to
+                  make serious work feel dependable, legible, and ready for the complexity of real
+                  life.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-3">
+                <ButtonLink href="/projects" size="lg">
+                  View Projects
+                </ButtonLink>
+                <ButtonLink href="/book" size="lg" variant="secondary">
+                  The Book
+                </ButtonLink>
+                <ButtonLink href="/resume" size="lg" variant="outline">
+                  Resume
+                </ButtonLink>
+              </div>
+
+              <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-white/52">
+                {heroMeta.map((item) => (
+                  <span className="tracking-[0.01em]" key={item}>
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-6 border-t border-white/10 pt-6 lg:max-w-md lg:justify-self-end lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+              <div className="space-y-3">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50">
+                  Current direction
+                </p>
+                <h2 className="max-w-sm text-2xl sm:text-[2.15rem]">
+                  Shaping VitaAvanza with calm, institutional logic
+                </h2>
+                <p className="max-w-sm text-sm text-white/70 sm:text-[0.98rem]">
+                  The work sits between product direction, writing, and systems design so it can
+                  stay useful to people in transition and credible to serious collaborators.
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                {heroThreads.map((thread) => (
+                  <div className="hero-detail-item" key={thread.title}>
+                    <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-white/42">
+                      {thread.title}
+                    </p>
+                    <p className="mt-2 text-sm text-white/72">{thread.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
-
-        <MotionCard className="relative overflow-hidden p-0">
-          <div className="relative p-6 pb-5 sm:p-8 sm:pb-6">
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0 bg-[radial-gradient(40rem_28rem_at_108%_-8%,rgba(125,211,252,0.24),transparent_68%)]"
-            />
-            <CardHeader className="relative space-y-3">
-              <CardDescription className="text-xs uppercase tracking-[0.16em] text-white/50">
-                Current focus
-              </CardDescription>
-              <CardTitle className="max-w-lg text-2xl sm:text-3xl">
-                Life navigation with institutional depth
-              </CardTitle>
-              <CardDescription className="max-w-lg text-sm text-white/75">
-                VitaAvanza is being shaped to support people through transitions while staying
-                credible for serious partners, academic environments, and public-facing systems.
-              </CardDescription>
-            </CardHeader>
-          </div>
-
-          <div className="px-6 pb-6 sm:px-8 sm:pb-8">
-            <Engine />
-          </div>
-
-          <div className="grid gap-px border-t border-white/10 bg-white/[0.05] sm:grid-cols-3">
-            {engineFacts.map((fact) => (
-              <div className="bg-black/20 px-5 py-4" key={fact.label}>
-                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-white/42">
-                  {fact.label}
-                </p>
-                <p className="mt-2 text-sm font-medium text-white">{fact.value}</p>
-              </div>
-            ))}
-          </div>
-        </MotionCard>
       </MotionSection>
 
       <MotionSection className="pt-0" motionClassName="space-y-10">

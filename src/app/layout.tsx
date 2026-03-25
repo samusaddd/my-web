@@ -4,6 +4,7 @@ import { Inter, Playfair_Display } from "next/font/google";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { MotionLayout } from "@/components/motion/motion-layout";
+import { PersonalCursor } from "@/components/personal-cursor";
 import { cn } from "@/lib/cn";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
@@ -96,6 +97,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
+
+        <PersonalCursor />
 
         <div className="relative flex min-h-screen flex-col">
           <SiteHeader />
