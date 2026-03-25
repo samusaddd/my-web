@@ -209,7 +209,7 @@ export function PersonalCursor() {
       <span className="custom-cursor-glow" />
       <span className="custom-cursor-ring" />
       <span className="custom-cursor-core" />
-      <span className="custom-cursor-tag">SAMIR</span>
+      <span className="custom-cursor-satellite" />
     </div>
   );
 }

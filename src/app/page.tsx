@@ -122,11 +122,11 @@ export default function HomePage() {
         className="pt-16 sm:pt-24"
         motionClassName="mx-auto max-w-6xl"
       >
-        <div className="hero-stage surface relative overflow-hidden px-6 py-8 sm:px-8 sm:py-10 lg:min-h-[38rem] lg:px-12 lg:py-12">
+        <div className="hero-stage surface relative overflow-hidden px-6 py-8 sm:px-8 sm:py-10 lg:min-h-[40rem] lg:px-12 lg:py-12">
           <HeroBackground />
 
-          <div className="relative z-10 grid gap-12 lg:grid-cols-[minmax(0,1.08fr)_minmax(18rem,0.92fr)] lg:items-end">
-            <div className="space-y-8">
+          <div className="relative z-10 grid gap-14 lg:grid-cols-[minmax(0,1.08fr)_minmax(18rem,0.84fr)] lg:items-center">
+            <div className="space-y-8 lg:space-y-9">
               <div className="flex flex-wrap items-center gap-3">
                 <Badge variant="accent">Institutional Infrastructure</Badge>
                 <Badge>VitaAvanza</Badge>
@@ -153,26 +153,26 @@ export default function HomePage() {
                 </ButtonLink>
               </div>
 
-              <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-white/52">
+              <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/50">
                 {heroMeta.map((item) => (
-                  <span className="tracking-[0.01em]" key={item}>
+                  <span className="hero-meta-item tracking-[0.01em]" key={item}>
                     {item}
                   </span>
                 ))}
               </div>
             </div>
 
-            <div className="space-y-6 border-t border-white/10 pt-6 lg:max-w-md lg:justify-self-end lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+            <div className="space-y-8 lg:max-w-sm lg:justify-self-end lg:pt-12">
               <div className="space-y-3">
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/50">
                   Current direction
                 </p>
-                <h2 className="max-w-sm text-2xl sm:text-[2.15rem]">
-                  Shaping VitaAvanza with calm, institutional logic
+                <h2 className="max-w-sm text-2xl sm:text-[2.2rem]">
+                  Building VitaAvanza with clarity that can hold up in the real world
                 </h2>
                 <p className="max-w-sm text-sm text-white/70 sm:text-[0.98rem]">
-                  The work sits between product direction, writing, and systems design so it can
-                  stay useful to people in transition and credible to serious collaborators.
+                  The work stays close to product direction, systems thinking, and writing so it
+                  can remain useful for people in transition without losing seriousness.
                 </p>
               </div>
 

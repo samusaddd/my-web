@@ -7,20 +7,28 @@ import { useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/cn";
 
 const particles = [
-  { x: 13, y: 24, size: 8, delay: "0.4s" },
-  { x: 22, y: 63, size: 10, delay: "1.2s" },
-  { x: 35, y: 31, size: 6, delay: "1.8s" },
-  { x: 48, y: 72, size: 9, delay: "0.8s" },
-  { x: 62, y: 29, size: 10, delay: "1.5s" },
-  { x: 77, y: 66, size: 7, delay: "0.2s" },
-  { x: 86, y: 22, size: 12, delay: "1.1s" },
-  { x: 90, y: 52, size: 8, delay: "1.9s" },
+  { x: 12, y: 20, size: 6, delay: "0.4s" },
+  { x: 25, y: 60, size: 8, delay: "1.2s" },
+  { x: 38, y: 27, size: 5, delay: "1.8s" },
+  { x: 49, y: 74, size: 7, delay: "0.8s" },
+  { x: 63, y: 24, size: 8, delay: "1.5s" },
+  { x: 72, y: 44, size: 6, delay: "0.2s" },
+  { x: 84, y: 18, size: 10, delay: "1.1s" },
+  { x: 88, y: 68, size: 7, delay: "1.9s" },
+  { x: 94, y: 36, size: 5, delay: "0.7s" },
 ] as const;
 
-const traces = [
-  "M 6 62 C 16 46, 28 41, 42 44 S 67 52, 82 38 S 97 24, 102 30",
-  "M 18 82 C 30 68, 46 64, 58 68 S 79 76, 95 62",
-  "M 22 18 C 35 26, 48 31, 63 29 S 89 17, 104 21",
+const ribbons = [
+  "M -6 78 C 16 56, 34 58, 52 44 S 86 18, 126 26",
+  "M -2 94 C 12 82, 28 76, 46 78 S 78 88, 124 64",
+  "M 22 8 C 40 18, 60 20, 78 16 S 104 8, 126 14",
+  "M 6 42 C 18 34, 32 32, 48 34 S 82 44, 118 32",
+] as const;
+
+const columns = [
+  { left: "56%", top: "12%", height: "72%" },
+  { left: "72%", top: "18%", height: "58%" },
+  { left: "86%", top: "9%", height: "66%" },
 ] as const;
 
 export function HeroBackground({ className }: { className?: string }) {
@@ -103,16 +111,20 @@ export function HeroBackground({ className }: { className?: string }) {
       ref={ref}
     >
       <div className="hero-mesh absolute inset-0" />
-      <div className="hero-glow hero-glow-primary absolute left-[-12%] top-[-8%] h-[24rem] w-[24rem] rounded-full" />
-      <div className="hero-glow hero-glow-secondary absolute right-[-6%] top-[12%] h-[26rem] w-[26rem] rounded-full" />
-      <div className="hero-panel absolute right-[8%] top-[10%] hidden h-[72%] w-[44%] rounded-[2rem] border border-white/8 bg-white/[0.025] backdrop-blur-[2px] md:block" />
+      <div className="hero-grid-fade absolute inset-0" />
+      <div className="hero-glow hero-glow-primary absolute left-[-18%] top-[12%] h-[28rem] w-[28rem] rounded-full" />
+      <div className="hero-glow hero-glow-secondary absolute right-[-12%] top-[-10%] h-[28rem] w-[28rem] rounded-full" />
+      <div className="hero-glow hero-glow-tertiary absolute left-[30%] top-[48%] h-[20rem] w-[32rem] rounded-full" />
+      <div className="hero-sweep absolute left-[38%] top-[8%] hidden h-[82%] w-[48%] rounded-full md:block" />
+      <div className="hero-wave hero-wave-top absolute left-[44%] top-[14%] hidden h-[18rem] w-[30rem] rounded-full md:block" />
+      <div className="hero-wave hero-wave-bottom absolute left-[26%] top-[50%] hidden h-[16rem] w-[32rem] rounded-full md:block" />
 
       <svg
-        className="hero-traces absolute inset-y-[14%] right-[5%] hidden h-[72%] w-[62%] md:block"
+        className="hero-traces absolute inset-0 hidden h-full w-full md:block"
         fill="none"
-        viewBox="0 0 104 100"
+        viewBox="0 0 120 100"
       >
-        {traces.map((trace, index) => (
+        {ribbons.map((trace, index) => (
           <path
             className="hero-trace"
             d={trace}
@@ -126,8 +138,13 @@ export function HeroBackground({ className }: { className?: string }) {
         ))}
       </svg>
 
-      <div className="hero-halo hero-halo-lg absolute right-[18%] top-[19%] hidden h-[20rem] w-[20rem] rounded-full border border-white/10 md:block" />
-      <div className="hero-halo hero-halo-sm absolute right-[26%] top-[32%] hidden h-[11rem] w-[11rem] rounded-full border border-sky-200/14 md:block" />
+      {columns.map((column) => (
+        <span
+          className="hero-column absolute hidden w-px md:block"
+          key={`${column.left}-${column.top}`}
+          style={{ left: column.left, top: column.top, height: column.height }}
+        />
+      ))}
 
       {particles.map((particle) => (
         <span
@@ -143,7 +160,7 @@ export function HeroBackground({ className }: { className?: string }) {
         />
       ))}
 
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_var(--hero-x,50%)_var(--hero-y,50%),rgba(125,211,252,0.16),transparent_22%),radial-gradient(circle_at_72%_18%,rgba(196,181,253,0.14),transparent_26%)]" />
+      <div className="hero-focus-light absolute inset-0" />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.025),transparent_22%,transparent_74%,rgba(255,255,255,0.015))]" />
     </div>
   );
