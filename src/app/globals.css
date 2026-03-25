@@ -23,6 +23,11 @@ body {
   position: relative;
 }
 
+main {
+  position: relative;
+  z-index: 0;
+}
+
 body::before {
   content: "";
   position: fixed;
@@ -97,6 +102,15 @@ body::after {
     @apply rounded-3xl border border-white/10 bg-white/[0.05] shadow-soft backdrop-blur;
   }
 
+  .signal-chip {
+    @apply rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4 backdrop-blur transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)];
+  }
+
+  .signal-chip:hover {
+    @apply border-white/20 bg-white/[0.07];
+    box-shadow: 0 24px 70px -44px rgba(125, 211, 252, 0.35);
+  }
+
   .prose-institution {
     @apply prose prose-invert max-w-none prose-headings:scroll-mt-28 prose-headings:font-serif prose-headings:text-white prose-headings:tracking-tight prose-p:my-5 prose-p:leading-8 prose-p:text-white/80 prose-h2:mt-14 prose-h2:mb-4 prose-h3:mt-10 prose-h3:mb-3 prose-a:text-sky-200 prose-a:no-underline hover:prose-a:text-sky-100 prose-strong:text-white prose-code:rounded prose-code:bg-white/10 prose-code:px-1.5 prose-code:py-0.5 prose-pre:border prose-pre:border-white/10 prose-pre:bg-black/40 prose-pre:shadow-soft prose-blockquote:border-white/20 prose-blockquote:text-white/70;
   }
@@ -108,5 +122,94 @@ body::after {
 
   .heading-anchor:hover {
     color: #e0f2fe;
+  }
+}
+
+@keyframes engineOrbit {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes enginePulse {
+  0%,
+  100% {
+    opacity: 0.52;
+    transform: translate(-50%, -50%) scale(0.96);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+}
+
+@keyframes engineBeam {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: translate3d(-8%, -2%, 0) scale(0.95);
+  }
+
+  50% {
+    opacity: 0.72;
+    transform: translate3d(8%, 4%, 0) scale(1.05);
+  }
+}
+
+@keyframes engineTrace {
+  0%,
+  100% {
+    opacity: 0.16;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    opacity: 0.7;
+    stroke-dashoffset: -0.08;
+  }
+}
+
+.engine-shell {
+  --engine-x: 50%;
+  --engine-y: 50%;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 30px 80px -48px rgba(14, 165, 233, 0.38);
+}
+
+.engine-orbit {
+  animation: engineOrbit 24s linear infinite;
+}
+
+.engine-orbit-reverse {
+  animation-direction: reverse;
+  animation-duration: 32s;
+}
+
+.engine-node {
+  animation: enginePulse 4.8s ease-in-out infinite;
+  transform: translate(-50%, -50%);
+}
+
+.engine-beam {
+  animation: engineBeam 7s ease-in-out infinite;
+}
+
+.engine-trace {
+  stroke-dasharray: 1;
+  animation: engineTrace 8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .engine-orbit,
+  .engine-node,
+  .engine-beam,
+  .engine-trace {
+    animation: none !important;
   }
 }

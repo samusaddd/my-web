@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { Engine } from "@/components/engine";
 import { MotionCard } from "@/components/motion/motion-card";
 import { MotionSection } from "@/components/motion/motion-section";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -78,6 +79,30 @@ const highlights = [
   },
 ] as const;
 
+const heroSignals = [
+  {
+    label: "Base",
+    value: "Trento, Italy",
+    description: "Working from an academic and civic context rather than a hype cycle.",
+  },
+  {
+    label: "Focus",
+    value: "Transition systems",
+    description: "Building calm products that stay legible for both people and institutions.",
+  },
+  {
+    label: "Method",
+    value: "Writing + product",
+    description: "Using structured language to make decisions clearer, calmer, and more durable.",
+  },
+] as const;
+
+const engineFacts = [
+  { label: "Primary domain", value: "Institutional clarity" },
+  { label: "Operating style", value: "Quiet but rigorous" },
+  { label: "Outputs", value: "Readable, stable, durable" },
+] as const;
+
 export default function HomePage() {
   const personJsonLd = {
     "@context": "https://schema.org",
@@ -98,7 +123,7 @@ export default function HomePage() {
 
       <MotionSection
         className="pt-16 sm:pt-24"
-        motionClassName="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]"
+        motionClassName="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[minmax(0,0.98fr)_minmax(0,1.02fr)]"
       >
         <div className="space-y-8">
           <div className="flex flex-wrap items-center gap-3">
@@ -126,37 +151,54 @@ export default function HomePage() {
               Resume
             </ButtonLink>
           </div>
+
+          <div className="grid gap-3 sm:grid-cols-3">
+            {heroSignals.map((signal) => (
+              <div className="signal-chip" key={signal.label}>
+                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-white/45">
+                  {signal.label}
+                </p>
+                <p className="mt-2 text-base font-medium text-white">{signal.value}</p>
+                <p className="mt-2 text-sm text-white/62">{signal.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <MotionCard className="relative overflow-hidden">
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(45rem_35rem_at_120%_-10%,rgba(125,211,252,0.25),transparent_65%)]"
-          />
-          <CardHeader className="space-y-3">
-            <CardDescription className="text-xs uppercase tracking-[0.14em] text-white/50">
-              Current focus
-            </CardDescription>
-            <CardTitle className="text-2xl">Life navigation with institutional depth</CardTitle>
-            <CardDescription className="text-sm text-white/75">
-              VitaAvanza is being built to support people through transitions while meeting the
-              expectations of serious partners and public-facing systems.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-3 text-sm text-white/80">
-            <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3">
-              <span>Primary domain</span>
-              <span className="font-medium text-white">Transition systems</span>
-            </div>
-            <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3">
-              <span>Operating lens</span>
-              <span className="font-medium text-white">Clarity under constraint</span>
-            </div>
-            <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3">
-              <span>Output style</span>
-              <span className="font-medium text-white">Calm, durable, auditable</span>
-            </div>
-          </CardContent>
+        <MotionCard className="relative overflow-hidden p-0">
+          <div className="relative p-6 pb-5 sm:p-8 sm:pb-6">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 bg-[radial-gradient(40rem_28rem_at_108%_-8%,rgba(125,211,252,0.24),transparent_68%)]"
+            />
+            <CardHeader className="relative space-y-3">
+              <CardDescription className="text-xs uppercase tracking-[0.16em] text-white/50">
+                Current focus
+              </CardDescription>
+              <CardTitle className="max-w-lg text-2xl sm:text-3xl">
+                Life navigation with institutional depth
+              </CardTitle>
+              <CardDescription className="max-w-lg text-sm text-white/75">
+                VitaAvanza is being shaped to support people through transitions while staying
+                credible for serious partners, academic environments, and public-facing systems.
+              </CardDescription>
+            </CardHeader>
+          </div>
+
+          <div className="px-6 pb-6 sm:px-8 sm:pb-8">
+            <Engine />
+          </div>
+
+          <div className="grid gap-px border-t border-white/10 bg-white/[0.05] sm:grid-cols-3">
+            {engineFacts.map((fact) => (
+              <div className="bg-black/20 px-5 py-4" key={fact.label}>
+                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-white/42">
+                  {fact.label}
+                </p>
+                <p className="mt-2 text-sm font-medium text-white">{fact.value}</p>
+              </div>
+            ))}
+          </div>
         </MotionCard>
       </MotionSection>
 
