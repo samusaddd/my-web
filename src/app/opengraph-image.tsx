@@ -49,7 +49,7 @@ export default function OpenGraphImage() {
               letterSpacing: "-0.01em",
             }}
           >
-            Founder of VitaAvanza
+            Founder, writer, builder
           </div>
           <div
             style={{
@@ -59,8 +59,8 @@ export default function OpenGraphImage() {
               lineHeight: 1.45,
             }}
           >
-            Building infrastructure for life navigation from Trento across Mitra, DVI, and
-            institution-ready systems.
+            Working from Trento across VitaAvanza, writing, and calm systems for people and
+            institutions.
           </div>
         </div>
       </div>

@@ -21,37 +21,37 @@ const ogImage = absoluteUrl("/opengraph-image");
 export const metadata: Metadata = {
   title: "Home",
   description:
-    "Founder of VitaAvanza in Trento, building infrastructure for life navigation across Mitra, DVI, and institution-ready coordination.",
+    "Hi, my name is Samir. I am a founder, writer, and builder in Trento working across VitaAvanza, calm systems, and institution-ready thinking.",
   alternates: { canonical: canonicalUrl },
   openGraph: {
     type: "website",
-    title: `${siteConfig.name} | VitaAvanza and Life Navigation`,
+    title: `${siteConfig.name} | Founder, Writer, Builder`,
     description:
-      "Founder of VitaAvanza in Trento, building infrastructure for life navigation across Mitra, DVI, and institution-ready coordination.",
+      "Hi, my name is Samir. I am a founder, writer, and builder in Trento working across VitaAvanza, calm systems, and institution-ready thinking.",
     url: canonicalUrl,
     images: [{ url: ogImage, width: 1200, height: 630, alt: siteConfig.name }],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} | VitaAvanza and Life Navigation`,
+    title: `${siteConfig.name} | Founder, Writer, Builder`,
     description:
-      "Founder of VitaAvanza in Trento, building infrastructure for life navigation across Mitra, DVI, and institution-ready coordination.",
+      "Hi, my name is Samir. I am a founder, writer, and builder in Trento working across VitaAvanza, calm systems, and institution-ready thinking.",
     images: [ogImage],
   },
 };
 
 const heroCards = [
   {
-    label: "Built in Trento",
-    description: "Founder-led from lived migration, student, and work-system friction.",
+    label: "Based in Trento",
+    description: "Working from lived experience, the University of Trento ecosystem, and real-world complexity.",
   },
   {
-    label: siteConfig.company.ecosystem,
-    description: "Developed close to the University of Trento innovation environment.",
+    label: "Building VitaAvanza",
+    description: "Turning pressure, bureaucracy, and transition into clearer systems and forward motion.",
   },
   {
-    label: "Discovery in motion",
-    description: `${siteConfig.discovery.total} interviews completed and a ${siteConfig.discovery.pilot}-person pilot direction underway.`,
+    label: "Also writing",
+    description: "Author of Can You Hear Me? and still using language as part of the work, not beside it.",
   },
 ] as const;
 
@@ -141,30 +141,28 @@ export default function HomePage() {
             <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/25 bg-cyan-400/10 px-4 py-2 backdrop-blur-sm">
               <span className="h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(103,232,249,0.95)]" />
               <span className="text-[11px] font-semibold uppercase tracking-[0.26em] text-cyan-100/80">
-                Founder of VitaAvanza
+                Trento, Italy
               </span>
             </div>
 
             <h1 className="mt-8 max-w-5xl">
-              Infrastructure for{" "}
-              <span className="bg-[linear-gradient(100deg,rgba(196,181,253,1),rgba(103,232,249,0.94))] bg-clip-text text-transparent">
-                life navigation
+              <span className="block">Hi, my name is Samir.</span>
+              <span className="mt-3 block bg-[linear-gradient(100deg,rgba(196,181,253,1),rgba(103,232,249,0.94))] bg-clip-text text-transparent">
+                I build calm systems from lived pressure.
               </span>
-              , built from real pressure.
             </h1>
 
             <p className="mt-6 max-w-3xl text-lg text-white/68 sm:text-xl">
-              From {siteConfig.location} and the {siteConfig.company.ecosystem}, I am building
-              VitaAvanza as the operating layer between people in transition and the institutions
-              meant to support them.
+              This is my personal space. It is where product, writing, and personal history come
+              together: the things I am building, the way I think, and the story behind VitaAvanza.
             </p>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+              <ButtonLink href="/about" size="lg" variant="secondary">
+                Read My Story
+              </ButtonLink>
               <ButtonLink href="/projects" size="lg">
                 View Projects
-              </ButtonLink>
-              <ButtonLink href="/about" size="lg" variant="secondary">
-                Read the Trento Story
               </ButtonLink>
               <ButtonLink href="/contact" size="lg" variant="outline">
                 Contact
@@ -196,12 +194,12 @@ export default function HomePage() {
         motionClassName="grid gap-10 xl:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]"
       >
         <div className="space-y-5">
-          <Badge variant="accent">Field Discovery</Badge>
-          <h2 className="max-w-3xl">Built from direct signal, not detached theory</h2>
+          <Badge variant="accent">Current Chapter</Badge>
+          <h2 className="max-w-3xl">Most of my energy is currently going into VitaAvanza</h2>
           <p className="max-w-2xl text-base text-white/72 sm:text-lg">
-            VitaAvanza is being shaped through structured discovery with the people living this
-            pressure directly. The product thesis is grounded in real immigrant and
-            international-student journeys, not only in institutional abstraction.
+            It is the place where my interests come together most clearly right now: product,
+            systems, institutional thinking, and the lived reality of people moving through pressure
+            without a clear map.
           </p>
         </div>
 
@@ -230,13 +228,12 @@ export default function HomePage() {
       <MotionSection className="pt-0" containerClassName="max-w-7xl" motionClassName="space-y-10">
         <div className="flex flex-col gap-3">
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white/45">
-            Intelligence Layer
+            What I&apos;m Building
           </p>
-          <h2 className="max-w-3xl">Mitra, DVI, and institution-ready coordination</h2>
+          <h2 className="max-w-3xl">Mitra, DVI, and the systems around them</h2>
           <p className="max-w-3xl text-base text-white/72 sm:text-lg">
-            This is not general-purpose AI or a black-box score. The work is to build calm,
-            explainable infrastructure that can support people under pressure while still holding up
-            in serious environments.
+            The work is not about generic AI or startup theater. It is about building something
+            explainable, calm, and serious enough to be useful both to people and to institutions.
           </p>
         </div>
 
@@ -268,8 +265,9 @@ export default function HomePage() {
           <Badge variant="accent">{siteConfig.book.distribution}</Badge>
           <h2 className="max-w-xl">{siteConfig.book.title}</h2>
           <p className="text-base text-white/75">
-            Writing still matters to the way I build. The book sits beside VitaAvanza as the more
-            intimate part of the same work: language, vulnerability, and the need to be heard.
+            Writing is still part of how I understand everything else. The book sits beside the
+            product work as the more intimate side of the same impulse: language, vulnerability, and
+            the need to be heard.
           </p>
           <p className="text-sm text-white/65">{siteConfig.book.award}</p>
           <div className="flex flex-wrap gap-3">
@@ -300,11 +298,10 @@ export default function HomePage() {
         staggerChildren={0.04}
       >
         <Badge>Personal site note</Badge>
-        <h2 className="max-w-3xl">This site explains the founder point of view behind VitaAvanza</h2>
+        <h2 className="max-w-3xl">This site is meant to feel more personal than the company page</h2>
         <p className="max-w-3xl text-base text-white/75">
-          The product site explains the platform. This one explains the person building it: the
-          Trento context, the lived origin, the systems thinking, and the writing that shapes the
-          work.
+          The VitaAvanza site is about the platform. This one is about the person behind it: my
+          story, the way I think, and the projects and writing that shape the work.
         </p>
         <div className="flex flex-wrap gap-3">
           <ButtonLink href="/about" variant="secondary">

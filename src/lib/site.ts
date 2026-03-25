@@ -6,13 +6,13 @@ const normalizedUrl = envUrl ? envUrl.replace(/\/+$/, "") : fallbackUrl;
 export const siteConfig = {
   name: "Samir Seddiqi",
   description:
-    "Founder of VitaAvanza in Trento, building infrastructure for life navigation across Mitra, DVI, and institution-ready systems.",
+    "Personal site of Samir Seddiqi in Trento. Founder of VitaAvanza, writer of Can You Hear Me?, and builder of calm systems for people and institutions.",
   url: normalizedUrl,
   email: "ceo@vitaavanza.it",
   linkedin: "https://www.linkedin.com/in/samirseddiqico",
   creator: "Samir Seddiqi",
   location: "Trento, Italy",
-  tagline: "Life forward, not just credit.",
+  tagline: "I build calm systems from lived pressure.",
   keywords: [
     "Samir Seddiqi",
     "VitaAvanza",
