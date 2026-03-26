@@ -155,11 +155,11 @@ export default function HomePage() {
         className="relative overflow-hidden border-b border-white/5 py-0"
         motionClassName="relative"
       >
-        <div className="hero-stage relative isolate min-h-[88vh] overflow-hidden">
+        <div className="hero-stage relative isolate min-h-[calc(100vh-5rem)] overflow-hidden">
           <HeroBackground />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,7,13,0.12),rgba(5,7,13,0.7)_72%,rgba(5,7,13,0.96))]" />
 
-          <div className="relative z-10 mx-auto flex min-h-[88vh] max-w-7xl flex-col items-center justify-center px-6 pb-24 pt-36 text-center lg:px-8">
+          <div className="relative z-10 mx-auto flex min-h-[calc(100vh-5rem)] max-w-7xl flex-col items-center justify-start px-6 pb-16 pt-16 text-center sm:pt-20 lg:px-8 lg:pt-20">
             <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/25 bg-cyan-400/10 px-4 py-2 backdrop-blur-sm">
               <span className="h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(103,232,249,0.95)]" />
               <span className="text-[11px] font-semibold uppercase tracking-[0.26em] text-cyan-100/80">
@@ -193,7 +193,7 @@ export default function HomePage() {
 
             <p className="mt-5 text-sm font-medium text-white/46">{siteConfig.tagline}</p>
 
-            <div className="mt-14 grid w-full max-w-5xl gap-4 sm:grid-cols-3">
+            <div className="mt-10 grid w-full max-w-5xl gap-4 sm:grid-cols-3">
               {heroCards.map((card) => (
                 <div
                   className="rounded-3xl border border-white/8 bg-white/[0.04] px-5 py-4 text-left backdrop-blur"
