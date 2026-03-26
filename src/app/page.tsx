@@ -159,7 +159,7 @@ export default function HomePage() {
           <HeroBackground />
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,7,13,0.12),rgba(5,7,13,0.7)_72%,rgba(5,7,13,0.96))]" />
 
-          <div className="relative z-10 mx-auto flex min-h-[calc(100vh-5rem)] max-w-7xl flex-col items-center justify-start px-6 pb-16 pt-16 text-center sm:pt-20 lg:px-8 lg:pt-20">
+          <div className="relative z-10 mx-auto flex min-h-[calc(100vh-5rem)] max-w-7xl flex-col items-center justify-start px-6 pb-14 pt-10 text-center sm:pt-12 lg:px-8 lg:pt-14">
             <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/25 bg-cyan-400/10 px-4 py-2 backdrop-blur-sm">
               <span className="h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(103,232,249,0.95)]" />
               <span className="text-[11px] font-semibold uppercase tracking-[0.26em] text-cyan-100/80">
@@ -167,19 +167,19 @@ export default function HomePage() {
               </span>
             </div>
 
-            <h1 className="mt-8 max-w-5xl">
+            <h1 className="mt-6 max-w-5xl">
               <span className="block">I&apos;m Samir Seddiqi.</span>
               <span className="mt-3 block bg-[linear-gradient(100deg,rgba(255,255,255,0.98),rgba(196,181,253,0.94),rgba(103,232,249,0.92))] bg-clip-text text-transparent">
                 I build things with meaning, pressure, and purpose.
               </span>
             </h1>
 
-            <p className="mt-6 max-w-3xl text-lg text-white/76 sm:text-xl">
+            <p className="mt-5 max-w-3xl text-lg text-white/76 sm:text-xl">
               This is my personal space, where writing, ambition, lived experience, and the work
               behind VitaAvanza come together.
             </p>
 
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <ButtonLink href="/about" size="lg" variant="secondary">
                 About Me
               </ButtonLink>
@@ -191,9 +191,9 @@ export default function HomePage() {
               </ButtonLink>
             </div>
 
-            <p className="mt-5 text-sm font-medium text-white/46">{siteConfig.tagline}</p>
+            <p className="mt-4 text-sm font-medium text-white/46">{siteConfig.tagline}</p>
 
-            <div className="mt-10 grid w-full max-w-5xl gap-4 sm:grid-cols-3">
+            <div className="mt-8 grid w-full max-w-5xl gap-4 sm:grid-cols-3">
               {heroCards.map((card) => (
                 <div
                   className="rounded-3xl border border-white/8 bg-white/[0.04] px-5 py-4 text-left backdrop-blur"
