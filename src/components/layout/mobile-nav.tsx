@@ -7,7 +7,7 @@ import { useEffect, useMemo, useState } from "react";
 
 import { cn } from "@/lib/cn";
 import { createTransition, fadeDown } from "@/lib/motion";
-import { navLinks, siteConfig } from "@/lib/site";
+import { navLinks, normalizePathname, siteConfig } from "@/lib/site";
 
 function MenuIcon({ open }: { open: boolean }) {
   return (
@@ -42,7 +42,7 @@ export function MobileNav() {
   const activeHref = useMemo(() => {
     if (!pathname) return "/";
     if (pathname.startsWith("/blog/")) return "/blog";
-    return pathname;
+    return normalizePathname(pathname);
   }, [pathname]);
 
   useEffect(() => {
@@ -97,7 +97,7 @@ export function MobileNav() {
             >
               <div className="flex flex-col gap-2">
                 {navLinks.map((link) => {
-                  const isActive = link.href === activeHref;
+                  const isActive = normalizePathname(link.href) === activeHref;
                   return (
                     <Link
                       aria-current={isActive ? "page" : undefined}

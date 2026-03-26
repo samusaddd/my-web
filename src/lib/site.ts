@@ -59,6 +59,12 @@ export function absoluteUrl(pathname = "/") {
   return `${siteConfig.url}${path}`;
 }
 
+export function normalizePathname(pathname?: string | null) {
+  if (!pathname || pathname === "/") return "/";
+  const normalized = pathname.replace(/\/+$/, "");
+  return normalized.length > 0 ? normalized : "/";
+}
+
 export const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },

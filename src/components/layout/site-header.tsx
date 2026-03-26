@@ -7,14 +7,16 @@ import { useEffect, useState } from "react";
 
 import { cn } from "@/lib/cn";
 import { createTransition, fadeDown } from "@/lib/motion";
-import { navLinks, siteConfig } from "@/lib/site";
+import { navLinks, normalizePathname, siteConfig } from "@/lib/site";
 
 import { Container } from "../ui/container";
 import { MobileNav } from "./mobile-nav";
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const activePath = pathname?.startsWith("/blog/") ? "/blog" : pathname ?? "/";
+  const activePath = pathname?.startsWith("/blog/")
+    ? "/blog"
+    : normalizePathname(pathname ?? "/");
   const reducedMotion = useReducedMotion() ?? false;
   const [scrolled, setScrolled] = useState(false);
 
@@ -57,7 +59,7 @@ export function SiteHeader() {
         <LayoutGroup id="primary-nav">
           <nav aria-label="Primary" className="hidden items-center gap-1 md:flex">
             {navLinks.map((link) => {
-              const isActive = link.href === activePath;
+              const isActive = normalizePathname(link.href) === activePath;
               return (
                 <Link
                   aria-current={isActive ? "page" : undefined}
