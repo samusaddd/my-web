@@ -23,7 +23,7 @@ const serif = Playfair_Display({
 });
 
 const metadataBase = new URL(siteConfig.url);
-const defaultTitle = `${siteConfig.name} | VitaAvanza and Life Navigation`;
+const defaultTitle = `${siteConfig.name} | Founder of VitaAvanza`;
 const defaultOgImage = absoluteUrl(siteConfig.socialImagePath);
 
 export const metadata: Metadata = {
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
         url: defaultOgImage,
         width: 1200,
         height: 630,
-        alt: `${siteConfig.name} | Founder of VitaAvanza`,
+        alt: `${siteConfig.name} personal website`,
       },
     ],
   },

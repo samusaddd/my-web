@@ -45,14 +45,14 @@ export function SiteHeader() {
       <Container className="flex h-20 items-center justify-between gap-4">
         <Link
           aria-label={`${siteConfig.name} home`}
-          className="group inline-flex flex-col leading-tight"
+          className="group inline-flex flex-col leading-tight transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[1px]"
           href="/"
         >
           <span className="text-base font-semibold tracking-tight text-white">
             {siteConfig.name}
           </span>
           <span className="text-xs text-white/60 transition group-hover:text-white/80">
-            VitaAvanza
+            {siteConfig.identityLine}
           </span>
         </Link>
 
@@ -64,10 +64,10 @@ export function SiteHeader() {
                 <Link
                   aria-current={isActive ? "page" : undefined}
                   className={cn(
-                    "relative inline-flex h-11 items-center rounded-full px-4 text-sm font-medium transition-colors duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950",
+                    "relative inline-flex h-11 items-center rounded-full px-4 text-sm font-medium transition-[color,background-color,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950",
                     isActive
-                      ? "bg-white/[0.045] text-white"
-                      : "text-white/80 hover:bg-white/[0.06] hover:text-white",
+                      ? "bg-white/[0.05] text-white shadow-[0_12px_32px_-28px_rgba(125,211,252,0.6)]"
+                      : "text-white/78 hover:-translate-y-[1px] hover:bg-white/[0.045] hover:text-white",
                   )}
                   href={link.href}
                   key={link.href}
@@ -79,9 +79,9 @@ export function SiteHeader() {
                     ) : (
                       <motion.span
                         aria-hidden="true"
-                        className="pointer-events-none absolute inset-x-3 -bottom-1.5 h-px origin-left bg-gradient-to-r from-sky-200/90 via-white/85 to-sky-200/90"
+                        className="pointer-events-none absolute inset-x-3 -bottom-1.5 h-px origin-left bg-gradient-to-r from-transparent via-white/88 to-transparent"
                         layoutId="nav-underline"
-                        transition={createTransition(0.45, reducedMotion)}
+                        transition={createTransition(0.52, reducedMotion)}
                       />
                     )
                   ) : (

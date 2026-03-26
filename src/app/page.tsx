@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { HeroBackground } from "@/components/hero-background";
+import { HomeIntro } from "@/components/home-intro";
 import { MotionCard } from "@/components/motion/motion-card";
 import { MotionSection } from "@/components/motion/motion-section";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -19,80 +20,83 @@ const canonicalUrl = absoluteUrl("/");
 const ogImage = absoluteUrl(siteConfig.socialImagePath);
 
 export const metadata: Metadata = {
-  title: "Home",
+  title: "Founder of VitaAvanza",
   description:
-    "Hi, my name is Samir. I am a founder, writer, and builder in Trento working across VitaAvanza, calm systems, and institution-ready thinking.",
+    "I'm Samir Seddiqi, founder of VitaAvanza, writer, and Economics & Management student in Trento. This is my personal space, where writing, ambition, lived experience, and the work behind VitaAvanza come together.",
   alternates: { canonical: canonicalUrl },
   openGraph: {
     type: "website",
-    title: `${siteConfig.name} | Founder, Writer, Builder`,
+    title: `${siteConfig.name} | Founder of VitaAvanza`,
     description:
-      "Hi, my name is Samir. I am a founder, writer, and builder in Trento working across VitaAvanza, calm systems, and institution-ready thinking.",
+      "I'm Samir Seddiqi, founder of VitaAvanza, writer, and Economics & Management student in Trento. This is my personal space, where writing, ambition, lived experience, and the work behind VitaAvanza come together.",
     url: canonicalUrl,
     images: [{ url: ogImage, width: 1200, height: 630, alt: siteConfig.name }],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} | Founder, Writer, Builder`,
+    title: `${siteConfig.name} | Founder of VitaAvanza`,
     description:
-      "Hi, my name is Samir. I am a founder, writer, and builder in Trento working across VitaAvanza, calm systems, and institution-ready thinking.",
+      "I'm Samir Seddiqi, founder of VitaAvanza, writer, and Economics & Management student in Trento. This is my personal space, where writing, ambition, lived experience, and the work behind VitaAvanza come together.",
     images: [ogImage],
   },
 };
 
 const heroCards = [
   {
-    label: "Based in Trento",
-    description: "Working from lived experience, the University of Trento ecosystem, and real-world complexity.",
+    label: "University of Trento",
+    description:
+      "Studying Economics and Management with a long-term interest in structure, decisions, and real-world complexity.",
   },
   {
-    label: "Building VitaAvanza",
-    description: "Turning pressure, bureaucracy, and transition into clearer systems and forward motion.",
+    label: "VitaAvanza",
+    description:
+      "Building a project shaped by lived experience and a belief that progress deserves more clarity, depth, and direction.",
   },
   {
-    label: "Also writing",
-    description: "Author of Can You Hear Me? and still using language as part of the work, not beside it.",
+    label: "Can You Hear Me?",
+    description:
+      "Writing from reflection, emotion, and conviction, with language as part of the work rather than something separate from it.",
   },
 ] as const;
 
-const discoveryCards = [
+const aboutHighlights = [
   {
-    label: "Direct interviews",
-    value: `${siteConfig.discovery.total}`,
-    description: "Structured discovery conversations completed before pilot launch work.",
+    label: "Student",
+    value: "Economics and Management",
+    description: "Learning to think with discipline, structure, and a serious respect for trade-offs.",
   },
   {
-    label: "Immigrant cohort",
-    value: `${siteConfig.discovery.immigrants}`,
-    description: "Interviews on documents, housing, work, and settlement pressure.",
+    label: "Author",
+    value: siteConfig.book.title,
+    description: "Writing from lived experience, reflection, and the need to stay honest on the page.",
   },
   {
-    label: "International students",
-    value: `${siteConfig.discovery.students}`,
-    description: "Interviews on bureaucracy, academic timing, and life-load friction.",
+    label: "Founder",
+    value: siteConfig.company.shortName,
+    description: "Turning pressure, ambition, and responsibility into something real, useful, and lasting.",
   },
   {
-    label: "Pilot focus",
-    value: `${siteConfig.discovery.pilot}`,
-    description: "Initial immigrant cohort being prepared for the next operational step.",
+    label: "Approach",
+    value: "Direction over noise",
+    description: "Trying to turn hard experience into clarity, structure, and forward movement.",
   },
 ] as const;
 
-const platformModules = [
+const whatIDoCards = [
   {
-    title: "Mitra",
+    title: "Writing",
     description:
-      "A guidance layer that turns onboarding data, DVI posture, and institutional constraints into the next practical move.",
+      "I write from experience, reflection, and conviction. For me, writing is not just expression, it is a way of confronting meaning, truth, and identity.",
   },
   {
-    title: "DVI",
+    title: "Building",
     description:
-      "An explainable posture view across stability, load, growth, and support, designed for readability rather than black-box scoring.",
+      "I build projects with direction. I am interested in ideas that can move beyond theory and become something real, useful, and lasting.",
   },
   {
-    title: "Institutional coordination",
+    title: "Strategy",
     description:
-      "An operating layer that helps universities, public bodies, and employers act before pressure becomes crisis.",
+      "My background in Economics and Management shapes how I think about systems, decisions, and long-term value. I care about substance, execution, and clarity.",
   },
 ] as const;
 
@@ -103,7 +107,7 @@ export default function HomePage() {
     name: siteConfig.name,
     url: canonicalUrl,
     sameAs: [siteConfig.linkedin],
-    jobTitle: "Founder of VitaAvanza",
+    jobTitle: "Founder of VitaAvanza, Writer, and Economics & Management Student",
     description: siteConfig.description,
     alumniOf: {
       "@type": "CollegeOrUniversity",
@@ -115,17 +119,35 @@ export default function HomePage() {
       url: siteConfig.company.url,
     },
     knowsAbout: [
-      "Life navigation infrastructure",
-      "Product strategy",
-      "Institutional coordination",
-      "Mitra AI",
-      "DVI",
+      "Writing",
+      "Entrepreneurship",
+      "Systems thinking",
+      "Economics and Management",
+      "Strategy",
     ],
+  } as const;
+
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: siteConfig.company.name,
+    alternateName: siteConfig.company.shortName,
+    url: siteConfig.company.url,
+    sameAs: [siteConfig.company.linkedin],
+    founder: {
+      "@type": "Person",
+      name: siteConfig.name,
+      url: canonicalUrl,
+    },
+    description:
+      "VitaAvanza is a project and company founded by Samir Seddiqi, built around progress, direction, support, and real-life stability.",
   } as const;
 
   return (
     <>
+      <HomeIntro />
       <JsonLd data={personJsonLd} id="person-jsonld-home" />
+      <JsonLd data={organizationJsonLd} id="organization-jsonld-home" />
 
       <MotionSection
         as="header"
@@ -146,23 +168,23 @@ export default function HomePage() {
             </div>
 
             <h1 className="mt-8 max-w-5xl">
-              <span className="block">Hi, my name is Samir.</span>
-              <span className="mt-3 block bg-[linear-gradient(100deg,rgba(196,181,253,1),rgba(103,232,249,0.94))] bg-clip-text text-transparent">
-                I build calm systems from lived pressure.
+              <span className="block">I&apos;m Samir Seddiqi.</span>
+              <span className="mt-3 block bg-[linear-gradient(100deg,rgba(255,255,255,0.98),rgba(196,181,253,0.94),rgba(103,232,249,0.92))] bg-clip-text text-transparent">
+                I build things with meaning, pressure, and purpose.
               </span>
             </h1>
 
-            <p className="mt-6 max-w-3xl text-lg text-white/68 sm:text-xl">
-              This is my personal space. It is where product, writing, and personal history come
-              together: the things I am building, the way I think, and the story behind VitaAvanza.
+            <p className="mt-6 max-w-3xl text-lg text-white/76 sm:text-xl">
+              This is my personal space, where writing, ambition, lived experience, and the work
+              behind VitaAvanza come together.
             </p>
 
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <ButtonLink href="/about" size="lg" variant="secondary">
-                Read My Story
+                About Me
               </ButtonLink>
               <ButtonLink href="/projects" size="lg">
-                View Projects
+                Projects
               </ButtonLink>
               <ButtonLink href="/contact" size="lg" variant="outline">
                 Contact
@@ -194,12 +216,12 @@ export default function HomePage() {
         motionClassName="grid gap-10 xl:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]"
       >
         <div className="space-y-5">
-          <Badge variant="accent">Current Chapter</Badge>
-          <h2 className="max-w-3xl">Most of my energy is currently going into VitaAvanza</h2>
+          <Badge variant="accent">About</Badge>
+          <h2 className="max-w-3xl">A personal foundation behind the work</h2>
           <p className="max-w-2xl text-base text-white/72 sm:text-lg">
-            It is the place where my interests come together most clearly right now: product,
-            systems, institutional thinking, and the lived reality of people moving through pressure
-            without a clear map.
+            I am a student at the University of Trento, an author, and the founder of VitaAvanza.
+            My path has been shaped by resilience, responsibility, and a constant drive to turn
+            hard experience into clarity, structure, and forward movement.
           </p>
         </div>
 
@@ -211,7 +233,7 @@ export default function HomePage() {
           motionClassName="grid gap-4 sm:grid-cols-2"
           staggerChildren={0.08}
         >
-          {discoveryCards.map((card) => (
+          {aboutHighlights.map((card) => (
             <MotionCard className="h-full" key={card.label}>
               <CardHeader className="space-y-3">
                 <CardDescription className="text-[10px] uppercase tracking-[0.24em] text-cyan-100/72">
@@ -228,12 +250,12 @@ export default function HomePage() {
       <MotionSection className="pt-0" containerClassName="max-w-7xl" motionClassName="space-y-10">
         <div className="flex flex-col gap-3">
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white/45">
-            What I&apos;m Building
+            What I Do
           </p>
-          <h2 className="max-w-3xl">Mitra, DVI, and the systems around them</h2>
+          <h2 className="max-w-3xl">Three parts of how I work</h2>
           <p className="max-w-3xl text-base text-white/72 sm:text-lg">
-            The work is not about generic AI or startup theater. It is about building something
-            explainable, calm, and serious enough to be useful both to people and to institutions.
+            I care about substance, direction, and building with enough honesty that the work can
+            actually mean something.
           </p>
         </div>
 
@@ -245,12 +267,12 @@ export default function HomePage() {
           motionClassName="grid gap-6 md:grid-cols-3"
           staggerChildren={0.08}
         >
-          {platformModules.map((module) => (
-            <MotionCard className="h-full" key={module.title}>
+          {whatIDoCards.map((item) => (
+            <MotionCard className="h-full" key={item.title}>
               <CardHeader className="space-y-3">
-                <CardTitle className="text-2xl">{module.title}</CardTitle>
+                <CardTitle className="text-2xl">{item.title}</CardTitle>
               </CardHeader>
-              <CardContent className="text-sm text-white/75">{module.description}</CardContent>
+              <CardContent className="text-sm text-white/75">{item.description}</CardContent>
             </MotionCard>
           ))}
         </MotionSection>
@@ -262,14 +284,16 @@ export default function HomePage() {
         motionClassName="surface grid gap-8 p-8 md:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] md:p-10"
       >
         <div className="space-y-5">
-          <Badge variant="accent">{siteConfig.book.distribution}</Badge>
+          <Badge variant="accent">Book</Badge>
           <h2 className="max-w-xl">{siteConfig.book.title}</h2>
           <p className="text-base text-white/75">
-            Writing is still part of how I understand everything else. The book sits beside the
-            product work as the more intimate side of the same impulse: language, vulnerability, and
-            the need to be heard.
+            {siteConfig.book.title} is a deeply personal work shaped by emotion, silence, pain, and
+            reflection. It comes from lived experience and speaks to the human need to be heard,
+            understood, and remembered.
           </p>
-          <p className="text-sm text-white/65">{siteConfig.book.award}</p>
+          <p className="text-sm text-white/65">
+            Writing, for me, is one of the few places where truth can remain unfiltered.
+          </p>
           <div className="flex flex-wrap gap-3">
             <ButtonLink href={`mailto:${siteConfig.email}`} variant="secondary">
               Request a copy
@@ -280,10 +304,11 @@ export default function HomePage() {
           </div>
         </div>
         <div className="space-y-4 rounded-3xl border border-white/10 bg-black/30 p-6">
-          <p className="text-sm font-semibold text-white">Why it stays on this site</p>
+          <p className="text-sm font-semibold text-white">Recognition</p>
+          <p className="text-sm text-white/85">{siteConfig.book.award}</p>
           <p className="text-sm text-white/75">
-            VitaAvanza is about infrastructure, continuity, and decision systems. The book is where
-            that same orientation becomes human, reflective, and personal.
+            I keep the recognition here quietly. What matters more to me is that the writing stays
+            honest and true to where it came from.
           </p>
           <Divider />
           <p className="text-xs uppercase tracking-[0.16em] text-white/45">Primary channel</p>
@@ -297,18 +322,18 @@ export default function HomePage() {
         motionClassName="surface space-y-5 p-8 md:p-10"
         staggerChildren={0.04}
       >
-        <Badge>Personal site note</Badge>
-        <h2 className="max-w-3xl">This site is meant to feel more personal than the company page</h2>
+        <Badge>Personal note</Badge>
+        <h2 className="max-w-3xl">This site holds the personal side of the work</h2>
         <p className="max-w-3xl text-base text-white/75">
-          The VitaAvanza site is about the platform. This one is about the person behind it: my
-          story, the way I think, and the projects and writing that shape the work.
+          It brings together the projects, the writing, and the ideas that are shaping the
+          direction I am building toward.
         </p>
         <div className="flex flex-wrap gap-3">
           <ButtonLink href="/about" variant="secondary">
             About
           </ButtonLink>
           <ButtonLink href="/contact" variant="ghost">
-            Contact
+            Get in touch
           </ButtonLink>
         </div>
       </MotionSection>

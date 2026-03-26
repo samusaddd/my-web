@@ -11,20 +11,23 @@ const canonicalUrl = absoluteUrl("/blog");
 const ogImage = absoluteUrl(siteConfig.socialImagePath);
 
 export const metadata: Metadata = {
-  title: "Blog",
-  description: "Essays on writing, product clarity, and institutional infrastructure.",
+  title: "Writing",
+  description:
+    "Writing by Samir Seddiqi, founder of VitaAvanza, on work, discipline, direction, and the ideas he keeps returning to.",
   alternates: { canonical: canonicalUrl },
   openGraph: {
-    title: `Blog — ${siteConfig.name}`,
-    description: "Essays on writing, product clarity, and institutional infrastructure.",
+    title: `Writing | ${siteConfig.name}`,
+    description:
+      "Writing by Samir Seddiqi, founder of VitaAvanza, on work, discipline, direction, and the ideas he keeps returning to.",
     type: "website",
     url: canonicalUrl,
     images: [{ url: ogImage, width: 1200, height: 630, alt: "Samir Seddiqi Blog" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: `Blog — ${siteConfig.name}`,
-    description: "Essays on writing, product clarity, and institutional infrastructure.",
+    title: `Writing | ${siteConfig.name}`,
+    description:
+      "Writing by Samir Seddiqi, founder of VitaAvanza, on work, discipline, direction, and the ideas he keeps returning to.",
     images: [ogImage],
   },
 };
@@ -49,10 +52,9 @@ export default function BlogPage() {
         <Badge className="mx-auto" variant="accent">
           Writing
         </Badge>
-        <h1>Clarity that holds up under scrutiny</h1>
+        <h1>Writing</h1>
         <p className="mx-auto max-w-2xl text-base text-white/75">
-          Notes on product thinking, civic alignment, and the kind of writing that makes decisions
-          legible over time.
+          Notes on writing, work, discipline, and the ideas I keep returning to.
         </p>
       </MotionSection>
 

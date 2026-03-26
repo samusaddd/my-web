@@ -19,42 +19,42 @@ const canonicalUrl = absoluteUrl("/book");
 const ogImage = absoluteUrl(siteConfig.socialImagePath);
 
 export const metadata: Metadata = {
-  title: "Book",
+  title: "Can You Hear Me?",
   description:
-    "Can You Hear Me? is a short reflective literary work on inner dialogue, vulnerability, loneliness, and the need to be seen and heard. Writer of the Year Award (2022). Free by request.",
+    "Can You Hear Me? is a deeply personal work by Samir Seddiqi, founder of VitaAvanza, shaped by emotion, silence, pain, and reflection.",
   alternates: { canonical: canonicalUrl },
   openGraph: {
-    title: `${siteConfig.book.title} — ${siteConfig.name}`,
+    title: `${siteConfig.book.title} - ${siteConfig.name}`,
     description:
-      "A short reflective literary work on silence, vulnerability, and the need to be seen and heard. Free by request.",
+      "A deeply personal work by Samir Seddiqi, founder of VitaAvanza, shaped by emotion, silence, pain, and reflection.",
     type: "website",
     url: canonicalUrl,
     images: [{ url: ogImage, width: 1200, height: 630, alt: siteConfig.book.title }],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.book.title} — ${siteConfig.name}`,
+    title: `${siteConfig.book.title} - ${siteConfig.name}`,
     description:
-      "A short reflective literary work on silence, vulnerability, and the need to be seen and heard. Free by request.",
+      "A deeply personal work by Samir Seddiqi, founder of VitaAvanza, shaped by emotion, silence, pain, and reflection.",
     images: [ogImage],
   },
 };
 
 const whyItMatters = [
   {
-    title: "A mirror, not a guide",
+    title: "Lived experience",
     description:
-      "The book does not advise, explain, or fix. It offers recognition for readers who reflect deeply and quietly.",
+      "The book is rooted in emotion, silence, pain, and reflection rather than distance or abstraction.",
   },
   {
-    title: "Inner dialogue as structure",
+    title: "Need to be heard",
     description:
-      "It is written as a sequence of reflections rather than a plot-driven story, blurring inner monologue with philosophical questioning.",
+      "It speaks to the human desire to be understood without having to perform strength all the time.",
   },
   {
-    title: "Integrity without self-sufficiency",
+    title: "Unfiltered truth",
     description:
-      "The central idea is simple: everyone hides something because it is impossible to carry everything alone. Vulnerability is not weakness; it is human.",
+      "The writing stays close to what is difficult, quiet, and real, without trying to decorate it.",
   },
 ] as const;
 
@@ -73,7 +73,7 @@ export default function BookPage() {
     award: siteConfig.book.award,
     isAccessibleForFree: true,
     description:
-      "A short reflective literary work written as a sequence of reflections on inner dialogue, vulnerability, loneliness, and the human need to be seen and heard.",
+      "A deeply personal literary work by Samir Seddiqi, founder of VitaAvanza, shaped by emotion, silence, pain, and reflection.",
   } as const;
 
   return (
@@ -86,18 +86,16 @@ export default function BookPage() {
       >
         <div className="space-y-7">
           <div className="flex flex-wrap items-center gap-3">
-            <Badge variant="accent">{siteConfig.book.distribution}</Badge>
+            <Badge variant="accent">Book</Badge>
             <Badge>{siteConfig.book.award}</Badge>
           </div>
           <div className="space-y-5">
             <h1 className="max-w-4xl">{siteConfig.book.title}</h1>
             <p className="max-w-2xl text-base text-white/75 sm:text-lg">
-              A short literary work centered on inner dialogue, vulnerability, loneliness, and the
-              human need to be seen and heard.
+              A personal work shaped by silence, pain, reflection, and the need to be heard.
             </p>
             <p className="max-w-2xl text-base text-white/75">
-              It is written for people who appear functional and composed on the outside while
-              carrying quiet fears of being misunderstood, judged, unseen, or emotionally isolated.
+              Writing, for me, is one of the few places where truth can remain unfiltered.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -117,31 +115,26 @@ export default function BookPage() {
           />
           <CardHeader className="space-y-3">
             <CardDescription className="text-xs uppercase tracking-[0.14em] text-white/50">
-              Synopsis
+              Book
             </CardDescription>
-            <CardTitle className="text-2xl">Reflections written in the language of silence</CardTitle>
+            <CardTitle className="text-2xl">A personal work carried by silence and reflection</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4 text-sm text-white/80">
             <p>
-              {siteConfig.book.title} is not a plot-driven story. It is a sequence of reflections
-              that moves between inner monologue and philosophical questioning.
+              This book comes from lived experience and from the kind of silence that stays with a
+              person long after difficult moments have passed.
             </p>
             <p>
-              Much of the text lives in late-night thoughts: the silence after responsibility, the
-              fear of revealing what is authentic, and the loneliness that can coexist with values
-              and conviction.
+              It is personal, but it is not closed in on itself. It reaches toward the larger human
+              need to be heard, understood, and remembered.
             </p>
             <p>
-              It argues that every person hides something — not out of dishonesty, but because it is
-              impossible to carry everything alone. Integrity and strength are not self-sufficiency,
-              and vulnerability is not weakness. It is part of being human.
+              The recognition matters, but quietly. What matters more is that the writing stays
+              honest, intimate, and true to where it came from.
             </p>
             <Divider />
-            <p className="text-xs uppercase tracking-[0.16em] text-white/45">Distribution</p>
-            <p className="text-sm text-white/80">
-              {siteConfig.book.distribution}. The act of requesting is intentional and reinforces the
-              theme of being heard.
-            </p>
+            <p className="text-xs uppercase tracking-[0.16em] text-white/45">Recognition</p>
+            <p className="text-sm text-white/80">{siteConfig.book.award}</p>
           </CardContent>
         </MotionCard>
       </MotionSection>
@@ -180,10 +173,10 @@ export default function BookPage() {
       >
         <div className="space-y-4">
           <Badge>Requests</Badge>
-          <h2 className="max-w-3xl">Requesting is part of the meaning</h2>
+          <h2 className="max-w-3xl">If you would like a copy, send a short note</h2>
           <p className="text-base text-white/75">
-            The book is available free by request. The act of asking is not transactional; it mirrors
-            the theme of being heard and seen.
+            The book is available free by request. A simple message is enough, and I will reply
+            personally.
           </p>
           <p className="text-sm text-white/70">
             Primary channel:{" "}
@@ -194,11 +187,11 @@ export default function BookPage() {
         </div>
 
         <div className="space-y-4 rounded-3xl border border-white/10 bg-black/30 p-6 text-sm text-white/75">
-          <p className="font-semibold text-white">If you are requesting a copy</p>
+          <p className="font-semibold text-white">What to include</p>
           <ul className="list-disc space-y-2 pl-5">
-            <li>Who the book is for</li>
-            <li>Why it resonates in that context</li>
-            <li>Any detail you want included with the request</li>
+            <li>Your name</li>
+            <li>The context of your request</li>
+            <li>Any note you want to share with it</li>
           </ul>
           <Divider />
           <p className="text-xs uppercase tracking-[0.16em] text-white/45">Also available</p>

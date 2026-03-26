@@ -66,7 +66,7 @@ export function MobileNav() {
         aria-controls="mobile-menu"
         aria-expanded={open}
         aria-label={open ? "Close navigation menu" : "Open navigation menu"}
-        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-white shadow-[0_15px_40px_-25px_rgba(15,23,42,0.8)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[1px] hover:bg-white/[0.1] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
+        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-white shadow-[0_15px_40px_-25px_rgba(15,23,42,0.8)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[1px] hover:bg-white/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
         onClick={() => setOpen((value) => !value)}
         type="button"
       >
@@ -95,6 +95,11 @@ export function MobileNav() {
               transition={createTransition(0.5, reducedMotion)}
               variants={menuVariants}
             >
+              <div className="mb-5 border-b border-white/8 pb-4">
+                <p className="text-sm font-semibold text-white">{siteConfig.name}</p>
+                <p className="mt-1 text-xs text-white/55">{siteConfig.identityLine}</p>
+              </div>
+
               <div className="flex flex-col gap-2">
                 {navLinks.map((link) => {
                   const isActive = normalizePathname(link.href) === activeHref;
@@ -102,10 +107,10 @@ export function MobileNav() {
                     <Link
                       aria-current={isActive ? "page" : undefined}
                       className={cn(
-                        "rounded-2xl px-4 py-3 text-base font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950",
+                        "rounded-2xl px-4 py-3 text-base font-medium transition-[background-color,color,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950",
                         isActive
                           ? "bg-white/[0.09] text-white"
-                          : "text-white/80 hover:bg-white/[0.06] hover:text-white",
+                          : "text-white/80 hover:translate-x-0.5 hover:bg-white/[0.05] hover:text-white",
                       )}
                       href={link.href}
                       key={link.href}
@@ -128,6 +133,7 @@ export function MobileNav() {
                     LinkedIn
                   </a>
                 </p>
+                <p className="mt-3 text-xs text-white/50">{siteConfig.footerLine}</p>
               </div>
             </motion.nav>
           </motion.div>

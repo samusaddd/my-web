@@ -14,14 +14,13 @@ export function SiteFooter() {
         <div className="grid gap-10 md:grid-cols-[1.1fr_0.9fr_1fr]">
           <div className="space-y-3">
             <p className="text-sm font-semibold uppercase tracking-[0.12em] text-white/50">
-              Founder Site
+              Personal Website
             </p>
             <p className="max-w-md text-sm text-white/75">
-              Personal site for the founder point of view behind VitaAvanza, life-navigation
-              infrastructure, and institution-ready system design.
+              A personal space for my work, writing, ideas, and the direction I am building toward.
             </p>
             <p className="text-xs text-white/50">
-              Copyright {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
+              © {siteConfig.name}. All rights reserved.
             </p>
           </div>
 
@@ -55,9 +54,7 @@ export function SiteFooter() {
                 LinkedIn
               </a>
             </p>
-            <p className="text-xs text-white/55">
-              {siteConfig.company.name}, {siteConfig.company.location}. {siteConfig.tagline}
-            </p>
+            <p className="text-xs text-white/55">{siteConfig.footerLine}</p>
           </div>
         </div>
       </Container>

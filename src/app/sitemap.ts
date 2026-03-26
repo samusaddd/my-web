@@ -5,12 +5,12 @@ import { absoluteUrl } from "@/lib/site";
 
 const staticRoutes = [
   { pathname: "/", changeFrequency: "weekly", priority: 1 },
-  { pathname: "/about", changeFrequency: "monthly", priority: 0.8 },
+  { pathname: "/about", changeFrequency: "monthly", priority: 0.9 },
   { pathname: "/book", changeFrequency: "monthly", priority: 0.8 },
-  { pathname: "/projects", changeFrequency: "monthly", priority: 0.8 },
-  { pathname: "/resume", changeFrequency: "monthly", priority: 0.8 },
-  { pathname: "/blog", changeFrequency: "monthly", priority: 0.7 },
-  { pathname: "/contact", changeFrequency: "monthly", priority: 0.7 },
+  { pathname: "/projects", changeFrequency: "monthly", priority: 0.9 },
+  { pathname: "/resume", changeFrequency: "monthly", priority: 0.85 },
+  { pathname: "/blog", changeFrequency: "monthly", priority: 0.8 },
+  { pathname: "/contact", changeFrequency: "monthly", priority: 0.8 },
 ] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {

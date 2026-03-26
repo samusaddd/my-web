@@ -2,7 +2,7 @@ import type { TargetAndTransition, Transition, Variants } from "framer-motion";
 
 export const MOTION_EASE: Transition["ease"] = [0.16, 1, 0.3, 1];
 
-export function createTransition(duration = 0.5, reducedMotion = false): Transition {
+export function createTransition(duration = 0.56, reducedMotion = false): Transition {
   if (reducedMotion) {
     return { duration: 0.01, ease: MOTION_EASE };
   }
@@ -14,7 +14,7 @@ export function fadeIn(reducedMotion = false): Variants {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: createTransition(0.45, reducedMotion),
+      transition: createTransition(0.5, reducedMotion),
     },
   } satisfies Variants;
 }
@@ -38,14 +38,14 @@ export function fadeDown(distance = 8, reducedMotion = false): Variants {
     visible: {
       opacity: 1,
       y: 0,
-      transition: createTransition(0.45, reducedMotion),
+      transition: createTransition(0.52, reducedMotion),
     },
   } satisfies Variants;
 }
 
 export function staggerContainer(
-  staggerChildren = 0.06,
-  delayChildren = 0.02,
+  staggerChildren = 0.07,
+  delayChildren = 0.03,
   reducedMotion = false,
 ): Variants {
   if (reducedMotion) {
@@ -80,14 +80,14 @@ export function hoverLift(reducedMotion = false): {
 
   return {
     whileHover: {
-      y: -1.5,
-      transition: createTransition(0.35, false),
+      y: -1,
+      transition: createTransition(0.42, false),
     },
     whileTap: {
       y: 0,
-      transition: createTransition(0.25, false),
+      transition: createTransition(0.28, false),
     },
-    transition: createTransition(0.35, false),
+    transition: createTransition(0.42, false),
   };
 }
 

@@ -17,14 +17,14 @@ const canonicalUrl = absoluteUrl("/about");
 const ogImage = absoluteUrl(siteConfig.socialImagePath);
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About Samir Seddiqi",
   description:
-    "About Samir Seddiqi: founder, writer, and builder in Trento working across product, systems, and institution-ready thinking.",
+    "About Samir Seddiqi, founder of VitaAvanza, author, and Economics & Management student at the University of Trento.",
   alternates: { canonical: canonicalUrl },
   openGraph: {
     title: `About | ${siteConfig.name}`,
     description:
-      "Founder, writer, and builder in Trento working across product, systems, and institution-ready thinking.",
+      "Founder of VitaAvanza, author, and Economics & Management student at the University of Trento.",
     type: "website",
     url: canonicalUrl,
     images: [{ url: ogImage, width: 1200, height: 630, alt: "About Samir Seddiqi" }],
@@ -33,62 +33,62 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `About | ${siteConfig.name}`,
     description:
-      "Founder, writer, and builder in Trento working across product, systems, and institution-ready thinking.",
+      "Founder of VitaAvanza, author, and Economics & Management student at the University of Trento.",
     images: [ogImage],
   },
 };
 
 const values = [
   {
-    title: "Clarity before scale",
+    title: "Discipline",
     description:
-      "Systems should become more legible as they grow. Clarity is a prerequisite, not a byproduct.",
+      "I believe ambition matters, but only when it is backed by discipline, consistency, and the willingness to keep going.",
   },
   {
-    title: "Responsibility in design",
+    title: "Responsibility",
     description:
-      "If people rely on the outcome, the interface must reduce ambiguity and create a trustworthy next step.",
+      "Hardship changes the way you think about work. It teaches you to take reality seriously and not build carelessly.",
   },
   {
-    title: "Human depth",
+    title: "Clarity",
     description:
-      "Strategy matters, but so do emotion, dignity, and the realities people carry beneath the surface.",
+      "I am drawn to ideas that become clearer with thought, pressure, and honest execution rather than noise.",
   },
 ] as const;
 
 const focusAreas = [
   {
-    title: "Product direction",
+    title: "Writing",
     description:
-      "Turning early-stage complexity into a coherent structure that teams, partners, and users can understand.",
+      "Writing helps me confront meaning, memory, truth, and identity with more honesty than most spaces allow.",
   },
   {
-    title: "Writing and meaning",
+    title: "Business and economics",
     description:
-      "Using language to make ideas clearer, decisions more durable, and personal experience easier to translate into work.",
+      "I care about the structures that shape opportunity, value, responsibility, and long-term direction.",
   },
   {
-    title: "Institutional thinking",
+    title: "Building",
     description:
-      "Designing work that can hold up in formal environments where trust, scrutiny, and long-term accountability matter.",
+      "I am interested in turning serious ideas into something real, useful, and able to hold its ground in the world.",
   },
 ] as const;
 
 const timeline = [
   {
-    label: "Foundation",
-    detail: "Economics & Management | University of Trento",
-    note: "A systems-based approach to decisions, trade-offs, and institutional realities.",
-  },
-  {
     label: "2022",
     detail: siteConfig.book.award,
-    note: `Recognition for ${siteConfig.book.title}, a reflective literary work on silence, vulnerability, and the need to be heard.`,
+    note: `${siteConfig.book.title} received early recognition, quietly affirming the importance of honest and personal writing.`,
   },
   {
-    label: "Now",
-    detail: "Founder, writer, and builder",
-    note: "Building VitaAvanza while continuing to shape work through product thinking, writing, and lived experience.",
+    label: "2023-present",
+    detail: "Economics and Management | University of Trento",
+    note: "Academic work that continues to shape how I think about systems, decisions, and long-term value.",
+  },
+  {
+    label: "2025-present",
+    detail: "Founder of VitaAvanza",
+    note: "Building a project that brings together writing, structure, responsibility, and a serious interest in real-life progress.",
   },
 ] as const;
 
@@ -99,10 +99,13 @@ export default function AboutPage() {
     name: siteConfig.name,
     url: canonicalUrl,
     sameAs: [siteConfig.linkedin],
-    jobTitle: "Founder",
+    jobTitle: "Founder of VitaAvanza, Author, and Economics & Management Student",
+    description:
+      "Samir Seddiqi is the founder of VitaAvanza, an author, and an Economics & Management student at the University of Trento.",
     worksFor: {
       "@type": "Organization",
       name: siteConfig.company.shortName,
+      url: siteConfig.company.url,
     },
     alumniOf: {
       "@type": "CollegeOrUniversity",
@@ -121,15 +124,24 @@ export default function AboutPage() {
         <div className="space-y-7">
           <Badge variant="accent">About</Badge>
           <div className="space-y-5">
-            <h1 className="max-w-4xl">A personal site about the thinking behind the work</h1>
+            <h1 className="max-w-4xl">About</h1>
             <p className="max-w-2xl text-base text-white/75 sm:text-lg">
-              I am Samir Seddiqi, based in Trento. My work sits between product direction, writing,
-              and systems thinking, with a focus on making serious work clearer and more human.
+              I am Samir Seddiqi, an author, founder, and student of Economics and Management at
+              the University of Trento.
             </p>
             <p className="max-w-2xl text-base text-white/75">
-              VitaAvanza is part of that story, but not the whole of it. This site is where the
-              broader personal thread lives: how I think, what I care about, and the way lived
-              experience shapes the things I build.
+              My perspective was not built in comfort. It was shaped by responsibility, hardship,
+              discipline, and the need to keep moving forward even when life becomes heavy. That
+              reality has influenced the way I think, write, and build.
+            </p>
+            <p className="max-w-2xl text-base text-white/75">
+              I am drawn to business, economics, innovation, and the deeper structures that shape
+              people&apos;s opportunities. I believe ambition matters, but only when it is backed by
+              discipline. I believe vision matters, but only when it is followed by execution.
+            </p>
+            <p className="max-w-2xl text-base text-white/75">
+              This website is where I bring together my work, my thinking, and the direction I am
+              building toward, in a way that feels personal rather than polished for its own sake.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -145,22 +157,22 @@ export default function AboutPage() {
         <MotionCard className="h-full">
           <CardHeader className="space-y-3">
             <CardDescription className="text-xs uppercase tracking-[0.14em] text-white/50">
-              Orientation
+              Perspective
             </CardDescription>
-            <CardTitle className="text-2xl">Calm, serious, and human-centered</CardTitle>
+            <CardTitle className="text-2xl">What shaped me stays in the work</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4 text-sm text-white/80">
             <p>
-              I tend to care about the point where personal experience meets structure: where
-              systems either help people move forward or make life harder than it needs to be.
+              I care about the point where lived experience meets structure, where a person&apos;s
+              reality either becomes clearer or more difficult because of the systems around them.
             </p>
             <p>
-              That is why the work usually takes the same shape. Make complexity more readable, keep
-              the human reality visible, and build with enough rigor that the result can hold up in
-              the real world.
+              That is why my work tends to move in the same direction: make complexity more
+              readable, keep the human reality visible, and build with enough seriousness that the
+              result can hold up in real life.
             </p>
             <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-xs uppercase tracking-[0.14em] text-white/55">
-              Calm is not aesthetic. Calm is responsible.
+              What shapes a person eventually shapes the work.
             </div>
           </CardContent>
         </MotionCard>
@@ -169,7 +181,7 @@ export default function AboutPage() {
       <MotionSection className="pt-0" motionClassName="space-y-10">
         <div className="flex flex-col gap-3">
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white/45">Values</p>
-          <h2 className="max-w-3xl">Principles that stay with me across different kinds of work</h2>
+          <h2 className="max-w-3xl">Principles that shape the way I move through work</h2>
         </div>
 
         <MotionSection
@@ -196,7 +208,7 @@ export default function AboutPage() {
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white/45">
             Focus Areas
           </p>
-          <h2 className="max-w-3xl">Where most of my attention goes</h2>
+          <h2 className="max-w-3xl">Where my attention goes most naturally</h2>
         </div>
 
         <MotionSection
@@ -223,7 +235,7 @@ export default function AboutPage() {
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white/45">
             Timeline
           </p>
-          <h2 className="max-w-3xl">A short timeline of education, writing, and direction</h2>
+          <h2 className="max-w-3xl">A short timeline of writing, study, and direction</h2>
         </div>
 
         <div className="relative space-y-8 border-l border-white/10 pl-8">

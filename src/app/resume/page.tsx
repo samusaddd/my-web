@@ -16,14 +16,14 @@ const canonicalUrl = absoluteUrl("/resume");
 const ogImage = absoluteUrl(siteConfig.socialImagePath);
 
 export const metadata: Metadata = {
-  title: "Resume",
+  title: "Resume and VitaAvanza",
   description:
-    "Founder profile for Samir Seddiqi across VitaAvanza, product strategy, discovery research, and institution-ready systems.",
+    "Resume of Samir Seddiqi, founder of VitaAvanza, across academic study, writing, project building, and early professional experience.",
   alternates: { canonical: canonicalUrl },
   openGraph: {
     title: `Resume | ${siteConfig.name}`,
     description:
-      "Founder profile across VitaAvanza, product strategy, discovery research, and institution-ready systems.",
+      "Resume of Samir Seddiqi, founder of VitaAvanza, across academic study, writing, project building, and early professional experience.",
     type: "website",
     url: canonicalUrl,
     images: [{ url: ogImage, width: 1200, height: 630, alt: "Samir Seddiqi Resume" }],
@@ -32,39 +32,86 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `Resume | ${siteConfig.name}`,
     description:
-      "Founder profile across VitaAvanza, product strategy, discovery research, and institution-ready systems.",
+      "Resume of Samir Seddiqi, founder of VitaAvanza, across academic study, writing, project building, and early professional experience.",
     images: [ogImage],
   },
 };
 
 const competencies = [
-  "Founder leadership",
-  "Life-navigation product strategy",
-  "Discovery research",
-  "Institutional collaboration",
-  "Governance-aware design",
-  "Writing and communication",
+  {
+    title: "Writing and communication",
+    description:
+      "Able to turn complex ideas and lived experience into language that is clear, serious, and intentional.",
+  },
+  {
+    title: "Strategic thinking",
+    description:
+      "Comfortable thinking in terms of systems, trade-offs, long-term direction, and the discipline required to follow through.",
+  },
+  {
+    title: "Project building",
+    description:
+      "Drawn to ideas that can move beyond theory and become something structured, workable, and real.",
+  },
+  {
+    title: "Research and discovery",
+    description:
+      "Attentive to human reality and able to translate observation, listening, and lived context into direction.",
+  },
+  {
+    title: "Adaptability under pressure",
+    description:
+      "Used to building and operating without ideal conditions while staying reliable, focused, and composed.",
+  },
+  {
+    title: "Institutional awareness",
+    description:
+      "I think carefully about credibility, accountability, and how work lands inside serious environments.",
+  },
+] as const;
+
+const experience = [
+  {
+    title: "Founder & CEO",
+    institution: "VitaAvanza S.r.l.",
+    timeframe: "2025-present",
+    detail:
+      "Leading the early direction of VitaAvanza and shaping the project across concept development, structure, communication, and long-term positioning.",
+  },
+  {
+    title: "Educational talks in schools",
+    institution: "Selected speaking",
+    timeframe: "Ongoing",
+    detail:
+      "Speaking with students about resilience, integration, education, and the realities of building a future under pressure.",
+  },
+  {
+    title: "Volunteer work",
+    institution: "Centro Astalli",
+    timeframe: "Community",
+    detail:
+      "Supporting people in vulnerable situations and staying close to the human realities that often sit behind systems, bureaucracy, and transition.",
+  },
 ] as const;
 
 const education = [
   {
-    title: "Economics and Management",
+    title: "BSc in Economics and Management",
     institution: "University of Trento",
-    detail: "Foundation in systems thinking, economic decision-making, and structured analysis.",
+    timeframe: "2023-2027",
+    detail:
+      "Academic work centered on economics, management, and the way structure, incentives, and decisions shape long-term outcomes.",
+  },
+  {
+    title: "Student review and feedback group",
+    institution: "University of Trento",
+    timeframe: "Academic involvement",
+    detail:
+      "Contributing student perspective and feedback to improve clarity, communication, and the quality of the academic environment.",
   },
 ] as const;
 
-const operatingSignals = [
-  {
-    title: "Company direction",
-    detail:
-      "Founder of VitaAvanza, building the operating layer around Mitra, DVI, and institution-ready coordination.",
-  },
-  {
-    title: "Field discovery",
-    detail: `${siteConfig.discovery.total} interviews completed across immigrant and international-student populations before pilot rollout work.`,
-  },
-] as const;
+const languages = ["Persian (native)", "Italian (fluent)", "English (fluent)"] as const;
 
 export default function ResumePage() {
   return (
@@ -74,12 +121,16 @@ export default function ResumePage() {
         motionClassName="mx-auto flex max-w-4xl flex-col gap-6 text-center"
       >
         <Badge variant="accent" className="mx-auto">
-          Resume Overview
+          Resume
         </Badge>
-        <h1>Founder profile with product depth and institutional orientation</h1>
+        <h1>Resume</h1>
         <p className="mx-auto max-w-3xl text-base text-white/75 sm:text-lg">
-          The work connects strategy, discovery, product logic, and institution-ready execution. It
-          is designed for real systems, not idealized launch conditions.
+          My background combines academic study, writing, project-building, and hands-on work
+          across different environments.
+        </p>
+        <p className="mx-auto max-w-3xl text-base text-white/70">
+          This page reflects the way I have been learning, working, writing, and building so far,
+          with the same seriousness I try to bring to everything I do.
         </p>
         <div className="flex flex-wrap justify-center gap-3">
           <ButtonLink href="/Samir-Seddiqi-CV.pdf" size="lg" download>
@@ -96,7 +147,7 @@ export default function ResumePage() {
           <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white/45">
             Key competencies
           </p>
-          <h2 className="max-w-3xl">Capabilities that travel across product and institutional work</h2>
+          <h2 className="max-w-3xl">Capabilities I try to carry across different environments</h2>
         </div>
 
         <MotionSection
@@ -108,13 +159,11 @@ export default function ResumePage() {
           staggerChildren={0.08}
         >
           {competencies.map((item) => (
-            <MotionCard className="h-full" key={item}>
+            <MotionCard className="h-full" key={item.title}>
               <CardHeader className="pb-2">
-                <CardTitle className="text-lg">{item}</CardTitle>
+                <CardTitle className="text-lg">{item.title}</CardTitle>
               </CardHeader>
-              <CardContent className="text-sm text-white/70">
-                Built to support clarity, accountability, and forward motion under real constraints.
-              </CardContent>
+              <CardContent className="text-sm text-white/70">{item.description}</CardContent>
             </MotionCard>
           ))}
         </MotionSection>
@@ -130,16 +179,19 @@ export default function ResumePage() {
         <MotionCard className="h-full">
           <CardHeader className="space-y-3">
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white/45">
-              Education
+              Experience
             </p>
-            <CardTitle className="text-2xl">Academic foundation</CardTitle>
+            <CardTitle className="text-2xl">Professional and project work</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6 text-sm text-white/75">
-            {education.map((item) => (
+            {experience.map((item, index) => (
               <div className="space-y-2" key={item.title}>
                 <p className="text-base font-semibold text-white">{item.title}</p>
-                <p className="text-sm text-white/70">{item.institution}</p>
+                <p className="text-sm text-white/70">
+                  {item.institution} | {item.timeframe}
+                </p>
                 <p>{item.detail}</p>
+                {index < experience.length - 1 ? <Divider /> : null}
               </div>
             ))}
           </CardContent>
@@ -148,18 +200,25 @@ export default function ResumePage() {
         <MotionCard className="h-full">
           <CardHeader className="space-y-3">
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white/45">
-              Operating signals
+              Education and involvement
             </p>
-            <CardTitle className="text-2xl">Current direction</CardTitle>
+            <CardTitle className="text-2xl">Study, contribution, and languages</CardTitle>
           </CardHeader>
           <CardContent className="space-y-6 text-sm text-white/75">
-            {operatingSignals.map((item, index) => (
+            {education.map((item) => (
               <div className="space-y-2" key={item.title}>
                 <p className="text-base font-semibold text-white">{item.title}</p>
+                <p className="text-sm text-white/70">
+                  {item.institution} | {item.timeframe}
+                </p>
                 <p>{item.detail}</p>
-                {index === 0 ? <Divider /> : null}
+                <Divider />
               </div>
             ))}
+            <div className="space-y-2">
+              <p className="text-base font-semibold text-white">Languages</p>
+              <p>{languages.join(", ")}</p>
+            </div>
           </CardContent>
         </MotionCard>
       </MotionSection>

@@ -105,8 +105,11 @@ export function PersonalCursor() {
     };
 
     const tick = () => {
-      state.x += (state.targetX - state.x) * 0.18;
-      state.y += (state.targetY - state.y) * 0.18;
+      const followStrength =
+        modeRef.current === "interactive" ? 0.22 : modeRef.current === "text" ? 0.26 : 0.18;
+
+      state.x += (state.targetX - state.x) * followStrength;
+      state.y += (state.targetY - state.y) * followStrength;
       cursor.style.transform = `translate3d(${state.x}px, ${state.y}px, 0)`;
 
       if (active) {
@@ -119,10 +122,27 @@ export function PersonalCursor() {
         return;
       }
 
-      state.targetX = event.clientX;
-      state.targetY = event.clientY;
+      const nextMode = resolveMode(event.target);
+      const interactiveTarget =
+        event.target instanceof Element ? event.target.closest(INTERACTIVE_SELECTOR) : null;
+      let nextX = event.clientX;
+      let nextY = event.clientY;
+
+      if (nextMode === "interactive" && interactiveTarget instanceof HTMLElement) {
+        const rect = interactiveTarget.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const offsetX = Math.max(Math.min((event.clientX - centerX) * 0.06, 5), -5);
+        const offsetY = Math.max(Math.min((event.clientY - centerY) * 0.06, 5), -5);
+
+        nextX += offsetX;
+        nextY += offsetY;
+      }
+
+      state.targetX = nextX;
+      state.targetY = nextY;
       setCursorVisible(true);
-      setCursorMode(resolveMode(event.target));
+      setCursorMode(nextMode);
     };
 
     const handlePointerDown = (event: PointerEvent) => {
