@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 
   const canonicalUrl = absoluteUrl(`/blog/${post.slug}`);
-  const ogImage = absoluteUrl("/opengraph-image");
+  const ogImage = absoluteUrl(siteConfig.socialImagePath);
   const publishedTime = new Date(post.date).toISOString();
   const title = post.title;
   const description = post.summary || siteConfig.description;

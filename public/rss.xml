@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Samir Seddiqi</title>
+    <link>http://localhost:3000</link>
+    <description>Personal site of Samir Seddiqi in Trento. Founder of VitaAvanza, writer of Can You Hear Me?, and builder of calm systems for people and institutions.</description>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 25 Mar 2026 22:32:13 GMT</lastBuildDate>
+    <ttl>60</ttl>
+    <atom:link href="http://localhost:3000/rss.xml" rel="self" type="application/rss+xml" xmlns:atom="http://www.w3.org/2005/Atom" />
+    
+        <item>
+          <title>From war to be so far</title>
+          <link>http://localhost:3000/blog/from-war-to-be-so-far/</link>
+          <guid>http://localhost:3000/blog/from-war-to-be-so-far/</guid>
+          <pubDate>Wed, 28 Jan 2026 00:00:00 GMT</pubDate>
+          <description>A political reflection on distance, responsibility, and the illusion that war ends when it becomes geographically remote.</description>
+          <author>ceo@vitaavanza.it (Samir Seddiqi)</author>
+          <source url="http://localhost:3000/blog/">Samir Seddiqi</source>
+          <category>war</category><category>politics</category><category>responsibility</category><category>memory</category><category>borders</category>
+        </item>
+      
+        <item>
+          <title>Social inclusion and women’s rights: beyond visibility</title>
+          <link>http://localhost:3000/blog/social-inclusion-and-womens-rights/</link>
+          <guid>http://localhost:3000/blog/social-inclusion-and-womens-rights/</guid>
+          <pubDate>Tue, 27 Jan 2026 00:00:00 GMT</pubDate>
+          <description>A long-form reflection on inclusion as a structural responsibility, and women’s rights as a measure of societal maturity rather than cultural debate.</description>
+          <author>ceo@vitaavanza.it (Samir Seddiqi)</author>
+          <source url="http://localhost:3000/blog/">Samir Seddiqi</source>
+          <category>social inclusion</category><category>women’s rights</category><category>institutions</category><category>society</category><category>governance</category>
+        </item>
+      
+  </channel>
+</rss>

@@ -24,7 +24,7 @@ const serif = Playfair_Display({
 
 const metadataBase = new URL(siteConfig.url);
 const defaultTitle = `${siteConfig.name} | VitaAvanza and Life Navigation`;
-const defaultOgImage = absoluteUrl("/opengraph-image");
+const defaultOgImage = absoluteUrl(siteConfig.socialImagePath);
 
 export const metadata: Metadata = {
   metadataBase,
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
     images: [defaultOgImage],
   },
   icons: {
-    icon: [{ url: "/icon", type: "image/png" }],
+    icon: [{ url: siteConfig.iconPath, type: "image/svg+xml" }],
   },
 };
 

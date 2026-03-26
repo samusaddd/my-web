@@ -16,7 +16,7 @@ import {
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
 const canonicalUrl = absoluteUrl("/book");
-const ogImage = absoluteUrl("/opengraph-image");
+const ogImage = absoluteUrl(siteConfig.socialImagePath);
 
 export const metadata: Metadata = {
   title: "Book",

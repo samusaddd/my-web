@@ -13,6 +13,8 @@ export const siteConfig = {
   creator: "Samir Seddiqi",
   location: "Trento, Italy",
   tagline: "I build calm systems from lived pressure.",
+  iconPath: "/icon.svg",
+  socialImagePath: "/opengraph-card.png",
   keywords: [
     "Samir Seddiqi",
     "VitaAvanza",
