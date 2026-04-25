@@ -157,23 +157,33 @@ export default function HomePage() {
       >
         <div className="hero-stage relative isolate min-h-[calc(100vh-5rem)] overflow-hidden">
           <HeroBackground />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,7,13,0.96),rgba(5,7,13,0.74)_46%,rgba(5,7,13,0.18)_100%),linear-gradient(180deg,rgba(5,7,13,0.1),rgba(5,7,13,0.88)_86%,rgba(5,7,13,0.98))]" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,7,13,0.98),rgba(5,7,13,0.72)_54%,rgba(5,7,13,0.35)_100%),linear-gradient(180deg,rgba(5,7,13,0.12),rgba(5,7,13,0.88)_86%,rgba(5,7,13,0.98))]" />
           <div
             aria-hidden="true"
-            className="absolute inset-x-6 top-10 h-px bg-[linear-gradient(90deg,rgba(255,255,255,0.42),transparent)]"
-          />
-          <div
-            aria-hidden="true"
-            className="absolute bottom-20 right-[-9rem] hidden h-[34rem] w-[34rem] rounded-full border border-cyan-200/12 bg-cyan-300/[0.035] shadow-[0_0_120px_-30px_rgba(34,211,238,0.46)] lg:block"
-          />
-          <div
-            aria-hidden="true"
-            className="absolute bottom-40 right-16 hidden h-40 w-40 rounded-full border border-amber-200/15 bg-amber-200/[0.035] lg:block"
+            className="absolute inset-x-6 top-10 h-px bg-[linear-gradient(90deg,rgba(255,255,255,0.46),transparent_62%)]"
           />
 
-          <div className="relative z-10 mx-auto flex min-h-[calc(100vh-5rem)] max-w-7xl flex-col justify-between px-6 pb-10 pt-10 sm:pt-14 lg:px-8 lg:pt-16">
-            <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_25rem] lg:items-start">
-              <div className="max-w-5xl">
+          <div className="relative z-10 mx-auto flex min-h-[calc(100vh-5rem)] max-w-7xl flex-col justify-between px-6 pb-8 pt-10 sm:pt-14 lg:px-8 lg:pt-16">
+            <div className="grid gap-10 lg:grid-cols-[13rem_minmax(0,1fr)] lg:items-start">
+              <div className="hidden border-l border-white/15 pl-5 lg:block">
+                <p className="text-xs uppercase text-white/45">Personal index</p>
+                <div className="mt-8 space-y-8 text-sm text-white/68">
+                  <div>
+                    <p className="text-white">01</p>
+                    <p>Founder of {siteConfig.company.shortName}</p>
+                  </div>
+                  <div>
+                    <p className="text-white">02</p>
+                    <p>Writer of two books</p>
+                  </div>
+                  <div>
+                    <p className="text-white">03</p>
+                    <p>Economics and Management</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="max-w-6xl">
                 <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/25 bg-cyan-400/10 px-4 py-2 backdrop-blur-sm">
                   <span className="h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(103,232,249,0.95)]" />
                   <span className="text-[11px] font-semibold uppercase text-cyan-100/80">
@@ -181,66 +191,42 @@ export default function HomePage() {
                   </span>
                 </div>
 
-                <h1 className="mt-8 max-w-5xl text-6xl leading-[0.92] sm:text-7xl lg:text-8xl">
+                <h1 className="mt-8 max-w-6xl text-[clamp(4.6rem,13vw,11rem)] leading-[0.82]">
                   <span className="block">Samir Seddiqi</span>
-                  <span className="mt-5 block max-w-4xl bg-[linear-gradient(100deg,rgba(255,255,255,0.98),rgba(125,211,252,0.95),rgba(251,191,36,0.92))] bg-clip-text text-4xl leading-tight text-transparent sm:text-5xl lg:text-6xl">
-                    founder, writer, builder.
+                  <span className="mt-6 block max-w-5xl bg-[linear-gradient(100deg,rgba(255,255,255,0.98),rgba(125,211,252,0.96),rgba(251,191,36,0.9))] bg-clip-text text-[clamp(2.3rem,5vw,5.2rem)] leading-[0.95] text-transparent">
+                    pressure into direction.
                   </span>
                 </h1>
 
-                <p className="mt-7 max-w-3xl text-lg text-white/76 sm:text-xl">
-                  A personal website for the work behind VitaAvanza, two books, and the thinking
-                  that turns pressure into direction.
-                </p>
+                <div className="mt-8 grid gap-6 border-t border-white/12 pt-7 lg:grid-cols-[minmax(0,0.72fr)_minmax(18rem,0.28fr)]">
+                  <p className="max-w-3xl text-lg text-white/76 sm:text-xl">
+                    A personal website for the work behind VitaAvanza, two books, and the thinking
+                    that turns pressure into structure, clarity, and movement.
+                  </p>
 
-                <div className="mt-9 flex flex-col gap-4 sm:flex-row">
-                  <ButtonLink href="/projects" size="lg">
-                    Enter the work
-                  </ButtonLink>
-                  <ButtonLink href="/book" size="lg" variant="secondary">
-                    Read the books
-                  </ButtonLink>
-                  <ButtonLink href="/contact" size="lg" variant="outline">
-                    Contact
-                  </ButtonLink>
-                </div>
-              </div>
-
-              <div className="surface-elevated hidden p-6 lg:block">
-                <p className="text-xs uppercase text-white/45">Current signal</p>
-                <div className="mt-6 space-y-5">
-                  <div>
-                    <p className="text-3xl font-semibold text-white">{siteConfig.company.shortName}</p>
-                    <p className="mt-2 text-sm text-white/65">Founder and company builder</p>
-                  </div>
-                  <Divider />
-                  <div>
-                    <p className="text-3xl font-semibold text-white">Two books</p>
-                    <p className="mt-2 text-sm text-white/65">
-                      {siteConfig.book.title} and {siteConfig.newBook.title}
-                    </p>
-                  </div>
-                  <Divider />
-                  <div>
-                    <p className="text-3xl font-semibold text-white">Economics</p>
-                    <p className="mt-2 text-sm text-white/65">University of Trento</p>
+                  <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
+                    <ButtonLink href="/projects" size="lg">
+                      Enter the work
+                    </ButtonLink>
+                    <ButtonLink href="/book" size="lg" variant="secondary">
+                      Read the books
+                    </ButtonLink>
+                    <ButtonLink href="/contact" size="lg" variant="outline">
+                      Contact
+                    </ButtonLink>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="mt-12 grid gap-4 md:grid-cols-3">
+            <div className="mt-12 grid border-y border-white/12 md:grid-cols-3">
               {heroCards.map((card) => (
                 <div
-                  className="group relative overflow-hidden rounded-3xl border border-white/12 bg-white/[0.065] p-5 text-left shadow-[0_24px_80px_-50px_rgba(15,23,42,0.82)] backdrop-blur-xl transition duration-500 hover:-translate-y-1 hover:border-white/24 hover:bg-white/[0.095]"
+                  className="group relative border-white/12 py-5 text-left md:border-r md:px-5 md:last:border-r-0"
                   key={card.label}
                 >
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.34),transparent)]"
-                  />
                   <p className="text-xs font-semibold uppercase text-cyan-100/72">{card.label}</p>
-                  <p className="mt-3 text-sm text-white/68">{card.description}</p>
+                  <p className="mt-3 max-w-sm text-sm text-white/68">{card.description}</p>
                 </div>
               ))}
             </div>
