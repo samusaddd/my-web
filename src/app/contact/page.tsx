@@ -4,6 +4,7 @@ import { ContactForm } from "@/components/contact-form";
 import { MotionCard } from "@/components/motion/motion-card";
 import { MotionLink } from "@/components/motion/motion-link";
 import { MotionSection } from "@/components/motion/motion-section";
+import { PageHero } from "@/components/page-hero";
 import {
   Badge,
   CardContent,
@@ -42,22 +43,37 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <MotionSection
-        className="pt-16 sm:pt-24"
-        motionClassName="mx-auto flex max-w-3xl flex-col gap-6 text-center"
-      >
-        <Badge variant="accent" className="mx-auto">
-          Contact
-        </Badge>
-        <h1>Contact</h1>
-        <p className="mx-auto max-w-2xl text-base text-white/75 sm:text-lg">
-          Whether it is about a project, a collaboration, writing, or a professional opportunity,
-          feel free to reach out.
-        </p>
-        <p className="mx-auto max-w-2xl text-base text-white/70">
-          I am always open to meaningful conversations and serious opportunities.
-        </p>
-      </MotionSection>
+      <PageHero
+        aside={
+          <MotionCard className="h-full">
+            <CardHeader className="space-y-3">
+              <CardDescription className="text-xs uppercase text-white/50">
+                Direct line
+              </CardDescription>
+              <CardTitle className="text-3xl">Thoughtful messages are welcome</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4 text-sm text-white/75">
+              <p>
+                I am open to meaningful conversations, project opportunities, writing, and serious
+                professional introductions.
+              </p>
+              <Divider />
+              <MotionLink className="font-semibold text-white hover:text-sky-100" href={`mailto:${siteConfig.email}`}>
+                {siteConfig.email}
+              </MotionLink>
+            </CardContent>
+          </MotionCard>
+        }
+        badge="Contact"
+        description="Whether it is about a project, a collaboration, writing, or a professional opportunity, feel free to reach out."
+        eyebrow="Clear intent, serious conversations"
+        metrics={[
+          { label: "Location", value: "Trento" },
+          { label: "Channel", value: "Email" },
+        ]}
+        secondaryDescription="I am always open to meaningful conversations and serious opportunities."
+        title="Start the conversation clearly"
+      />
 
       <MotionSection
         className="pt-0"
@@ -76,7 +92,7 @@ export default function ContactPage() {
           </CardHeader>
           <CardContent className="space-y-5 text-sm text-white/80">
             <div className="space-y-2">
-              <p className="text-xs uppercase tracking-[0.16em] text-white/45">Email</p>
+              <p className="text-xs uppercase text-white/45">Email</p>
               <MotionLink
                 className="text-base font-semibold text-white hover:text-sky-100"
                 href={`mailto:${siteConfig.email}`}
@@ -88,7 +104,7 @@ export default function ContactPage() {
             <Divider />
 
             <div className="space-y-2">
-              <p className="text-xs uppercase tracking-[0.16em] text-white/45">LinkedIn</p>
+              <p className="text-xs uppercase text-white/45">LinkedIn</p>
               <MotionLink
                 className="text-base font-semibold text-white hover:text-sky-100"
                 href={siteConfig.linkedin}
@@ -100,7 +116,7 @@ export default function ContactPage() {
             <Divider />
 
             <div className="space-y-2">
-              <p className="text-xs uppercase tracking-[0.16em] text-white/45">Good fit</p>
+              <p className="text-xs uppercase text-white/45">Good fit</p>
               <ul className="list-disc space-y-2 pl-5 text-white/75">
                 <li>Projects and collaborations</li>
                 <li>Writing and professional opportunities</li>

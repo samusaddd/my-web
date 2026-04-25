@@ -53,9 +53,9 @@ const heroCards = [
       "Building a project shaped by lived experience and a belief that progress deserves more clarity, depth, and direction.",
   },
   {
-    label: "Can You Hear Me?",
+    label: "Writing",
     description:
-      "Writing from reflection, emotion, and conviction, with language as part of the work rather than something separate from it.",
+      "Two books now sit inside the work: one about being heard, one about identity and certainty dissolving.",
   },
 ] as const;
 
@@ -67,8 +67,8 @@ const aboutHighlights = [
   },
   {
     label: "Author",
-    value: siteConfig.book.title,
-    description: "Writing from lived experience, reflection, and the need to stay honest on the page.",
+    value: "Two books",
+    description: "Writing from lived experience, reflection, identity, and the need to stay honest on the page.",
   },
   {
     label: "Founder",
@@ -162,7 +162,7 @@ export default function HomePage() {
           <div className="relative z-10 mx-auto flex min-h-[calc(100vh-5rem)] max-w-7xl flex-col items-center justify-start px-6 pb-14 pt-10 text-center sm:pt-12 lg:px-8 lg:pt-14">
             <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/25 bg-cyan-400/10 px-4 py-2 backdrop-blur-sm">
               <span className="h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(103,232,249,0.95)]" />
-              <span className="text-[11px] font-semibold uppercase tracking-[0.26em] text-cyan-100/80">
+              <span className="text-[11px] font-semibold uppercase text-cyan-100/80">
                 Trento, Italy
               </span>
             </div>
@@ -199,7 +199,7 @@ export default function HomePage() {
                   className="rounded-3xl border border-white/8 bg-white/[0.04] px-5 py-4 text-left backdrop-blur"
                   key={card.label}
                 >
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-cyan-100/72">
+                  <p className="text-[10px] font-semibold uppercase text-cyan-100/72">
                     {card.label}
                   </p>
                   <p className="mt-2 text-sm text-white/62">{card.description}</p>
@@ -236,7 +236,7 @@ export default function HomePage() {
           {aboutHighlights.map((card) => (
             <MotionCard className="h-full" key={card.label}>
               <CardHeader className="space-y-3">
-                <CardDescription className="text-[10px] uppercase tracking-[0.24em] text-cyan-100/72">
+                <CardDescription className="text-[10px] uppercase text-cyan-100/72">
                   {card.label}
                 </CardDescription>
                 <CardTitle className="text-4xl">{card.value}</CardTitle>
@@ -249,7 +249,7 @@ export default function HomePage() {
 
       <MotionSection className="pt-0" containerClassName="max-w-7xl" motionClassName="space-y-10">
         <div className="flex flex-col gap-3">
-          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white/45">
+          <p className="text-sm font-semibold uppercase text-white/45">
             What I Do
           </p>
           <h2 className="max-w-3xl">Three parts of how I work</h2>
@@ -284,34 +284,35 @@ export default function HomePage() {
         motionClassName="surface grid gap-8 p-8 md:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] md:p-10"
       >
         <div className="space-y-5">
-          <Badge variant="accent">Book</Badge>
-          <h2 className="max-w-xl">{siteConfig.book.title}</h2>
+          <Badge variant="accent">Books</Badge>
+          <h2 className="max-w-xl">{siteConfig.newBook.title}</h2>
           <p className="text-base text-white/75">
-            {siteConfig.book.title} is a deeply personal work shaped by emotion, silence, pain, and
-            reflection. It comes from lived experience and speaks to the human need to be heard,
-            understood, and remembered.
+            {siteConfig.newBook.title} is the new work: a structured confrontation with the absence
+            of answers, identity, meaning, and the quiet continuation of existence.
           </p>
           <p className="text-sm text-white/65">
-            Writing, for me, is one of the few places where truth can remain unfiltered.
+            It now stands beside {siteConfig.book.title}, the earlier personal work shaped by
+            silence, pain, reflection, and the need to be heard.
           </p>
           <div className="flex flex-wrap gap-3">
             <ButtonLink href={`mailto:${siteConfig.email}`} variant="secondary">
-              Request a copy
+              Request the new book
             </ButtonLink>
             <ButtonLink href="/book" variant="outline">
-              Book details
+              View both books
             </ButtonLink>
           </div>
         </div>
         <div className="space-y-4 rounded-3xl border border-white/10 bg-black/30 p-6">
-          <p className="text-sm font-semibold text-white">Recognition</p>
-          <p className="text-sm text-white/85">{siteConfig.book.award}</p>
+          <p className="text-sm font-semibold text-white">Writing shelf</p>
+          <p className="text-sm text-white/85">{siteConfig.book.title}</p>
+          <p className="text-sm text-white/85">{siteConfig.newBook.title}</p>
           <p className="text-sm text-white/75">
-            I keep the recognition here quietly. What matters more to me is that the writing stays
-            honest and true to where it came from.
+            The first book carries lived experience. The new one moves toward identity, meaning,
+            and what remains when certainty dissolves.
           </p>
           <Divider />
-          <p className="text-xs uppercase tracking-[0.16em] text-white/45">Primary channel</p>
+          <p className="text-xs uppercase text-white/45">Primary channel</p>
           <p className="text-sm text-white/85">{siteConfig.email}</p>
         </div>
       </MotionSection>

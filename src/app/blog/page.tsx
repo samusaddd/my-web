@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { MotionCard } from "@/components/motion/motion-card";
 import { MotionLink } from "@/components/motion/motion-link";
 import { MotionSection } from "@/components/motion/motion-section";
+import { PageHero } from "@/components/page-hero";
 import { Badge, CardContent, CardDescription, CardHeader, CardTitle, Section } from "@/components/ui";
 import { getAllPosts } from "@/lib/posts";
 import { absoluteUrl, siteConfig } from "@/lib/site";
@@ -45,22 +46,34 @@ export default function BlogPage() {
 
   return (
     <>
-      <MotionSection
-        className="pt-16 sm:pt-24"
-        motionClassName="mx-auto flex max-w-3xl flex-col gap-6 text-center"
-      >
-        <Badge className="mx-auto" variant="accent">
-          Writing
-        </Badge>
-        <h1>Writing</h1>
-        <p className="mx-auto max-w-2xl text-base text-white/75">
-          Notes on writing, work, discipline, and the ideas I keep returning to.
-        </p>
-      </MotionSection>
+      <PageHero
+        aside={
+          <MotionCard className="h-full">
+            <CardHeader className="space-y-3">
+              <CardDescription className="text-xs uppercase text-white/50">
+                Archive
+              </CardDescription>
+              <CardTitle className="text-3xl">{posts.length} published notes</CardTitle>
+            </CardHeader>
+            <CardContent className="text-sm text-white/75">
+              Writing here stays close to work, discipline, direction, and the ideas I keep
+              returning to.
+            </CardContent>
+          </MotionCard>
+        }
+        badge="Writing"
+        description="Notes on writing, work, discipline, and the ideas I keep returning to."
+        eyebrow="Essays and reflections"
+        metrics={[
+          { label: "Format", value: "MDX" },
+          { label: "Focus", value: "Depth" },
+        ]}
+        title="Writing that keeps the thinking visible"
+      />
 
       <MotionSection
         className="pt-0"
-        containerClassName="max-w-5xl"
+        containerClassName="max-w-6xl"
         delayChildren={0.04}
         motionClassName="grid gap-6 md:grid-cols-2"
         staggerChildren={0.08}
@@ -68,7 +81,7 @@ export default function BlogPage() {
         {posts.map((post) => (
           <MotionCard className="flex h-full flex-col justify-between" key={post.slug}>
             <CardHeader className="space-y-3">
-              <div className="flex items-center gap-3 text-xs uppercase tracking-[0.12em] text-white/45">
+              <div className="flex items-center gap-3 text-xs uppercase text-white/45">
                 <span>{formatDate(post.date)}</span>
               </div>
               <CardTitle className="text-xl">

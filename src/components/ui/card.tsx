@@ -3,7 +3,7 @@ import * as React from "react";
 import { cn } from "@/lib/cn";
 
 export const cardBaseClassName =
-  "rounded-3xl border border-white/10 bg-white/[0.045] p-6 shadow-[0_20px_70px_-35px_rgba(15,23,42,0.75)] backdrop-blur supports-[backdrop-filter]:bg-white/[0.04] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-white/20";
+  "relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.055] p-6 shadow-[0_28px_90px_-48px_rgba(15,23,42,0.82)] backdrop-blur-xl supports-[backdrop-filter]:bg-white/[0.052] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.28),transparent)] hover:border-white/20";
 
 export function Card({
   className,

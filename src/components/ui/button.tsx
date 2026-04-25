@@ -8,13 +8,13 @@ type ButtonSize = "md" | "lg";
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "bg-white text-zinc-950 shadow-[0_12px_40px_-16px_rgba(255,255,255,0.65)] hover:bg-zinc-100 hover:shadow-[0_22px_60px_-28px_rgba(255,255,255,0.7)]",
+    "border border-white/90 bg-white text-zinc-950 shadow-[0_16px_46px_-22px_rgba(255,255,255,0.72)] hover:bg-zinc-100 hover:shadow-[0_26px_70px_-34px_rgba(255,255,255,0.75)]",
   secondary:
-    "border border-white/10 bg-white/[0.06] text-white hover:border-white/20 hover:bg-white/[0.11] hover:shadow-[0_22px_60px_-40px_rgba(125,211,252,0.45)]",
+    "border border-white/15 bg-white/[0.075] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] hover:border-white/25 hover:bg-white/[0.12] hover:shadow-[0_24px_70px_-44px_rgba(125,211,252,0.52)]",
   outline:
-    "border border-white/15 text-white hover:border-white/25 hover:bg-white/[0.07] hover:shadow-[0_22px_60px_-42px_rgba(125,211,252,0.38)]",
+    "border border-white/20 text-white hover:border-white/30 hover:bg-white/[0.075] hover:shadow-[0_22px_60px_-42px_rgba(245,158,11,0.26)]",
   ghost:
-    "text-white/80 hover:text-white hover:bg-white/[0.06] hover:shadow-[0_18px_50px_-40px_rgba(125,211,252,0.4)]",
+    "text-white/78 hover:text-white hover:bg-white/[0.06] hover:shadow-[0_18px_50px_-40px_rgba(125,211,252,0.4)]",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {

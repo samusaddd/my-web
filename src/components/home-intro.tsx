@@ -65,7 +65,7 @@ export function HomeIntro() {
           >
             <motion.p
               animate={{ opacity: 1, y: 0 }}
-              className="text-3xl font-serif tracking-tight text-white sm:text-5xl"
+              className="text-3xl font-serif text-white sm:text-5xl"
               initial={{ opacity: 0, y: 12 }}
               transition={{
                 duration: reducedMotion ? 0.25 : 0.6,
@@ -77,7 +77,7 @@ export function HomeIntro() {
 
             <motion.p
               animate={{ opacity: 1, y: 0 }}
-              className="mt-4 text-sm uppercase tracking-[0.24em] text-white/56 sm:text-base"
+              className="mt-4 text-sm uppercase text-white/56 sm:text-base"
               initial={{ opacity: 0, y: 12 }}
               transition={{
                 duration: reducedMotion ? 0.25 : 0.6,

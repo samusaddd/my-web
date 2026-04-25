@@ -66,7 +66,7 @@ export function MobileNav() {
         aria-controls="mobile-menu"
         aria-expanded={open}
         aria-label={open ? "Close navigation menu" : "Open navigation menu"}
-        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-white shadow-[0_15px_40px_-25px_rgba(15,23,42,0.8)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[1px] hover:bg-white/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
+        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/[0.075] text-white shadow-[0_15px_40px_-25px_rgba(15,23,42,0.8)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[1px] hover:bg-white/[0.12] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
         onClick={() => setOpen((value) => !value)}
         type="button"
       >
@@ -87,7 +87,7 @@ export function MobileNav() {
             <motion.nav
               animate="visible"
               aria-label="Mobile"
-              className="mx-4 mt-20 rounded-3xl border border-white/10 bg-zinc-950/95 p-6 shadow-[0_30px_80px_-40px_rgba(15,23,42,0.95)]"
+              className="surface-elevated mx-4 mt-20 p-6"
               exit="hidden"
               id="mobile-menu"
               initial="hidden"
@@ -121,7 +121,7 @@ export function MobileNav() {
                 })}
               </div>
 
-              <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-sm text-white/75">
+              <div className="mt-6 rounded-2xl border border-white/10 bg-black/25 p-4 text-sm text-white/75">
                 <p className="font-medium text-white">Direct contact</p>
                 <p className="mt-1">
                   <a className="text-white/90 underline decoration-white/30 underline-offset-4" href={`mailto:${siteConfig.email}`}>
