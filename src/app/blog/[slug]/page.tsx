@@ -9,7 +9,7 @@ import { MotionLink } from "@/components/motion/motion-link";
 import { MotionH2, MotionH3, MotionH4 } from "@/components/motion/motion-prose";
 import { MotionSection } from "@/components/motion/motion-section";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { Badge, ButtonLink } from "@/components/ui";
+import { Badge, ButtonLink, Divider } from "@/components/ui";
 import { getPostBySlug, getPostSlugs } from "@/lib/posts";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
@@ -115,14 +115,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   });
 
   return (
-    <MotionSection className="pt-16 sm:pt-24" containerClassName="max-w-4xl">
+    <MotionSection className="pt-16 sm:pt-24" containerClassName="max-w-3xl">
       <JsonLd data={blogPostingJsonLd} id={`blogposting-jsonld-${post.slug}`} />
       <article className="space-y-10">
-        <header className="surface-elevated space-y-6 p-8 md:p-10">
+        <header className="space-y-6">
           <div className="flex flex-wrap items-center gap-3 text-sm text-white/65">
             <span>{formatDate(post.date)}</span>
             <span aria-hidden="true" className="text-white/30">
-              /
+              •
             </span>
             <span>Samir Seddiqi</span>
           </div>
@@ -143,18 +143,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           ) : null}
         </header>
 
-        <div className="hairline" />
+        <Divider />
 
-        <div className="rounded-3xl border border-white/10 bg-black/20 p-6 md:p-10">
-          <div className="prose-institution">{content}</div>
-        </div>
+        <div className="prose-institution">{content}</div>
 
-        <div className="hairline" />
+        <Divider />
 
-        <div className="surface flex flex-wrap items-center justify-between gap-4 p-6">
+        <div className="flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-white/10 bg-white/[0.045] p-6">
           <div className="space-y-1">
             <p className="text-sm font-semibold text-white">Continue the conversation</p>
-            <p className="text-sm text-white/70">For writing, strategy, and institutional work.</p>
+            <p className="text-sm text-white/70">
+              For writing, strategy, and institutional work.
+            </p>
           </div>
           <ButtonLink href="/contact" variant="secondary">
             Contact

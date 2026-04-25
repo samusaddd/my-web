@@ -3,23 +3,24 @@ import Link from "next/link";
 import { navLinks, siteConfig } from "@/lib/site";
 
 import { Container } from "../ui/container";
+import { Divider } from "../ui/divider";
 
 export function SiteFooter() {
   return (
     <footer className="relative mt-20 border-t border-white/5 py-12">
       <Container className="space-y-10">
-        <div className="hairline" />
+        <Divider />
 
-        <div className="surface-elevated grid gap-10 p-8 md:grid-cols-[1.1fr_0.9fr_1fr] md:p-10">
+        <div className="grid gap-10 md:grid-cols-[1.1fr_0.9fr_1fr]">
           <div className="space-y-3">
-            <p className="text-sm font-semibold uppercase text-white/50">
+            <p className="text-sm font-semibold uppercase tracking-[0.12em] text-white/50">
               Personal Website
             </p>
             <p className="max-w-md text-sm text-white/75">
               A personal space for my work, writing, ideas, and the direction I am building toward.
             </p>
             <p className="text-xs text-white/50">
-              Copyright {siteConfig.name}. All rights reserved.
+              © {siteConfig.name}. All rights reserved.
             </p>
           </div>
 
@@ -39,16 +40,13 @@ export function SiteFooter() {
           <div className="space-y-3">
             <p className="text-sm font-semibold text-white">Direct contact</p>
             <p className="text-sm text-white/80">
-              <a
-                className="underline decoration-white/30 underline-offset-4 transition hover:text-white hover:decoration-white/70"
-                href={`mailto:${siteConfig.email}`}
-              >
+              <a className="underline decoration-white/30 underline-offset-4" href={`mailto:${siteConfig.email}`}>
                 {siteConfig.email}
               </a>
             </p>
             <p className="text-sm text-white/80">
               <a
-                className="underline decoration-white/30 underline-offset-4 transition hover:text-white hover:decoration-white/70"
+                className="underline decoration-white/30 underline-offset-4"
                 href={siteConfig.linkedin}
                 rel="noreferrer"
                 target="_blank"

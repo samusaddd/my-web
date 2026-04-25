@@ -6,7 +6,7 @@ export default function NotFound() {
     <MotionSection
       className="pt-24 sm:pt-32"
       containerClassName="max-w-3xl"
-      motionClassName="surface-elevated flex flex-col items-center gap-6 p-10 text-center md:p-14"
+      motionClassName="surface flex flex-col items-center gap-6 p-10 text-center md:p-14"
     >
       <Badge variant="accent">404</Badge>
       <h1 className="text-4xl sm:text-5xl">Page not found</h1>

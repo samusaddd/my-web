@@ -7,8 +7,6 @@
   --accent-cyan: 34 211 238;
   --accent-violet: 168 85 247;
   --accent-violet-soft: 196 181 253;
-  --accent-amber: 245 158 11;
-  --accent-emerald: 52 211 153;
   --scrollbar-track: rgba(255, 255, 255, 0.035);
   --scrollbar-thumb: rgba(168, 85, 247, 0.36);
   --scrollbar-thumb-hover: rgba(196, 181, 253, 0.48);
@@ -36,10 +34,9 @@ body {
   line-height: 1.7;
   background-color: #09090b;
   background-image:
-    linear-gradient(135deg, rgba(var(--accent-cyan), 0.14), transparent 34%),
-    linear-gradient(225deg, rgba(var(--accent-amber), 0.09), transparent 38%),
-    linear-gradient(0deg, rgba(var(--accent-emerald), 0.07), transparent 42%),
-    #09090b;
+    radial-gradient(80rem 80rem at -10% -20%, rgba(var(--accent-cyan), 0.16), transparent 60%),
+    radial-gradient(70rem 70rem at 120% -10%, rgba(var(--accent-violet), 0.13), transparent 62%),
+    radial-gradient(90rem 90rem at 50% 120%, rgba(var(--accent-cyan), 0.11), transparent 68%);
   background-attachment: fixed;
   position: relative;
 }
@@ -66,7 +63,7 @@ body::after {
   inset: 0;
   pointer-events: none;
   z-index: -3;
-  opacity: 0.11;
+  opacity: 0.14;
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
   background-size: 36px 36px;
@@ -132,18 +129,19 @@ body::-webkit-scrollbar-corner {
   h2,
   h3,
   h4 {
-    @apply font-serif text-white;
+    @apply font-serif tracking-tight text-white;
     line-height: 1.08;
-    letter-spacing: 0;
     text-wrap: balance;
   }
 
   h1 {
     @apply text-4xl sm:text-5xl md:text-6xl;
+    letter-spacing: -0.02em;
   }
 
   h2 {
     @apply text-3xl sm:text-4xl;
+    letter-spacing: -0.015em;
   }
 
   h3 {
@@ -168,19 +166,7 @@ body::-webkit-scrollbar-corner {
   }
 
   .surface {
-    @apply rounded-3xl border border-white/10 bg-white/[0.055] shadow-soft backdrop-blur;
-  }
-
-  .surface-elevated {
-    @apply rounded-3xl border border-white/15 bg-white/[0.07] shadow-[0_36px_110px_-58px_rgba(34,211,238,0.45)] backdrop-blur-xl;
-  }
-
-  .section-kicker {
-    @apply text-sm font-semibold uppercase text-white/45;
-  }
-
-  .hairline {
-    @apply h-px w-full bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.24),transparent)];
+    @apply rounded-3xl border border-white/10 bg-white/[0.05] shadow-soft backdrop-blur;
   }
 
   .hero-stage {
@@ -191,14 +177,7 @@ body::-webkit-scrollbar-corner {
   }
 
   .prose-institution {
-    @apply prose prose-invert max-w-none prose-headings:scroll-mt-28 prose-headings:font-serif prose-headings:text-white prose-p:my-5 prose-p:leading-8 prose-p:text-white/80 prose-h2:mt-14 prose-h2:mb-4 prose-h3:mt-10 prose-h3:mb-3 prose-a:text-sky-200 prose-a:no-underline hover:prose-a:text-sky-100 prose-strong:text-white prose-code:rounded prose-code:bg-white/10 prose-code:px-1.5 prose-code:py-0.5 prose-pre:border prose-pre:border-white/10 prose-pre:bg-black/40 prose-pre:shadow-soft prose-blockquote:border-white/20 prose-blockquote:text-white/70;
-  }
-
-  .prose-institution h1,
-  .prose-institution h2,
-  .prose-institution h3,
-  .prose-institution h4 {
-    letter-spacing: 0;
+    @apply prose prose-invert max-w-none prose-headings:scroll-mt-28 prose-headings:font-serif prose-headings:text-white prose-headings:tracking-tight prose-p:my-5 prose-p:leading-8 prose-p:text-white/80 prose-h2:mt-14 prose-h2:mb-4 prose-h3:mt-10 prose-h3:mb-3 prose-a:text-sky-200 prose-a:no-underline hover:prose-a:text-sky-100 prose-strong:text-white prose-code:rounded prose-code:bg-white/10 prose-code:px-1.5 prose-code:py-0.5 prose-pre:border prose-pre:border-white/10 prose-pre:bg-black/40 prose-pre:shadow-soft prose-blockquote:border-white/20 prose-blockquote:text-white/70;
   }
 
   .heading-anchor {

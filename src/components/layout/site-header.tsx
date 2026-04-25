@@ -35,8 +35,8 @@ export function SiteHeader() {
       className={cn(
         "sticky top-0 z-50 border-b transition-[background-color,border-color,box-shadow,backdrop-filter] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
         scrolled
-          ? "border-white/10 bg-zinc-950/88 shadow-[0_22px_70px_-44px_rgba(15,23,42,0.88)] backdrop-blur-xl supports-[backdrop-filter]:bg-zinc-950/78"
-          : "border-white/5 bg-zinc-950/58 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/48",
+          ? "border-white/10 bg-zinc-950/85 shadow-[0_20px_60px_-40px_rgba(15,23,42,0.8)] backdrop-blur-xl supports-[backdrop-filter]:bg-zinc-950/75"
+          : "border-white/5 bg-zinc-950/65 backdrop-blur supports-[backdrop-filter]:bg-zinc-950/55",
       )}
       initial="hidden"
       transition={createTransition(0.5, reducedMotion)}
@@ -45,10 +45,10 @@ export function SiteHeader() {
       <Container className="flex h-20 items-center justify-between gap-4">
         <Link
           aria-label={`${siteConfig.name} home`}
-          className="group inline-flex flex-col rounded-2xl px-2 py-1 leading-tight transition-[background-color,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[1px] hover:bg-white/[0.035]"
+          className="group inline-flex flex-col leading-tight transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[1px]"
           href="/"
         >
-          <span className="text-base font-semibold text-white">
+          <span className="text-base font-semibold tracking-tight text-white">
             {siteConfig.name}
           </span>
           <span className="text-xs text-white/60 transition group-hover:text-white/80">
@@ -66,8 +66,8 @@ export function SiteHeader() {
                   className={cn(
                     "relative inline-flex h-11 items-center rounded-full px-4 text-sm font-medium transition-[color,background-color,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950",
                     isActive
-                      ? "bg-white/[0.075] text-white shadow-[0_14px_36px_-28px_rgba(125,211,252,0.68)]"
-                      : "text-white/76 hover:-translate-y-[1px] hover:bg-white/[0.055] hover:text-white",
+                      ? "bg-white/[0.05] text-white shadow-[0_12px_32px_-28px_rgba(125,211,252,0.6)]"
+                      : "text-white/78 hover:-translate-y-[1px] hover:bg-white/[0.045] hover:text-white",
                   )}
                   href={link.href}
                   key={link.href}

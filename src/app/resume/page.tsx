@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 
 import { MotionCard } from "@/components/motion/motion-card";
 import { MotionSection } from "@/components/motion/motion-section";
-import { PageHero } from "@/components/page-hero";
 import {
   Badge,
+  ButtonLink,
   CardContent,
   CardHeader,
   CardTitle,
@@ -116,41 +116,35 @@ const languages = ["Persian (native)", "Italian (fluent)", "English (fluent)"] a
 export default function ResumePage() {
   return (
     <>
-      <PageHero
-        actions={[
-          { href: "/Samir-Seddiqi-CV.pdf", label: "Download CV", download: true },
-          { href: "/contact", label: "Contact", variant: "outline" },
-        ]}
-        aside={
-          <MotionCard className="h-full">
-            <CardHeader className="space-y-3">
-              <p className="text-xs uppercase text-white/45">Profile</p>
-              <CardTitle className="text-3xl">Builder, writer, student</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-sm text-white/75">
-              <p>
-                My background combines academic study, writing, project-building, and hands-on work
-                across different environments.
-              </p>
-              <Divider />
-              <p>{languages.join(", ")}</p>
-            </CardContent>
-          </MotionCard>
-        }
-        badge="Resume"
-        description="My background combines academic study, writing, project-building, and hands-on work across different environments."
-        eyebrow="Economics, writing, company building"
-        metrics={[
-          { label: "Study", value: "BSc" },
-          { label: "Languages", value: "3" },
-        ]}
-        secondaryDescription="This page reflects the way I have been learning, working, writing, and building so far, with the same seriousness I try to bring to everything I do."
-        title="A working profile built under pressure"
-      />
+      <MotionSection
+        className="pt-16 sm:pt-24"
+        motionClassName="mx-auto flex max-w-4xl flex-col gap-6 text-center"
+      >
+        <Badge variant="accent" className="mx-auto">
+          Resume
+        </Badge>
+        <h1>Resume</h1>
+        <p className="mx-auto max-w-3xl text-base text-white/75 sm:text-lg">
+          My background combines academic study, writing, project-building, and hands-on work
+          across different environments.
+        </p>
+        <p className="mx-auto max-w-3xl text-base text-white/70">
+          This page reflects the way I have been learning, working, writing, and building so far,
+          with the same seriousness I try to bring to everything I do.
+        </p>
+        <div className="flex flex-wrap justify-center gap-3">
+          <ButtonLink href="/Samir-Seddiqi-CV.pdf" size="lg" download>
+            Download CV
+          </ButtonLink>
+          <ButtonLink href="/contact" size="lg" variant="outline">
+            Contact
+          </ButtonLink>
+        </div>
+      </MotionSection>
 
       <MotionSection className="pt-0" containerClassName="max-w-6xl" motionClassName="space-y-10">
         <div className="flex flex-col gap-3">
-          <p className="text-sm font-semibold uppercase text-white/45">
+          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white/45">
             Key competencies
           </p>
           <h2 className="max-w-3xl">Capabilities I try to carry across different environments</h2>
@@ -184,7 +178,7 @@ export default function ResumePage() {
       >
         <MotionCard className="h-full">
           <CardHeader className="space-y-3">
-            <p className="text-sm font-semibold uppercase text-white/45">
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white/45">
               Experience
             </p>
             <CardTitle className="text-2xl">Professional and project work</CardTitle>
@@ -205,7 +199,7 @@ export default function ResumePage() {
 
         <MotionCard className="h-full">
           <CardHeader className="space-y-3">
-            <p className="text-sm font-semibold uppercase text-white/45">
+            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white/45">
               Education and involvement
             </p>
             <CardTitle className="text-2xl">Study, contribution, and languages</CardTitle>

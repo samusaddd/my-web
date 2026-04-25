@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 
 import { MotionCard } from "@/components/motion/motion-card";
 import { MotionSection } from "@/components/motion/motion-section";
-import { PageHero } from "@/components/page-hero";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
   Badge,
@@ -49,14 +48,6 @@ const projects = [
     status: "Active",
   },
   {
-    title: siteConfig.newBook.title,
-    role: "Author",
-    focus: "A new literary work",
-    description:
-      "A work on identity, meaning, and the quiet continuation of existence when certainty dissolves. It expands the writing side of my work into a sharper and more existential direction.",
-    status: "New",
-  },
-  {
     title: siteConfig.book.title,
     role: "Author",
     focus: "A personal literary work",
@@ -95,39 +86,27 @@ export default function ProjectsPage() {
     <>
       <JsonLd data={organizationJsonLd} id="organization-jsonld-projects" />
 
-      <PageHero
-        actions={[
-          { href: "/about", label: "About", variant: "secondary" },
-          { href: "/contact", label: "Contact", variant: "outline" },
-        ]}
-        aside={
-          <MotionCard className="h-full border-cyan-200/18 bg-cyan-300/[0.04]">
-            <CardHeader className="space-y-3">
-              <CardDescription className="text-xs uppercase text-cyan-100/58">
-                Main build
-              </CardDescription>
-              <CardTitle className="text-3xl">{siteConfig.company.shortName}</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4 text-sm text-white/78">
-              <p>
-                A company and platform shaped by progress, support, stability, and direction.
-              </p>
-              <p>
-                The goal is to build with enough structure that a serious idea can become useful in
-                real life.
-              </p>
-            </CardContent>
-          </MotionCard>
-        }
-        badge="Projects"
-        description="These are the projects and ideas I have been building, each shaped by a real direction, not just an abstract concept."
-        eyebrow="Company, books, writing"
-        metrics={[
-          { label: "Company", value: "Active" },
-          { label: "Books", value: "2" },
-        ]}
-        title="Work that has to become real"
-      />
+      <MotionSection
+        className="pt-16 sm:pt-24"
+        motionClassName="mx-auto flex max-w-4xl flex-col gap-6 text-center"
+      >
+        <Badge variant="accent" className="mx-auto">
+          Projects
+        </Badge>
+        <h1>Projects</h1>
+        <p className="mx-auto max-w-3xl text-base text-white/75 sm:text-lg">
+          These are some of the projects and ideas I have been building, each shaped by a real
+          direction, not just an abstract concept.
+        </p>
+        <div className="flex flex-wrap justify-center gap-3">
+          <ButtonLink href="/about" variant="secondary">
+            About
+          </ButtonLink>
+          <ButtonLink href="/contact" variant="outline">
+            Contact
+          </ButtonLink>
+        </div>
+      </MotionSection>
 
       <MotionSection
         className="pt-0"
@@ -139,13 +118,13 @@ export default function ProjectsPage() {
         {projects.map((project) => (
           <MotionCard className="flex h-full flex-col" key={project.title}>
             <CardHeader className="space-y-4">
-              <div className="flex items-center justify-between text-xs uppercase text-white/45">
+              <div className="flex items-center justify-between text-xs uppercase tracking-[0.14em] text-white/45">
                 <span>{project.role}</span>
                 <span className="rounded-full border border-white/10 px-3 py-1 text-[11px] text-white/70">
                   {project.status}
                 </span>
               </div>
-              <CardTitle className="text-3xl">{project.title}</CardTitle>
+              <CardTitle className="text-2xl">{project.title}</CardTitle>
               <CardDescription className="text-white/75">{project.focus}</CardDescription>
             </CardHeader>
             <CardContent className="mt-4 flex-1 text-sm text-white/75">

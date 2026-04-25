@@ -164,7 +164,7 @@ export default function BookPage() {
               </div>
 
               <div className="space-y-5">
-                <p className="text-xs font-semibold uppercase text-cyan-100/62">
+                <p className="text-xs font-semibold uppercase tracking-[0.26em] text-cyan-100/62">
                   Two books by {siteConfig.name}
                 </p>
                 <h1 className="max-w-4xl">
@@ -195,19 +195,19 @@ export default function BookPage() {
                 <div className="relative flex h-full min-h-[292px] flex-col justify-between">
                   <div className="flex items-center justify-between gap-3">
                     <span
-                      className={`${books[1].markerClassName} rounded-full border px-3 py-1 text-[10px] font-semibold uppercase`}
+                      className={`${books[1].markerClassName} rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em]`}
                     >
                       Original
                     </span>
                     <span className="text-xs text-white/45">2024</span>
                   </div>
                   <div className="space-y-4">
-                    <p className="text-xs uppercase text-white/40">Samir Seddiqi</p>
+                    <p className="text-xs uppercase tracking-[0.28em] text-white/40">Samir Seddiqi</p>
                     <h2 className="max-w-[12rem] text-4xl font-semibold leading-none text-white sm:text-5xl">
                       {siteConfig.book.title}
                     </h2>
                   </div>
-                  <p className="max-w-[14rem] text-xs uppercase text-white/45">
+                  <p className="max-w-[14rem] text-xs uppercase tracking-[0.18em] text-white/45">
                     Silence, pain, reflection
                   </p>
                 </div>
@@ -217,26 +217,26 @@ export default function BookPage() {
                 className={`${books[0].coverClassName} relative min-h-[390px] overflow-hidden rounded-3xl border p-6 lg:-mt-8`}
               >
                 <div className={`absolute inset-y-0 left-0 w-3 ${books[0].spineClassName}`} />
-                <div className="absolute right-5 top-5 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase text-white">
+                <div className="absolute right-5 top-5 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white">
                   New
                 </div>
                 <div className="relative flex h-full min-h-[342px] flex-col justify-between">
                   <div>
                     <span
-                      className={`${books[0].markerClassName} rounded-full border px-3 py-1 text-[10px] font-semibold uppercase`}
+                      className={`${books[0].markerClassName} rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em]`}
                     >
                       Featured
                     </span>
                   </div>
                   <div className="space-y-5">
-                    <p className="text-xs uppercase text-cyan-50/60">
+                    <p className="text-xs uppercase tracking-[0.28em] text-cyan-50/60">
                       Samir Seddiqi
                     </p>
                     <h2 className="max-w-[15rem] text-5xl font-semibold leading-none text-white sm:text-6xl">
                       {siteConfig.newBook.title}
                     </h2>
                   </div>
-                  <p className="max-w-[15rem] text-xs uppercase text-cyan-50/60">
+                  <p className="max-w-[15rem] text-xs uppercase tracking-[0.18em] text-cyan-50/60">
                     Identity, meaning, existence
                   </p>
                 </div>
@@ -253,7 +253,7 @@ export default function BookPage() {
         id="books"
       >
         <div className="flex flex-col gap-3">
-          <p className="text-sm font-semibold uppercase text-white/45">
+          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white/45">
             The books
           </p>
           <h2 className="max-w-3xl">The new book leads, the original remains part of the story</h2>
@@ -288,7 +288,7 @@ export default function BookPage() {
                   <Badge>{book.status}</Badge>
                 </div>
                 <div className="space-y-3">
-                  <CardDescription className="text-xs uppercase text-white/48">
+                  <CardDescription className="text-xs uppercase tracking-[0.18em] text-white/48">
                     {book.eyebrow}
                   </CardDescription>
                   <CardTitle className="text-4xl sm:text-5xl">{book.title}</CardTitle>
@@ -315,7 +315,7 @@ export default function BookPage() {
 
       <MotionSection className="pt-0" motionClassName="space-y-10">
         <div className="flex flex-col gap-3">
-          <p className="text-sm font-semibold uppercase text-white/45">
+          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white/45">
             What they hold
           </p>
           <h2 className="max-w-3xl">Two works, one line of confrontation</h2>
@@ -376,7 +376,7 @@ export default function BookPage() {
             <li>Any note you want to share with it</li>
           </ul>
           <Divider />
-          <p className="text-xs uppercase text-white/45">Also available</p>
+          <p className="text-xs uppercase tracking-[0.16em] text-white/45">Also available</p>
           <p>
             <MotionLink className="text-white hover:text-sky-100" href={siteConfig.linkedin}>
               LinkedIn
