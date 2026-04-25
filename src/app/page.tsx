@@ -53,9 +53,9 @@ const heroCards = [
       "Building a project shaped by lived experience and a belief that progress deserves more clarity, depth, and direction.",
   },
   {
-    label: "We Were Never Here",
+    label: "Can You Hear Me?",
     description:
-      "Writing on identity, meaning, and the quiet continuation of existence when certainty dissolves.",
+      "Writing from reflection, emotion, and conviction, with language as part of the work rather than something separate from it.",
   },
 ] as const;
 
@@ -287,12 +287,12 @@ export default function HomePage() {
           <Badge variant="accent">Book</Badge>
           <h2 className="max-w-xl">{siteConfig.book.title}</h2>
           <p className="text-base text-white/75">
-            {siteConfig.book.title} is a work on identity, meaning, and the quiet continuation of
-            existence when certainty dissolves.
+            {siteConfig.book.title} is a deeply personal work shaped by emotion, silence, pain, and
+            reflection. It comes from lived experience and speaks to the human need to be heard,
+            understood, and remembered.
           </p>
           <p className="text-sm text-white/65">
-            This is not a book written to provide answers. It is a structured confrontation with the
-            absence of them.
+            Writing, for me, is one of the few places where truth can remain unfiltered.
           </p>
           <div className="flex flex-wrap gap-3">
             <ButtonLink href={`mailto:${siteConfig.email}`} variant="secondary">
@@ -304,10 +304,11 @@ export default function HomePage() {
           </div>
         </div>
         <div className="space-y-4 rounded-3xl border border-white/10 bg-black/30 p-6">
-          <p className="text-sm font-semibold text-white">Availability</p>
+          <p className="text-sm font-semibold text-white">Recognition</p>
           <p className="text-sm text-white/85">{siteConfig.book.award}</p>
           <p className="text-sm text-white/75">
-            Send a short note if you would like access. I will reply personally.
+            I keep the recognition here quietly. What matters more to me is that the writing stays
+            honest and true to where it came from.
           </p>
           <Divider />
           <p className="text-xs uppercase tracking-[0.16em] text-white/45">Primary channel</p>
