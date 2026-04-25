@@ -157,52 +157,90 @@ export default function HomePage() {
       >
         <div className="hero-stage relative isolate min-h-[calc(100vh-5rem)] overflow-hidden">
           <HeroBackground />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(5,7,13,0.12),rgba(5,7,13,0.7)_72%,rgba(5,7,13,0.96))]" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,7,13,0.96),rgba(5,7,13,0.74)_46%,rgba(5,7,13,0.18)_100%),linear-gradient(180deg,rgba(5,7,13,0.1),rgba(5,7,13,0.88)_86%,rgba(5,7,13,0.98))]" />
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-6 top-10 h-px bg-[linear-gradient(90deg,rgba(255,255,255,0.42),transparent)]"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute bottom-20 right-[-9rem] hidden h-[34rem] w-[34rem] rounded-full border border-cyan-200/12 bg-cyan-300/[0.035] shadow-[0_0_120px_-30px_rgba(34,211,238,0.46)] lg:block"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute bottom-40 right-16 hidden h-40 w-40 rounded-full border border-amber-200/15 bg-amber-200/[0.035] lg:block"
+          />
 
-          <div className="relative z-10 mx-auto flex min-h-[calc(100vh-5rem)] max-w-7xl flex-col items-center justify-start px-6 pb-14 pt-10 text-center sm:pt-12 lg:px-8 lg:pt-14">
-            <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/25 bg-cyan-400/10 px-4 py-2 backdrop-blur-sm">
-              <span className="h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(103,232,249,0.95)]" />
-              <span className="text-[11px] font-semibold uppercase text-cyan-100/80">
-                Trento, Italy
-              </span>
+          <div className="relative z-10 mx-auto flex min-h-[calc(100vh-5rem)] max-w-7xl flex-col justify-between px-6 pb-10 pt-10 sm:pt-14 lg:px-8 lg:pt-16">
+            <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_25rem] lg:items-start">
+              <div className="max-w-5xl">
+                <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/25 bg-cyan-400/10 px-4 py-2 backdrop-blur-sm">
+                  <span className="h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(103,232,249,0.95)]" />
+                  <span className="text-[11px] font-semibold uppercase text-cyan-100/80">
+                    Trento, Italy
+                  </span>
+                </div>
+
+                <h1 className="mt-8 max-w-5xl text-6xl leading-[0.92] sm:text-7xl lg:text-8xl">
+                  <span className="block">Samir Seddiqi</span>
+                  <span className="mt-5 block max-w-4xl bg-[linear-gradient(100deg,rgba(255,255,255,0.98),rgba(125,211,252,0.95),rgba(251,191,36,0.92))] bg-clip-text text-4xl leading-tight text-transparent sm:text-5xl lg:text-6xl">
+                    founder, writer, builder.
+                  </span>
+                </h1>
+
+                <p className="mt-7 max-w-3xl text-lg text-white/76 sm:text-xl">
+                  A personal website for the work behind VitaAvanza, two books, and the thinking
+                  that turns pressure into direction.
+                </p>
+
+                <div className="mt-9 flex flex-col gap-4 sm:flex-row">
+                  <ButtonLink href="/projects" size="lg">
+                    Enter the work
+                  </ButtonLink>
+                  <ButtonLink href="/book" size="lg" variant="secondary">
+                    Read the books
+                  </ButtonLink>
+                  <ButtonLink href="/contact" size="lg" variant="outline">
+                    Contact
+                  </ButtonLink>
+                </div>
+              </div>
+
+              <div className="surface-elevated hidden p-6 lg:block">
+                <p className="text-xs uppercase text-white/45">Current signal</p>
+                <div className="mt-6 space-y-5">
+                  <div>
+                    <p className="text-3xl font-semibold text-white">{siteConfig.company.shortName}</p>
+                    <p className="mt-2 text-sm text-white/65">Founder and company builder</p>
+                  </div>
+                  <Divider />
+                  <div>
+                    <p className="text-3xl font-semibold text-white">Two books</p>
+                    <p className="mt-2 text-sm text-white/65">
+                      {siteConfig.book.title} and {siteConfig.newBook.title}
+                    </p>
+                  </div>
+                  <Divider />
+                  <div>
+                    <p className="text-3xl font-semibold text-white">Economics</p>
+                    <p className="mt-2 text-sm text-white/65">University of Trento</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <h1 className="mt-6 max-w-5xl">
-              <span className="block">I&apos;m Samir Seddiqi.</span>
-              <span className="mt-3 block bg-[linear-gradient(100deg,rgba(255,255,255,0.98),rgba(196,181,253,0.94),rgba(103,232,249,0.92))] bg-clip-text text-transparent">
-                I build things with meaning, pressure, and purpose.
-              </span>
-            </h1>
-
-            <p className="mt-5 max-w-3xl text-lg text-white/76 sm:text-xl">
-              This is my personal space, where writing, ambition, lived experience, and the work
-              behind VitaAvanza come together.
-            </p>
-
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <ButtonLink href="/about" size="lg" variant="secondary">
-                About Me
-              </ButtonLink>
-              <ButtonLink href="/projects" size="lg">
-                Projects
-              </ButtonLink>
-              <ButtonLink href="/contact" size="lg" variant="outline">
-                Contact
-              </ButtonLink>
-            </div>
-
-            <p className="mt-4 text-sm font-medium text-white/46">{siteConfig.tagline}</p>
-
-            <div className="mt-8 grid w-full max-w-5xl gap-4 sm:grid-cols-3">
+            <div className="mt-12 grid gap-4 md:grid-cols-3">
               {heroCards.map((card) => (
                 <div
-                  className="rounded-3xl border border-white/8 bg-white/[0.04] px-5 py-4 text-left backdrop-blur"
+                  className="group relative overflow-hidden rounded-3xl border border-white/12 bg-white/[0.065] p-5 text-left shadow-[0_24px_80px_-50px_rgba(15,23,42,0.82)] backdrop-blur-xl transition duration-500 hover:-translate-y-1 hover:border-white/24 hover:bg-white/[0.095]"
                   key={card.label}
                 >
-                  <p className="text-[10px] font-semibold uppercase text-cyan-100/72">
-                    {card.label}
-                  </p>
-                  <p className="mt-2 text-sm text-white/62">{card.description}</p>
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.34),transparent)]"
+                  />
+                  <p className="text-xs font-semibold uppercase text-cyan-100/72">{card.label}</p>
+                  <p className="mt-3 text-sm text-white/68">{card.description}</p>
                 </div>
               ))}
             </div>
