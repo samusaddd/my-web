@@ -30,7 +30,7 @@ export const siteConfig = {
     "VitaAvanza",
     "VitaAvanza S.r.l.",
     "VitaAvanza founder Samir Seddiqi",
-    "Can You Hear Me",
+    "We Were Never Here",
     "writing",
     "entrepreneurship",
     "strategy",
@@ -55,8 +55,8 @@ export const siteConfig = {
     pilot: 100,
   },
   book: {
-    title: "Can You Hear Me?",
-    award: "Writer of the Year Award (2022)",
+    title: "We Were Never Here",
+    award: "Available by request",
     distribution: "Free by request",
   },
 } as const;
