@@ -331,6 +331,7 @@
 }
 
 .flagshipCopy {
+  min-width: 0;
   padding-bottom: 1rem;
 }
 
@@ -351,7 +352,9 @@
 }
 
 .flagshipCopy h3 {
-  font-size: clamp(3.3rem, 5vw, 5.5rem);
+  max-width: 100%;
+  font-size: clamp(3rem, 3.8vw, 4.65rem);
+  letter-spacing: -0.055em;
 }
 
 .flagshipCopy > p:not(.projectMeta),
