@@ -47,7 +47,7 @@ function isExternalHref(href: string) {
 }
 
 const baseClassName =
-  "relative inline-flex items-center gap-1 text-white/85 transition-colors duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950";
+  "relative inline-flex items-center gap-1 text-ink/80 transition-colors duration-300 ease-editorial hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35 focus-visible:ring-offset-2 focus-visible:ring-offset-paper";
 
 export function MotionLink({ href, className, children, active, underlineClassName, ...props }: MotionLinkProps) {
   const reducedMotion = useReducedMotion() ?? false;
@@ -60,7 +60,7 @@ export function MotionLink({ href, className, children, active, underlineClassNa
     <motion.span
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute -bottom-1 left-0 h-px w-full origin-left bg-current/70",
+        "pointer-events-none absolute -bottom-1 left-0 h-px w-full origin-left bg-current/60",
         underlineClassName,
       )}
       variants={underlineVariants}

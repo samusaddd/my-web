@@ -60,9 +60,9 @@ const books = [
     href: newBookRequestHref,
     action: "Request Access",
     coverClassName:
-      "border-cyan-200/30 bg-[linear-gradient(150deg,rgba(8,47,73,0.95),rgba(15,23,42,0.96)_48%,rgba(12,74,110,0.72))] shadow-[0_36px_100px_-44px_rgba(34,211,238,0.66)]",
-    spineClassName: "bg-cyan-200/20",
-    markerClassName: "border-cyan-200/30 bg-cyan-300/10 text-cyan-50",
+      "border-lavender/20 bg-[linear-gradient(150deg,rgba(63,29,72,0.98),rgba(28,24,32,0.98)_52%,rgba(82,37,95,0.9))] shadow-[0_34px_90px_-48px_rgba(82,37,95,0.56)]",
+    spineClassName: "bg-lavender/20",
+    markerClassName: "border-lavender/25 bg-lavender/10 text-white",
   },
   {
     title: siteConfig.book.title,
@@ -77,9 +77,9 @@ const books = [
     href: originalBookRequestHref,
     action: "Request a copy",
     coverClassName:
-      "border-amber-200/20 bg-[linear-gradient(150deg,rgba(69,26,3,0.82),rgba(24,24,27,0.96)_52%,rgba(63,63,70,0.78))] shadow-[0_30px_90px_-50px_rgba(251,191,36,0.42)]",
-    spineClassName: "bg-amber-200/15",
-    markerClassName: "border-amber-200/20 bg-amber-200/10 text-amber-50",
+      "border-coral/20 bg-[linear-gradient(150deg,rgba(76,45,36,0.94),rgba(28,24,32,0.98)_52%,rgba(73,61,67,0.9))] shadow-[0_30px_86px_-50px_rgba(99,66,54,0.42)]",
+    spineClassName: "bg-coral/20",
+    markerClassName: "border-coral/25 bg-coral/10 text-white",
   },
 ] as const;
 
@@ -142,18 +142,18 @@ export default function BookPage() {
 
       <MotionSection
         as="header"
-        className="overflow-hidden border-b border-white/5 pt-14 sm:pt-20"
+        className="overflow-hidden border-b border-ink/[0.07] pt-14 sm:pt-20"
         containerClassName="max-w-7xl"
         motionClassName="relative"
       >
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-zinc-950/72 p-6 shadow-[0_36px_120px_-70px_rgba(14,165,233,0.72)] sm:p-8 lg:p-10">
+        <div className="relative overflow-hidden rounded-editorial border border-ink/10 bg-ivory/72 p-6 shadow-lift sm:p-8 lg:p-10">
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(34,211,238,0.14),transparent_34%,rgba(251,191,36,0.08)_66%,transparent)]"
+            className="pointer-events-none absolute inset-0 bg-accent/[0.025]"
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.42),transparent)]"
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-ink/10"
           />
 
           <div className="relative grid gap-10 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-center">
@@ -164,7 +164,7 @@ export default function BookPage() {
               </div>
 
               <div className="space-y-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.26em] text-cyan-100/62">
+                <p className="text-xs font-semibold uppercase tracking-[0.26em] text-accent/70">
                   Two books by {siteConfig.name}
                 </p>
                 <h1 className="max-w-4xl">
@@ -189,7 +189,7 @@ export default function BookPage() {
 
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-[0.92fr_1.08fr] lg:items-end">
               <div
-                className={`${books[1].coverClassName} relative min-h-[340px] overflow-hidden rounded-3xl border p-6`}
+                className={`${books[1].coverClassName} editorial-dark relative min-h-[340px] overflow-hidden rounded-editorial border p-6`}
               >
                 <div className={`absolute inset-y-0 left-0 w-3 ${books[1].spineClassName}`} />
                 <div className="relative flex h-full min-h-[292px] flex-col justify-between">
@@ -214,7 +214,7 @@ export default function BookPage() {
               </div>
 
               <div
-                className={`${books[0].coverClassName} relative min-h-[390px] overflow-hidden rounded-3xl border p-6 lg:-mt-8`}
+                className={`${books[0].coverClassName} editorial-dark relative min-h-[390px] overflow-hidden rounded-editorial border p-6 lg:-mt-8`}
               >
                 <div className={`absolute inset-y-0 left-0 w-3 ${books[0].spineClassName}`} />
                 <div className="absolute right-5 top-5 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white">
@@ -229,14 +229,14 @@ export default function BookPage() {
                     </span>
                   </div>
                   <div className="space-y-5">
-                    <p className="text-xs uppercase tracking-[0.28em] text-cyan-50/60">
+                    <p className="text-xs uppercase tracking-[0.28em] text-lavender/60">
                       Samir Seddiqi
                     </p>
                     <h2 className="max-w-[15rem] text-5xl font-semibold leading-none text-white sm:text-6xl">
                       {siteConfig.newBook.title}
                     </h2>
                   </div>
-                  <p className="max-w-[15rem] text-xs uppercase tracking-[0.18em] text-cyan-50/60">
+                  <p className="max-w-[15rem] text-xs uppercase tracking-[0.18em] text-lavender/60">
                     Identity, meaning, existence
                   </p>
                 </div>
@@ -271,8 +271,8 @@ export default function BookPage() {
             <MotionCard
               className={`relative h-full overflow-hidden ${
                 book.title === siteConfig.newBook.title
-                  ? "border-cyan-200/20 bg-cyan-300/[0.045]"
-                  : "border-amber-200/15"
+                  ? "border-accent/18 bg-accent/[0.035]"
+                  : "border-coral/15"
               }`}
               key={book.title}
             >
@@ -354,7 +354,7 @@ export default function BookPage() {
           </p>
           <p className="text-sm text-white/70">
             Primary channel:{" "}
-            <MotionLink className="text-white hover:text-sky-100" href={`mailto:${siteConfig.email}`}>
+            <MotionLink className="text-ink hover:text-accent" href={`mailto:${siteConfig.email}`}>
               {siteConfig.email}
             </MotionLink>
           </p>
@@ -378,7 +378,7 @@ export default function BookPage() {
           <Divider />
           <p className="text-xs uppercase tracking-[0.16em] text-white/45">Also available</p>
           <p>
-            <MotionLink className="text-white hover:text-sky-100" href={siteConfig.linkedin}>
+            <MotionLink className="text-ink hover:text-accent" href={siteConfig.linkedin}>
               LinkedIn
             </MotionLink>
           </p>

@@ -21,7 +21,10 @@ export function Section({
   const Component = as ?? "section";
 
   return (
-    <Component className={cn("relative py-16 sm:py-20", className)} {...props}>
+    <Component
+      className={cn("relative py-[clamp(5rem,8vw,7rem)]", className)}
+      {...props}
+    >
       {contained ? <Container className={containerClassName}>{children}</Container> : children}
     </Component>
   );

@@ -78,7 +78,7 @@ export default function ContactPage() {
             <div className="space-y-2">
               <p className="text-xs uppercase tracking-[0.16em] text-white/45">Email</p>
               <MotionLink
-                className="text-base font-semibold text-white hover:text-sky-100"
+                className="text-base font-semibold text-ink hover:text-accent"
                 href={`mailto:${siteConfig.email}`}
               >
                 {siteConfig.email}
@@ -90,7 +90,7 @@ export default function ContactPage() {
             <div className="space-y-2">
               <p className="text-xs uppercase tracking-[0.16em] text-white/45">LinkedIn</p>
               <MotionLink
-                className="text-base font-semibold text-white hover:text-sky-100"
+                className="text-base font-semibold text-ink hover:text-accent"
                 href={siteConfig.linkedin}
               >
                 Connect on LinkedIn

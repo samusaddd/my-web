@@ -4,7 +4,6 @@ import { Inter, Playfair_Display } from "next/font/google";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { MotionLayout } from "@/components/motion/motion-layout";
-import { PersonalCursor } from "@/components/personal-cursor";
 import { cn } from "@/lib/cn";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
@@ -90,15 +89,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/rss+xml"
         />
       </head>
-      <body className={cn(inter.variable, serif.variable, "min-h-screen bg-zinc-950 text-white")}>
+      <body className={cn(inter.variable, serif.variable, "min-h-screen bg-paper text-ink")}>
         <a
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-zinc-950"
           href="#main-content"
         >
           Skip to content
         </a>
-
-        <PersonalCursor />
 
         <div className="relative flex min-h-screen flex-col">
           <SiteHeader />

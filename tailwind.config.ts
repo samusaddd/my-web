@@ -10,19 +10,29 @@ const config = {
         serif: ["var(--font-serif)", "ui-serif", "Georgia", "serif"],
       },
       colors: {
-        surface: "rgba(255, 255, 255, 0.045)",
-        stroke: "rgba(255, 255, 255, 0.12)",
+        paper: "#f4efe6",
+        ivory: "#fbf8f2",
+        ink: "#1c1820",
+        muted: "#6f6872",
+        accent: "#52255f",
+        lavender: "#d9cce0",
+        coral: "#b9684e",
+        surface: "#faf6ef",
+        stroke: "rgba(48, 40, 50, 0.14)",
       },
       boxShadow: {
-        soft: "0 30px 90px -45px rgba(15, 23, 42, 0.8)",
-        glow: "0 20px 60px -30px rgba(125, 211, 252, 0.35)",
+        soft: "0 24px 70px -48px rgba(42, 31, 43, 0.28)",
+        lift: "0 30px 80px -52px rgba(42, 31, 43, 0.34)",
       },
-      backgroundImage: {
-        "grid-fade":
-          "linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px)",
+      borderRadius: {
+        editorial: "1.35rem",
       },
-      backgroundSize: {
-        grid: "36px 36px",
+      maxWidth: {
+        editorial: "80rem",
+        reading: "46rem",
+      },
+      transitionTimingFunction: {
+        editorial: "cubic-bezier(0.16, 1, 0.3, 1)",
       },
     },
   },

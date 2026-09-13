@@ -14,19 +14,19 @@ function MenuIcon({ open }: { open: boolean }) {
     <span className="relative block h-5 w-6" aria-hidden="true">
       <span
         className={cn(
-          "absolute left-0 top-1/2 block h-[1.5px] w-6 -translate-y-2.5 bg-white transition-transform duration-200",
+          "absolute left-0 top-1/2 block h-px w-6 -translate-y-2.5 bg-ink transition-transform duration-300 ease-editorial",
           open && "translate-y-0 rotate-45",
         )}
       />
       <span
         className={cn(
-          "absolute left-0 top-1/2 block h-[1.5px] w-6 -translate-y-1/2 bg-white/80 transition-opacity duration-200",
+          "absolute left-0 top-1/2 block h-px w-6 -translate-y-1/2 bg-ink/70 transition-opacity duration-300",
           open && "opacity-0",
         )}
       />
       <span
         className={cn(
-          "absolute left-0 top-1/2 block h-[1.5px] w-6 translate-y-2.5 bg-white transition-transform duration-200",
+          "absolute left-0 top-1/2 block h-px w-6 translate-y-2.5 bg-ink transition-transform duration-300 ease-editorial",
           open && "translate-y-0 -rotate-45",
         )}
       />
@@ -66,7 +66,7 @@ export function MobileNav() {
         aria-controls="mobile-menu"
         aria-expanded={open}
         aria-label={open ? "Close navigation menu" : "Open navigation menu"}
-        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-white shadow-[0_15px_40px_-25px_rgba(15,23,42,0.8)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[1px] hover:bg-white/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950"
+        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-ink/12 bg-ivory/70 text-ink shadow-soft transition-all duration-500 ease-editorial hover:-translate-y-px hover:border-accent/25 hover:bg-ivory focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/30 focus-visible:ring-offset-2 focus-visible:ring-offset-paper"
         onClick={() => setOpen((value) => !value)}
         type="button"
       >
@@ -78,7 +78,7 @@ export function MobileNav() {
           <motion.div
             animate={{ opacity: 1 }}
             aria-hidden={!open}
-            className="fixed inset-0 z-40 bg-zinc-950/80 backdrop-blur"
+            className="fixed inset-0 z-40 bg-ink/[0.24] backdrop-blur-sm"
             exit={{ opacity: 0 }}
             initial={{ opacity: 0 }}
             onClick={() => setOpen(false)}
@@ -87,7 +87,7 @@ export function MobileNav() {
             <motion.nav
               animate="visible"
               aria-label="Mobile"
-              className="mx-4 mt-20 rounded-3xl border border-white/10 bg-zinc-950/95 p-6 shadow-[0_30px_80px_-40px_rgba(15,23,42,0.95)]"
+              className="mx-4 mt-20 rounded-editorial border border-ink/10 bg-ivory p-6 shadow-[0_34px_90px_-44px_rgba(42,31,43,0.42)]"
               exit="hidden"
               id="mobile-menu"
               initial="hidden"
@@ -95,9 +95,9 @@ export function MobileNav() {
               transition={createTransition(0.5, reducedMotion)}
               variants={menuVariants}
             >
-              <div className="mb-5 border-b border-white/8 pb-4">
-                <p className="text-sm font-semibold text-white">{siteConfig.name}</p>
-                <p className="mt-1 text-xs text-white/55">{siteConfig.identityLine}</p>
+              <div className="mb-5 border-b border-ink/10 pb-4">
+                <p className="font-serif text-lg font-semibold text-ink">{siteConfig.name}</p>
+                <p className="mt-1 text-[10px] font-medium uppercase tracking-[0.12em] text-ink/48">{siteConfig.identityLine}</p>
               </div>
 
               <div className="flex flex-col gap-2">
@@ -107,10 +107,10 @@ export function MobileNav() {
                     <Link
                       aria-current={isActive ? "page" : undefined}
                       className={cn(
-                        "rounded-2xl px-4 py-3 text-base font-medium transition-[background-color,color,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950",
+                        "rounded-xl px-4 py-3 text-base font-semibold transition-[background-color,color,transform] duration-500 ease-editorial focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/30 focus-visible:ring-offset-2 focus-visible:ring-offset-ivory",
                         isActive
-                          ? "bg-white/[0.09] text-white"
-                          : "text-white/80 hover:translate-x-0.5 hover:bg-white/[0.05] hover:text-white",
+                          ? "bg-accent/[0.07] text-accent"
+                          : "text-ink/70 hover:translate-x-0.5 hover:bg-accent/[0.04] hover:text-ink",
                       )}
                       href={link.href}
                       key={link.href}
@@ -121,19 +121,19 @@ export function MobileNav() {
                 })}
               </div>
 
-              <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-sm text-white/75">
-                <p className="font-medium text-white">Direct contact</p>
+              <div className="mt-6 rounded-xl border border-ink/10 bg-paper/55 p-4 text-sm text-ink/66">
+                <p className="font-semibold text-ink">Direct contact</p>
                 <p className="mt-1">
-                  <a className="text-white/90 underline decoration-white/30 underline-offset-4" href={`mailto:${siteConfig.email}`}>
+                  <a className="text-ink/80 underline decoration-accent/25 underline-offset-4" href={`mailto:${siteConfig.email}`}>
                     {siteConfig.email}
                   </a>
                 </p>
                 <p className="mt-1">
-                  <a className="text-white/90 underline decoration-white/30 underline-offset-4" href={siteConfig.linkedin} rel="noreferrer" target="_blank">
+                  <a className="text-ink/80 underline decoration-accent/25 underline-offset-4" href={siteConfig.linkedin} rel="noreferrer" target="_blank">
                     LinkedIn
                   </a>
                 </p>
-                <p className="mt-3 text-xs text-white/50">{siteConfig.footerLine}</p>
+                <p className="mt-3 text-xs text-ink/42">{siteConfig.footerLine}</p>
               </div>
             </motion.nav>
           </motion.div>

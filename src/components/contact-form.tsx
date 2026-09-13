@@ -7,7 +7,7 @@ import { Button } from "@/components/ui";
 import { siteConfig } from "@/lib/site";
 
 const inputClassName =
-  "w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/35 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950";
+  "w-full rounded-xl border border-ink/12 bg-ivory/80 px-4 py-3.5 text-sm text-ink placeholder:text-ink/32 transition-[border-color,background-color,box-shadow] duration-300 focus:border-accent/30 focus:bg-ivory focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/20 focus-visible:ring-offset-2 focus-visible:ring-offset-paper";
 
 export function ContactForm() {
   const [form, setForm] = useState({
@@ -36,7 +36,7 @@ export function ContactForm() {
   return (
     <form className="space-y-4" onSubmit={handleSubmit}>
       <div className="space-y-2">
-        <label className="text-xs uppercase tracking-[0.16em] text-white/45" htmlFor="contact-name">
+        <label className="text-[10px] font-bold uppercase tracking-[0.18em] text-ink/48" htmlFor="contact-name">
           Name
         </label>
         <input
@@ -52,7 +52,7 @@ export function ContactForm() {
       </div>
 
       <div className="space-y-2">
-        <label className="text-xs uppercase tracking-[0.16em] text-white/45" htmlFor="contact-email">
+        <label className="text-[10px] font-bold uppercase tracking-[0.18em] text-ink/48" htmlFor="contact-email">
           Email
         </label>
         <input
@@ -68,7 +68,7 @@ export function ContactForm() {
       </div>
 
       <div className="space-y-2">
-        <label className="text-xs uppercase tracking-[0.16em] text-white/45" htmlFor="contact-message">
+        <label className="text-[10px] font-bold uppercase tracking-[0.18em] text-ink/48" htmlFor="contact-message">
           Message
         </label>
         <textarea
@@ -86,7 +86,7 @@ export function ContactForm() {
         <Button size="lg" type="submit">
           Send Message
         </Button>
-        <p className="text-xs text-white/45">
+        <p className="text-xs text-ink/45">
           Your message opens in your default email app before it is sent.
         </p>
       </div>

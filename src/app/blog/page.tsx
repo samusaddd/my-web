@@ -72,7 +72,7 @@ export default function BlogPage() {
                 <span>{formatDate(post.date)}</span>
               </div>
               <CardTitle className="text-xl">
-                <MotionLink className="text-white hover:text-sky-100" href={`/blog/${post.slug}`}>
+                <MotionLink className="text-ink hover:text-accent" href={`/blog/${post.slug}`}>
                   {post.title}
                 </MotionLink>
               </CardTitle>

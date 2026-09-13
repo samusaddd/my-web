@@ -47,14 +47,14 @@ export function HomeIntro() {
       {visible ? (
         <motion.div
           animate={leaving ? { opacity: 0, backdropFilter: "blur(0px)" } : { opacity: 1, backdropFilter: "blur(10px)" }}
-          className="fixed inset-0 z-[140] flex items-center justify-center bg-[#05070d]"
+          className="fixed inset-0 z-[140] flex items-center justify-center bg-paper"
           exit={{ opacity: 0 }}
           initial={{ opacity: 1 }}
           transition={{ duration: reducedMotion ? 0.3 : 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
           <div
             aria-hidden="true"
-            className="absolute inset-0 bg-[radial-gradient(80rem_80rem_at_20%_-10%,rgba(34,211,238,0.12),transparent_55%),radial-gradient(72rem_72rem_at_85%_0%,rgba(168,85,247,0.11),transparent_52%),linear-gradient(180deg,rgba(5,7,13,0.78),rgba(5,7,13,0.94))]"
+            className="absolute inset-0 bg-[linear-gradient(180deg,rgba(251,248,242,0.92),rgba(244,239,230,0.98))]"
           />
 
           <motion.div
@@ -65,7 +65,7 @@ export function HomeIntro() {
           >
             <motion.p
               animate={{ opacity: 1, y: 0 }}
-              className="text-3xl font-serif tracking-tight text-white sm:text-5xl"
+              className="text-4xl font-serif tracking-[-0.035em] text-ink sm:text-6xl"
               initial={{ opacity: 0, y: 12 }}
               transition={{
                 duration: reducedMotion ? 0.25 : 0.6,
@@ -77,7 +77,7 @@ export function HomeIntro() {
 
             <motion.p
               animate={{ opacity: 1, y: 0 }}
-              className="mt-4 text-sm uppercase tracking-[0.24em] text-white/56 sm:text-base"
+              className="mt-5 text-[10px] font-semibold uppercase tracking-[0.28em] text-accent/70 sm:text-xs"
               initial={{ opacity: 0, y: 12 }}
               transition={{
                 duration: reducedMotion ? 0.25 : 0.6,

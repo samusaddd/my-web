@@ -1,0 +1,831 @@
+.hero {
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  padding-block: clamp(2.5rem, 5vw, 4.75rem);
+  background: var(--paper);
+}
+
+.heroContainer,
+.sectionContainer {
+  max-width: 94rem;
+}
+
+.heroGrid {
+  position: relative;
+  display: grid;
+  min-height: min(47rem, calc(100svh - 9.75rem));
+  grid-template-columns: minmax(0, 1.08fr) minmax(28rem, 0.92fr);
+  align-items: center;
+  gap: clamp(2rem, 4vw, 5.75rem);
+}
+
+.heroCopy {
+  position: relative;
+  z-index: 2;
+  padding-block: 2rem;
+}
+
+.eyebrow,
+.sectionLabel,
+.projectMeta,
+.articleMeta,
+.timelineNumber {
+  color: rgb(var(--ink-rgb) / 0.56);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.19em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.eyebrow > span,
+.sectionLabel > span {
+  display: inline-block;
+  width: 0.42rem;
+  height: 0.42rem;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.heroTitle {
+  margin-top: clamp(1.45rem, 3vh, 2.4rem);
+  font-size: clamp(5.6rem, 9.5vw, 9.7rem);
+  line-height: 0.74;
+  letter-spacing: -0.072em;
+  text-transform: uppercase;
+}
+
+.heroTitle span {
+  display: block;
+}
+
+.heroTitle span:last-child {
+  margin-top: 0.22em;
+  color: var(--accent);
+}
+
+.heroRole {
+  margin-top: clamp(2.1rem, 4vh, 3rem);
+  color: var(--ink);
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(1.75rem, 2.55vw, 2.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+}
+
+.heroDescription {
+  max-width: 34rem;
+  margin-top: 1.1rem;
+  color: rgb(var(--ink-rgb) / 0.66);
+  font-size: clamp(1rem, 1.2vw, 1.16rem);
+  line-height: 1.7;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 2rem;
+}
+
+.heroIndex {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: rgb(var(--ink-rgb) / 0.34);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+}
+
+.portraitFigure {
+  position: relative;
+  min-width: 0;
+  height: min(45rem, calc(100svh - 11rem));
+  min-height: 35rem;
+  margin: 0;
+}
+
+.portraitFrame {
+  position: absolute;
+  inset: 0 -3.5rem 0 -5rem;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 94%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 94%, transparent 100%);
+}
+
+.portraitImage {
+  object-fit: cover;
+  object-position: 68% center;
+  filter: grayscale(0.88) saturate(0.44) sepia(0.08) contrast(1.04) brightness(1.02);
+  transform: scale(1.015);
+}
+
+.portraitGrade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, var(--paper) 0%, rgb(244 239 230 / 0.48) 11%, transparent 31%),
+    linear-gradient(180deg, rgb(244 239 230 / 0.04) 58%, rgb(244 239 230 / 0.48) 100%);
+  box-shadow: inset 0 0 7rem rgb(41 30 32 / 0.08);
+}
+
+.portraitGrain,
+.flagshipImage::after,
+.articleImage::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  opacity: 0.075;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.75'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+}
+
+.portraitNote {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  color: rgb(var(--accent-rgb) / 0.84);
+  font-family: "Segoe Print", "Bradley Hand", cursive;
+  font-size: clamp(1rem, 1.35vw, 1.35rem);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.03em;
+}
+
+.portraitNote {
+  top: 8%;
+  right: 2.5rem;
+  transform: rotate(-5deg);
+}
+
+.portraitNote span {
+  margin-left: 1.2rem;
+}
+
+.nowSection,
+.workSection,
+.writingSection,
+.timelineSection {
+  padding-block: clamp(6rem, 10vw, 10rem);
+}
+
+.nowSection,
+.timelineSection {
+  background: var(--ivory);
+}
+
+.nowGrid {
+  display: grid;
+  grid-template-columns: minmax(18rem, 0.8fr) minmax(28rem, 1.2fr);
+  gap: clamp(4rem, 9vw, 10rem);
+}
+
+.sectionLead {
+  position: sticky;
+  top: 8.5rem;
+  align-self: start;
+}
+
+.sectionLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: rgb(var(--accent-rgb) / 0.8);
+}
+
+.sectionLead h2,
+.sectionHeadingRow h2,
+.timelineHeading h2 {
+  margin-top: 1.3rem;
+}
+
+.sectionLead h2 {
+  max-width: 38rem;
+  font-size: clamp(3.3rem, 5.4vw, 5.9rem);
+}
+
+.focusList {
+  border-top: 1px solid var(--line-strong);
+}
+
+.focusList li {
+  display: grid;
+  grid-template-columns: 3.2rem 1fr;
+  gap: 1.1rem;
+  padding-block: clamp(1.65rem, 3vw, 2.5rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.itemNumber {
+  padding-top: 0.3rem;
+  color: rgb(var(--accent-rgb) / 0.72);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.focusList h3 {
+  font-size: clamp(1.65rem, 2.4vw, 2.5rem);
+}
+
+.focusList p {
+  max-width: 31rem;
+  margin-top: 0.65rem;
+  font-size: 0.96rem;
+  line-height: 1.65;
+}
+
+.sectionFlow {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3rem, 5vw, 5rem);
+}
+
+.sectionHeadingRow,
+.timelineHeading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-bottom: clamp(2rem, 3.5vw, 3.2rem);
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.sectionHeadingRow h2,
+.timelineHeading h2 {
+  font-size: clamp(3.1rem, 5vw, 5.5rem);
+}
+
+.editorialLink,
+.articleReadLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--accent);
+  font-size: 0.77rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: underline;
+  text-decoration-color: rgb(var(--accent-rgb) / 0.28);
+  text-underline-offset: 0.35rem;
+}
+
+.editorialLink span,
+.articleReadLink span {
+  transition: transform 450ms var(--ease-editorial);
+}
+
+.editorialLink:hover span,
+.articleReadLink:hover span {
+  transform: translateX(0.28rem);
+}
+
+.workGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.78fr) minmax(18rem, 0.72fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
+}
+
+.flagship {
+  display: grid;
+  grid-template-columns: minmax(0, 1.42fr) minmax(15rem, 0.7fr);
+  align-items: end;
+  gap: clamp(1.8rem, 3.5vw, 3.7rem);
+}
+
+.flagshipImage,
+.articleImage {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: var(--paper-warm);
+}
+
+.flagshipImage {
+  min-height: 36rem;
+  border-radius: 0.35rem 5rem 0.35rem 0.35rem;
+}
+
+.flagshipImage img,
+.articleImage img {
+  object-fit: cover;
+  filter: saturate(0.72) sepia(0.08) contrast(0.96);
+  transition: transform 900ms var(--ease-editorial), filter 900ms var(--ease-editorial);
+}
+
+.flagship:hover .flagshipImage img,
+.leadArticle:hover .articleImage img,
+.article:hover .articleImage img {
+  transform: scale(1.025);
+  filter: saturate(0.84) sepia(0.04) contrast(0.98);
+}
+
+.flagshipCopy {
+  padding-bottom: 1rem;
+}
+
+.projectMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: rgb(var(--accent-rgb) / 0.72);
+}
+
+.projectMeta span {
+  color: rgb(var(--ink-rgb) / 0.36);
+}
+
+.flagshipCopy h3,
+.secondaryWork h3 {
+  margin-top: 1.2rem;
+}
+
+.flagshipCopy h3 {
+  font-size: clamp(3.3rem, 5vw, 5.5rem);
+}
+
+.flagshipCopy > p:not(.projectMeta),
+.secondaryWork article > p:not(.projectMeta) {
+  margin-top: 1rem;
+  line-height: 1.7;
+}
+
+.flagshipCopy .editorialLink,
+.secondaryWork .editorialLink {
+  margin-top: 1.75rem;
+}
+
+.secondaryWork {
+  border-top: 1px solid var(--line-strong);
+}
+
+.secondaryWork article {
+  padding-block: clamp(2rem, 3.5vw, 3.4rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.secondaryWork h3 {
+  font-size: clamp(2.5rem, 3.5vw, 3.7rem);
+}
+
+.writingSection {
+  background: var(--paper-warm);
+}
+
+.articleGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(18rem, 0.75fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 0 3.5rem;
+}
+
+.leadArticle {
+  grid-row: 1 / span 2;
+  padding-right: 3.5rem;
+  border-right: 1px solid var(--line);
+}
+
+.leadArticle .articleImage {
+  aspect-ratio: 16 / 10;
+}
+
+.article {
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr);
+  gap: 1.45rem;
+  padding-block: 2rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.article:first-of-type {
+  padding-top: 0;
+}
+
+.article .articleImage {
+  aspect-ratio: 4 / 5;
+}
+
+.articleCopy {
+  min-width: 0;
+}
+
+.leadArticle .articleCopy {
+  max-width: 45rem;
+  padding-top: 1.8rem;
+}
+
+.articleMeta {
+  color: rgb(var(--ink-rgb) / 0.46);
+}
+
+.articleMeta span {
+  padding-inline: 0.3rem;
+  color: rgb(var(--accent-rgb) / 0.58);
+}
+
+.articleCopy h3 {
+  margin-top: 0.9rem;
+  font-size: clamp(1.55rem, 2.4vw, 2.75rem);
+  line-height: 1.08;
+}
+
+.leadArticle .articleCopy h3 {
+  font-size: clamp(2.65rem, 4.1vw, 4.7rem);
+}
+
+.articleCopy h3 a {
+  transition: color 350ms var(--ease-editorial);
+}
+
+.articleCopy h3 a:hover {
+  color: var(--accent);
+}
+
+.articleCopy > p:not(.articleMeta) {
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.articleReadLink {
+  margin-top: 1.2rem;
+}
+
+.timelineHeading > p {
+  max-width: 18rem;
+  color: rgb(var(--ink-rgb) / 0.46);
+  font-size: 0.8rem;
+  text-align: right;
+}
+
+.timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.timeline::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 1px;
+  content: "";
+  background: var(--line-strong);
+}
+
+.timeline li {
+  position: relative;
+  min-height: 13rem;
+  padding: 2.3rem 2rem 0 0;
+}
+
+.timelineMarker {
+  position: absolute;
+  top: -0.36rem;
+  left: 0;
+  width: 0.72rem;
+  height: 0.72rem;
+  border: 2px solid var(--ivory);
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 0 1px rgb(var(--accent-rgb) / 0.52);
+}
+
+.timelineNumber {
+  color: rgb(var(--accent-rgb) / 0.62);
+}
+
+.timeline h3 {
+  max-width: 15rem;
+  margin-top: 1rem;
+  font-size: clamp(1.55rem, 2vw, 2.2rem);
+}
+
+.timeline li > p:last-child {
+  margin-top: 0.65rem;
+  font-size: 0.88rem;
+}
+
+@media (max-width: 1180px) {
+  .heroGrid {
+    grid-template-columns: minmax(0, 1fr) minmax(24rem, 0.82fr);
+    gap: 1.5rem;
+  }
+
+  .heroTitle {
+    font-size: clamp(5.1rem, 9.8vw, 8.2rem);
+  }
+
+  .portraitFrame {
+    left: -3rem;
+  }
+
+  .flagship {
+    grid-template-columns: 1fr;
+  }
+
+  .flagshipCopy {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
+  }
+
+  .flagshipCopy h3,
+  .flagshipCopy .projectMeta {
+    grid-column: 1;
+  }
+
+  .flagshipCopy > p:not(.projectMeta),
+  .flagshipCopy .editorialLink {
+    grid-column: 2;
+  }
+
+  .flagshipCopy > p:not(.projectMeta) {
+    grid-row: 1 / span 2;
+    margin-top: 0;
+  }
+
+  .flagshipCopy .editorialLink {
+    align-self: end;
+  }
+}
+
+@media (max-width: 959px) {
+  .hero {
+    padding-block: 2.75rem 4.5rem;
+  }
+
+  .heroGrid {
+    min-height: auto;
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.82fr);
+  }
+
+  .heroTitle {
+    font-size: clamp(4.35rem, 10vw, 6.6rem);
+  }
+
+  .portraitFigure {
+    height: 35rem;
+    min-height: 0;
+  }
+
+  .portraitFrame {
+    inset: 0 -2rem 0 -2.5rem;
+  }
+
+  .portraitNote {
+    right: 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .nowGrid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  .sectionLead {
+    position: static;
+  }
+
+  .sectionLead h2 {
+    max-width: 48rem;
+  }
+
+  .workGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .secondaryWork {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .articleGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .leadArticle {
+    grid-row: auto;
+    padding-right: 0;
+    padding-bottom: 3rem;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .article {
+    grid-template-columns: 12rem minmax(0, 1fr);
+  }
+
+}
+
+@media (max-width: 767px) {
+  .hero {
+    padding-block: 1.7rem 4rem;
+  }
+
+  .heroGrid {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.4rem;
+  }
+
+  .heroCopy {
+    padding-block: 0;
+  }
+
+  .eyebrow {
+    font-size: 0.6rem;
+  }
+
+  .heroTitle {
+    margin-top: 1.45rem;
+    font-size: clamp(4.1rem, 20vw, 6.2rem);
+    line-height: 0.76;
+  }
+
+  .heroRole {
+    margin-top: 1.9rem;
+    font-size: 1.8rem;
+  }
+
+  .heroDescription {
+    max-width: 29rem;
+    margin-top: 0.85rem;
+    font-size: 0.95rem;
+  }
+
+  .heroActions {
+    margin-top: 1.5rem;
+  }
+
+  .portraitFigure {
+    order: 2;
+    width: calc(100% + 2.5rem);
+    height: min(29rem, 118vw);
+    margin-left: -1.25rem;
+  }
+
+  .portraitFrame {
+    inset: 0;
+    border-radius: 0 4rem 0 0;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 9%, #000 94%, transparent 100%);
+    mask-image: linear-gradient(180deg, transparent 0%, #000 9%, #000 94%, transparent 100%);
+  }
+
+  .portraitImage {
+    object-position: 67% center;
+  }
+
+  .portraitGrade {
+    background: linear-gradient(180deg, var(--paper) 0%, transparent 14%, transparent 72%, rgb(244 239 230 / 0.42) 100%);
+  }
+
+  .portraitNote {
+    top: 12%;
+    right: 1.2rem;
+    font-size: 0.82rem;
+  }
+
+  .heroIndex {
+    display: none;
+  }
+
+  .nowSection,
+  .workSection,
+  .writingSection,
+  .timelineSection {
+    padding-block: 5.5rem;
+  }
+
+  .sectionLead h2,
+  .sectionHeadingRow h2,
+  .timelineHeading h2 {
+    font-size: clamp(2.8rem, 13vw, 4.2rem);
+  }
+
+  .focusList li {
+    grid-template-columns: 2.4rem 1fr;
+  }
+
+  .sectionHeadingRow,
+  .timelineHeading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .workGrid {
+    gap: 3rem;
+  }
+
+  .flagshipImage {
+    min-height: 0;
+    aspect-ratio: 4 / 5;
+    border-radius: 0.25rem 3.5rem 0.25rem 0.25rem;
+  }
+
+  .flagshipCopy {
+    display: block;
+  }
+
+  .flagshipCopy > p:not(.projectMeta) {
+    margin-top: 1rem;
+  }
+
+  .secondaryWork {
+    display: block;
+  }
+
+  .article {
+    grid-template-columns: 7rem minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .articleCopy h3 {
+    font-size: 1.55rem;
+  }
+
+  .articleCopy > p:not(.articleMeta) {
+    display: none;
+  }
+
+  .timelineHeading > p {
+    text-align: left;
+  }
+
+  .timeline {
+    display: block;
+    padding-left: 1.4rem;
+  }
+
+  .timeline::before {
+    top: 0;
+    bottom: 0;
+    left: 0.28rem;
+    width: 1px;
+    height: auto;
+  }
+
+  .timeline li {
+    min-height: 0;
+    padding: 0 0 3.3rem 1.4rem;
+  }
+
+  .timeline li:last-child {
+    padding-bottom: 0;
+  }
+
+  .timelineMarker {
+    top: 0.2rem;
+    left: -1.47rem;
+  }
+
+}
+
+@media (max-width: 420px) {
+  .heroTitle {
+    font-size: clamp(3.6rem, 19vw, 4.75rem);
+  }
+
+  .heroActions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .heroActions a {
+    width: 100%;
+  }
+
+  .portraitFigure {
+    height: 24rem;
+  }
+
+  .article {
+    grid-template-columns: 5.75rem minmax(0, 1fr);
+  }
+
+  .articleMeta {
+    font-size: 0.55rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flagshipImage img,
+  .articleImage img,
+  .editorialLink span,
+  .articleReadLink span {
+    transition: none;
+  }
+}

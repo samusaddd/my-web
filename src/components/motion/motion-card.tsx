@@ -34,8 +34,8 @@ export function MotionCard({
         interactiveHover
           ? {
               ...(lift.whileHover ?? {}),
-              borderColor: "rgba(255,255,255,0.22)",
-              boxShadow: "0 28px 80px -46px rgba(125,211,252,0.45)",
+              borderColor: "rgba(82, 37, 95, 0.22)",
+              boxShadow: "0 30px 80px -52px rgba(42, 31, 43, 0.34)",
             }
           : undefined
       }

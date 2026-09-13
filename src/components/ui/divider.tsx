@@ -6,7 +6,7 @@ export function Divider({ className, ...props }: React.HTMLAttributes<HTMLHRElem
   return (
     <hr
       className={cn(
-        "h-px w-full border-0 bg-gradient-to-r from-white/0 via-white/15 to-white/0",
+        "h-px w-full border-0 bg-ink/12",
         className,
       )}
       {...props}

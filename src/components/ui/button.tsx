@@ -8,13 +8,13 @@ type ButtonSize = "md" | "lg";
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
-    "bg-white text-zinc-950 shadow-[0_12px_40px_-16px_rgba(255,255,255,0.65)] hover:bg-zinc-100 hover:shadow-[0_22px_60px_-28px_rgba(255,255,255,0.7)]",
+    "border border-ink bg-ink text-ivory shadow-[0_16px_34px_-24px_rgba(28,24,32,0.72)] hover:border-accent hover:bg-accent hover:shadow-[0_20px_44px_-28px_rgba(82,37,95,0.5)]",
   secondary:
-    "border border-white/10 bg-white/[0.06] text-white hover:border-white/20 hover:bg-white/[0.11] hover:shadow-[0_22px_60px_-40px_rgba(125,211,252,0.45)]",
+    "border border-ink/15 bg-ivory/65 text-ink hover:border-accent/35 hover:bg-white hover:text-accent",
   outline:
-    "border border-white/15 text-white hover:border-white/25 hover:bg-white/[0.07] hover:shadow-[0_22px_60px_-42px_rgba(125,211,252,0.38)]",
+    "border border-ink/20 bg-transparent text-ink hover:border-accent/45 hover:bg-accent/[0.045] hover:text-accent",
   ghost:
-    "text-white/80 hover:text-white hover:bg-white/[0.06] hover:shadow-[0_18px_50px_-40px_rgba(125,211,252,0.4)]",
+    "border border-transparent text-ink/72 hover:border-accent/10 hover:bg-accent/[0.04] hover:text-accent",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
@@ -23,7 +23,7 @@ const sizeClasses: Record<ButtonSize, string> = {
 };
 
 const baseClasses =
-  "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[1px] active:translate-y-0 motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 disabled:pointer-events-none disabled:opacity-60";
+  "group inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-[-0.01em] transition-all duration-500 ease-editorial after:content-['→'] after:transition-transform after:duration-500 after:ease-editorial hover:-translate-y-px hover:after:translate-x-1 active:translate-y-0 motion-reduce:transition-none motion-reduce:after:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/35 focus-visible:ring-offset-2 focus-visible:ring-offset-paper disabled:pointer-events-none disabled:opacity-60";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
