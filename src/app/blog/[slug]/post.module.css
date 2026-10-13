@@ -1,0 +1,25 @@
+.coverContainer {
+  max-width: 72rem;
+}
+
+.coverArticle > * {
+  width: 100%;
+  max-width: 48rem;
+  margin-inline: auto;
+}
+
+.coverArticle > header h1 {
+  font-size: clamp(3rem, 6.2vw, 5.5rem);
+  line-height: 1.02;
+}
+
+.coverArticle > .coverFigure {
+  max-width: 64rem;
+}
+
+.coverImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.25rem;
+}

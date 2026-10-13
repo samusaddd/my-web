@@ -9,8 +9,8 @@ const publicDirectory = path.join(rootDir, "public");
 const outputFile = path.join(publicDirectory, "rss.xml");
 
 const envUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
-const fallbackUrl =
-  process.env.NODE_ENV === "production" ? "https://samirseddiqi.it" : "http://localhost:3000";
+// The feed is a published asset, including when it is generated before Next.js builds.
+const fallbackUrl = "https://samirseddiqi.it";
 const siteUrl = (envUrl ? envUrl.replace(/\/+$/, "") : fallbackUrl);
 
 const siteConfig = {
@@ -128,4 +128,4 @@ const posts = getPosts();
 const rss = buildRss(posts);
 
 fs.mkdirSync(publicDirectory, { recursive: true });
-fs.writeFileSync(outputFile, rss, "utf8");
+fs.writeFileSync(outputFile, rss.replace(/[ \t]+$/gm, ""), "utf8");

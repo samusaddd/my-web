@@ -235,8 +235,8 @@ export default function HomePage() {
         <div className={styles.articleGrid}>
           {posts.map((post, index) => (
             <article className={index === 0 ? styles.leadArticle : styles.article} key={post.slug}>
-              <Link className={styles.articleImage} href={`/blog/${post.slug}`} tabIndex={-1}>
-                <Image alt="" fill sizes={index === 0 ? "(max-width: 767px) 100vw, 54vw" : "(max-width: 767px) 100vw, 30vw"} src={articleImages[index]} unoptimized />
+              <Link className={post.coverImage ? `${styles.articleImage} ${styles.articleCoverImage}` : styles.articleImage} href={`/blog/${post.slug}`} tabIndex={-1}>
+                <Image alt={post.coverImage ? post.coverAlt || post.title : ""} fill sizes={index === 0 ? "(max-width: 767px) 100vw, 54vw" : "(max-width: 767px) 100vw, 30vw"} src={post.coverImage || articleImages[index]} unoptimized />
               </Link>
               <div className={styles.articleCopy}>
                 <p className={styles.articleMeta}>{formatDate(post.date)} <span aria-hidden="true">•</span> {post.tags[0]}</p>

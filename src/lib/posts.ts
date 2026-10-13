@@ -8,6 +8,10 @@ export type PostFrontmatter = {
   date: string;
   summary: string;
   tags: string[];
+  coverImage?: string;
+  coverAlt?: string;
+  coverWidth?: number;
+  coverHeight?: number;
 };
 
 export type PostMeta = PostFrontmatter & {
@@ -57,8 +61,21 @@ function normalizeFrontmatter(
     ? data.tags.filter((tag): tag is string => typeof tag === "string")
     : [];
   const lastModified = (parsedDate ?? fallbackDate).toISOString();
+  const coverImage = typeof data.coverImage === "string" && data.coverImage.trim()
+    ? data.coverImage.trim()
+    : undefined;
+  const coverAlt = typeof data.coverAlt === "string" ? data.coverAlt : undefined;
+  const coverWidth = typeof data.coverWidth === "number" && Number.isInteger(data.coverWidth) && data.coverWidth > 0
+    ? data.coverWidth
+    : undefined;
+  const coverHeight = typeof data.coverHeight === "number" && Number.isInteger(data.coverHeight) && data.coverHeight > 0
+    ? data.coverHeight
+    : undefined;
 
-  return { slug, title, date, summary, tags, lastModified };
+  return {
+    slug, title, date, summary, tags, lastModified,
+    coverImage, coverAlt, coverWidth, coverHeight,
+  };
 }
 
 export function getPostSlugs() {

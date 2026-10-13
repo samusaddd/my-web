@@ -2,45 +2,56 @@
 <rss version="2.0">
   <channel>
     <title>Samir Seddiqi</title>
-    <link>http://localhost:3000</link>
+    <link>https://samirseddiqi.it</link>
     <description>Personal site of Samir Seddiqi in Trento. Founder of VitaAvanza, writer of Can You Hear Me?, and builder of calm systems for people and institutions.</description>
     <language>en-US</language>
-    <lastBuildDate>Wed, 13 May 2026 12:26:47 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 13 Oct 2026 18:45:35 GMT</lastBuildDate>
     <ttl>60</ttl>
-    <atom:link href="http://localhost:3000/rss.xml" rel="self" type="application/rss+xml" xmlns:atom="http://www.w3.org/2005/Atom" />
-    
+    <atom:link href="https://samirseddiqi.it/rss.xml" rel="self" type="application/rss+xml" xmlns:atom="http://www.w3.org/2005/Atom" />
+
+        <item>
+          <title>To the Girl Who Was Told to Stop Dreaming</title>
+          <link>https://samirseddiqi.it/blog/to-the-girl-who-was-told-to-stop-dreaming/</link>
+          <guid>https://samirseddiqi.it/blog/to-the-girl-who-was-told-to-stop-dreaming/</guid>
+          <pubDate>Tue, 13 Oct 2026 00:00:00 GMT</pubDate>
+          <description>An open letter to the women and girls of Afghanistan.</description>
+          <author>ceo@vitaavanza.it (Samir Seddiqi)</author>
+          <source url="https://samirseddiqi.it/blog/">Samir Seddiqi</source>
+          <category>Afghanistan</category><category>girls&apos; education</category><category>women&apos;s rights</category><category>freedom</category><category>open letter</category>
+        </item>
+
         <item>
           <title>The Line Between Right and Wrong</title>
-          <link>http://localhost:3000/blog/the-line-between-right-and-wrong/</link>
-          <guid>http://localhost:3000/blog/the-line-between-right-and-wrong/</guid>
+          <link>https://samirseddiqi.it/blog/the-line-between-right-and-wrong/</link>
+          <guid>https://samirseddiqi.it/blog/the-line-between-right-and-wrong/</guid>
           <pubDate>Wed, 13 May 2026 00:00:00 GMT</pubDate>
           <description>What every culture, religion, and human heart keeps trying to understand</description>
           <author>ceo@vitaavanza.it (Samir Seddiqi)</author>
-          <source url="http://localhost:3000/blog/">Samir Seddiqi</source>
+          <source url="https://samirseddiqi.it/blog/">Samir Seddiqi</source>
           <category>morality</category><category>ethics</category><category>culture</category><category>religion</category><category>philosophy</category><category>conscience</category>
         </item>
-      
+
         <item>
           <title>From war to be so far</title>
-          <link>http://localhost:3000/blog/from-war-to-be-so-far/</link>
-          <guid>http://localhost:3000/blog/from-war-to-be-so-far/</guid>
+          <link>https://samirseddiqi.it/blog/from-war-to-be-so-far/</link>
+          <guid>https://samirseddiqi.it/blog/from-war-to-be-so-far/</guid>
           <pubDate>Wed, 28 Jan 2026 00:00:00 GMT</pubDate>
           <description>A political reflection on distance, responsibility, and the illusion that war ends when it becomes geographically remote.</description>
           <author>ceo@vitaavanza.it (Samir Seddiqi)</author>
-          <source url="http://localhost:3000/blog/">Samir Seddiqi</source>
+          <source url="https://samirseddiqi.it/blog/">Samir Seddiqi</source>
           <category>war</category><category>politics</category><category>responsibility</category><category>memory</category><category>borders</category>
         </item>
-      
+
         <item>
           <title>Social inclusion and women’s rights: beyond visibility</title>
-          <link>http://localhost:3000/blog/social-inclusion-and-womens-rights/</link>
-          <guid>http://localhost:3000/blog/social-inclusion-and-womens-rights/</guid>
+          <link>https://samirseddiqi.it/blog/social-inclusion-and-womens-rights/</link>
+          <guid>https://samirseddiqi.it/blog/social-inclusion-and-womens-rights/</guid>
           <pubDate>Tue, 27 Jan 2026 00:00:00 GMT</pubDate>
           <description>A long-form reflection on inclusion as a structural responsibility, and women’s rights as a measure of societal maturity rather than cultural debate.</description>
           <author>ceo@vitaavanza.it (Samir Seddiqi)</author>
-          <source url="http://localhost:3000/blog/">Samir Seddiqi</source>
+          <source url="https://samirseddiqi.it/blog/">Samir Seddiqi</source>
           <category>social inclusion</category><category>women’s rights</category><category>institutions</category><category>society</category><category>governance</category>
         </item>
-      
+
   </channel>
 </rss>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { compileMDX } from "next-mdx-remote/rsc";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -12,6 +13,8 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { Badge, ButtonLink, Divider } from "@/components/ui";
 import { getPostBySlug, getPostSlugs } from "@/lib/posts";
 import { absoluteUrl, siteConfig } from "@/lib/site";
+
+import styles from "./post.module.css";
 
 function formatDate(date: string) {
   return new Intl.DateTimeFormat("en-US", {
@@ -39,7 +42,12 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 
   const canonicalUrl = absoluteUrl(`/blog/${post.slug}`);
-  const ogImage = absoluteUrl(siteConfig.socialImagePath);
+  const ogImage = {
+    url: absoluteUrl(post.coverImage || siteConfig.socialImagePath),
+    width: post.coverImage ? post.coverWidth : 1200,
+    height: post.coverImage ? post.coverHeight : 630,
+    alt: post.coverImage ? post.coverAlt || post.title : post.title,
+  };
   const publishedTime = new Date(post.date).toISOString();
   const title = post.title;
   const description = post.summary || siteConfig.description;
@@ -56,7 +64,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       publishedTime,
       authors: [siteConfig.name],
       tags: post.tags.length ? post.tags : undefined,
-      images: [{ url: ogImage, width: 1200, height: 630, alt: post.title }],
+      images: [ogImage],
     },
     twitter: {
       card: "summary_large_image",
@@ -93,6 +101,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     keywords: post.tags,
     url: canonicalUrl,
     mainEntityOfPage: canonicalUrl,
+    ...(post.coverImage ? {
+      image: {
+        "@type": "ImageObject",
+        url: absoluteUrl(post.coverImage),
+        width: post.coverWidth,
+        height: post.coverHeight,
+      },
+    } : {}),
   } as const;
 
   const { content } = await compileMDX({
@@ -115,9 +131,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   });
 
   return (
-    <MotionSection className="pt-16 sm:pt-24" containerClassName="max-w-3xl">
+    <MotionSection
+      className="pt-16 sm:pt-24"
+      containerClassName={post.coverImage ? styles.coverContainer : "max-w-3xl"}
+    >
       <JsonLd data={blogPostingJsonLd} id={`blogposting-jsonld-${post.slug}`} />
-      <article className="space-y-10">
+      <article className={post.coverImage ? `space-y-10 ${styles.coverArticle}` : "space-y-10"}>
         <header className="space-y-6">
           <div className="flex flex-wrap items-center gap-3 text-sm text-white/65">
             <span>{formatDate(post.date)}</span>
@@ -142,6 +161,21 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
           ) : null}
         </header>
+
+        {post.coverImage ? (
+          <figure className={styles.coverFigure}>
+            <Image
+              alt={post.coverAlt || post.title}
+              className={styles.coverImage}
+              height={post.coverHeight || 1350}
+              priority
+              sizes="(max-width: 767px) 100vw, 1024px"
+              src={post.coverImage}
+              unoptimized
+              width={post.coverWidth || 2400}
+            />
+          </figure>
+        ) : null}
 
         <Divider />
 

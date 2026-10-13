@@ -402,6 +402,22 @@
   aspect-ratio: 16 / 10;
 }
 
+.leadArticle .articleCoverImage {
+  aspect-ratio: 16 / 9;
+}
+
+.articleCoverImage img,
+.leadArticle:hover .articleCoverImage img,
+.article:hover .articleCoverImage img {
+  object-fit: contain;
+  filter: none;
+  transform: none;
+}
+
+.articleCoverImage::after {
+  display: none;
+}
+
 .article {
   display: grid;
   grid-template-columns: 8.5rem minmax(0, 1fr);
