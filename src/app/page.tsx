@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { getAllPostsWithContent } from "@/lib/posts";
@@ -32,28 +31,11 @@ export default function HomePage() {
           <h1>A life in words.<br /><em>A world in question.</em></h1>
           <p className={styles.heroLead}>I write about freedom, belonging, and what it means to build a life that feels your own.</p>
           <div className={styles.heroActions}>
-            <a className={styles.solidLink} href="#flagship-project">Explore VitaAvanza <span aria-hidden="true">↘</span></a>
+            <Link className={styles.solidLink} href="/projects">Explore VitaAvanza <span aria-hidden="true">↗</span></Link>
             <Link className={styles.textLink} href="/blog">Read the essays <span aria-hidden="true">→</span></Link>
           </div>
           <p className={styles.heroFootnote}>Afghan-born. Based in Trento.<br />Still asking questions.</p>
         </div>
-        <aside aria-labelledby="flagship-title" className={styles.flagship} id="flagship-project">
-          <div className={styles.flagshipIntro}>
-            <p className={styles.flagshipLabel}>Flagship project</p>
-            <h2 id="flagship-title">VitaAvanza<span aria-hidden="true">.</span></h2>
-            <p className={styles.flagshipDescriptor}>{siteConfig.company.descriptor}</p>
-          </div>
-          <div className={styles.flagshipImage}>
-            <Image alt="Trento and the surrounding mountains" fill priority sizes="(max-width: 767px) calc(100vw - 40px), 42vw" src="/home/vitaavanza-trento.jpg" unoptimized />
-          </div>
-          <div className={styles.flagshipBody}>
-            <p>I founded VitaAvanza to work on the structures that help people navigate complicated lives.</p>
-            <div className={styles.flagshipLinks}>
-              <a href={siteConfig.company.url} rel="noopener noreferrer" target="_blank">Visit VitaAvanza <span aria-hidden="true">↗</span></a>
-              <Link href="/projects">About the project <span aria-hidden="true">→</span></Link>
-            </div>
-          </div>
-        </aside>
       </section>
 
       {latest ? (
