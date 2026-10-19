@@ -6,15 +6,15 @@ const normalizedUrl = envUrl ? envUrl.replace(/\/+$/, "") : fallbackUrl;
 export const siteConfig = {
   name: "Samir Seddiqi",
   description:
-    "Personal website of Samir Seddiqi, founder of VitaAvanza, writer, and Economics & Management student in Trento, Italy.",
+    "Samir Seddiqi is an Afghan-born writer and founder living in Trento, Italy. Essays, books, and work on freedom, belonging, and the lives we build.",
   url: normalizedUrl,
   email: "ceo@vitaavanza.it",
   linkedin: "https://www.linkedin.com/in/samirseddiqico",
   creator: "Samir Seddiqi",
   location: "Trento, Italy",
-  identityLine: "Founder | Writer | Builder",
-  tagline: "Founder, writer, and Economics & Management student in Trento.",
-  footerLine: "Built with intention.",
+  identityLine: "Writer | Founder | A life in progress",
+  tagline: "Writer, founder, and Economics & Management student in Trento.",
+  footerLine: "Writing, work, and the life in between.",
   iconPath: "/icon.svg",
   socialImagePath: "/opengraph-card.png",
   keywords: [
@@ -79,11 +79,10 @@ export function normalizePathname(pathname?: string | null) {
 }
 
 export const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/projects", label: "Projects" },
-  { href: "/book", label: "Book" },
-  { href: "/resume", label: "Resume" },
   { href: "/blog", label: "Writing" },
+  { href: "/book", label: "Books" },
+  { href: "/about", label: "About" },
+  { href: "/projects", label: "Work" },
+  { href: "/resume", label: "Resume" },
   { href: "/contact", label: "Contact" },
 ] as const;

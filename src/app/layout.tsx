@@ -22,7 +22,7 @@ const serif = Playfair_Display({
 });
 
 const metadataBase = new URL(siteConfig.url);
-const defaultTitle = `${siteConfig.name} | Founder of VitaAvanza`;
+const defaultTitle = `${siteConfig.name} | Writer & Founder`;
 const defaultOgImage = absoluteUrl(siteConfig.socialImagePath);
 
 export const metadata: Metadata = {
@@ -89,7 +89,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/rss+xml"
         />
       </head>
-      <body className={cn(inter.variable, serif.variable, "min-h-screen bg-paper text-ink")}>
+      <body className={cn(inter.variable, serif.variable, "min-h-screen bg-paper text-ink")} id="top">
         <a
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-zinc-950"
           href="#main-content"

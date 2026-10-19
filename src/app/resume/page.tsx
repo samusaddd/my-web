@@ -1,40 +1,15 @@
 import type { Metadata } from "next";
-
-import { MotionCard } from "@/components/motion/motion-card";
-import { MotionSection } from "@/components/motion/motion-section";
-import {
-  Badge,
-  ButtonLink,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  Divider,
-} from "@/components/ui";
+import Link from "next/link";
 import { absoluteUrl, siteConfig } from "@/lib/site";
+import styles from "../interior.module.css";
 
 const canonicalUrl = absoluteUrl("/resume");
-const ogImage = absoluteUrl(siteConfig.socialImagePath);
-
+const description = "Samir Seddiqi's background in writing, Economics and Management, founding VitaAvanza, educational talks, and volunteer work.";
+const image = { url: absoluteUrl(siteConfig.socialImagePath), width: 1200, height: 630, alt: "Samir Seddiqi — background and experience" };
 export const metadata: Metadata = {
-  title: "Resume and VitaAvanza",
-  description:
-    "Resume of Samir Seddiqi, founder of VitaAvanza, across academic study, writing, project building, and early professional experience.",
-  alternates: { canonical: canonicalUrl },
-  openGraph: {
-    title: `Resume | ${siteConfig.name}`,
-    description:
-      "Resume of Samir Seddiqi, founder of VitaAvanza, across academic study, writing, project building, and early professional experience.",
-    type: "website",
-    url: canonicalUrl,
-    images: [{ url: ogImage, width: 1200, height: 630, alt: "Samir Seddiqi Resume" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `Resume | ${siteConfig.name}`,
-    description:
-      "Resume of Samir Seddiqi, founder of VitaAvanza, across academic study, writing, project building, and early professional experience.",
-    images: [ogImage],
-  },
+  title: "Resume", description, alternates: { canonical: canonicalUrl },
+  openGraph: { title: `Resume | ${siteConfig.name}`, description, type: "website", url: canonicalUrl, images: [image] },
+  twitter: { card: "summary_large_image", title: `Resume | ${siteConfig.name}`, description, images: [image] },
 };
 
 const competencies = [
@@ -113,115 +88,37 @@ const education = [
 
 const languages = ["Persian (native)", "Italian (fluent)", "English (fluent)"] as const;
 
+
+
 export default function ResumePage() {
   return (
-    <>
-      <MotionSection
-        className="pt-16 sm:pt-24"
-        motionClassName="mx-auto flex max-w-4xl flex-col gap-6 text-center"
-      >
-        <Badge variant="accent" className="mx-auto">
-          Resume
-        </Badge>
-        <h1>Resume</h1>
-        <p className="mx-auto max-w-3xl text-base text-white/75 sm:text-lg">
-          My background combines academic study, writing, project-building, and hands-on work
-          across different environments.
-        </p>
-        <p className="mx-auto max-w-3xl text-base text-white/70">
-          This page reflects the way I have been learning, working, writing, and building so far,
-          with the same seriousness I try to bring to everything I do.
-        </p>
-        <div className="flex flex-wrap justify-center gap-3">
-          <ButtonLink href="/Samir-Seddiqi-CV.pdf" size="lg" download>
-            Download CV
-          </ButtonLink>
-          <ButtonLink href="/contact" size="lg" variant="outline">
-            Contact
-          </ButtonLink>
+    <div className={styles.page}>
+      <header className={styles.hero}>
+        <div className={`${styles.wrap} ${styles.resumeHero}`}>
+          <div><p className={styles.eyebrow}>Background / Samir Seddiqi</p><h1 className={styles.pageTitle}>Résumé.</h1><p className={styles.lede}>An ongoing record of writing, study, building, and work with people.</p></div>
+          <div className={styles.downloadBox}><p>For the full document, download my CV. For a conversation about writing, a project, or an opportunity, get in touch.</p><div className={styles.actions}><a className={styles.button} download="Samir-Seddiqi-CV.pdf" href="/Samir-Seddiqi-CV.pdf">Download CV · PDF <span aria-hidden="true">↓</span></a><Link className={styles.link} href="/contact">Contact <span aria-hidden="true">→</span></Link></div></div>
         </div>
-      </MotionSection>
-
-      <MotionSection className="pt-0" containerClassName="max-w-6xl" motionClassName="space-y-10">
-        <div className="flex flex-col gap-3">
-          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white/45">
-            Key competencies
-          </p>
-          <h2 className="max-w-3xl">Capabilities I try to carry across different environments</h2>
+      </header>
+      <div className={styles.wrap}>
+        <section className={styles.ledger}>
+          <div className={styles.ledgerHeading}><span className={styles.index}>01</span><h2>Experience</h2></div>
+          <div>{experience.map(item => (<div className={styles.ledgerEntry} key={item.title}><p className={styles.meta}>{item.timeframe}</p><div><h3>{item.title}</h3><p className={styles.ledgerInstitution}>{item.institution}</p><p className={styles.text}>{item.detail}</p></div></div>))}</div>
+        </section>
+        <section className={styles.ledger}>
+          <div className={styles.ledgerHeading}><span className={styles.index}>02</span><h2>Education</h2></div>
+          <div>{education.map(item => (<div className={styles.ledgerEntry} key={item.title}><p className={styles.meta}>{item.timeframe}</p><div><h3>{item.title}</h3><p className={styles.ledgerInstitution}>{item.institution}</p><p className={styles.text}>{item.detail}</p></div></div>))}</div>
+        </section>
+        <section className={styles.ledger}>
+          <div className={styles.ledgerHeading}><span className={styles.index}>03</span><h2>Languages</h2></div>
+          <dl className={styles.languageList}>{languages.map(language => { const parts = language.match(/^(.+) \((.+)\)$/); return <div key={language}><dt>{parts?.[1] || language}</dt><dd>{parts?.[2]}</dd></div>; })}</dl>
+        </section>
+      </div>
+      <section className={`${styles.section} ${styles.darkBand}`}>
+        <div className={`${styles.wrap} ${styles.sectionGrid}`}>
+          <div><p className={styles.eyebrow}>04 / Across the work</p><h2 className={styles.sectionTitle}>Ways of<br />working.</h2></div>
+          <ul className={styles.skills}>{competencies.map(item => (<li key={item.title}><h3>{item.title}</h3><p>{item.description}</p></li>))}</ul>
         </div>
-
-        <MotionSection
-          as="div"
-          contained={false}
-          className="py-0"
-          delayChildren={0.02}
-          motionClassName="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
-          staggerChildren={0.08}
-        >
-          {competencies.map((item) => (
-            <MotionCard className="h-full" key={item.title}>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-lg">{item.title}</CardTitle>
-              </CardHeader>
-              <CardContent className="text-sm text-white/70">{item.description}</CardContent>
-            </MotionCard>
-          ))}
-        </MotionSection>
-      </MotionSection>
-
-      <MotionSection
-        className="pt-0"
-        containerClassName="max-w-5xl"
-        delayChildren={0.02}
-        motionClassName="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
-        staggerChildren={0.08}
-      >
-        <MotionCard className="h-full">
-          <CardHeader className="space-y-3">
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white/45">
-              Experience
-            </p>
-            <CardTitle className="text-2xl">Professional and project work</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6 text-sm text-white/75">
-            {experience.map((item, index) => (
-              <div className="space-y-2" key={item.title}>
-                <p className="text-base font-semibold text-white">{item.title}</p>
-                <p className="text-sm text-white/70">
-                  {item.institution} | {item.timeframe}
-                </p>
-                <p>{item.detail}</p>
-                {index < experience.length - 1 ? <Divider /> : null}
-              </div>
-            ))}
-          </CardContent>
-        </MotionCard>
-
-        <MotionCard className="h-full">
-          <CardHeader className="space-y-3">
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white/45">
-              Education and involvement
-            </p>
-            <CardTitle className="text-2xl">Study, contribution, and languages</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6 text-sm text-white/75">
-            {education.map((item) => (
-              <div className="space-y-2" key={item.title}>
-                <p className="text-base font-semibold text-white">{item.title}</p>
-                <p className="text-sm text-white/70">
-                  {item.institution} | {item.timeframe}
-                </p>
-                <p>{item.detail}</p>
-                <Divider />
-              </div>
-            ))}
-            <div className="space-y-2">
-              <p className="text-base font-semibold text-white">Languages</p>
-              <p>{languages.join(", ")}</p>
-            </div>
-          </CardContent>
-        </MotionCard>
-      </MotionSection>
-    </>
+      </section>
+    </div>
   );
 }

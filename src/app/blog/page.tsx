@@ -1,102 +1,153 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
-import { MotionCard } from "@/components/motion/motion-card";
-import { MotionLink } from "@/components/motion/motion-link";
-import { MotionSection } from "@/components/motion/motion-section";
-import { Badge, CardContent, CardDescription, CardHeader, CardTitle, Section } from "@/components/ui";
-import { getAllPosts } from "@/lib/posts";
+import { Section } from "@/components/ui";
+import { getAllPostsWithContent, type Post } from "@/lib/posts";
 import { absoluteUrl, siteConfig } from "@/lib/site";
+
+import styles from "./blog.module.css";
 
 const canonicalUrl = absoluteUrl("/blog");
 const ogImage = absoluteUrl(siteConfig.socialImagePath);
+const description = "Essays and letters by Samir Seddiqi on freedom, belonging, responsibility, and the lives we are trying to build.";
 
 export const metadata: Metadata = {
   title: "Writing",
-  description:
-    "Writing by Samir Seddiqi, founder of VitaAvanza, on work, discipline, direction, and the ideas he keeps returning to.",
+  description,
   alternates: { canonical: canonicalUrl },
   openGraph: {
     title: `Writing | ${siteConfig.name}`,
-    description:
-      "Writing by Samir Seddiqi, founder of VitaAvanza, on work, discipline, direction, and the ideas he keeps returning to.",
+    description,
     type: "website",
     url: canonicalUrl,
-    images: [{ url: ogImage, width: 1200, height: 630, alt: "Samir Seddiqi Blog" }],
+    images: [{ url: ogImage, width: 1200, height: 630, alt: "Writing by Samir Seddiqi" }],
   },
   twitter: {
     card: "summary_large_image",
     title: `Writing | ${siteConfig.name}`,
-    description:
-      "Writing by Samir Seddiqi, founder of VitaAvanza, on work, discipline, direction, and the ideas he keeps returning to.",
+    description,
     images: [ogImage],
   },
 };
 
 function formatDate(date: string) {
-  return new Intl.DateTimeFormat("en-US", {
-    month: "short",
+  return new Intl.DateTimeFormat("en-GB", {
     day: "numeric",
+    month: "long",
     year: "numeric",
   }).format(new Date(date));
 }
 
+function readingMinutes(content: string) {
+  const words = content.match(/[\p{L}\p{N}]+(?:['’\-][\p{L}\p{N}]+)*/gu)?.length || 0;
+  return Math.max(1, Math.ceil(words / 220));
+}
+
+function coverSrcSet(post: Post) {
+  if (!post.coverImage || (!post.coverImageSmall && !post.coverImageMedium)) return undefined;
+  return [
+    post.coverImageSmall ? `${post.coverImageSmall} 800w` : null,
+    post.coverImageMedium ? `${post.coverImageMedium} 1600w` : null,
+    `${post.coverImage} ${post.coverWidth || 2400}w`,
+  ].filter(Boolean).join(", ");
+}
+
 export default function BlogPage() {
-  const posts = getAllPosts();
+  const [latest, ...archive] = getAllPostsWithContent();
+  const count = archive.length + (latest ? 1 : 0);
 
   return (
     <>
-      <MotionSection
-        className="pt-16 sm:pt-24"
-        motionClassName="mx-auto flex max-w-3xl flex-col gap-6 text-center"
-      >
-        <Badge className="mx-auto" variant="accent">
-          Writing
-        </Badge>
-        <h1>Writing</h1>
-        <p className="mx-auto max-w-2xl text-base text-white/75">
-          Notes on writing, work, discipline, and the ideas I keep returning to.
-        </p>
-      </MotionSection>
-
-      <MotionSection
-        className="pt-0"
-        containerClassName="max-w-5xl"
-        delayChildren={0.04}
-        motionClassName="grid gap-6 md:grid-cols-2"
-        staggerChildren={0.08}
-      >
-        {posts.map((post) => (
-          <MotionCard className="flex h-full flex-col justify-between" key={post.slug}>
-            <CardHeader className="space-y-3">
-              <div className="flex items-center gap-3 text-xs uppercase tracking-[0.12em] text-white/45">
-                <span>{formatDate(post.date)}</span>
-              </div>
-              {post.category ? <p className="text-xs font-semibold text-accent">{post.category}</p> : null}
-              <CardTitle className="text-xl">
-                <MotionLink className="text-ink hover:text-accent" href={`/blog/${post.slug}`}>
-                  {post.title}
-                </MotionLink>
-              </CardTitle>
-              {post.summary ? <CardDescription>{post.summary}</CardDescription> : null}
-            </CardHeader>
-            {post.tags.length ? (
-              <CardContent className="mt-6 flex flex-wrap gap-2 text-xs text-white/70">
-                {post.tags.map((tag) => (
-                  <Badge key={tag}>{tag}</Badge>
-                ))}
-              </CardContent>
-            ) : null}
-          </MotionCard>
-        ))}
-      </MotionSection>
-
-      <Section className="pt-0" containerClassName="max-w-5xl">
-        {posts.length === 0 ? (
-          <div className="mt-10 rounded-3xl border border-white/10 bg-white/[0.04] p-10 text-center text-white/70">
-            No posts yet. Add MDX files in{" "}
-            <code className="rounded bg-white/10 px-1.5 py-0.5">src/content/posts</code>.
+      <Section as="header" className={styles.mastheadSection} containerClassName={styles.container}>
+        <div className={styles.topline}>
+          <p>Essays, letters & things that stay with me</p>
+          <a href="/rss.xml">Follow via RSS <span aria-hidden="true">↗</span></a>
+        </div>
+        <div className={styles.masthead}>
+          <h1>Writing<span>.</span></h1>
+          <div className={styles.mastheadNote}>
+            <p>Some questions follow us long after the conversation ends. This is where I try to stay with them.</p>
+            <span>{String(count).padStart(2, "0")} published pieces</span>
           </div>
-        ) : null}
+        </div>
+      </Section>
+
+      {latest ? (
+        <Section className={styles.featureSection} containerClassName={styles.container}>
+          <div className={styles.sectionRule}>
+            <p><span aria-hidden="true" /> The latest essay</p>
+            <span>01</span>
+          </div>
+          <article className={`${styles.feature}${latest.coverImage ? "" : ` ${styles.featureWithoutImage}`}`}>
+            {latest.coverImage ? (
+              <figure className={styles.featureFigure}>
+                <Link aria-label={`Read ${latest.title}`} className={styles.featureImageLink} href={`/blog/${latest.slug}`} tabIndex={-1}>
+                  <img
+                    alt={latest.coverAlt || latest.title}
+                    decoding="async"
+                    fetchPriority="high"
+                    height={latest.coverHeight || 1350}
+                    loading="eager"
+                    sizes="(max-width: 959px) calc(100vw - 40px), (max-width: 1439px) 58vw, 760px"
+                    src={latest.coverImage}
+                    srcSet={coverSrcSet(latest)}
+                    width={latest.coverWidth || 2400}
+                  />
+                </Link>
+                {latest.coverCaption || latest.coverCredit ? (
+                  <figcaption>
+                    {latest.coverCaption ? <span>{latest.coverCaption} </span> : null}
+                    {latest.coverSourceUrl ? <a href={latest.coverSourceUrl} rel="noreferrer" target="_blank">{latest.coverCredit} <span aria-hidden="true">↗</span></a> : latest.coverCredit}
+                  </figcaption>
+                ) : null}
+              </figure>
+            ) : null}
+            <div className={styles.featureCopy}>
+              <p className={styles.category}>{latest.category || latest.tags[0] || "Essay"}</p>
+              <h2><Link href={`/blog/${latest.slug}`}>{latest.title}</Link></h2>
+              {latest.summary ? <p className={styles.featureSummary}>{latest.summary}</p> : null}
+              <p className={styles.postMeta}>
+                <time dateTime={latest.date}>{formatDate(latest.date)}</time>
+                <span aria-hidden="true">/</span>
+                <span>{readingMinutes(latest.content)} min read</span>
+              </p>
+              <Link className={styles.readLink} href={`/blog/${latest.slug}`}>Read the essay <span aria-hidden="true">↗</span></Link>
+            </div>
+          </article>
+        </Section>
+      ) : null}
+
+      <Section className={styles.archiveSection} containerClassName={styles.container}>
+        <div className={styles.archiveHeading}>
+          <div>
+            <p className={styles.eyebrow}>A continuing conversation</p>
+            <h2>The archive.</h2>
+          </div>
+          <p>Reflections on the world we inherit,<br />and the one we choose to make.</p>
+        </div>
+        {archive.length ? (
+          <ol className={styles.archiveList}>
+            {archive.map((post, index) => (
+              <li key={post.slug}>
+                <article className={styles.archiveItem}>
+                  <span aria-hidden="true" className={styles.archiveNumber}>{String(index + 2).padStart(2, "0")}</span>
+                  <div className={styles.archiveCopy}>
+                    <p className={styles.category}>{post.category || post.tags[0] || "Essay"}</p>
+                    <h3><Link href={`/blog/${post.slug}`}>{post.title}</Link></h3>
+                    {post.summary ? <p className={styles.archiveSummary}>{post.summary}</p> : null}
+                  </div>
+                  <div className={styles.archiveDetails}>
+                    <time dateTime={post.date}>{formatDate(post.date)}</time>
+                    <span>{readingMinutes(post.content)} min read</span>
+                    <Link aria-label={`Read ${post.title}`} href={`/blog/${post.slug}`}>Read essay <span aria-hidden="true">↗</span></Link>
+                  </div>
+                </article>
+              </li>
+            ))}
+          </ol>
+        ) : (
+          <p className={styles.emptyArchive}>{latest ? "More words will find their way here." : "The first page is still to come."}</p>
+        )}
       </Section>
     </>
   );

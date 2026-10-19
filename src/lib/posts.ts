@@ -18,6 +18,9 @@ export type PostFrontmatter = {
   coverAlt?: string;
   coverWidth?: number;
   coverHeight?: number;
+  coverCredit?: string;
+  coverCaption?: string;
+  coverSourceUrl?: string;
   socialImage?: string;
   socialImageWidth?: number;
   socialImageHeight?: number;
@@ -90,6 +93,9 @@ function normalizeFrontmatter(
   const coverAlt = typeof data.coverAlt === "string" ? data.coverAlt : undefined;
   const coverWidth = optionalDimension(data.coverWidth);
   const coverHeight = optionalDimension(data.coverHeight);
+  const coverCredit = optionalString(data.coverCredit);
+  const coverCaption = optionalString(data.coverCaption);
+  const coverSourceUrl = optionalString(data.coverSourceUrl);
   const socialImage = optionalString(data.socialImage);
   const socialImageWidth = optionalDimension(data.socialImageWidth);
   const socialImageHeight = optionalDimension(data.socialImageHeight);
@@ -98,6 +104,7 @@ function normalizeFrontmatter(
     slug, title, date, summary, tags, lastModified,
     seoTitle, description, category, language,
     coverImage, coverImageSmall, coverImageMedium, coverAlt, coverWidth, coverHeight,
+    coverCredit, coverCaption, coverSourceUrl,
     socialImage, socialImageWidth, socialImageHeight,
   };
 }

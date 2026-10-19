@@ -1,0 +1,226 @@
+.page {
+  --interior-line: rgb(28 24 32 / 0.17);
+  color: #1c1820;
+}
+
+.wrap {
+  width: min(100% - 112px, 1240px);
+  margin-inline: auto;
+}
+
+.hero { padding-block: clamp(4.5rem, 8vw, 8rem) clamp(4rem, 7vw, 7rem); }
+.section { padding-block: clamp(4rem, 7vw, 7rem); }
+.rule { border-top: 1px solid var(--interior-line); }
+.eyebrow, .index, .meta, .caption, .sectionLabel {
+  font-family: var(--font-inter), Arial, sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.eyebrow { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 2.1rem; color: #52255f; }
+.eyebrow::before { width: 1.75rem; height: 1px; background: currentColor; content: ""; }
+.pageTitle {
+  max-width: 14ch;
+  margin: 0;
+  font-size: clamp(4rem, 7.6vw, 7.5rem);
+  font-weight: 500;
+  line-height: 0.96;
+  letter-spacing: -0.06em;
+  text-wrap: balance;
+}
+.pageTitle em, .sectionTitle em { color: #52255f; font-weight: 400; }
+.sectionTitle { max-width: 16ch; margin: 0; font-size: clamp(2.8rem, 4.8vw, 4.9rem); line-height: 1.04; letter-spacing: -0.045em; }
+.lede { max-width: 42rem; margin-top: 2rem; color: rgb(28 24 32 / 0.72); font-size: clamp(1.1rem, 1.65vw, 1.35rem); line-height: 1.75; }
+.text { color: rgb(28 24 32 / 0.7); font-size: 1rem; line-height: 1.9; }
+.text p + p { margin-top: 1.35rem; }
+.text h3 { margin-block: 2rem 0.75rem; font-size: 1.7rem; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem 2rem; margin-top: 2rem; }
+.link { display: inline-flex; align-items: center; justify-content: space-between; gap: 1.4rem; width: fit-content; min-height: 44px; padding-block: 0.55rem; border-bottom: 1px solid rgb(82 37 95 / 0.36); color: #52255f; font-size: 0.82rem; font-weight: 600; line-height: 1.5; text-decoration: none; transition: color 180ms ease, border-color 180ms ease; }
+.link:hover { border-color: #52255f; color: #1c1820; }
+.link span, .button span { display: inline-block; transition: transform 200ms ease; }
+.link:hover span, .button:hover span { transform: translateX(3px); }
+.button { display: inline-flex; align-items: center; justify-content: space-between; gap: 2.5rem; padding: 1.05rem 1.4rem; border: 1px solid #1c1820; background: #1c1820; color: #f4efe6; font-size: 0.8rem; font-weight: 600; text-decoration: none; transition: background 180ms ease, border-color 180ms ease; }
+.button:hover { border-color: #52255f; background: #52255f; color: #f4efe6; }
+.index { color: #52255f; }
+.meta { color: rgb(28 24 32 / .66); }
+.caption { display: flex; justify-content: space-between; gap: 1rem; margin-top: 1rem; color: rgb(28 24 32 / .66); font-size: 0.65rem; letter-spacing: 0.1em; }
+.sectionGrid { display: grid; grid-template-columns: 0.65fr 1.35fr; gap: 5rem; }
+.sectionLabel { margin-top: 0.5rem; color: #52255f; }
+
+/* About: a portrait, a voice, and a compact record. */
+.aboutHero { display: grid; grid-template-columns: 1.07fr 0.93fr; align-items: center; gap: clamp(3rem, 7vw, 7rem); }
+.aboutCopy .pageTitle { max-width: 9ch; }
+.portrait { margin: 0; }
+.portraitFrame { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: #e4dcd0; }
+.portraitFrame::after { position: absolute; inset: 0; border: 1px solid rgb(28 24 32 / 0.08); content: ""; pointer-events: none; }
+.portraitFrame img { width: 100%; height: 100%; object-fit: cover; object-position: 68% center; }
+.narrative { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.narrative .sectionTitle { max-width: 11ch; }
+.narrative .text { padding-top: 0.3rem; }
+.chronology { margin-top: 3.5rem; }
+.chronologyItem { display: grid; grid-template-columns: 7rem 1fr; gap: 2rem; padding-block: 1.65rem; border-top: 1px solid var(--interior-line); }
+.chronologyItem h3 { margin-bottom: 0.45rem; font-size: 1.45rem; letter-spacing: -0.025em; }
+.chronologyItem p { max-width: 37rem; font-size: 0.91rem; line-height: 1.8; }
+.darkBand { background: #1c1820; color: #f4efe6; }
+.darkBand .eyebrow, .darkBand .sectionLabel { color: #d9cce0; }
+.darkBand p, .darkBand h2, .darkBand h3, .darkBand blockquote { color: #f4efe6; }
+.darkBand .text, .darkBand .text p { color: rgb(244 239 230 / 0.68); }
+.darkBand .link { color: #f4efe6; border-color: rgb(244 239 230 / 0.35); }
+.darkBand .link:hover { color: #d9cce0; border-color: #d9cce0; }
+.quote { max-width: 22ch; margin: 0; font-family: var(--font-serif), Georgia, serif; font-size: clamp(2.4rem, 5vw, 5rem); font-weight: 400; line-height: 1.15; letter-spacing: -0.035em; }
+.quoteSource { max-width: 36rem; margin-top: 2rem; color: rgb(244 239 230 / 0.6); font-size: 0.8rem; line-height: 1.7; }
+.quoteSource a { text-decoration: underline; text-decoration-color: rgb(244 239 230 / 0.35); text-underline-offset: 0.25rem; }
+
+/* Books: two typographic objects, with room around each work. */
+.splitHero { display: grid; grid-template-columns: 1fr 0.75fr; align-items: end; gap: 4rem; }
+.splitHero .lede { margin-top: 0; padding-bottom: 0.3rem; }
+.bookRow { display: grid; grid-template-columns: 0.95fr 1.05fr; align-items: center; gap: clamp(3rem, 8vw, 8rem); }
+.bookSection { scroll-margin-top: 6.5rem; }
+.bookArt { display: flex; justify-content: center; align-items: center; min-width: 0; padding: 2.5rem; background: #eae2d7; }
+.bookJacket { position: relative; display: flex; flex-direction: column; justify-content: space-between; width: min(100%, 320px); aspect-ratio: 0.72; padding: 2rem 1.75rem 1.8rem 2.4rem; overflow: hidden; box-shadow: 14px 18px 32px rgb(28 24 32 / 0.2), 3px 3px 0 #d2c4b5; }
+.bookJacket::before { position: absolute; inset: 0 auto 0 0; width: 0.8rem; border-right: 1px solid rgb(255 255 255 / 0.1); background: linear-gradient(90deg, rgb(0 0 0 / 0.35), transparent); content: ""; }
+.plumJacket { background: #47244e; color: #f4efe6; }
+.ivoryJacket { background: #e2d4bd; color: #1c1820; box-shadow: 14px 18px 32px rgb(0 0 0 / 0.26), 3px 3px 0 #b8aa93; }
+.jacketAuthor { font-size: 0.55rem; font-weight: 600; letter-spacing: 0.23em; text-transform: uppercase; }
+.jacketTitle { position: relative; z-index: 1; display: block; max-width: 6ch; font-family: var(--font-serif), Georgia, serif; font-size: clamp(2.4rem, 3.7vw, 3.7rem); line-height: 1.06; letter-spacing: -0.045em; }
+.jacketFoot { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-top: 1.2rem; border-top: 1px solid currentColor; font-size: 0.5rem; letter-spacing: 0.18em; text-transform: uppercase; }
+.jacketLine { position: absolute; inset: auto -25% 17% 12%; height: 27%; border: 1px solid rgb(244 239 230 / 0.24); border-radius: 50%; transform: rotate(-28deg); }
+.ivoryJacket .jacketLine { inset: 16% 15% auto -16%; height: 32%; border-color: rgb(28 24 32 / 0.17); transform: rotate(28deg); }
+.bookCopy .sectionTitle { max-width: 10ch; margin-block: 1.3rem 1.6rem; }
+.bookCopy .text { max-width: 33rem; }
+.bookCopy .meta { margin-bottom: 1rem; }
+.bookAvailability { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--interior-line); color: rgb(28 24 32 / .66); font-size: 0.75rem; }
+.darkBand .bookArt { background: rgb(244 239 230 / 0.045); }
+.darkBand .bookAvailability { border-color: rgb(244 239 230 / 0.17); color: rgb(244 239 230 / 0.58); }
+.darkBand .meta { color: rgb(244 239 230 / 0.55); }
+.requestNote { display: grid; grid-template-columns: 0.8fr 1.2fr; align-items: start; gap: 5rem; }
+.requestNote .sectionTitle { max-width: 12ch; }
+
+/* Projects: a numbered, open portfolio rather than a card grid. */
+.projectLead { display: grid; grid-template-columns: 0.7fr 1.3fr; gap: 4rem; align-items: start; }
+.projectTitle { margin-block: 1rem 1.6rem; font-size: clamp(3.2rem, 5.7vw, 5.8rem); letter-spacing: -0.05em; line-height: 1.02; }
+.projectImage { margin-top: 3rem; }
+.projectImage img { display: block; width: 100%; height: auto; aspect-ratio: 2.2; object-fit: cover; }
+.projectText { max-width: 44rem; }
+.projectRow { display: grid; grid-template-columns: 0.15fr 0.85fr 1fr; gap: 3rem; padding-block: 3.5rem; border-top: 1px solid var(--interior-line); }
+.projectRow h2 { max-width: 10ch; margin-top: 0.6rem; font-size: clamp(2.4rem, 3.7vw, 3.8rem); line-height: 1.06; letter-spacing: -0.045em; }
+.projectRow .text { padding-top: 0.3rem; }
+
+/* Resume: an editorial ledger with a usable document link. */
+.resumeHero { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 4rem; align-items: end; }
+.downloadBox { padding: 1.65rem 0 0; border-top: 1px solid var(--interior-line); }
+.downloadBox p { margin-bottom: 1.4rem; color: rgb(28 24 32 / .66); font-size: 0.86rem; line-height: 1.8; }
+.ledger { display: grid; grid-template-columns: 0.6fr 1.4fr; gap: 5rem; padding-block: 4rem; border-top: 1px solid var(--interior-line); }
+.ledgerHeading h2 { margin-top: 0.85rem; font-size: clamp(2.1rem, 3.1vw, 3.2rem); letter-spacing: -0.04em; }
+.ledgerEntry { display: grid; grid-template-columns: 8rem 1fr; gap: 2rem; padding-block: 1.75rem; border-bottom: 1px solid var(--interior-line); }
+.ledgerEntry:first-child { padding-top: 0; }
+.ledgerEntry h3 { font-size: 1.45rem; line-height: 1.2; letter-spacing: -0.025em; }
+.ledgerInstitution { margin-block: 0.45rem 0.8rem; color: #52255f; font-size: 0.84rem; }
+.ledgerEntry .text { max-width: 38rem; font-size: 0.91rem; }
+.languageList { margin: 0; }
+.languageList div { display: flex; justify-content: space-between; gap: 2rem; padding-block: 1.15rem; border-bottom: 1px solid var(--interior-line); }
+.languageList dt { font-family: var(--font-serif), Georgia, serif; font-size: 1.5rem; }
+.languageList dd { color: rgb(28 24 32 / .66); font-size: 0.83rem; }
+.skills { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem 4rem; padding: 0; list-style: none; }
+.skills li { padding-top: 1rem; border-top: 1px solid rgb(244 239 230 / 0.18); }
+.skills h3 { margin-bottom: 0.6rem; font-size: 1.5rem; letter-spacing: -0.025em; }
+.skills p { max-width: 32rem; color: rgb(244 239 230 / 0.62); font-size: 0.87rem; line-height: 1.85; }
+
+/* Contact: a direct invitation and a deliberately quiet email composer. */
+.contactHero .pageTitle { max-width: 11ch; }
+.contactGrid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: clamp(4rem, 9vw, 9rem); }
+.email { display: inline-block; max-width: 100%; padding-block: 0.5rem; font-family: var(--font-serif), Georgia, serif; font-size: clamp(1.55rem, 3.2vw, 3rem); letter-spacing: -0.04em; line-height: 1.25; text-decoration: underline; text-decoration-color: rgb(82 37 95 / 0.24); text-underline-offset: 0.4rem; overflow-wrap: anywhere; }
+.contactDetails .text { margin-top: 1.3rem; font-size: 0.92rem; }
+.contactTopics { margin-top: 3.5rem; }
+.contactTopic { display: grid; grid-template-columns: 2rem 1fr; gap: 1rem; padding-block: 1.3rem; border-top: 1px solid var(--interior-line); }
+.contactTopic h3 { margin-bottom: 0.45rem; font-size: 1.45rem; letter-spacing: -0.025em; }
+.contactTopic p { color: rgb(28 24 32 / .66); font-size: 0.85rem; line-height: 1.85; }
+.formHeading { margin-bottom: 0.75rem; font-size: 2.5rem; letter-spacing: -0.04em; }
+.formIntro { margin-bottom: 1.8rem; color: rgb(28 24 32 / .66); font-size: 0.88rem; line-height: 1.8; }
+.form fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+.formFields { display: grid; grid-template-columns: 1fr 1fr; gap: 1.8rem; }
+.formField { display: flex; min-width: 0; flex-direction: column; gap: 0.65rem; }
+.messageField { grid-column: 1 / -1; }
+.form label { color: rgb(28 24 32 / .66); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; }
+.input { width: 100%; padding: 0.8rem 0; border: 0; border-bottom: 1px solid rgb(28 24 32 / 0.28); border-radius: 0; background: transparent; color: #1c1820; font-family: inherit; font-size: 0.94rem; line-height: 1.7; transition: border-color 160ms ease; }
+.input::placeholder { color: rgb(28 24 32 / .66); }
+.input:focus { outline: none; border-color: #52255f; box-shadow: 0 1px 0 #52255f; }
+.message { min-height: 160px; resize: vertical; }
+.formActions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem 1.5rem; margin-top: 1.5rem; }
+.formActions p { max-width: 13rem; color: rgb(28 24 32 / .66); font-size: 0.7rem; line-height: 1.7; }
+.form .button:disabled { cursor: wait; opacity: 0.55; }
+.noScript { margin-top: 1rem; color: rgb(28 24 32 / 0.65); font-size: 0.85rem; }
+
+/* 404: a small detour inside the same visual world. */
+.error { position: relative; display: flex; min-height: 72vh; align-items: center; overflow: hidden; }
+.errorNumber { position: absolute; right: -0.05em; bottom: -0.12em; color: rgb(82 37 95 / 0.055); font-family: var(--font-serif), Georgia, serif; font-size: clamp(15rem, 40vw, 40rem); line-height: 1; letter-spacing: -0.1em; pointer-events: none; user-select: none; }
+.errorContent { position: relative; z-index: 1; padding-block: 6rem; }
+.error .pageTitle { max-width: 10ch; }
+.error .lede { max-width: 30rem; font-size: 1.05rem; }
+
+@media (max-width: 1000px) {
+  .wrap { width: min(100% - 64px, 1240px); }
+  .aboutHero { gap: 3rem; }
+  .sectionGrid, .ledger { grid-template-columns: 0.55fr 1.45fr; gap: 3rem; }
+  .bookRow { gap: 3rem; }
+  .bookArt { padding: 1.8rem; }
+  .bookJacket { padding: 1.6rem 1.4rem 1.4rem 1.9rem; }
+  .projectLead { grid-template-columns: 0.65fr 1.35fr; gap: 3rem; }
+  .contactGrid { gap: 3rem; }
+  .ledgerEntry { grid-template-columns: 1fr; gap: 0.65rem; }
+  .resumeHero { gap: 3rem; }
+}
+
+@media (max-width: 767px) {
+  .wrap { width: calc(100% - 40px); }
+  .hero { padding-block: 3.5rem 4rem; }
+  .section { padding-block: 3.5rem; }
+  .pageTitle { font-size: clamp(3.8rem, 13vw, 6.3rem); line-height: 1; }
+  .eyebrow { margin-bottom: 1.7rem; font-size: 0.65rem; }
+  .lede { margin-top: 1.5rem; font-size: 1.03rem; line-height: 1.85; }
+  .sectionTitle { font-size: clamp(2.6rem, 9.5vw, 4rem); }
+  .aboutHero, .splitHero, .narrative, .sectionGrid, .bookRow, .requestNote, .projectLead, .resumeHero, .ledger, .contactGrid { grid-template-columns: 1fr; gap: 2.7rem; }
+  .aboutCopy .pageTitle { max-width: 11ch; }
+  .portraitFrame { aspect-ratio: 4 / 4.5; }
+  .portrait { width: min(100%, 520px); }
+  .caption { font-size: 0.65rem; }
+  .narrative .sectionTitle { max-width: 13ch; }
+  .chronology { margin-top: 2rem; }
+  .chronologyItem { grid-template-columns: 4.5rem 1fr; gap: 1.25rem; }
+  .chronologyItem h3 { font-size: 1.3rem; }
+  .chronologyItem p { font-size: 0.86rem; }
+  .splitHero { gap: 1.6rem; }
+  .splitHero .lede { max-width: 31rem; }
+  .bookArt { padding: 2rem; }
+  .bookJacket { width: min(100%, 280px); padding: 1.8rem 1.4rem 1.5rem 2rem; }
+  .jacketTitle { font-size: clamp(2.4rem, 10vw, 3.6rem); }
+  .bookCopy .sectionTitle { max-width: 12ch; }
+  .projectTitle { margin-top: 0.7rem; font-size: 3.2rem; }
+  .projectImage { margin-top: 2rem; }
+  .projectImage img { aspect-ratio: 1.3; }
+  .projectRow { grid-template-columns: 2rem 1fr; gap: 1.2rem; padding-block: 2.5rem; }
+  .projectRow .text { grid-column: 2; }
+  .projectRow h2 { max-width: 12ch; font-size: 2.5rem; }
+  .resumeHero { gap: 2.5rem; }
+  .downloadBox { max-width: 34rem; }
+  .ledger { padding-block: 2.8rem; gap: 2rem; }
+  .ledgerHeading { display: flex; align-items: baseline; gap: 1.2rem; }
+  .ledgerHeading h2 { margin: 0; font-size: 2.35rem; }
+  .ledgerEntry { padding-block: 1.5rem; }
+  .skills { grid-template-columns: 1fr; gap: 1.8rem; }
+  .contactHero .pageTitle { max-width: 9ch; }
+  .contactGrid { gap: 3.5rem; }
+  .contactTopics { margin-top: 2.5rem; }
+  .formFields { grid-template-columns: 1fr; gap: 1.4rem; }
+  .messageField { grid-column: auto; }
+  .formActions { align-items: flex-start; }
+  .formActions p { max-width: 15rem; }
+  .error { min-height: 65vh; }
+  .errorContent { padding-block: 4rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link, .button, .link span, .button span, .input { transition: none; }
+}

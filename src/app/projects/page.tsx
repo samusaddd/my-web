@@ -1,155 +1,73 @@
 import type { Metadata } from "next";
-
-import { MotionCard } from "@/components/motion/motion-card";
-import { MotionSection } from "@/components/motion/motion-section";
+import Link from "next/link";
 import { JsonLd } from "@/components/seo/JsonLd";
-import {
-  Badge,
-  ButtonLink,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui";
 import { absoluteUrl, siteConfig } from "@/lib/site";
+import styles from "../interior.module.css";
 
 const canonicalUrl = absoluteUrl("/projects");
-const ogImage = absoluteUrl(siteConfig.socialImagePath);
-
+const description = "Selected work by Samir Seddiqi: building VitaAvanza, writing books, and publishing essays on society and human experience.";
+const image = { url: absoluteUrl(siteConfig.socialImagePath), width: 1200, height: 630, alt: "Selected work by Samir Seddiqi" };
 export const metadata: Metadata = {
-  title: "Projects and VitaAvanza",
-  description:
-    "Projects by Samir Seddiqi, including VitaAvanza, the main project he founded and continues to build.",
-  alternates: { canonical: canonicalUrl },
-  openGraph: {
-    title: `Projects | ${siteConfig.name}`,
-    description:
-      "Projects by Samir Seddiqi, including VitaAvanza, the main project he founded and continues to build.",
-    type: "website",
-    url: canonicalUrl,
-    images: [{ url: ogImage, width: 1200, height: 630, alt: "Samir Seddiqi Projects" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `Projects | ${siteConfig.name}`,
-    description:
-      "Projects by Samir Seddiqi, including VitaAvanza, the main project he founded and continues to build.",
-    images: [ogImage],
-  },
+  title: "Selected Work", description, alternates: { canonical: canonicalUrl },
+  openGraph: { title: `Selected Work | ${siteConfig.name}`, description, type: "website", url: canonicalUrl, images: [image] },
+  twitter: { card: "summary_large_image", title: `Selected Work | ${siteConfig.name}`, description, images: [image] },
 };
-
-const projects = [
-  {
-    title: "VitaAvanza",
-    role: "Founder",
-    focus: "Building systems for direction, development, and real-life progress.",
-    description:
-      "VitaAvanza is a platform built around a simple belief: progress should be understood more deeply than money alone. The project explores how people and institutions can navigate stability, growth, support, and opportunity in a more structured, human, and forward-looking way.",
-    status: "Active",
-  },
-  {
-    title: siteConfig.book.title,
-    role: "Author",
-    focus: "A personal literary work",
-    description:
-      "A deeply personal work shaped by emotion, silence, pain, and reflection. It is part of the same broader direction, using writing to stay close to truth and human depth.",
-    status: "Published",
-  },
-  {
-    title: "Writing and notes",
-    role: "Ongoing",
-    focus: "Essays, reflections, and direction",
-    description:
-      "An ongoing body of work shaped by experience, reflection, ambition, and the ideas that continue to influence how I think and build.",
-    status: "Ongoing",
-  },
-] as const;
-
 export default function ProjectsPage() {
   const organizationJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: siteConfig.company.name,
-    alternateName: siteConfig.company.shortName,
-    url: siteConfig.company.url,
-    sameAs: [siteConfig.company.linkedin],
-    founder: {
-      "@type": "Person",
-      name: siteConfig.name,
-      url: absoluteUrl("/"),
-    },
-    description:
-      "VitaAvanza is the main project founded by Samir Seddiqi, focused on progress, support, stability, and direction.",
-  } as const;
-
+    "@context": "https://schema.org", "@type": "Organization", name: siteConfig.company.name,
+    alternateName: siteConfig.company.shortName, url: siteConfig.company.url, sameAs: [siteConfig.company.linkedin],
+    founder: { "@type": "Person", name: siteConfig.name, url: absoluteUrl("/") },
+    description: "VitaAvanza is the main project founded by Samir Seddiqi, focused on progress, support, stability, and direction.",
+  };
   return (
-    <>
+    <div className={styles.page}>
       <JsonLd data={organizationJsonLd} id="organization-jsonld-projects" />
-
-      <MotionSection
-        className="pt-16 sm:pt-24"
-        motionClassName="mx-auto flex max-w-4xl flex-col gap-6 text-center"
-      >
-        <Badge variant="accent" className="mx-auto">
-          Projects
-        </Badge>
-        <h1>Projects</h1>
-        <p className="mx-auto max-w-3xl text-base text-white/75 sm:text-lg">
-          These are some of the projects and ideas I have been building, each shaped by a real
-          direction, not just an abstract concept.
-        </p>
-        <div className="flex flex-wrap justify-center gap-3">
-          <ButtonLink href="/about" variant="secondary">
-            About
-          </ButtonLink>
-          <ButtonLink href="/contact" variant="outline">
-            Contact
-          </ButtonLink>
+      <header className={styles.hero}>
+        <div className={`${styles.wrap} ${styles.splitHero}`}>
+          <div><p className={styles.eyebrow}>Projects / Selected work</p><h1 className={styles.pageTitle}>Thought<br /><em>into action.</em></h1></div>
+          <p className={styles.lede}>A company, two books, an ongoing body of writing. Different forms of the same impulse: to understand more, and make something of it.</p>
         </div>
-      </MotionSection>
-
-      <MotionSection
-        className="pt-0"
-        containerClassName="max-w-6xl"
-        delayChildren={0.03}
-        motionClassName="grid gap-6 lg:grid-cols-2"
-        staggerChildren={0.08}
-      >
-        {projects.map((project) => (
-          <MotionCard className="flex h-full flex-col" key={project.title}>
-            <CardHeader className="space-y-4">
-              <div className="flex items-center justify-between text-xs uppercase tracking-[0.14em] text-white/45">
-                <span>{project.role}</span>
-                <span className="rounded-full border border-white/10 px-3 py-1 text-[11px] text-white/70">
-                  {project.status}
-                </span>
-              </div>
-              <CardTitle className="text-2xl">{project.title}</CardTitle>
-              <CardDescription className="text-white/75">{project.focus}</CardDescription>
-            </CardHeader>
-            <CardContent className="mt-4 flex-1 text-sm text-white/75">
-              {project.description}
-            </CardContent>
-          </MotionCard>
-        ))}
-      </MotionSection>
-
-      <MotionSection
-        className="pt-0"
-        containerClassName="max-w-5xl"
-        motionClassName="surface flex flex-col gap-4 p-8 md:flex-row md:items-center md:justify-between md:p-10"
-      >
-        <div className="space-y-2">
-          <Badge>Working standard</Badge>
-          <h2 className="text-3xl">The work has to stay grounded in reality</h2>
-          <p className="max-w-2xl text-sm text-white/75">
-            I care more about substance, clarity, and follow-through than presentation without depth.
-          </p>
+      </header>
+      <section className={`${styles.section} ${styles.rule}`}>
+        <div className={styles.wrap}>
+          <div className={styles.projectLead}>
+            <div><p className={styles.index}>01 / Building</p><h2 className={styles.projectTitle}>VitaAvanza</h2><p className={styles.meta}>Founder · Active</p></div>
+            <div className={`${styles.text} ${styles.projectText}`}>
+              <p className={styles.lede}>Progress should be understood more deeply than money alone.</p>
+              <p>VitaAvanza explores how people and institutions can navigate stability, growth, support, and opportunity in a more structured, human way.</p>
+              <p>It brings the questions I care about into practical work: how we find direction, how support is organized, and how systems can stay close to the people using them.</p>
+              <div className={styles.actions}><a className={styles.link} href={siteConfig.company.url} rel="noopener noreferrer" target="_blank">Visit VitaAvanza <span aria-hidden="true">↗</span></a></div>
+            </div>
+          </div>
+          <figure className={styles.projectImage}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img alt="Trento and the surrounding mountains in warm evening light" decoding="async" height="1024" loading="lazy" src="/home/vitaavanza-trento.jpg" width="1536" />
+            <figcaption className={styles.caption}><span>VitaAvanza / Trento, Italy</span><span>Building with a human perspective</span></figcaption>
+          </figure>
         </div>
-        <ButtonLink href="/resume" variant="ghost">
-          Resume
-        </ButtonLink>
-      </MotionSection>
-    </>
+      </section>
+      <section className={`${styles.section} ${styles.rule}`}>
+        <div className={styles.wrap}>
+          <div className={styles.projectRow}>
+            <span className={styles.index}>02</span>
+            <div><p className={styles.meta}>Books / Author</p><h2>Writing the<br /><em>interior life.</em></h2></div>
+            <div className={styles.text}>
+              <p><em>Can You Hear Me?</em> stays close to silence, pain, and the need to be understood. <em>We Were Never Here</em> turns toward identity, meaning, and what remains when certainty dissolves.</p>
+              <p>Two works that approach difficult questions through a personal voice.</p>
+              <div className={styles.actions}><Link className={styles.link} href="/book">Discover both books <span aria-hidden="true">→</span></Link></div>
+            </div>
+          </div>
+          <div className={styles.projectRow}>
+            <span className={styles.index}>03</span>
+            <div><p className={styles.meta}>Essays / Ongoing</p><h2>An open<br /><em>conversation.</em></h2></div>
+            <div className={styles.text}>
+              <p>Essays, letters, and reflections on freedom, society, responsibility, and the realities that shape a human life.</p>
+              <p>A space to examine what we accept, what we question, and what we owe to one another.</p>
+              <div className={styles.actions}><Link className={styles.link} href="/blog">Read the essays <span aria-hidden="true">→</span></Link></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

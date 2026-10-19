@@ -1,25 +1,19 @@
-import { MotionSection } from "@/components/motion/motion-section";
-import { Badge, ButtonLink } from "@/components/ui";
+import Link from "next/link";
+import styles from "./interior.module.css";
 
 export default function NotFound() {
   return (
-    <MotionSection
-      className="pt-24 sm:pt-32"
-      containerClassName="max-w-3xl"
-      motionClassName="surface flex flex-col items-center gap-6 p-10 text-center md:p-14"
-    >
-      <Badge variant="accent">404</Badge>
-      <h1 className="text-4xl sm:text-5xl">Page not found</h1>
-      <p className="max-w-2xl text-base text-white/75">
-        The page you were looking for does not exist or has moved. Use the primary navigation or
-        return to the homepage.
-      </p>
-      <div className="flex flex-wrap justify-center gap-3">
-        <ButtonLink href="/">Go home</ButtonLink>
-        <ButtonLink href="/contact" variant="secondary">
-          Contact
-        </ButtonLink>
+    <div className={`${styles.page} ${styles.error}`}>
+      <span aria-hidden="true" className={styles.errorNumber}>404</span>
+      <div className={`${styles.wrap} ${styles.errorContent}`}>
+        <p className={styles.eyebrow}>404 / A small detour</p>
+        <h1 className={styles.pageTitle}>This page<br /><em>got away.</em></h1>
+        <p className={styles.lede}>The address may have changed, or the page may no longer be here. There is still plenty to read.</p>
+        <div className={styles.actions}>
+          <Link className={styles.button} href="/blog">Find an essay <span aria-hidden="true">→</span></Link>
+          <Link className={styles.link} href="/">Return home <span aria-hidden="true">↗</span></Link>
+        </div>
       </div>
-    </MotionSection>
+    </div>
   );
 }

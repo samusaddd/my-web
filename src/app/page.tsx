@@ -1,291 +1,91 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-
-import { HeroBackground } from "@/components/hero-background";
-import { HomeIntro } from "@/components/home-intro";
-import { MotionSection } from "@/components/motion/motion-section";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { ButtonLink } from "@/components/ui";
-import { getAllPosts } from "@/lib/posts";
+import { getAllPostsWithContent } from "@/lib/posts";
 import { absoluteUrl, siteConfig } from "@/lib/site";
-
 import styles from "./home.module.css";
 
-const canonicalUrl = absoluteUrl("/");
-const ogImage = absoluteUrl(siteConfig.socialImagePath);
-
 export const metadata: Metadata = {
-  title: "Founder of VitaAvanza",
-  description:
-    "I'm Samir Seddiqi, founder of VitaAvanza, writer, and Economics & Management student in Trento. This is my personal space, where writing, ambition, lived experience, and the work behind VitaAvanza come together.",
-  alternates: { canonical: canonicalUrl },
-  openGraph: {
-    type: "website",
-    title: `${siteConfig.name} | Founder of VitaAvanza`,
-    description:
-      "I'm Samir Seddiqi, founder of VitaAvanza, writer, and Economics & Management student in Trento. This is my personal space, where writing, ambition, lived experience, and the work behind VitaAvanza come together.",
-    url: canonicalUrl,
-    images: [{ url: ogImage, width: 1200, height: 630, alt: siteConfig.name }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${siteConfig.name} | Founder of VitaAvanza`,
-    description:
-      "I'm Samir Seddiqi, founder of VitaAvanza, writer, and Economics & Management student in Trento. This is my personal space, where writing, ambition, lived experience, and the work behind VitaAvanza come together.",
-    images: [ogImage],
-  },
+  title: { absolute: "Samir Seddiqi | Writer & Founder" },
+  description: siteConfig.description,
+  alternates: { canonical: absoluteUrl("/") },
+  openGraph: { title: "Samir Seddiqi | Writer & Founder", description: siteConfig.description, url: absoluteUrl("/"), type: "website", images: [{ url: absoluteUrl(siteConfig.socialImagePath), width: 1200, height: 630, alt: siteConfig.name }] },
+  twitter: { card: "summary_large_image", title: "Samir Seddiqi | Writer & Founder", description: siteConfig.description, images: [absoluteUrl(siteConfig.socialImagePath)] },
 };
-
-const currentFocus = [
-  {
-    title: "Building VitaAvanza",
-    description:
-      "Developing an AI infrastructure for institutions supporting people through complex journeys.",
-  },
-  {
-    title: "Studying in Trento",
-    description: "Pursuing Economics and Management at the University of Trento.",
-  },
-  {
-    title: "Writing",
-    description: "Sharing thoughts on technology, society, and a more human future.",
-  },
-  {
-    title: "Exploring what’s next",
-    description: "Working on new ideas at the intersection of people, technology, and impact.",
-  },
-] as const;
-
-const timeline = [
-  { place: "Kabul", note: "The beginning." },
-  { place: "Italy", note: "A new chapter." },
-  { place: "University of Trento", note: "Economics and Management." },
-  { place: "VitaAvanza", note: "Founder and company builder." },
-] as const;
-
-const articleImages = [
-  "/home/writing-path.jpg",
-  "/home/writing-threshold.jpg",
-  "/home/writing-desk.jpg",
-] as const;
-
-function formatDate(date: string) {
-  return new Intl.DateTimeFormat("en", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-  }).format(new Date(date));
-}
+function date(value: string) { return new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric" }).format(new Date(value)); }
+function minutes(content: string) { return Math.max(1, Math.ceil(content.trim().split(/\s+/).length / 220)); }
 
 export default function HomePage() {
-  const posts = getAllPosts().slice(0, 3);
-
-  const personJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: siteConfig.name,
-    url: canonicalUrl,
-    sameAs: [siteConfig.linkedin],
-    jobTitle: "Founder of VitaAvanza, Writer, and Economics & Management Student",
-    description: siteConfig.description,
-    alumniOf: { "@type": "CollegeOrUniversity", name: "University of Trento" },
-    worksFor: {
-      "@type": "Organization",
-      name: siteConfig.company.name,
-      url: siteConfig.company.url,
-    },
-    knowsAbout: [
-      "Writing",
-      "Entrepreneurship",
-      "Systems thinking",
-      "Economics and Management",
-      "Strategy",
-    ],
-  } as const;
-
-  const organizationJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: siteConfig.company.name,
-    alternateName: siteConfig.company.shortName,
-    url: siteConfig.company.url,
-    sameAs: [siteConfig.company.linkedin],
-    founder: { "@type": "Person", name: siteConfig.name, url: canonicalUrl },
-    description:
-      "VitaAvanza is a project and company founded by Samir Seddiqi, built around progress, direction, support, and real-life stability.",
-  } as const;
-
+  const posts = getAllPostsWithContent();
+  const latest = posts[0];
+  const archive = posts.slice(1, 4);
+  const srcSet = latest?.coverImageSmall && latest?.coverImageMedium
+    ? latest.coverImageSmall + " 800w, " + latest.coverImageMedium + " 1600w, " + latest.coverImage + " 2400w"
+    : undefined;
   return (
     <>
-      <HomeIntro />
-      <JsonLd data={personJsonLd} id="person-jsonld-home" />
-      <JsonLd data={organizationJsonLd} id="organization-jsonld-home" />
-
-      <MotionSection
-        as="header"
-        className={styles.hero}
-        containerClassName={styles.heroContainer}
-        motionClassName={styles.heroGrid}
-      >
+      <JsonLd id="person-jsonld-home" data={{ "@context": "https://schema.org", "@type": "Person", name: siteConfig.name, url: absoluteUrl("/"), sameAs: [siteConfig.linkedin], jobTitle: "Writer and Founder", description: siteConfig.description, worksFor: { "@type": "Organization", name: siteConfig.company.name, url: siteConfig.company.url } }} />
+      <section className={styles.hero}>
         <div className={styles.heroCopy}>
-          <p className={styles.eyebrow}>
-            <span aria-hidden="true" /> People, systems, a more human tomorrow
-          </p>
-          <h1 className={styles.heroTitle}>
-            <span>Samir</span>
-            <span>Seddiqi</span>
-          </h1>
-          <p className={styles.heroRole}>Founder, builder, writer.</p>
-          <p className={styles.heroDescription}>
-            Building VitaAvanza in Trento, shaping systems that help people navigate complex lives.
-          </p>
+          <p className={styles.eyebrow}>The personal pages of Samir Seddiqi</p>
+          <h1>A life in words.<br /><em>A world in question.</em></h1>
+          <p className={styles.heroLead}>I write about freedom, belonging, and what it means to build a life that feels your own.</p>
           <div className={styles.heroActions}>
-            <ButtonLink href="/contact" size="lg">Get in touch</ButtonLink>
-            <ButtonLink href="#selected-work" size="lg" variant="ghost">Explore work</ButtonLink>
+            <Link className={styles.solidLink} href="/blog">Read the essays <span aria-hidden="true">↗</span></Link>
+            <Link className={styles.textLink} href="/about">A little about me <span aria-hidden="true">→</span></Link>
           </div>
+          <p className={styles.heroFootnote}>Afghan-born. Based in Trento.<br />Still asking questions.</p>
         </div>
-        <HeroBackground className={styles.heroPortrait} />
-        <p className={styles.heroIndex} aria-hidden="true">SS / 01</p>
-      </MotionSection>
-
-      <MotionSection
-        className={styles.nowSection}
-        containerClassName={styles.sectionContainer}
-        motionClassName={styles.nowGrid}
-      >
-        <div className={styles.sectionLead}>
-          <p className={styles.sectionLabel}>Now <span aria-hidden="true" /></p>
-          <h2>Currently building, learning, and writing.</h2>
-        </div>
-        <ol className={styles.focusList}>
-          {currentFocus.map((item, index) => (
-            <li key={item.title}>
-              <span className={styles.itemNumber}>{String(index + 1).padStart(2, "0")}</span>
-              <div>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </MotionSection>
-
-      <MotionSection
-        className={styles.workSection}
-        containerClassName={styles.sectionContainer}
-        id="selected-work"
-        motionClassName={styles.sectionFlow}
-      >
-        <div className={styles.sectionHeadingRow}>
-          <div>
-            <p className={styles.sectionLabel}>Selected work <span aria-hidden="true" /></p>
-            <h2>Selected work.</h2>
+        <figure className={styles.portrait}>
+          <div className={styles.portraitFrame}>
+            <Image alt="Samir Seddiqi standing in front of historic architecture" fill priority sizes="(max-width: 767px) 100vw, 42vw" src="/samir-hero-editorial.jpg" unoptimized />
+            <span className={styles.photoFolio} aria-hidden="true">SS / A LIFE IN PROGRESS</span>
           </div>
-          <Link className={styles.editorialLink} href="/projects">
-            View all work <span aria-hidden="true">→</span>
-          </Link>
-        </div>
+          <figcaption>Writer. Founder. Student of the world.</figcaption>
+        </figure>
+      </section>
 
-        <div className={styles.workGrid}>
-          <article className={styles.flagship}>
-            <div className={styles.flagshipImage}>
-              <Image alt="A warm editorial view of Trento and the Dolomites" fill sizes="(max-width: 767px) 100vw, 66vw" src="/home/vitaavanza-trento.jpg" unoptimized />
+      {latest ? (
+        <section className={styles.writingSection} aria-labelledby="writing-title">
+          <div className={styles.sectionHeading}><p className={styles.eyebrow}>01 / The latest essay</p><Link className={styles.textLink} href="/blog">The writing archive ↗</Link></div>
+          <div className={styles.featuredEssay}>
+            {latest.coverImage ? <Link className={styles.essayImage} href={"/blog/" + latest.slug} tabIndex={-1} aria-hidden="true"><img alt="" width={latest.coverWidth || 2400} height={latest.coverHeight || 1350} src={latest.coverImage} srcSet={srcSet} sizes="(max-width: 767px) calc(100vw - 40px), 60vw" loading="lazy" /></Link> : null}
+            <div className={styles.essayCopy}>
+              <p className={styles.eyebrow}>{latest.category || "An essay"}<br /><time dateTime={latest.date}>{date(latest.date)}</time> · {minutes(latest.content)} min read</p>
+              <h2 id="writing-title"><Link href={"/blog/" + latest.slug}>{latest.title}</Link></h2>
+              <p>{latest.summary}</p>
+              <Link className={styles.textLink} href={"/blog/" + latest.slug}>Read the essay <span aria-hidden="true">→</span></Link>
             </div>
-            <div className={styles.flagshipCopy}>
-              <p className={styles.projectMeta}><span>01</span> Flagship project</p>
-              <h3>VitaAvanza</h3>
-              <p>An AI infrastructure for institutions supporting people through complex journeys.</p>
-              <a className={styles.editorialLink} href={siteConfig.company.url} rel="noreferrer" target="_blank">
-                Explore VitaAvanza <span aria-hidden="true">↗</span>
-              </a>
-            </div>
-          </article>
+          </div>
+          <div className={styles.archive}>
+            {archive.map((post, index) => <Link className={styles.archiveRow} href={"/blog/" + post.slug} key={post.slug}>
+              <span className={styles.archiveNumber}>0{index + 2}</span>
+              <h3>{post.title}</h3><span className={styles.archiveDate}>{date(post.date)}</span><span className={styles.archiveArrow} aria-hidden="true">↗</span>
+            </Link>)}
+          </div>
+        </section>
+      ) : null}
 
-          <div className={styles.secondaryWork}>
-            <article>
-              <p className={styles.projectMeta}><span>02</span> Words & ideas</p>
-              <h3>Writing</h3>
-              <p>Essays, reflections, and notes on technology, society, and building a more human future.</p>
-              <Link className={styles.editorialLink} href="/blog">Read my writing <span aria-hidden="true">→</span></Link>
-            </article>
-            <article>
-              <p className={styles.projectMeta}><span>03</span> Experiments</p>
-              <h3>Projects</h3>
-              <p>A collection of ideas, experiments, and early-stage explorations across different domains.</p>
-              <Link className={styles.editorialLink} href="/projects">Explore projects <span aria-hidden="true">→</span></Link>
-            </article>
+      <section className={styles.booksSection} aria-labelledby="books-title">
+        <div className={styles.booksInner}>
+          <div className={styles.booksIntro}><p className={styles.eyebrow}>02 / Books &amp; longer work</p><h2 id="books-title">Some stories<br />need <em>more room.</em></h2><p>Memory, silence, and the difficult business of being human. Two books, written in the hope that something on the page might reach someone on the other side.</p><Link className={styles.lightLink} href="/book">Explore the books →</Link></div>
+          <div className={styles.bookPair}>
+            <Link href="/book#can-you-hear-me" className={styles.bookTile}><div className={styles.bookCover}><span>SAMIR SEDDIQI</span><strong>Can You<br />Hear Me<span className={styles.questionMark}>?</span></strong><span>A PERSONAL LITERARY WORK</span></div><h3>Can You Hear Me?</h3><p>{siteConfig.book.distribution} ↗</p></Link>
+            <Link href="/book#we-were-never-here" className={styles.bookTile}><div className={styles.bookCoverSecond}><span>SAMIR SEDDIQI</span><strong>We Were<br /><em>Never</em><br />Here</strong><span>A WORK BY SAMIR SEDDIQI</span></div><h3>We Were Never Here</h3><p>{siteConfig.newBook.distribution} ↗</p></Link>
           </div>
         </div>
-      </MotionSection>
+      </section>
 
-      <MotionSection
-        className={styles.writingSection}
-        containerClassName={styles.sectionContainer}
-        motionClassName={styles.sectionFlow}
-      >
-        <div className={styles.sectionHeadingRow}>
-          <div>
-            <p className={styles.sectionLabel}>Writing <span aria-hidden="true" /></p>
-            <h2>Writing.</h2>
-          </div>
-          <Link className={styles.editorialLink} href="/blog">View all articles <span aria-hidden="true">→</span></Link>
-        </div>
+      <section className={styles.personalSection}>
+        <p className={styles.eyebrow}>03 / A short introduction</p>
+        <div><h2>Afghanistan is where<br />my story starts.<br /><em>The rest is still being written.</em></h2><div className={styles.personalBody}><p>I’m Samir, a writer and founder living in Trento, Italy. My work moves between writing, economics, and building VitaAvanza.</p><p>The questions tend to travel with me: who gets to belong, where opportunity begins, and what we owe each other. This is where I try to give those questions some room.</p><Link className={styles.textLink} href="/about">Read my story →</Link></div></div>
+      </section>
 
-        <div className={styles.articleGrid}>
-          {posts.map((post, index) => (
-            <article className={index === 0 ? styles.leadArticle : styles.article} key={post.slug}>
-              <Link className={post.coverImage ? `${styles.articleImage} ${styles.articleCoverImage}` : styles.articleImage} href={`/blog/${post.slug}`} tabIndex={-1}>
-                <picture>
-                  {post.coverImage && (post.coverImageSmall || post.coverImageMedium) ? (
-                    <source
-                      sizes={index === 0 ? "(max-width: 959px) 100vw, 54vw" : "(max-width: 767px) 112px, 192px"}
-                      srcSet={[
-                        post.coverImageSmall ? `${post.coverImageSmall} 800w` : null,
-                        post.coverImageMedium ? `${post.coverImageMedium} 1600w` : null,
-                        `${post.coverImage} ${post.coverWidth || 2400}w`,
-                      ].filter(Boolean).join(", ")}
-                      type="image/webp"
-                    />
-                  ) : null}
-                  <Image alt={post.coverImage ? post.coverAlt || post.title : ""} fill sizes={index === 0 ? "(max-width: 767px) 100vw, 54vw" : "(max-width: 767px) 100vw, 30vw"} src={post.coverImage || articleImages[index]} unoptimized />
-                </picture>
-              </Link>
-              <div className={styles.articleCopy}>
-                <p className={styles.articleMeta}>{formatDate(post.date)} <span aria-hidden="true">•</span> {post.tags[0]}</p>
-                <h3><Link href={`/blog/${post.slug}`}>{post.title}</Link></h3>
-                <p>{post.summary}</p>
-                <Link className={styles.articleReadLink} href={`/blog/${post.slug}`}>Read essay <span aria-hidden="true">→</span></Link>
-              </div>
-            </article>
-          ))}
-        </div>
-      </MotionSection>
-
-      <MotionSection
-        className={styles.timelineSection}
-        containerClassName={styles.sectionContainer}
-        motionClassName={styles.sectionFlow}
-      >
-        <div className={styles.timelineHeading}>
-          <div>
-            <p className={styles.sectionLabel}>A short timeline <span aria-hidden="true" /></p>
-            <h2>A short timeline.</h2>
-          </div>
-          <p>Different places. A clearer purpose.</p>
-        </div>
-        <ol className={styles.timeline}>
-          {timeline.map((item, index) => (
-            <li key={item.place}>
-              <span className={styles.timelineMarker} aria-hidden="true" />
-              <p className={styles.timelineNumber}>Chapter {String(index + 1).padStart(2, "0")}</p>
-              <h3>{item.place}</h3>
-              <p>{item.note}</p>
-            </li>
-          ))}
-        </ol>
-      </MotionSection>
-
+      <section className={styles.workSection}>
+        <div className={styles.workImage}><Image alt="Trento and the surrounding mountains" fill sizes="(max-width: 767px) 100vw, 50vw" src="/home/vitaavanza-trento.jpg" unoptimized /></div>
+        <div className={styles.workCopy}><p className={styles.eyebrow}>04 / Beyond the page</p><h2>Ideas should<br />have <em>a life outside us.</em></h2><p>I founded VitaAvanza to work on the structures that help people navigate complicated lives. It is where the questions become practical work.</p><div className={styles.workLinks}><a className={styles.textLink} href={siteConfig.company.url} target="_blank" rel="noreferrer">Visit VitaAvanza ↗</a><Link className={styles.textLink} href="/projects">More about the work →</Link></div></div>
+      </section>
     </>
   );
 }
