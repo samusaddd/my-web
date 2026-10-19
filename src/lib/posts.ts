@@ -8,10 +8,19 @@ export type PostFrontmatter = {
   date: string;
   summary: string;
   tags: string[];
+  seoTitle?: string;
+  description?: string;
+  category?: string;
+  language?: string;
   coverImage?: string;
+  coverImageSmall?: string;
+  coverImageMedium?: string;
   coverAlt?: string;
   coverWidth?: number;
   coverHeight?: number;
+  socialImage?: string;
+  socialImageWidth?: number;
+  socialImageHeight?: number;
 };
 
 export type PostMeta = PostFrontmatter & {
@@ -40,6 +49,16 @@ function parseDate(value: unknown) {
   return date;
 }
 
+function optionalString(value: unknown) {
+  return typeof value === "string" && value.trim() ? value.trim() : undefined;
+}
+
+function optionalDimension(value: unknown) {
+  return typeof value === "number" && Number.isInteger(value) && value > 0
+    ? value
+    : undefined;
+}
+
 function readPostFile(slug: string) {
   const fullPath = getPostFilePath(slug);
   if (!fs.existsSync(fullPath)) return null;
@@ -61,20 +80,25 @@ function normalizeFrontmatter(
     ? data.tags.filter((tag): tag is string => typeof tag === "string")
     : [];
   const lastModified = (parsedDate ?? fallbackDate).toISOString();
-  const coverImage = typeof data.coverImage === "string" && data.coverImage.trim()
-    ? data.coverImage.trim()
-    : undefined;
+  const seoTitle = optionalString(data.seoTitle);
+  const description = optionalString(data.description);
+  const category = optionalString(data.category);
+  const language = optionalString(data.language);
+  const coverImage = optionalString(data.coverImage);
+  const coverImageSmall = optionalString(data.coverImageSmall);
+  const coverImageMedium = optionalString(data.coverImageMedium);
   const coverAlt = typeof data.coverAlt === "string" ? data.coverAlt : undefined;
-  const coverWidth = typeof data.coverWidth === "number" && Number.isInteger(data.coverWidth) && data.coverWidth > 0
-    ? data.coverWidth
-    : undefined;
-  const coverHeight = typeof data.coverHeight === "number" && Number.isInteger(data.coverHeight) && data.coverHeight > 0
-    ? data.coverHeight
-    : undefined;
+  const coverWidth = optionalDimension(data.coverWidth);
+  const coverHeight = optionalDimension(data.coverHeight);
+  const socialImage = optionalString(data.socialImage);
+  const socialImageWidth = optionalDimension(data.socialImageWidth);
+  const socialImageHeight = optionalDimension(data.socialImageHeight);
 
   return {
     slug, title, date, summary, tags, lastModified,
-    coverImage, coverAlt, coverWidth, coverHeight,
+    seoTitle, description, category, language,
+    coverImage, coverImageSmall, coverImageMedium, coverAlt, coverWidth, coverHeight,
+    socialImage, socialImageWidth, socialImageHeight,
   };
 }
 

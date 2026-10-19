@@ -10,6 +10,10 @@ export function MotionLayout({ children }: { children: React.ReactNode }) {
   const reducedMotion = useReducedMotion() ?? false;
   const variants = fadeUp(8, reducedMotion, 0.45);
 
+  if (pathname?.replace(/\/+$/, "") === "/blog/why-not") {
+    return <div key={pathname}>{children}</div>;
+  }
+
   return (
     <motion.div key={pathname} animate="visible" initial="hidden" variants={variants}>
       {children}

@@ -23,3 +23,55 @@
   height: auto;
   border-radius: 0.25rem;
 }
+
+.category {
+  color: rgb(var(--accent-rgb) / 0.82);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.manifestoArticle > header h1 {
+  font-size: clamp(4.6rem, 12vw, 9rem);
+  letter-spacing: -0.06em;
+  line-height: 0.95;
+}
+
+.manifestoArticle > header em {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  line-height: 1.45;
+}
+
+.manifestoArticle > .manifestoProse {
+  max-width: 45rem;
+}
+
+.manifestoProse p {
+  font-size: clamp(1.04rem, 1.5vw, 1.14rem);
+  line-height: 1.85;
+}
+
+.manifestoProse h2 {
+  margin-block: 3.7rem 1.4rem;
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  line-height: 1.08;
+}
+
+.manifestoProse .manifestoFinale {
+  margin-block: 4.5rem 2.5rem;
+  font-size: clamp(4.6rem, 12vw, 8rem);
+  letter-spacing: -0.06em;
+  line-height: 0.95;
+}
+
+.allWriting {
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgb(var(--accent-rgb) / 0.3);
+  text-underline-offset: 0.3em;
+}

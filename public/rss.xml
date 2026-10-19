@@ -5,9 +5,20 @@
     <link>https://samirseddiqi.it</link>
     <description>Personal site of Samir Seddiqi in Trento. Founder of VitaAvanza, writer of Can You Hear Me?, and builder of calm systems for people and institutions.</description>
     <language>en-US</language>
-    <lastBuildDate>Tue, 13 Oct 2026 18:45:35 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 19 Oct 2026 12:01:49 GMT</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://samirseddiqi.it/rss.xml" rel="self" type="application/rss+xml" xmlns:atom="http://www.w3.org/2005/Atom" />
+
+        <item>
+          <title>WHY NOT?</title>
+          <link>https://samirseddiqi.it/blog/why-not/</link>
+          <guid>https://samirseddiqi.it/blog/why-not/</guid>
+          <pubDate>Mon, 19 Oct 2026 00:00:00 GMT</pubDate>
+          <description>We were not born to spend our lives apologizing for wanting a better world.</description>
+          <author>ceo@vitaavanza.it (Samir Seddiqi)</author>
+          <source url="https://samirseddiqi.it/blog/">Samir Seddiqi</source>
+          <category>freedom</category><category>democracy</category><category>protest</category><category>society</category><category>hope</category>
+        </item>
 
         <item>
           <title>To the Girl Who Was Told to Stop Dreaming</title>

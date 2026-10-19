@@ -71,6 +71,7 @@ export default function BlogPage() {
               <div className="flex items-center gap-3 text-xs uppercase tracking-[0.12em] text-white/45">
                 <span>{formatDate(post.date)}</span>
               </div>
+              {post.category ? <p className="text-xs font-semibold text-accent">{post.category}</p> : null}
               <CardTitle className="text-xl">
                 <MotionLink className="text-ink hover:text-accent" href={`/blog/${post.slug}`}>
                   {post.title}
