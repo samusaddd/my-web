@@ -32,18 +32,28 @@ export default function HomePage() {
           <h1>A life in words.<br /><em>A world in question.</em></h1>
           <p className={styles.heroLead}>I write about freedom, belonging, and what it means to build a life that feels your own.</p>
           <div className={styles.heroActions}>
-            <Link className={styles.solidLink} href="/blog">Read the essays <span aria-hidden="true">↗</span></Link>
-            <Link className={styles.textLink} href="/about">A little about me <span aria-hidden="true">→</span></Link>
+            <a className={styles.solidLink} href="#flagship-project">Explore VitaAvanza <span aria-hidden="true">↘</span></a>
+            <Link className={styles.textLink} href="/blog">Read the essays <span aria-hidden="true">→</span></Link>
           </div>
           <p className={styles.heroFootnote}>Afghan-born. Based in Trento.<br />Still asking questions.</p>
         </div>
-        <figure className={styles.portrait}>
-          <div className={styles.portraitFrame}>
-            <Image alt="Samir Seddiqi standing in front of historic architecture" fill priority sizes="(max-width: 767px) 100vw, 42vw" src="/samir-hero-editorial.jpg" unoptimized />
-            <span className={styles.photoFolio} aria-hidden="true">SS / A LIFE IN PROGRESS</span>
+        <aside aria-labelledby="flagship-title" className={styles.flagship} id="flagship-project">
+          <div className={styles.flagshipIntro}>
+            <p className={styles.flagshipLabel}>Flagship project</p>
+            <h2 id="flagship-title">VitaAvanza<span aria-hidden="true">.</span></h2>
+            <p className={styles.flagshipDescriptor}>{siteConfig.company.descriptor}</p>
           </div>
-          <figcaption>Writer. Founder. Student of the world.</figcaption>
-        </figure>
+          <div className={styles.flagshipImage}>
+            <Image alt="Trento and the surrounding mountains" fill priority sizes="(max-width: 767px) calc(100vw - 40px), 42vw" src="/home/vitaavanza-trento.jpg" unoptimized />
+          </div>
+          <div className={styles.flagshipBody}>
+            <p>I founded VitaAvanza to work on the structures that help people navigate complicated lives.</p>
+            <div className={styles.flagshipLinks}>
+              <a href={siteConfig.company.url} rel="noopener noreferrer" target="_blank">Visit VitaAvanza <span aria-hidden="true">↗</span></a>
+              <Link href="/projects">About the project <span aria-hidden="true">→</span></Link>
+            </div>
+          </div>
+        </aside>
       </section>
 
       {latest ? (
@@ -82,10 +92,6 @@ export default function HomePage() {
         <div><h2>Afghanistan is where<br />my story starts.<br /><em>The rest is still being written.</em></h2><div className={styles.personalBody}><p>I’m Samir, a writer and founder living in Trento, Italy. My work moves between writing, economics, and building VitaAvanza.</p><p>The questions tend to travel with me: who gets to belong, where opportunity begins, and what we owe each other. This is where I try to give those questions some room.</p><Link className={styles.textLink} href="/about">Read my story →</Link></div></div>
       </section>
 
-      <section className={styles.workSection}>
-        <div className={styles.workImage}><Image alt="Trento and the surrounding mountains" fill sizes="(max-width: 767px) 100vw, 50vw" src="/home/vitaavanza-trento.jpg" unoptimized /></div>
-        <div className={styles.workCopy}><p className={styles.eyebrow}>04 / Beyond the page</p><h2>Ideas should<br />have <em>a life outside us.</em></h2><p>I founded VitaAvanza to work on the structures that help people navigate complicated lives. It is where the questions become practical work.</p><div className={styles.workLinks}><a className={styles.textLink} href={siteConfig.company.url} target="_blank" rel="noreferrer">Visit VitaAvanza ↗</a><Link className={styles.textLink} href="/projects">More about the work →</Link></div></div>
-      </section>
     </>
   );
 }

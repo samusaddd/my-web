@@ -1,4 +1,4 @@
-.hero,.writingSection,.personalSection,.workSection{width:min(100% - 6rem,88rem);margin-inline:auto}
+.hero,.writingSection,.personalSection{width:min(100% - 6rem,88rem);margin-inline:auto}
 .eyebrow{font:600 .63rem/1.6 var(--font-inter),sans-serif;text-transform:uppercase;letter-spacing:.16em;color:rgb(var(--ink-rgb)/.66)}
 .hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(3rem,5vw,7rem);align-items:center;padding-block:5.5rem 5rem;position:relative}
 .heroCopy{position:relative;z-index:1}
@@ -11,11 +11,21 @@
 .textLink{font-size:.78rem;line-height:1.5;font-weight:600;display:inline-flex;gap:1rem;align-items:center;padding-block:.6rem;border-bottom:1px solid rgb(var(--accent-rgb)/.3);color:var(--accent);transition:color .2s,gap .2s}
 .textLink:hover{gap:1.5rem;color:var(--ink)}
 .heroFootnote{font-size:.67rem;line-height:1.7;margin-top:3.2rem;color:rgb(var(--ink-rgb)/.66);border-left:1px solid var(--line-strong);padding-left:1rem}
-.portrait{align-self:stretch;min-width:0;position:relative;margin:0;padding-top:1rem}
-.portraitFrame{position:relative;min-height:36rem;height:100%;max-height:43rem;overflow:hidden;background:var(--paper-warm)}
-.portraitFrame img{object-fit:cover;object-position:67% center;filter:grayscale(.5) sepia(.06) contrast(.98)}
-.photoFolio{position:absolute;bottom:1.2rem;left:1.3rem;writing-mode:vertical-rl;transform:rotate(180deg);font-size:.51rem;letter-spacing:.18em;color:white;text-shadow:0 1px 3px #000}
-.portrait figcaption{display:flex;justify-content:flex-end;font-family:var(--font-serif),serif;font-style:italic;font-size:.9rem;padding-top:.65rem;color:rgb(var(--ink-rgb)/.66)}
+.flagship{min-width:0;background:var(--ink);color:var(--ivory)}
+.flagshipIntro{padding:2rem 2rem 1.8rem}
+.flagshipLabel{display:flex;align-items:center;gap:.7rem;font-size:.58rem;line-height:1.6;font-weight:600;text-transform:uppercase;letter-spacing:.17em;color:var(--lavender)}
+.flagshipLabel::before{content:"";width:1.4rem;height:1px;background:currentColor}
+.flagship h2{font-size:clamp(2.5rem,3.8vw,4.1rem);line-height:1.08;letter-spacing:-.055em;margin-top:1.3rem;color:var(--ivory)}
+.flagship h2>span{color:var(--lavender)}
+.flagshipDescriptor{max-width:25ch;font-size:.8rem;line-height:1.65;color:rgb(251 248 242/.75);margin-top:.65rem}
+.flagshipImage{position:relative;aspect-ratio:1.95;background:var(--paper-warm)}
+.flagshipImage img{object-fit:cover;filter:saturate(.8)}
+.flagshipBody{padding:1.6rem 2rem 2rem}
+.flagshipBody>p{max-width:32rem;font-size:.86rem;line-height:1.8;color:rgb(251 248 242/.78)}
+.flagshipLinks{display:flex;align-items:center;flex-wrap:wrap;gap:.6rem 1.5rem;margin-top:1.2rem}
+.flagshipLinks>a{display:inline-flex;align-items:center;gap:.65rem;padding-block:.6rem;border-bottom:1px solid rgb(251 248 242/.35);font-size:.72rem;line-height:1.5;color:var(--ivory)}
+.flagshipLinks>a:hover{color:var(--lavender);border-color:var(--lavender)}
+.flagship :where(a):focus-visible{outline-color:var(--lavender)}
 .writingSection{padding-block:3rem 6.5rem;border-top:1px solid var(--line-strong)}
 .sectionHeading{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:2.5rem}
 .featuredEssay{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.8fr);gap:4.5rem;align-items:center}
@@ -56,14 +66,7 @@
 .personalBody{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;margin-top:2rem;align-items:start}
 .personalBody p{font-size:.9rem;line-height:1.9}
 .personalBody .textLink{justify-self:start}
-.workSection{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;padding-block:6.5rem}
-.workImage{position:relative;aspect-ratio:5/4;background:var(--paper-warm)}
-.workImage img{object-fit:cover;filter:saturate(.7)}
-.workCopy h2{font-size:clamp(2.5rem,4vw,4.3rem);line-height:1.1;margin-top:1.5rem}
-.workCopy h2 em{color:var(--accent);font-weight:400}
-.workCopy>p:not(.eyebrow){font-size:.9rem;line-height:1.85;max-width:28rem;margin-top:1.8rem}
-.workLinks{display:flex;gap:2rem;flex-wrap:wrap;margin-top:1.2rem}
 @media(min-width:1500px){.hero h1{font-size:6.9rem}}
-@media(max-width:1100px){.hero,.writingSection,.personalSection,.workSection,.booksInner{width:calc(100% - 4rem)}.hero{gap:2.5rem}.hero h1{font-size:clamp(3.2rem,6vw,5.8rem)}.portraitFrame{min-height:33rem}.featuredEssay{gap:2.5rem}.booksInner{gap:3rem}.bookPair{gap:1.3rem}.workSection{gap:3rem}}
-@media(max-width:767px){.hero,.writingSection,.personalSection,.workSection,.booksInner{width:calc(100% - 2.5rem)}.hero{grid-template-columns:1fr;gap:2.7rem;padding-block:3rem 3.5rem}.hero h1{font-size:clamp(3.25rem,11.6vw,5.5rem);max-width:14ch;margin-top:1.5rem}.heroLead{font-size:.98rem;max-width:30rem;margin-top:1.5rem}.heroFootnote{margin-top:2rem}.heroActions{gap:1.2rem}.portrait{padding:0}.portraitFrame{height:auto;aspect-ratio:5/4;min-height:0;max-height:none}.portraitFrame img{object-position:68% 43%}.sectionHeading{align-items:flex-start;margin-bottom:1.8rem}.sectionHeading .textLink{font-size:.67rem;padding-top:0}.writingSection{padding-block:2rem 4rem}.featuredEssay{grid-template-columns:1fr;gap:2rem}.essayImage img{aspect-ratio:16/9}.essayCopy h2{font-size:clamp(4rem,18vw,6rem);margin-block:1rem}.essayCopy>p:not(.eyebrow){max-width:32rem;font-size:1.35rem}.essayCopy .textLink{margin-top:1rem}.archive{margin-top:2.5rem}.archiveRow{grid-template-columns:1.6rem minmax(0,1fr) 1.2rem;gap:.7rem;padding:1.3rem 0}.archiveDate{display:none}.archiveRow h3{font-size:1.25rem}.archiveArrow{font-size:1.1rem}.booksSection{padding:4rem 0}.booksInner{grid-template-columns:1fr;gap:2.5rem}.booksIntro h2{font-size:clamp(2.8rem,10vw,4rem)}.booksIntro>p:not(.eyebrow){max-width:30rem}.bookPair{gap:1.2rem;max-width:32rem}.bookCover,.bookCoverSecond{padding:1rem .8rem}.bookCover strong,.bookCoverSecond strong{font-size:clamp(1.45rem,6.2vw,2.6rem)}.bookCover>span,.bookCoverSecond>span{font-size:.4rem;letter-spacing:.1em}.bookTile h3{font-size:.9rem}.bookTile>p{font-size:.6rem}.personalSection{grid-template-columns:1fr;gap:2rem;padding-block:4rem}.personalSection h2{font-size:clamp(2.25rem,8.3vw,3.5rem)}.personalBody{grid-template-columns:1fr;gap:1rem}.personalBody p{font-size:.93rem}.personalBody .textLink{margin-top:.5rem}.workSection{grid-template-columns:1fr;gap:2.5rem;padding-block:4rem}.workCopy h2{font-size:clamp(2.5rem,9vw,3.5rem)}.workCopy>p:not(.eyebrow){font-size:.93rem}}
+@media(max-width:1100px){.hero,.writingSection,.personalSection,.booksInner{width:calc(100% - 4rem)}.hero{gap:2.5rem}.hero h1{font-size:clamp(3.2rem,6vw,5.8rem)}.flagshipIntro,.flagshipBody{padding-inline:1.5rem}.flagship h2{font-size:clamp(2.2rem,4.4vw,3rem)}.featuredEssay{gap:2.5rem}.booksInner{gap:3rem}.bookPair{gap:1.3rem}}
+@media(max-width:767px){.hero,.writingSection,.personalSection,.booksInner{width:calc(100% - 2.5rem)}.hero{grid-template-columns:1fr;gap:2.7rem;padding-block:3rem 3.5rem}.hero h1{font-size:clamp(3.25rem,11.6vw,5.5rem);max-width:14ch;margin-top:1.5rem}.heroLead{font-size:.98rem;max-width:30rem;margin-top:1.5rem}.heroFootnote{margin-top:2rem}.heroActions{gap:1.2rem}.flagshipIntro{padding-block:1.7rem 1.4rem}.flagship h2{font-size:clamp(2.7rem,10vw,4rem);margin-top:1rem}.flagshipDescriptor{max-width:none}.flagshipBody{padding-block:1.4rem 1.7rem}.flagshipLinks{gap:.6rem 1.3rem}.sectionHeading{align-items:flex-start;margin-bottom:1.8rem}.sectionHeading .textLink{font-size:.67rem;padding-top:0}.writingSection{padding-block:2rem 4rem}.featuredEssay{grid-template-columns:1fr;gap:2rem}.essayImage img{aspect-ratio:16/9}.essayCopy h2{font-size:clamp(4rem,18vw,6rem);margin-block:1rem}.essayCopy>p:not(.eyebrow){max-width:32rem;font-size:1.35rem}.essayCopy .textLink{margin-top:1rem}.archive{margin-top:2.5rem}.archiveRow{grid-template-columns:1.6rem minmax(0,1fr) 1.2rem;gap:.7rem;padding:1.3rem 0}.archiveDate{display:none}.archiveRow h3{font-size:1.25rem}.archiveArrow{font-size:1.1rem}.booksSection{padding:4rem 0}.booksInner{grid-template-columns:1fr;gap:2.5rem}.booksIntro h2{font-size:clamp(2.8rem,10vw,4rem)}.booksIntro>p:not(.eyebrow){max-width:30rem}.bookPair{gap:1.2rem;max-width:32rem}.bookCover,.bookCoverSecond{padding:1rem .8rem}.bookCover strong,.bookCoverSecond strong{font-size:clamp(1.45rem,6.2vw,2.6rem)}.bookCover>span,.bookCoverSecond>span{font-size:.4rem;letter-spacing:.1em}.bookTile h3{font-size:.9rem}.bookTile>p{font-size:.6rem}.personalSection{grid-template-columns:1fr;gap:2rem;padding-block:4rem}.personalSection h2{font-size:clamp(2.25rem,8.3vw,3.5rem)}.personalBody{grid-template-columns:1fr;gap:1rem}.personalBody p{font-size:.93rem}.personalBody .textLink{margin-top:.5rem}}
 @media(prefers-reduced-motion:reduce){.textLink,.essayImage img,.archiveArrow,.bookCover,.bookCoverSecond{transition:none}.bookTile:hover .bookCover,.bookTile:hover .bookCoverSecond,.essayImage:hover img{transform:none}}

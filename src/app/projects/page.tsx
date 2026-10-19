@@ -5,7 +5,7 @@ import { absoluteUrl, siteConfig } from "@/lib/site";
 import styles from "../interior.module.css";
 
 const canonicalUrl = absoluteUrl("/projects");
-const description = "Selected work by Samir Seddiqi: building VitaAvanza, writing books, and publishing essays on society and human experience.";
+const description = "VitaAvanza is Samir Seddiqi's flagship project, alongside books and essays on society and human experience.";
 const image = { url: absoluteUrl(siteConfig.socialImagePath), width: 1200, height: 630, alt: "Selected work by Samir Seddiqi" };
 export const metadata: Metadata = {
   title: "Selected Work", description, alternates: { canonical: canonicalUrl },
@@ -17,7 +17,7 @@ export default function ProjectsPage() {
     "@context": "https://schema.org", "@type": "Organization", name: siteConfig.company.name,
     alternateName: siteConfig.company.shortName, url: siteConfig.company.url, sameAs: [siteConfig.company.linkedin],
     founder: { "@type": "Person", name: siteConfig.name, url: absoluteUrl("/") },
-    description: "VitaAvanza is the main project founded by Samir Seddiqi, focused on progress, support, stability, and direction.",
+    description: "VitaAvanza is the flagship project founded by Samir Seddiqi, focused on progress, support, stability, and direction.",
   };
   return (
     <div className={styles.page}>
@@ -25,13 +25,13 @@ export default function ProjectsPage() {
       <header className={styles.hero}>
         <div className={`${styles.wrap} ${styles.splitHero}`}>
           <div><p className={styles.eyebrow}>Projects / Selected work</p><h1 className={styles.pageTitle}>Thought<br /><em>into action.</em></h1></div>
-          <p className={styles.lede}>A company, two books, an ongoing body of writing. Different forms of the same impulse: to understand more, and make something of it.</p>
+          <p className={styles.lede}>VitaAvanza is my flagship project. Books and essays carry the same questions into a different kind of work.</p>
         </div>
       </header>
       <section className={`${styles.section} ${styles.rule}`}>
         <div className={styles.wrap}>
           <div className={styles.projectLead}>
-            <div><p className={styles.index}>01 / Building</p><h2 className={styles.projectTitle}>VitaAvanza</h2><p className={styles.meta}>Founder · Active</p></div>
+            <div><p className={styles.index}>01 / Flagship project</p><h2 className={styles.projectTitle}>VitaAvanza</h2><p className={styles.meta}>Founder · Active</p></div>
             <div className={`${styles.text} ${styles.projectText}`}>
               <p className={styles.lede}>Progress should be understood more deeply than money alone.</p>
               <p>VitaAvanza explores how people and institutions can navigate stability, growth, support, and opportunity in a more structured, human way.</p>
