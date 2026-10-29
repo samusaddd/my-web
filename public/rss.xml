@@ -5,9 +5,20 @@
     <link>https://samirseddiqi.it</link>
     <description>Personal site of Samir Seddiqi in Trento. Founder of VitaAvanza, writer of Can You Hear Me?, and builder of calm systems for people and institutions.</description>
     <language>en-US</language>
-    <lastBuildDate>Mon, 19 Oct 2026 13:38:10 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 29 Oct 2026 00:43:39 GMT</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://samirseddiqi.it/rss.xml" rel="self" type="application/rss+xml" xmlns:atom="http://www.w3.org/2005/Atom" />
+
+        <item>
+          <title>I COULD ENDURE ANYTHING. THAT WAS THE PROBLEM.</title>
+          <link>https://samirseddiqi.it/blog/i-could-endure-anything/</link>
+          <guid>https://samirseddiqi.it/blog/i-could-endure-anything/</guid>
+          <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+          <description>On ambition, suffering, envy, self-deception, and the terrifying possibility that becoming stronger doesn&apos;t always mean becoming better.</description>
+          <author>ceo@vitaavanza.it (Samir Seddiqi)</author>
+          <source url="https://samirseddiqi.it/blog/">Samir Seddiqi</source>
+          <category>philosophy</category><category>ambition</category><category>suffering</category><category>envy</category><category>self-deception</category><category>character</category>
+        </item>
 
         <item>
           <title>WHY NOT?</title>

@@ -12,6 +12,7 @@ export type PostFrontmatter = {
   description?: string;
   category?: string;
   language?: string;
+  tone?: "oxblood";
   coverImage?: string;
   coverImageSmall?: string;
   coverImageMedium?: string;
@@ -87,6 +88,7 @@ function normalizeFrontmatter(
   const description = optionalString(data.description);
   const category = optionalString(data.category);
   const language = optionalString(data.language);
+  const tone = data.tone === "oxblood" ? "oxblood" : undefined;
   const coverImage = optionalString(data.coverImage);
   const coverImageSmall = optionalString(data.coverImageSmall);
   const coverImageMedium = optionalString(data.coverImageMedium);
@@ -102,7 +104,7 @@ function normalizeFrontmatter(
 
   return {
     slug, title, date, summary, tags, lastModified,
-    seoTitle, description, category, language,
+    seoTitle, description, category, language, tone,
     coverImage, coverImageSmall, coverImageMedium, coverAlt, coverWidth, coverHeight,
     coverCredit, coverCaption, coverSourceUrl,
     socialImage, socialImageWidth, socialImageHeight,

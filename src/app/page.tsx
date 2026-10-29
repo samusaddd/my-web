@@ -19,8 +19,12 @@ export default function HomePage() {
   const posts = getAllPostsWithContent();
   const latest = posts[0];
   const archive = posts.slice(1, 4);
-  const srcSet = latest?.coverImageSmall && latest?.coverImageMedium
-    ? latest.coverImageSmall + " 800w, " + latest.coverImageMedium + " 1600w, " + latest.coverImage + " 2400w"
+  const srcSet = latest?.coverImage && (latest.coverImageSmall || latest.coverImageMedium)
+    ? [
+      latest.coverImageSmall ? latest.coverImageSmall + " 800w" : null,
+      latest.coverImageMedium ? latest.coverImageMedium + " 1600w" : null,
+      latest.coverImage + " " + (latest.coverWidth || 2400) + "w",
+    ].filter(Boolean).join(", ")
     : undefined;
   return (
     <>

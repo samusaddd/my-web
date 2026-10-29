@@ -142,6 +142,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       h3: (props) => hasSecondLevelHeadings ? <h3 {...props} /> : <h2 {...props} />,
       h4: (props) => <h4 {...props} />,
       a: ({ href, ...props }) => <a href={href ?? "#"} {...props} />,
+      Resonance: ({ children, closing }: { children: React.ReactNode; closing?: boolean }) => (
+        <div className={`${styles.resonance}${closing ? ` ${styles.resonanceClosing}` : ""}`}>{children}</div>
+      ),
+      Signature: ({ children }: { children: React.ReactNode }) => <div className={styles.signature}>{children}</div>,
     },
     options: {
       mdxOptions: {
@@ -170,7 +174,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <>
-      <Section className={styles.postSection} containerClassName={styles.container}>
+      <Section className={`${styles.postSection}${post.tone === "oxblood" ? ` ${styles.toneOxblood}` : ""}`} containerClassName={styles.container}>
         <JsonLd data={blogPostingJsonLd} id={`blogposting-jsonld-${post.slug}`} />
         {post.coverImage ? (
           <link
