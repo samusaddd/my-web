@@ -231,6 +231,29 @@
 .prose .signature p { margin: 0; color: rgb(var(--ink-rgb) / 0.7); font-family: var(--font-serif), Georgia, serif; font-size: 1.15rem; line-height: 1.7; }
 .prose .signature em:first-child { color: var(--ink); font-size: 1.3rem; }
 
+/* Quiet neutral treatment for the library essay; other articles retain their tones. */
+.toneCharcoal { --accent: #493e34; --accent-rgb: 73 62 52; }
+.toneCharcoal .titleBlock h1 { max-width: 60rem; font-size: clamp(2.45rem, 4.25vw, 4.5rem); line-height: 1.1; letter-spacing: -0.025em; text-wrap: balance; }
+.toneCharcoal .standfirst { max-width: 43rem; font-size: clamp(1.2rem, 1.65vw, 1.55rem); }
+.toneCharcoal .prose p { color: rgb(var(--ink-rgb) / 0.86); }
+.toneCharcoal .prose > p:first-child { color: var(--ink); font-family: var(--font-serif), Georgia, serif; font-size: clamp(1.5rem, 2vw, 1.8rem); line-height: 1.5; }
+.toneCharcoal .prose > p:first-child::first-letter { float: none; padding: 0; color: inherit; font-size: inherit; line-height: inherit; }
+.toneCharcoal .prose h2 { font-size: clamp(1.9rem, 2.65vw, 2.7rem); line-height: 1.18; letter-spacing: -0.025em; margin-top: 4.5rem; }
+.toneCharcoal .prose .referencesTitle { margin-top: 5rem; padding-top: 2rem; border-top: 1px solid var(--line-strong); font-size: 1.65rem; }
+.toneCharcoal .referencesTitle ~ p { font-size: 0.95rem; line-height: 1.8; }
+.toneCharcoal .referencesTitle ~ ul { list-style: none; padding: 0; margin-top: 1.5rem; }
+.toneCharcoal .referencesTitle ~ ul li { padding-block: 0.9rem; border-bottom: 1px solid var(--line); font-size: 0.9rem; line-height: 1.8; }
+.toneCharcoal .referencesTitle ~ ul a { color: var(--accent); text-decoration: underline; text-underline-offset: 0.2em; text-decoration-thickness: 1px; overflow-wrap: anywhere; }
+
+@media (max-width: 1023px) {
+  .toneCharcoal .titleBlock h1 { font-size: clamp(2.45rem, 4.7vw, 3.6rem); }
+}
+@media (max-width: 639px) {
+  .toneCharcoal .titleBlock h1 { font-size: clamp(1.75rem, 7.3vw, 2.85rem); line-height: 1.13; letter-spacing: -0.02em; }
+  .toneCharcoal .standfirst { font-size: 1.15rem; line-height: 1.6; }
+  .toneCharcoal .prose h2 { font-size: 1.85rem; }
+}
+
 @media (max-width: 1023px) {
   .toneOxblood .titleBlock h1 { font-size: clamp(3rem, 7.4vw, 4.9rem); }
 }

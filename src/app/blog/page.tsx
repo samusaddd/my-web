@@ -102,7 +102,7 @@ export default function BlogPage() {
                 ) : null}
               </figure>
             ) : null}
-            <div className={styles.featureCopy}>
+            <div className={`${styles.featureCopy}${latest.title.length > 60 ? ` ${styles.longTitle}` : ""}`}>
               <p className={styles.category}>{latest.category || latest.tags[0] || "Essay"}</p>
               <h2><Link href={`/blog/${latest.slug}`}>{latest.title}</Link></h2>
               {latest.summary ? <p className={styles.featureSummary}>{latest.summary}</p> : null}

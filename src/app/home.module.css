@@ -20,6 +20,7 @@
 .essayCopy h2{font-size:clamp(3.5rem,7.3vw,7.6rem);margin-block:1.2rem 1.5rem;line-height:.96;letter-spacing:-.065em}
 .essayCopy>p:not(.eyebrow){font-family:var(--font-serif),serif;font-size:1.4rem;line-height:1.5;font-style:italic}
 .essayCopy .textLink{margin-top:1.8rem}
+.essayCopy.longTitle h2{font-size:clamp(1.8rem,2.7vw,3rem);line-height:1.12;letter-spacing:-.025em;overflow-wrap:break-word}
 .archive{margin-top:3.8rem;border-top:1px solid var(--line-strong)}
 .archiveRow{display:grid;grid-template-columns:3rem minmax(0,1fr) 10rem 2rem;gap:1rem;align-items:center;padding:1.7rem 0;border-bottom:1px solid var(--line);transition:color .2s}
 .archiveNumber,.archiveDate{font-size:.65rem;color:rgb(var(--ink-rgb)/.66)}

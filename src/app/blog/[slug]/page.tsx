@@ -138,7 +138,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     source: post.content,
     components: {
       h1: (props) => <h2 {...props} className={styles.finalHeading} />,
-      h2: (props) => <h2 {...props} />,
+      h2: (props) => <h2 {...props} className={props.id === "historical-and-philosophical-references" ? styles.referencesTitle : undefined} />,
       h3: (props) => hasSecondLevelHeadings ? <h3 {...props} /> : <h2 {...props} />,
       h4: (props) => <h4 {...props} />,
       a: ({ href, ...props }) => <a href={href ?? "#"} {...props} />,
@@ -174,7 +174,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <>
-      <Section className={`${styles.postSection}${post.tone === "oxblood" ? ` ${styles.toneOxblood}` : ""}`} containerClassName={styles.container}>
+      <Section className={`${styles.postSection}${post.tone === "oxblood" ? ` ${styles.toneOxblood}` : post.tone === "charcoal" ? ` ${styles.toneCharcoal}` : ""}`} containerClassName={styles.container}>
         <JsonLd data={blogPostingJsonLd} id={`blogposting-jsonld-${post.slug}`} />
         {post.coverImage ? (
           <link

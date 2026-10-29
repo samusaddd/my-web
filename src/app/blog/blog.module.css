@@ -134,6 +134,13 @@
   line-height: 1.5;
 }
 
+.featureCopy.longTitle h2 {
+  font-size: clamp(1.8rem, 2.7vw, 3rem);
+  letter-spacing: -0.025em;
+  line-height: 1.12;
+  overflow-wrap: break-word;
+}
+
 .postMeta {
   justify-content: flex-start;
   flex-wrap: wrap;

@@ -5,9 +5,20 @@
     <link>https://samirseddiqi.it</link>
     <description>Personal site of Samir Seddiqi in Trento. Founder of VitaAvanza, writer of Can You Hear Me?, and builder of calm systems for people and institutions.</description>
     <language>en-US</language>
-    <lastBuildDate>Thu, 29 Oct 2026 00:43:39 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 29 Oct 2026 20:02:00 GMT</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://samirseddiqi.it/rss.xml" rel="self" type="application/rss+xml" xmlns:atom="http://www.w3.org/2005/Atom" />
+
+        <item>
+          <title>THE MOST DANGEROUS THING YOU CAN BELIEVE IS THAT YOU&apos;VE WOKEN UP.</title>
+          <link>https://samirseddiqi.it/blog/the-most-dangerous-thing-you-can-believe/</link>
+          <guid>https://samirseddiqi.it/blog/the-most-dangerous-thing-you-can-believe/</guid>
+          <pubDate>Thu, 29 Oct 2026 20:01:05 GMT</pubDate>
+          <description>On forbidden knowledge, secret societies, metaphysics, the architecture of power, and the terrifying comfort of believing you understand the world.</description>
+          <author>ceo@vitaavanza.it (Samir Seddiqi)</author>
+          <source url="https://samirseddiqi.it/blog/">Samir Seddiqi</source>
+          <category>philosophy</category><category>society</category><category>metaphysics</category><category>Freemasonry</category><category>alchemy</category><category>Gnosticism</category><category>critical thinking</category>
+        </item>
 
         <item>
           <title>I COULD ENDURE ANYTHING. THAT WAS THE PROBLEM.</title>

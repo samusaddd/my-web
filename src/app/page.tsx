@@ -47,7 +47,7 @@ export default function HomePage() {
           <div className={styles.sectionHeading}><p className={styles.eyebrow}>01 / The latest essay</p><Link className={styles.textLink} href="/blog">The writing archive ↗</Link></div>
           <div className={styles.featuredEssay}>
             {latest.coverImage ? <Link className={styles.essayImage} href={"/blog/" + latest.slug} tabIndex={-1} aria-hidden="true"><img alt="" width={latest.coverWidth || 2400} height={latest.coverHeight || 1350} src={latest.coverImage} srcSet={srcSet} sizes="(max-width: 767px) calc(100vw - 40px), 60vw" loading="lazy" /></Link> : null}
-            <div className={styles.essayCopy}>
+            <div className={`${styles.essayCopy}${latest.title.length > 60 ? ` ${styles.longTitle}` : ""}`}>
               <p className={styles.eyebrow}>{latest.category || "An essay"}<br /><time dateTime={latest.date}>{date(latest.date)}</time> · {minutes(latest.content)} min read</p>
               <h2 id="writing-title"><Link href={"/blog/" + latest.slug}>{latest.title}</Link></h2>
               <p>{latest.summary}</p>

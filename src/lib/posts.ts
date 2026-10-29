@@ -12,7 +12,7 @@ export type PostFrontmatter = {
   description?: string;
   category?: string;
   language?: string;
-  tone?: "oxblood";
+  tone?: "oxblood" | "charcoal";
   coverImage?: string;
   coverImageSmall?: string;
   coverImageMedium?: string;
@@ -88,7 +88,7 @@ function normalizeFrontmatter(
   const description = optionalString(data.description);
   const category = optionalString(data.category);
   const language = optionalString(data.language);
-  const tone = data.tone === "oxblood" ? "oxblood" : undefined;
+  const tone = data.tone === "oxblood" || data.tone === "charcoal" ? data.tone : undefined;
   const coverImage = optionalString(data.coverImage);
   const coverImageSmall = optionalString(data.coverImageSmall);
   const coverImageMedium = optionalString(data.coverImageMedium);
