@@ -18,8 +18,8 @@ export default function BookPage() {
   const booksJsonLd = {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "Book", "@id": `${canonicalUrl}#we-were-never-here`, name: siteConfig.newBook.title, author: { "@type": "Person", name: siteConfig.name }, inLanguage: "en", url: `${canonicalUrl}#we-were-never-here`, description: "A work on identity, meaning, and the quiet continuation of existence when certainty dissolves." },
-      { "@type": "Book", "@id": `${canonicalUrl}#can-you-hear-me`, name: siteConfig.book.title, author: { "@type": "Person", name: siteConfig.name }, inLanguage: "en", url: `${canonicalUrl}#can-you-hear-me`, description: "A personal literary work shaped by silence, pain, reflection, and the need to be heard." },
+      { "@type": "Book", "@id": `${canonicalUrl}#we-were-never-here`, name: siteConfig.newBook.title, author: { "@type": "Person", name: siteConfig.name }, inLanguage: "en", url: `${canonicalUrl}#we-were-never-here`, image: absoluteUrl("/images/books/we-were-never-here.jpg"), description: "A work on identity, meaning, and the quiet continuation of existence when certainty dissolves." },
+      { "@type": "Book", "@id": `${canonicalUrl}#can-you-hear-me`, name: siteConfig.book.title, author: { "@type": "Person", name: siteConfig.name }, inLanguage: "en", url: `${canonicalUrl}#can-you-hear-me`, image: absoluteUrl("/images/books/can-you-hear-me.jpg"), description: "A personal literary work shaped by silence, pain, reflection, and the need to be heard." },
     ],
   };
   return (
@@ -34,13 +34,8 @@ export default function BookPage() {
 
       <section className={`${styles.section} ${styles.rule} ${styles.bookSection}`} id="we-were-never-here">
         <div className={`${styles.wrap} ${styles.bookRow}`}>
-          <div className={styles.bookArt} aria-hidden="true">
-            <div className={`${styles.bookJacket} ${styles.plumJacket}`}>
-              <span className={styles.jacketAuthor}>Samir Seddiqi</span>
-              <span className={styles.jacketLine} />
-              <span className={styles.jacketTitle}>We Were Never Here</span>
-              <span className={styles.jacketFoot}><span>Identity / Meaning</span><span>01</span></span>
-            </div>
+          <div className={styles.bookArt}>
+            <img alt="Cover of We Were Never Here by Samir Seddiqi, with a lone figure in a dark landscape." className={styles.bookCoverImage} decoding="async" height={1536} loading="lazy" src="/images/books/we-were-never-here.jpg" width={1024} />
           </div>
           <div className={styles.bookCopy}>
             <p className={styles.index}>01 / The new work</p>
@@ -58,13 +53,8 @@ export default function BookPage() {
 
       <section className={`${styles.section} ${styles.darkBand} ${styles.bookSection}`} id="can-you-hear-me">
         <div className={`${styles.wrap} ${styles.bookRow}`}>
-          <div className={styles.bookArt} aria-hidden="true">
-            <div className={`${styles.bookJacket} ${styles.ivoryJacket}`}>
-              <span className={styles.jacketAuthor}>Samir Seddiqi</span>
-              <span className={styles.jacketLine} />
-              <span className={styles.jacketTitle}>Can You Hear Me?</span>
-              <span className={styles.jacketFoot}><span>Silence / Reflection</span><span>02</span></span>
-            </div>
+          <div className={styles.bookArt}>
+            <img alt="Cover of Can You Hear Me? by Samir Seddiqi, with white lettering over a blue forest." className={styles.bookCoverImage} decoding="async" height={2250} loading="lazy" src="/images/books/can-you-hear-me.jpg" width={1410} />
           </div>
           <div className={styles.bookCopy}>
             <p className={styles.eyebrow}>02 / The original work</p>

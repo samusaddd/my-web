@@ -73,21 +73,13 @@
 .quoteSource { max-width: 36rem; margin-top: 2rem; color: rgb(244 239 230 / 0.6); font-size: 0.8rem; line-height: 1.7; }
 .quoteSource a { text-decoration: underline; text-decoration-color: rgb(244 239 230 / 0.35); text-underline-offset: 0.25rem; }
 
-/* Books: two typographic objects, with room around each work. */
+/* Books: the supplied covers, uncropped and at their natural proportions. */
 .splitHero { display: grid; grid-template-columns: 1fr 0.75fr; align-items: end; gap: 4rem; }
 .splitHero .lede { margin-top: 0; padding-bottom: 0.3rem; }
 .bookRow { display: grid; grid-template-columns: 0.95fr 1.05fr; align-items: center; gap: clamp(3rem, 8vw, 8rem); }
 .bookSection { scroll-margin-top: 6.5rem; }
 .bookArt { display: flex; justify-content: center; align-items: center; min-width: 0; padding: 2.5rem; background: #eae2d7; }
-.bookJacket { position: relative; display: flex; flex-direction: column; justify-content: space-between; width: min(100%, 320px); aspect-ratio: 0.72; padding: 2rem 1.75rem 1.8rem 2.4rem; overflow: hidden; box-shadow: 14px 18px 32px rgb(28 24 32 / 0.2), 3px 3px 0 #d2c4b5; }
-.bookJacket::before { position: absolute; inset: 0 auto 0 0; width: 0.8rem; border-right: 1px solid rgb(255 255 255 / 0.1); background: linear-gradient(90deg, rgb(0 0 0 / 0.35), transparent); content: ""; }
-.plumJacket { background: #47244e; color: #f4efe6; }
-.ivoryJacket { background: #e2d4bd; color: #1c1820; box-shadow: 14px 18px 32px rgb(0 0 0 / 0.26), 3px 3px 0 #b8aa93; }
-.jacketAuthor { font-size: 0.55rem; font-weight: 600; letter-spacing: 0.23em; text-transform: uppercase; }
-.jacketTitle { position: relative; z-index: 1; display: block; max-width: 6ch; font-family: var(--font-serif), Georgia, serif; font-size: clamp(2.4rem, 3.7vw, 3.7rem); line-height: 1.06; letter-spacing: -0.045em; }
-.jacketFoot { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-top: 1.2rem; border-top: 1px solid currentColor; font-size: 0.5rem; letter-spacing: 0.18em; text-transform: uppercase; }
-.jacketLine { position: absolute; inset: auto -25% 17% 12%; height: 27%; border: 1px solid rgb(244 239 230 / 0.24); border-radius: 50%; transform: rotate(-28deg); }
-.ivoryJacket .jacketLine { inset: 16% 15% auto -16%; height: 32%; border-color: rgb(28 24 32 / 0.17); transform: rotate(28deg); }
+.bookCoverImage { display: block; width: min(100%, 320px); height: auto; box-shadow: 14px 18px 32px rgb(28 24 32 / 0.2); }
 .bookCopy .sectionTitle { max-width: 10ch; margin-block: 1.3rem 1.6rem; }
 .bookCopy .text { max-width: 33rem; }
 .bookCopy .meta { margin-bottom: 1rem; }
@@ -166,7 +158,6 @@
   .sectionGrid, .ledger { grid-template-columns: 0.55fr 1.45fr; gap: 3rem; }
   .bookRow { gap: 3rem; }
   .bookArt { padding: 1.8rem; }
-  .bookJacket { padding: 1.6rem 1.4rem 1.4rem 1.9rem; }
   .projectLead { grid-template-columns: 0.65fr 1.35fr; gap: 3rem; }
   .contactGrid { gap: 3rem; }
   .ledgerEntry { grid-template-columns: 1fr; gap: 0.65rem; }
@@ -194,8 +185,6 @@
   .splitHero { gap: 1.6rem; }
   .splitHero .lede { max-width: 31rem; }
   .bookArt { padding: 2rem; }
-  .bookJacket { width: min(100%, 280px); padding: 1.8rem 1.4rem 1.5rem 2rem; }
-  .jacketTitle { font-size: clamp(2.4rem, 10vw, 3.6rem); }
   .bookCopy .sectionTitle { max-width: 12ch; }
   .projectTitle { margin-top: 0.7rem; font-size: 3.2rem; }
   .projectImage { margin-top: 2rem; }
