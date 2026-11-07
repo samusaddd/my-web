@@ -14,6 +14,10 @@ Native output: 1672 x 941. The hero preserves native detail without enlargement.
 - `public/images/articles/freedom-and-the-return-ticket-og.webp`: 1200 x 630, 128734 bytes.
 - `public/images/articles/freedom-and-the-return-ticket-instagram.webp`: 1080 x 1350, 175450 bytes.
 
+## Sharing companion
+
+`public/images/articles/freedom-and-the-return-ticket-og.jpg` is a 1200 x 630 JPEG companion derived directly from the same native PNG. It is used by Open Graph and Twitter metadata; all five requested WebP exports remain available. JPEG is a conservative interoperability choice for link-preview clients. LinkedIn's [official media format guidance](https://www.linkedin.com/help/linkedin/answer/a792945) lists JPEG and WebP, and its [sharing guidance](https://www.linkedin.com/help/linkedin/answer/a521928/make-your-website-shareable-on-linkedin) calls for at least 1200 x 627 and a file under 5 MB. The page and image are public and use absolute production URLs in metadata. Actual platform-side cached cards have not been inspected.
+
 ## Editorial integrity
 
 The author's supplied manuscript is preserved exactly after its title, subtitle, and byline are represented by the established article header. All paragraphs, headings, bold and italic emphasis, the separate bold closing lines, signature and date remain in their supplied order. No financial advice, investment figures, research note, or personal details have been added. The essay is a personal philosophical reflection on choices and freedom.
