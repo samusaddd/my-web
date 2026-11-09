@@ -138,7 +138,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     source: post.content,
     components: {
       h1: (props) => <h2 {...props} className={styles.finalHeading} />,
-      h2: (props) => <h2 {...props} className={props.id === "historical-and-philosophical-references" || props.id === "research-note" ? styles.referencesTitle : undefined} />,
+      h2: (props) => <h2 {...props} className={props.id === "historical-and-philosophical-references" || props.id === "research-note" || props.id === "references" ? styles.referencesTitle : undefined} />,
       h3: (props) => hasSecondLevelHeadings ? <h3 {...props} /> : <h2 {...props} />,
       h4: (props) => <h4 {...props} />,
       a: ({ href, ...props }) => <a href={href ?? "#"} {...props} />,
@@ -146,7 +146,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <div className={`${styles.resonance}${closing ? ` ${styles.resonanceClosing}` : ""}`}>{children}</div>
       ),
       Signature: ({ children }: { children: React.ReactNode }) => <div className={styles.signature}>{children}</div>,
-      ResearchNote: ({ children }: { children: React.ReactNode }) => <aside className={styles.researchNote} aria-label="Research note">{children}</aside>,
+      ResearchNote: ({ children, label = "Research note" }: { children: React.ReactNode; label?: string }) => <aside className={styles.researchNote} aria-label={label}>{children}</aside>,
     },
     options: {
       mdxOptions: {

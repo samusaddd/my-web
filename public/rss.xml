@@ -5,9 +5,20 @@
     <link>https://samirseddiqi.it</link>
     <description>Personal site of Samir Seddiqi in Trento. Founder of VitaAvanza, writer of Can You Hear Me?, and builder of calm systems for people and institutions.</description>
     <language>en-US</language>
-    <lastBuildDate>Sat, 07 Nov 2026 03:06:04 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 09 Nov 2026 12:43:33 GMT</lastBuildDate>
     <ttl>60</ttl>
     <atom:link href="https://samirseddiqi.it/rss.xml" rel="self" type="application/rss+xml" xmlns:atom="http://www.w3.org/2005/Atom" />
+
+        <item>
+          <title>GOD DOESN&apos;T CHARGE BY THE HOUR.</title>
+          <link>https://samirseddiqi.it/blog/god-doesnt-charge-by-the-hour/</link>
+          <guid>https://samirseddiqi.it/blog/god-doesnt-charge-by-the-hour/</guid>
+          <pubDate>Mon, 09 Nov 2026 00:00:00 GMT</pubDate>
+          <description>On pearls before swine, expensive lawyers, selective morality, and a world that has learned to put a price on almost everything except its own hypocrisy.</description>
+          <author>ceo@vitaavanza.it (Samir Seddiqi)</author>
+          <source url="https://samirseddiqi.it/blog/">Samir Seddiqi</source>
+          <category>philosophy</category><category>society</category><category>morality</category><category>hypocrisy</category><category>faith</category><category>Matthew 7:6</category><category>wealth</category><category>tax avoidance</category><category>integrity</category>
+        </item>
 
         <item>
           <title>THE MOST EXPENSIVE THING YOU OWN IS A LIFE YOU CAN&apos;T LEAVE.</title>
