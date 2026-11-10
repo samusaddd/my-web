@@ -1,0 +1,105 @@
+.dock {
+  position: fixed;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: max-content;
+  max-width: calc(100% - 32px);
+  padding: 5px 8px;
+  background: var(--ivory);
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 8px 30px #24231f20;
+  border-radius: 3px;
+  color: var(--ink);
+}
+.dock[hidden] {
+  display: none;
+}
+.dock button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 8px;
+  font: 500 0.75rem var(--font-inter);
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+.dock button:hover {
+  background: var(--paper-warm);
+}
+.dock button:disabled {
+  opacity: 0.35;
+}
+.percentage {
+  font: 500 0.7rem var(--font-inter);
+  padding-inline: 8px 12px;
+  border-right: 1px solid var(--line-strong);
+  white-space: nowrap;
+}
+.percentage > span {
+  margin-right: 0.5rem;
+  color: var(--muted);
+}
+.progressLine {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  overflow: hidden;
+}
+.progressLine > span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+}
+.copy {
+  border-left: 1px solid var(--line) !important;
+  margin-left: 3px;
+}
+.status {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 250px;
+  max-width: 90vw;
+  background: var(--ink);
+  color: var(--ivory);
+  font-size: 0.75rem;
+  text-align: center;
+  line-height: 1.7;
+  padding: 0.8rem 1rem;
+  box-shadow: 0 5px 15px #0001;
+}
+.status:empty {
+  display: none;
+}
+@media (max-width: 599px) {
+  .dock {
+    bottom: 12px;
+    gap: 1px;
+    padding: 4px;
+  }
+  .dock button {
+    padding-inline: 5px;
+  }
+  .percentage {
+    padding-inline: 6px 8px;
+    font-size: 0.68rem;
+  }
+  .percentage > span {
+    display: none;
+  }
+  .copy {
+    font-size: 0.65rem !important;
+    gap: 0.4rem !important;
+  }
+}

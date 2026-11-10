@@ -16,7 +16,7 @@ export const siteConfig = {
   tagline: "Writer, founder, and Economics & Management student in Trento.",
   footerLine: "Writing, work, and the life in between.",
   iconPath: "/icon.svg",
-  socialImagePath: "/opengraph-card.png",
+  socialImagePath: "/images/samir-seddiqi-social.png",
   keywords: [
     "Samir Seddiqi",
     "Samir Seddiqi VitaAvanza",

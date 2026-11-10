@@ -4,12 +4,31 @@ import { absoluteUrl, siteConfig } from "@/lib/site";
 import styles from "../interior.module.css";
 
 const canonicalUrl = absoluteUrl("/resume");
-const description = "Samir Seddiqi's background in writing, Economics and Management, founding VitaAvanza, educational talks, and volunteer work.";
-const image = { url: absoluteUrl(siteConfig.socialImagePath), width: 1200, height: 630, alt: "Samir Seddiqi — background and experience" };
+const description =
+  "Samir Seddiqi's background in writing, Economics and Management, founding VitaAvanza, educational talks, and volunteer work.";
+const image = {
+  url: absoluteUrl(siteConfig.socialImagePath),
+  width: 1200,
+  height: 630,
+  alt: "Samir Seddiqi — background and experience",
+};
 export const metadata: Metadata = {
-  title: "Resume", description, alternates: { canonical: canonicalUrl },
-  openGraph: { title: `Resume | ${siteConfig.name}`, description, type: "website", url: canonicalUrl, images: [image] },
-  twitter: { card: "summary_large_image", title: `Resume | ${siteConfig.name}`, description, images: [image] },
+  title: "Resume",
+  description,
+  alternates: { canonical: canonicalUrl },
+  openGraph: {
+    title: `Resume | ${siteConfig.name}`,
+    description,
+    type: "website",
+    url: canonicalUrl,
+    images: [image],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Resume | ${siteConfig.name}`,
+    description,
+    images: [image],
+  },
 };
 
 const competencies = [
@@ -88,35 +107,117 @@ const education = [
 
 const languages = ["Persian (native)", "Italian (fluent)", "English (fluent)"] as const;
 
-
-
 export default function ResumePage() {
   return (
     <div className={styles.page}>
       <header className={styles.hero}>
         <div className={`${styles.wrap} ${styles.resumeHero}`}>
-          <div><p className={styles.eyebrow}>Background / Samir Seddiqi</p><h1 className={styles.pageTitle}>Résumé.</h1><p className={styles.lede}>An ongoing record of writing, study, building, and work with people.</p></div>
-          <div className={styles.downloadBox}><p>For the full document, download my CV. For a conversation about writing, a project, or an opportunity, get in touch.</p><div className={styles.actions}><a className={styles.button} download="Samir-Seddiqi-CV.pdf" href="/Samir-Seddiqi-CV.pdf">Download CV · PDF <span aria-hidden="true">↓</span></a><Link className={styles.link} href="/contact">Contact <span aria-hidden="true">→</span></Link></div></div>
+          <div>
+            <p className={styles.eyebrow}>Background / Samir Seddiqi</p>
+            <h1 className={styles.pageTitle}>Résumé.</h1>
+            <p className={styles.lede}>
+              An ongoing record of writing, study, building, and work with people.
+            </p>
+          </div>
+          <div className={styles.downloadBox}>
+            <p>
+              For the full document, download my CV. For a conversation about writing, a project, or
+              an opportunity, get in touch.
+            </p>
+            <div className={styles.actions}>
+              <a
+                className={styles.button}
+                download="Samir-Seddiqi-CV.pdf"
+                href="/Samir-Seddiqi-CV.pdf"
+              >
+                Download CV · PDF <span aria-hidden="true">↓</span>
+              </a>
+              <Link className={styles.link} href="/contact">
+                Contact <span aria-hidden="true">→</span>
+              </Link>
+            </div>
+          </div>
         </div>
       </header>
       <div className={styles.wrap}>
-        <section className={styles.ledger}>
-          <div className={styles.ledgerHeading}><span className={styles.index}>01</span><h2>Experience</h2></div>
-          <div>{experience.map(item => (<div className={styles.ledgerEntry} key={item.title}><p className={styles.meta}>{item.timeframe}</p><div><h3>{item.title}</h3><p className={styles.ledgerInstitution}>{item.institution}</p><p className={styles.text}>{item.detail}</p></div></div>))}</div>
+        <nav className={styles.chapterNav} aria-label="Résumé sections">
+          <a href="#experience">Experience</a>
+          <a href="#education">Education</a>
+          <a href="#languages">Languages</a>
+          <a href="#ways-of-working">Ways of working</a>
+        </nav>
+        <section className={styles.ledger} id="experience">
+          <div className={styles.ledgerHeading}>
+            <span className={styles.index}>01</span>
+            <h2>Experience</h2>
+          </div>
+          <div>
+            {experience.map((item) => (
+              <div className={styles.ledgerEntry} key={item.title}>
+                <p className={styles.meta}>{item.timeframe}</p>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p className={styles.ledgerInstitution}>{item.institution}</p>
+                  <p className={styles.text}>{item.detail}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </section>
-        <section className={styles.ledger}>
-          <div className={styles.ledgerHeading}><span className={styles.index}>02</span><h2>Education</h2></div>
-          <div>{education.map(item => (<div className={styles.ledgerEntry} key={item.title}><p className={styles.meta}>{item.timeframe}</p><div><h3>{item.title}</h3><p className={styles.ledgerInstitution}>{item.institution}</p><p className={styles.text}>{item.detail}</p></div></div>))}</div>
+        <section className={styles.ledger} id="education">
+          <div className={styles.ledgerHeading}>
+            <span className={styles.index}>02</span>
+            <h2>Education</h2>
+          </div>
+          <div>
+            {education.map((item) => (
+              <div className={styles.ledgerEntry} key={item.title}>
+                <p className={styles.meta}>{item.timeframe}</p>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p className={styles.ledgerInstitution}>{item.institution}</p>
+                  <p className={styles.text}>{item.detail}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </section>
-        <section className={styles.ledger}>
-          <div className={styles.ledgerHeading}><span className={styles.index}>03</span><h2>Languages</h2></div>
-          <dl className={styles.languageList}>{languages.map(language => { const parts = language.match(/^(.+) \((.+)\)$/); return <div key={language}><dt>{parts?.[1] || language}</dt><dd>{parts?.[2]}</dd></div>; })}</dl>
+        <section className={styles.ledger} id="languages">
+          <div className={styles.ledgerHeading}>
+            <span className={styles.index}>03</span>
+            <h2>Languages</h2>
+          </div>
+          <dl className={styles.languageList}>
+            {languages.map((language) => {
+              const parts = language.match(/^(.+) \((.+)\)$/);
+              return (
+                <div key={language}>
+                  <dt>{parts?.[1] || language}</dt>
+                  <dd>{parts?.[2]}</dd>
+                </div>
+              );
+            })}
+          </dl>
         </section>
       </div>
-      <section className={`${styles.section} ${styles.darkBand}`}>
+      <section className={`${styles.section} ${styles.darkBand}`} id="ways-of-working">
         <div className={`${styles.wrap} ${styles.sectionGrid}`}>
-          <div><p className={styles.eyebrow}>04 / Across the work</p><h2 className={styles.sectionTitle}>Ways of<br />working.</h2></div>
-          <ul className={styles.skills}>{competencies.map(item => (<li key={item.title}><h3>{item.title}</h3><p>{item.description}</p></li>))}</ul>
+          <div>
+            <p className={styles.eyebrow}>04 / Across the work</p>
+            <h2 className={styles.sectionTitle}>
+              Ways of
+              <br />
+              working.
+            </h2>
+          </div>
+          <ul className={styles.skills}>
+            {competencies.map((item) => (
+              <li key={item.title}>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     </div>
