@@ -150,8 +150,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <aside className={styles.soundtrack} aria-label="A soundtrack for this essay">
           <div className={styles.soundtrackLabel}>A soundtrack for this essay</div>
           <iframe
-            title="My Dog by Honeycrush — Spotify player"
-            src="https://open.spotify.com/embed/track/44BAfPdbxay0aQz4eUt0kR?theme=0"
+            title="My Dog (Atmospheric Intro) by Honeycrush — Spotify player"
+            src="https://open.spotify.com/embed/track/3VRWz74vJ2Q2qZlu6v03Ud?theme=0"
             width="100%"
             height="152"
             loading="lazy"
@@ -159,9 +159,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             allowFullScreen
           />
           <div className={styles.soundtrackAttribution}>
-            <span>My Dog — Honeycrush</span>
+            <span>My Dog (Atmospheric Intro) — Honeycrush</span>
             <a
-              href="https://open.spotify.com/track/44BAfPdbxay0aQz4eUt0kR"
+              href="https://open.spotify.com/track/3VRWz74vJ2Q2qZlu6v03Ud"
               target="_blank"
               rel="noreferrer"
             >

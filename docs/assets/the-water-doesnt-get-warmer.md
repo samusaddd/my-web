@@ -23,11 +23,11 @@ The approved title, subtitle and byline appear in the article header. The body, 
 
 The complete essay contains 1,814 words, including section headings and the signature. At 220 words per minute, its displayed reading estimate is nine minutes.
 
-The painting opens the article above the HTML title. The music uses the exact official Spotify iframe for My Dog by Honeycrush with lazy loading, user-initiated controls and a normal Spotify fallback link. Readers can continue through the full essay when Spotify is unavailable.
+The painting opens the article above the HTML title. The sole soundtrack is My Dog (Atmospheric Intro) by Honeycrush, selected in the user's final update. The music uses the official Spotify iframe with lazy loading, user-initiated controls and a normal Spotify fallback link. Readers can continue through the full essay when Spotify is unavailable.
 
 The exact track and embed guidance were verified on 10 November 2026.
 
-- [My Dog by Honeycrush on Spotify](https://open.spotify.com/embed/track/44BAfPdbxay0aQz4eUt0kR?theme=0)
+- [My Dog (Atmospheric Intro) by Honeycrush on Spotify](https://open.spotify.com/embed/track/3VRWz74vJ2Q2qZlu6v03Ud?theme=0)
 - [Spotify embed documentation](https://developer.spotify.com/documentation/embeds/tutorials/creating-an-embed)
 
 ## Initial prompt
