@@ -148,8 +148,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     components: {
       EssaySoundtrack: () =>
         post.soundtrack ? (
-          <aside className={styles.soundtrack} aria-label="A soundtrack for this essay">
-            <div className={styles.soundtrackLabel}>A soundtrack for this essay</div>
+          <aside
+            className={styles.soundtrack}
+            aria-label={post.soundtrack.label || "A soundtrack for this essay"}
+          >
+            <div className={styles.soundtrackLabel}>
+              {post.soundtrack.label || "A soundtrack for this essay"}
+            </div>
             <iframe
               title={`${post.soundtrack.title} by ${post.soundtrack.artist} — Spotify player`}
               src={`https://open.spotify.com/embed/track/${post.soundtrack.spotifyId}?theme=0`}

@@ -7,6 +7,7 @@ export type PostSoundtrack = {
   spotifyId: string;
   title: string;
   artist: string;
+  label?: string;
   note?: string;
 };
 
@@ -77,7 +78,13 @@ function optionalSoundtrack(value: unknown): PostSoundtrack | undefined {
   const title = optionalString(fields.title);
   const artist = optionalString(fields.artist);
   if (!spotifyId || !/^[A-Za-z0-9]{22}$/.test(spotifyId) || !title || !artist) return undefined;
-  return { spotifyId, title, artist, note: optionalString(fields.note) };
+  return {
+    spotifyId,
+    title,
+    artist,
+    label: optionalString(fields.label),
+    note: optionalString(fields.note),
+  };
 }
 
 function readPostFile(slug: string) {
