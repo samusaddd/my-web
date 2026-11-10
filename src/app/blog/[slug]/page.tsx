@@ -278,7 +278,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <>
-      <ArticleReader url={canonicalUrl} />
       <Section
         className={`${styles.postSection}${post.tone === "oxblood" ? ` ${styles.toneOxblood}` : post.tone === "charcoal" ? ` ${styles.toneCharcoal}` : ""}`}
         containerClassName={styles.container}
@@ -297,7 +296,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <nav aria-label="Breadcrumb">
             <Link href="/blog">Writing</Link>
             <span aria-hidden="true">/</span>
-            <span>Essay</span>
+            <span>Essay No. {String(allPosts.length - currentIndex).padStart(2, "0")}</span>
           </nav>
           <a href="#essay-content">
             Begin reading <span aria-hidden="true">↘</span>
@@ -333,6 +332,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   {readingMinutes} {readingMinutes === 1 ? "minute" : "minutes"}
                 </p>
               </div>
+              <ArticleReader
+                url={canonicalUrl}
+                hasContents={headings.length > 1}
+                sample={post.content
+                  .trim()
+                  .split(/\n\s*\n/)[0]
+                  .replace(/[*_]/g, "")}
+              />
             </div>
           </header>
 

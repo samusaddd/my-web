@@ -32,12 +32,16 @@
   color: var(--accent);
 }
 .postHeader {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 170px;
+  align-items: end;
+  gap: 4rem;
   padding-block: 4.5rem 3.5rem;
-  text-align: center;
+  text-align: left;
 }
 .titleBlock {
   max-width: 1100px;
-  margin-inline: auto;
+  min-width: 0;
 }
 .category {
   font-size: 0.65rem;
@@ -50,7 +54,7 @@
   font: 400 clamp(3.2rem, 6.4vw, 7rem)/1.04 var(--font-serif);
   letter-spacing: -0.035em;
   max-width: 23ch;
-  margin: 1.8rem auto;
+  margin: 1.8rem 0;
   overflow-wrap: break-word;
   text-wrap: balance;
 }
@@ -60,15 +64,17 @@
 .standfirst {
   font: italic clamp(1.4rem, 2.15vw, 2.2rem)/1.5 var(--font-serif);
   max-width: 46ch;
-  margin-inline: auto;
+  margin-inline: 0;
   color: var(--muted);
 }
 .headerMeta {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-end;
   align-items: start;
-  gap: 3.5rem;
-  margin-top: 2.7rem;
+  gap: 1.4rem;
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--line-strong);
 }
 .headerMeta > div > span {
   display: block;
@@ -220,7 +226,10 @@
 }
 .prose {
   --reader-font-base: 1.125rem;
-  font-size: calc(var(--reader-font-base) * var(--reader-scale, 1));
+  font-family: var(--reader-font-family, var(--font-inter)), sans-serif;
+  font-size: calc(
+    var(--reader-font-base) * var(--reader-scale, 1) * var(--reader-typeface-scale, 1)
+  );
   line-height: 1.95;
   color: var(--ink);
 }
@@ -231,7 +240,7 @@
   margin-block: 1.45em;
 }
 .prose > p:first-child {
-  font: 400 calc(1.6rem * var(--reader-scale, 1))/1.5 var(--font-serif);
+  font: 400 calc(1.6rem * var(--reader-scale, 1))/1.5 var(--reader-font-family, var(--font-serif));
   letter-spacing: -0.01em;
   margin-top: 0;
 }
@@ -506,6 +515,20 @@
     color: var(--accent);
   }
 }
+@media (max-width: 899px) {
+  .postHeader {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .headerMeta {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: start;
+    padding: 1.5rem 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--line-strong);
+  }
+}
 @media (max-width: 599px) {
   .postSection {
     padding-block: 1.5rem 3.5rem !important;
@@ -531,7 +554,7 @@
     letter-spacing: 0.1em;
   }
   .titleBlock h1 {
-    font-size: clamp(2.25rem, 8vw, 3.3rem);
+    font-size: clamp(2.6rem, 10.2vw, 4rem);
     line-height: 1.08;
     letter-spacing: -0.025em;
     margin-block: 1.5rem;
@@ -546,10 +569,11 @@
     max-width: 32ch;
   }
   .headerMeta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.5rem;
     justify-content: space-between;
     text-align: left;
-    margin-top: 2rem;
+    margin-top: 0;
   }
   .headerMeta > div > span {
     font-size: 0.52rem;

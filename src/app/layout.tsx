@@ -1,5 +1,15 @@
 import type { Metadata } from "next";
-import { Inter, Instrument_Serif } from "next/font/google";
+import {
+  Atkinson_Hyperlegible,
+  Bodoni_Moda,
+  Cormorant_Garamond,
+  Fraunces,
+  Inter,
+  Instrument_Serif,
+  Literata,
+  Space_Mono,
+  UnifrakturMaguntia,
+} from "next/font/google";
 
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -21,6 +31,63 @@ const serif = Instrument_Serif({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-serif",
+});
+
+const literata = Literata({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-literata",
+  preload: false,
+});
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-cormorant",
+  preload: false,
+});
+const bodoni = Bodoni_Moda({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-bodoni",
+  preload: false,
+  adjustFontFallback: false,
+});
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-fraunces",
+  preload: false,
+});
+const gothic = UnifrakturMaguntia({
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+  variable: "--font-gothic",
+  preload: false,
+});
+const mono = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-mono",
+  preload: false,
+});
+const clear = Atkinson_Hyperlegible({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-clear",
+  preload: false,
 });
 
 const metadataBase = new URL(siteConfig.url);
@@ -92,7 +159,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body
-        className={cn(inter.variable, serif.variable, "min-h-screen bg-paper text-ink")}
+        className={cn(
+          inter.variable,
+          serif.variable,
+          literata.variable,
+          cormorant.variable,
+          bodoni.variable,
+          fraunces.variable,
+          gothic.variable,
+          mono.variable,
+          clear.variable,
+          "min-h-screen bg-paper text-ink",
+        )}
         id="top"
       >
         <a
