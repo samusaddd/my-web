@@ -19,9 +19,9 @@ The JPEG companion supplies sharing metadata. Requested landscape, Open Graph an
 
 ## Manuscript and soundtrack
 
-The complete supplied manuscript is preserved, including paragraphs, section headings, emphasis, profanity and signature. Title, subtitle, author and date use the existing HTML header, followed by the photograph. The compact, optional Saturn player follows the complete introduction, before the first section. It is lazy loaded, starts without autoplay and has a normal Spotify fallback link. Reading does not depend on the player loading.
+The complete supplied manuscript is preserved, including paragraphs, section headings, emphasis, profanity and signature. Title, subtitle, author and date use the existing HTML header, followed by the photograph. Following the author's soundtrack and placement corrections, the compact, optional Matilda player follows the first introductory paragraph, matching the other essays. It is lazy loaded, starts without autoplay and has a normal Spotify fallback link. Reading does not depend on the player loading. The recording was verified through Spotify's catalogue on 11 November 2026.
 
-- [Saturn — Sleeping At Last](https://open.spotify.com/embed/track/3tJjZMHLqhD8DaGgdBICnc)
+- [Matilda — Harry Styles](https://open.spotify.com/embed/track/6uvh0In7u1Xn4HgxOfAn8O)
 
 ## Final generation prompt
 
