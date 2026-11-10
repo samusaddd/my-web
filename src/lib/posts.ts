@@ -14,6 +14,7 @@ export type PostFrontmatter = {
   language?: string;
   tone?: "oxblood" | "charcoal";
   coverImage?: string;
+  coverFirst?: boolean;
   coverImageSmall?: string;
   coverImageMedium?: string;
   coverAlt?: string;
@@ -58,9 +59,7 @@ function optionalString(value: unknown) {
 }
 
 function optionalDimension(value: unknown) {
-  return typeof value === "number" && Number.isInteger(value) && value > 0
-    ? value
-    : undefined;
+  return typeof value === "number" && Number.isInteger(value) && value > 0 ? value : undefined;
 }
 
 function readPostFile(slug: string) {
@@ -90,6 +89,7 @@ function normalizeFrontmatter(
   const language = optionalString(data.language);
   const tone = data.tone === "oxblood" || data.tone === "charcoal" ? data.tone : undefined;
   const coverImage = optionalString(data.coverImage);
+  const coverFirst = data.coverFirst === true;
   const coverImageSmall = optionalString(data.coverImageSmall);
   const coverImageMedium = optionalString(data.coverImageMedium);
   const coverAlt = typeof data.coverAlt === "string" ? data.coverAlt : undefined;
@@ -103,11 +103,30 @@ function normalizeFrontmatter(
   const socialImageHeight = optionalDimension(data.socialImageHeight);
 
   return {
-    slug, title, date, summary, tags, lastModified,
-    seoTitle, description, category, language, tone,
-    coverImage, coverImageSmall, coverImageMedium, coverAlt, coverWidth, coverHeight,
-    coverCredit, coverCaption, coverSourceUrl,
-    socialImage, socialImageWidth, socialImageHeight,
+    slug,
+    title,
+    date,
+    summary,
+    tags,
+    lastModified,
+    seoTitle,
+    description,
+    category,
+    language,
+    tone,
+    coverImage,
+    coverFirst,
+    coverImageSmall,
+    coverImageMedium,
+    coverAlt,
+    coverWidth,
+    coverHeight,
+    coverCredit,
+    coverCaption,
+    coverSourceUrl,
+    socialImage,
+    socialImageWidth,
+    socialImageHeight,
   };
 }
 

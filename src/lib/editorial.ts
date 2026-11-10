@@ -11,9 +11,12 @@ export function formatDate(value: string) {
   }).format(new Date(value));
 }
 export function readingMinutes(content: string) {
-  return Math.max(
-    1,
-    Math.ceil((content.match(/[\p{L}\p{N}]+(?:['’\-][\p{L}\p{N}]+)*/gu)?.length || 0) / 220),
+  return Math.max(1, Math.ceil(countWords(content) / 220));
+}
+
+export function countWords(content: string) {
+  return (
+    content.replace(/<[^>]*>/g, " ").match(/[\p{L}\p{N}]+(?:['’\-][\p{L}\p{N}]+)*/gu)?.length || 0
   );
 }
 export function coverSources(post: PostMeta) {

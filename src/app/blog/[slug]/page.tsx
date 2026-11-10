@@ -8,6 +8,7 @@ import remarkGfm from "remark-gfm";
 
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ArticleReader } from "@/components/article-reader";
+import { countWords } from "@/lib/editorial";
 import { Section } from "@/components/ui";
 import { getAllPostsWithContent, getPostBySlug, getPostSlugs } from "@/lib/posts";
 import { absoluteUrl, siteConfig } from "@/lib/site";
@@ -20,10 +21,6 @@ function formatDate(date: string) {
     day: "numeric",
     year: "numeric",
   }).format(new Date(date));
-}
-
-function countWords(content: string) {
-  return content.match(/[\p{L}\p{N}]+(?:['’\-][\p{L}\p{N}]+)*/gu)?.length || 0;
 }
 
 type BlogPostPageProps = {
@@ -149,6 +146,30 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { content } = await compileMDX({
     source: post.content,
     components: {
+      EssaySoundtrack: () => (
+        <aside className={styles.soundtrack} aria-label="A soundtrack for this essay">
+          <div className={styles.soundtrackLabel}>A soundtrack for this essay</div>
+          <iframe
+            title="My Dog by Honeycrush — Spotify player"
+            src="https://open.spotify.com/embed/track/44BAfPdbxay0aQz4eUt0kR?theme=0"
+            width="100%"
+            height="152"
+            loading="lazy"
+            allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            allowFullScreen
+          />
+          <div className={styles.soundtrackAttribution}>
+            <span>My Dog — Honeycrush</span>
+            <a
+              href="https://open.spotify.com/track/44BAfPdbxay0aQz4eUt0kR"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Listen on Spotify <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </aside>
+      ),
       h1: (props) => <h2 {...props} className={styles.finalHeading} />,
       h2: (props) => (
         <h2
@@ -219,6 +240,42 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     </ol>
   );
 
+  const cover = post.coverImage ? (
+    <figure
+      className={`${styles.coverFigure}${post.coverFirst ? ` ${styles.openingArtwork}` : ""}`}
+    >
+      <img
+        alt={post.coverAlt || post.title}
+        className={styles.coverImage}
+        decoding="async"
+        fetchPriority="high"
+        height={post.coverHeight || 1350}
+        loading="eager"
+        sizes={coverSrcSet ? coverSizes : undefined}
+        src={post.coverImage}
+        srcSet={coverSrcSet}
+        width={post.coverWidth || 2400}
+      />
+      {post.coverCaption || post.coverCredit ? (
+        <figcaption>
+          {post.coverCaption ? <span>{post.coverCaption}</span> : null}
+          {post.coverCredit ? (
+            <span>
+              Photograph:{" "}
+              {post.coverSourceUrl ? (
+                <a href={post.coverSourceUrl} rel="noreferrer" target="_blank">
+                  {post.coverCredit} <span aria-hidden="true">↗</span>
+                </a>
+              ) : (
+                post.coverCredit
+              )}
+            </span>
+          ) : null}
+        </figcaption>
+      ) : null}
+    </figure>
+  ) : null;
+
   return (
     <>
       <ArticleReader url={canonicalUrl} />
@@ -248,6 +305,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
 
         <article lang={post.language || "en"}>
+          {post.coverFirst ? cover : null}
           <header className={styles.postHeader}>
             <div
               className={`${styles.titleBlock}${post.slug === "why-not" ? ` ${styles.manifestoTitle}` : ""}`}
@@ -278,39 +336,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
           </header>
 
-          {post.coverImage ? (
-            <figure className={styles.coverFigure}>
-              <img
-                alt={post.coverAlt || post.title}
-                className={styles.coverImage}
-                decoding="async"
-                fetchPriority="high"
-                height={post.coverHeight || 1350}
-                loading="eager"
-                sizes={coverSrcSet ? coverSizes : undefined}
-                src={post.coverImage}
-                srcSet={coverSrcSet}
-                width={post.coverWidth || 2400}
-              />
-              {post.coverCaption || post.coverCredit ? (
-                <figcaption>
-                  {post.coverCaption ? <span>{post.coverCaption}</span> : null}
-                  {post.coverCredit ? (
-                    <span>
-                      Photograph:{" "}
-                      {post.coverSourceUrl ? (
-                        <a href={post.coverSourceUrl} rel="noreferrer" target="_blank">
-                          {post.coverCredit} <span aria-hidden="true">↗</span>
-                        </a>
-                      ) : (
-                        post.coverCredit
-                      )}
-                    </span>
-                  ) : null}
-                </figcaption>
-              ) : null}
-            </figure>
-          ) : null}
+          {!post.coverFirst ? cover : null}
 
           <div
             className={`${styles.readingGrid}${post.coverImage ? "" : ` ${styles.withoutCover}`}`}

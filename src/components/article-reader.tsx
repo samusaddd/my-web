@@ -16,11 +16,16 @@ export function ArticleReader({ url }: { url: string }) {
     const prose = document.getElementById("essay-content");
     if (!prose) return;
     const headings = Array.from(prose.querySelectorAll<HTMLElement>("h2[id],h3[id]"));
+    const player = prose.querySelector("iframe");
     const update = () => {
       cancelAnimationFrame(frame.current);
       frame.current = requestAnimationFrame(() => {
         const rect = prose.getBoundingClientRect();
-        setActive(rect.top < innerHeight * 0.7 && rect.bottom > innerHeight * 0.2);
+        const playerRect = player?.getBoundingClientRect();
+        const playerVisible = playerRect && playerRect.top < innerHeight && playerRect.bottom > 0;
+        setActive(
+          rect.top < innerHeight * 0.7 && rect.bottom > innerHeight * 0.2 && !playerVisible,
+        );
         const range = Math.max(1, rect.height - innerHeight * 0.6);
         setProgress(Math.max(0, Math.min(100, ((-rect.top + innerHeight * 0.2) / range) * 100)));
         const current =
