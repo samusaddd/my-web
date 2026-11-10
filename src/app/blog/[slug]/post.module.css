@@ -139,6 +139,34 @@
 .soundtrackAttribution a {
   color: var(--muted);
 }
+.soundtrackNote {
+  margin-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+.soundtrackNote summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  min-height: 44px;
+  cursor: pointer;
+  color: var(--muted);
+  list-style: none;
+}
+.soundtrackNote summary::-webkit-details-marker {
+  display: none;
+}
+.soundtrackNote summary > span {
+  font-size: 1.2rem;
+}
+.soundtrackNote[open] summary > span {
+  transform: rotate(45deg);
+}
+.prose .soundtrackNote p {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+  font: 400 0.8rem/1.8 var(--font-inter);
+}
 @media (max-width: 359px) {
   .soundtrack {
     margin-inline: -0.5rem;

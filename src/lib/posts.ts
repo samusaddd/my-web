@@ -3,6 +3,13 @@ import path from "node:path";
 
 import matter from "gray-matter";
 
+export type PostSoundtrack = {
+  spotifyId: string;
+  title: string;
+  artist: string;
+  note?: string;
+};
+
 export type PostFrontmatter = {
   title: string;
   date: string;
@@ -26,6 +33,7 @@ export type PostFrontmatter = {
   socialImage?: string;
   socialImageWidth?: number;
   socialImageHeight?: number;
+  soundtrack?: PostSoundtrack;
 };
 
 export type PostMeta = PostFrontmatter & {
@@ -60,6 +68,16 @@ function optionalString(value: unknown) {
 
 function optionalDimension(value: unknown) {
   return typeof value === "number" && Number.isInteger(value) && value > 0 ? value : undefined;
+}
+
+function optionalSoundtrack(value: unknown): PostSoundtrack | undefined {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return undefined;
+  const fields = value as Record<string, unknown>;
+  const spotifyId = optionalString(fields.spotifyId);
+  const title = optionalString(fields.title);
+  const artist = optionalString(fields.artist);
+  if (!spotifyId || !/^[A-Za-z0-9]{22}$/.test(spotifyId) || !title || !artist) return undefined;
+  return { spotifyId, title, artist, note: optionalString(fields.note) };
 }
 
 function readPostFile(slug: string) {
@@ -101,6 +119,7 @@ function normalizeFrontmatter(
   const socialImage = optionalString(data.socialImage);
   const socialImageWidth = optionalDimension(data.socialImageWidth);
   const socialImageHeight = optionalDimension(data.socialImageHeight);
+  const soundtrack = optionalSoundtrack(data.soundtrack);
 
   return {
     slug,
@@ -127,6 +146,7 @@ function normalizeFrontmatter(
     socialImage,
     socialImageWidth,
     socialImageHeight,
+    soundtrack,
   };
 }
 

@@ -146,30 +146,41 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { content } = await compileMDX({
     source: post.content,
     components: {
-      EssaySoundtrack: () => (
-        <aside className={styles.soundtrack} aria-label="A soundtrack for this essay">
-          <div className={styles.soundtrackLabel}>A soundtrack for this essay</div>
-          <iframe
-            title="My Dog (Atmospheric Intro) by Honeycrush — Spotify player"
-            src="https://open.spotify.com/embed/track/3VRWz74vJ2Q2qZlu6v03Ud?theme=0"
-            width="100%"
-            height="152"
-            loading="lazy"
-            allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            allowFullScreen
-          />
-          <div className={styles.soundtrackAttribution}>
-            <span>My Dog (Atmospheric Intro) — Honeycrush</span>
-            <a
-              href="https://open.spotify.com/track/3VRWz74vJ2Q2qZlu6v03Ud"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Listen on Spotify <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </aside>
-      ),
+      EssaySoundtrack: () =>
+        post.soundtrack ? (
+          <aside className={styles.soundtrack} aria-label="A soundtrack for this essay">
+            <div className={styles.soundtrackLabel}>A soundtrack for this essay</div>
+            <iframe
+              title={`${post.soundtrack.title} by ${post.soundtrack.artist} — Spotify player`}
+              src={`https://open.spotify.com/embed/track/${post.soundtrack.spotifyId}?theme=0`}
+              width="100%"
+              height="152"
+              loading="lazy"
+              allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              allowFullScreen
+            />
+            <div className={styles.soundtrackAttribution}>
+              <span>
+                {post.soundtrack.title} — {post.soundtrack.artist}
+              </span>
+              <a
+                href={`https://open.spotify.com/track/${post.soundtrack.spotifyId}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Listen on Spotify <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+            {post.soundtrack.note ? (
+              <details className={styles.soundtrackNote}>
+                <summary>
+                  Listening note <span aria-hidden="true">+</span>
+                </summary>
+                <p>{post.soundtrack.note}</p>
+              </details>
+            ) : null}
+          </aside>
+        ) : null,
       h1: (props) => <h2 {...props} className={styles.finalHeading} />,
       h2: (props) => (
         <h2

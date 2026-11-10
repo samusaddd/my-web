@@ -1,6 +1,6 @@
 import type { Post, PostMeta } from "./posts";
 
-export type WritingEntry = PostMeta & { minutes: number };
+export type WritingEntry = Omit<PostMeta, "soundtrack"> & { minutes: number };
 
 export function formatDate(value: string) {
   return new Intl.DateTimeFormat("en-GB", {
@@ -30,6 +30,6 @@ export function coverSources(post: PostMeta) {
     .join(", ");
 }
 export function writingEntry(post: Post): WritingEntry {
-  const { content, ...meta } = post;
+  const { content, soundtrack: _soundtrack, ...meta } = post;
   return { ...meta, minutes: readingMinutes(content) };
 }
