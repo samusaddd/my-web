@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 import matter from "gray-matter";
+import { isPostPublished } from "./publication.mjs";
 
 export type PostSoundtrack = {
   spotifyId: string;
@@ -14,6 +15,7 @@ export type PostSoundtrack = {
 export type PostFrontmatter = {
   title: string;
   date: string;
+  publishAt?: string;
   summary: string;
   tags: string[];
   seoTitle?: string;
@@ -132,6 +134,7 @@ function normalizeFrontmatter(
     slug,
     title,
     date,
+    publishAt: optionalString(data.publishAt),
     summary,
     tags,
     lastModified,
@@ -162,7 +165,8 @@ export function getPostSlugs() {
   return fs
     .readdirSync(postsDirectory)
     .filter((file) => file.endsWith(".mdx"))
-    .map((file) => file.replace(/\.mdx$/, ""));
+    .map((file) => file.replace(/\.mdx$/, ""))
+    .filter((slug) => Boolean(getPostBySlug(slug)));
 }
 
 export function getPostBySlug(slug: string): Post | null {
@@ -170,6 +174,7 @@ export function getPostBySlug(slug: string): Post | null {
   if (!file) return null;
 
   const { data, content } = matter(file.fileContents);
+  if (!isPostPublished(data)) return null;
   const meta = normalizeFrontmatter(slug, data, file.stats.mtime);
 
   return {

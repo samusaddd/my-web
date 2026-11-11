@@ -1,0 +1,271 @@
+.share,
+.comments {
+  border-top: 1px solid var(--line-strong);
+  padding-top: 2rem;
+  margin-top: 4rem;
+  scroll-margin-top: 120px;
+}
+.sectionTop {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.eyebrow {
+  color: var(--accent);
+  text-transform: uppercase;
+  font-size: 0.62rem;
+  letter-spacing: 0.13em;
+  margin: 0 0 0.8rem;
+}
+.sectionTop h2 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  margin: 0;
+  text-wrap: balance;
+}
+.primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.8rem;
+  min-height: 48px;
+  padding: 0.8rem 1.1rem;
+  background: var(--ink);
+  color: var(--ivory);
+  border: 1px solid var(--ink);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+.primary:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.primary:disabled {
+  opacity: 0.55;
+}
+.shareLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.4rem;
+  margin-top: 1.5rem;
+}
+.shareLinks a,
+.shareLinks button,
+.textButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 44px;
+  padding-block: 0.5rem;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font-size: 0.75rem;
+}
+.shareLinks a:hover,
+.shareLinks button:hover,
+.textButton:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.status {
+  font-size: 0.78rem;
+  color: var(--accent);
+  margin: 0.8rem 0 0;
+  min-height: 1.4em;
+}
+.status:empty {
+  min-height: 0;
+  margin: 0;
+}
+.copyUrl {
+  width: 100%;
+  padding: 0.7rem;
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+  border: 1px solid var(--line-strong);
+  background: var(--ivory);
+}
+.count {
+  font-size: 0.7rem;
+  color: var(--muted);
+  white-space: nowrap;
+  padding-bottom: 0.2rem;
+}
+.intro {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 1.3rem 0 2rem;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.form > label {
+  font-size: 0.75rem;
+  margin-bottom: 0.6rem;
+}
+.form > input,
+.form > textarea {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: 0;
+  background: var(--ivory);
+  color: var(--ink);
+  padding: 0.9rem 1rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1.4rem;
+}
+.form > input {
+  max-width: 24rem;
+}
+.form > textarea {
+  resize: vertical;
+  min-height: 160px;
+}
+.form input::placeholder,
+.form textarea::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+.formBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 2rem;
+}
+.formBottom p {
+  font-size: 0.69rem;
+  line-height: 1.8;
+  color: var(--muted);
+  margin: 0;
+  max-width: 30rem;
+}
+.honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.commentList {
+  margin-top: 2.5rem;
+}
+.quiet {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.empty {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.6rem;
+  line-height: 1.4;
+  color: var(--muted);
+  border-block: 1px solid var(--line);
+  padding-block: 1.6rem;
+}
+.empty span {
+  display: block;
+  font-family: var(--font-inter), Arial, sans-serif;
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+}
+.comment {
+  display: flex;
+  gap: 1rem;
+  padding: 1.8rem 0;
+  border-top: 1px solid var(--line);
+}
+.avatar {
+  display: grid;
+  place-items: center;
+  flex: 0 0 36px;
+  height: 36px;
+  background: var(--paper-warm);
+  border-radius: 50%;
+  color: var(--accent);
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.4rem;
+}
+.commentContent {
+  min-width: 0;
+  flex: 1;
+}
+.comment header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1rem;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.comment h3 {
+  font-family: var(--font-inter), Arial, sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 0;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+}
+.comment time {
+  font-size: 0.65rem;
+  color: var(--muted);
+}
+.commentBody {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 0.95rem;
+  line-height: 1.9;
+  margin: 0.8rem 0 0;
+}
+.deleteControls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1rem;
+  align-items: center;
+  font-size: 0.65rem;
+  margin-top: 0.7rem;
+  color: var(--muted);
+}
+.deleteControls button {
+  min-height: 36px;
+  border: 0;
+  padding: 0.3rem 0;
+  background: none;
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+@media (max-width: 599px) {
+  .share,
+  .comments {
+    margin-top: 3rem;
+  }
+  .formBottom {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .formBottom .primary {
+    width: 100%;
+  }
+  .sectionTop {
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .shareLinks {
+    gap: 0.25rem 1.2rem;
+  }
+  .comment {
+    gap: 0.75rem;
+  }
+}
+@media print {
+  .share,
+  .comments {
+    display: none;
+  }
+}

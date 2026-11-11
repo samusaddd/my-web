@@ -8,6 +8,8 @@ import remarkGfm from "remark-gfm";
 
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ArticleReader } from "@/components/article-reader";
+import { ArticleShare } from "@/components/article-share";
+import { ArticleComments } from "@/components/article-comments";
 import { countWords } from "@/lib/editorial";
 import { Section } from "@/components/ui";
 import { getAllPostsWithContent, getPostBySlug, getPostSlugs } from "@/lib/posts";
@@ -356,6 +358,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   .split(/\n\s*\n/)[0]
                   .replace(/[*_]/g, "")}
               />
+              <div className={styles.communityLinks}>
+                <span>Join in</span>
+                <a href="#share-essay">
+                  Share this essay <span aria-hidden="true">↗</span>
+                </a>
+                <a href="#comments">
+                  Leave a comment <span aria-hidden="true">↘</span>
+                </a>
+              </div>
             </div>
           </header>
 
@@ -390,6 +401,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   Back to all writing <span aria-hidden="true">↗</span>
                 </Link>
               </div>
+              <ArticleShare title={post.title} url={`${canonicalUrl}/`} />
+              <ArticleComments slug={post.slug} />
             </div>
           </div>
         </article>

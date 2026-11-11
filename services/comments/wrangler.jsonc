@@ -1,0 +1,9 @@
+{
+  "name": "samir-seddiqi-comments",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-11-10",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": { "enabled": true, "head_sampling_rate": 0.1 },
+  "d1_databases": [{ "binding": "DB", "database_name": "reader-comments", "database_id": "00000000-0000-0000-0000-000000000001" }],
+  "vars": { "ALLOW_LOCALHOST": "true", "IP_HASH_SALT": "local-development-only", "ADMIN_TOKEN": "local-development-only" }
+}

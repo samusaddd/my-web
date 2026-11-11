@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 import matter from "gray-matter";
+import { isPostPublished } from "../src/lib/publication.mjs";
 
 const rootDir = process.cwd();
 const postsDirectory = path.join(rootDir, "src", "content", "posts");
@@ -64,6 +65,7 @@ function getPosts() {
       const fileContents = fs.readFileSync(fullPath, "utf8");
       const stats = fs.statSync(fullPath);
       const { data, content } = matter(fileContents);
+      if (!isPostPublished(data)) return null;
 
       const title = typeof data.title === "string" && data.title.length > 0 ? data.title : slug;
       const date = typeof data.date === "string" ? data.date : stats.mtime.toISOString();
@@ -75,6 +77,7 @@ function getPosts() {
 
       return { slug, title, date, summary, tags, lastModified, content };
     })
+    .filter(Boolean)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 

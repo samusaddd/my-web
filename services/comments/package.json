@@ -1,0 +1,19 @@
+{
+  "name": "samir-seddiqi-reader-comments",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "db:generate": "drizzle-kit generate",
+    "check": "wrangler types --include-runtime=false && tsc --noEmit",
+    "build": "node scripts/build.mjs",
+    "dev": "wrangler dev --local --port 8788",
+    "test": "node --test test/comments.test.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "4.160.0",
+    "drizzle-kit": "0.31.10",
+    "drizzle-orm": "0.45.2",
+    "@cloudflare/workers-types": "5.20261110.1",
+    "typescript": "5.9.3"
+  }
+}
