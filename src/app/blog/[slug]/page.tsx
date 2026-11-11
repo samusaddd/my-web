@@ -12,7 +12,13 @@ import { ArticleShare } from "@/components/article-share";
 import { ArticleComments } from "@/components/article-comments";
 import { countWords } from "@/lib/editorial";
 import { Section } from "@/components/ui";
-import { getAllPostsWithContent, getPostBySlug, getPostSlugs } from "@/lib/posts";
+import {
+  getAllPostsWithContent,
+  getPostBySlug,
+  getPostSlugs,
+  getScheduledPostSlugs,
+  getScheduledRelease,
+} from "@/lib/posts";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
 import styles from "./post.module.css";
@@ -38,11 +44,20 @@ type HeadingNode = {
 };
 
 export function generateStaticParams() {
-  return getPostSlugs().map((slug) => ({ slug }));
+  return [...getPostSlugs(), ...getScheduledPostSlugs()].map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const post = getPostBySlug(params.slug);
+  if (!post && getScheduledRelease(params.slug)) {
+    return {
+      title: { absolute: "New writing is on its way | Samir Seddiqi" },
+      description:
+        "A new essay will be published here soon. Explore Samir Seddiqi's published writing in the meantime.",
+      alternates: { canonical: absoluteUrl(`/blog/${params.slug}`) },
+      robots: { index: false, follow: true },
+    };
+  }
   if (!post) return { title: "Post not found", description: siteConfig.description };
 
   const canonicalUrl = absoluteUrl(`/blog/${post.slug}`);
@@ -76,6 +91,33 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const post = getPostBySlug(params.slug);
+  const release = post ? null : getScheduledRelease(params.slug);
+  if (release) {
+    const when = new Intl.DateTimeFormat("en-GB", {
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      hourCycle: "h23",
+      timeZone: "Europe/Berlin",
+    }).format(new Date(release));
+    return (
+      <Section className={styles.postSection} containerClassName={styles.container}>
+        <div className={styles.scheduled}>
+          <p className={styles.category}>From the notebook</p>
+          <h1>A new essay is on its way.</h1>
+          <p>
+            Available <time dateTime={release}>{when}</time> (Berlin time).
+          </p>
+          <Link href="/blog">
+            Explore the published essays <span aria-hidden="true">↗</span>
+          </Link>
+        </div>
+      </Section>
+    );
+  }
   if (!post) notFound();
 
   const canonicalUrl = absoluteUrl(`/blog/${post.slug}`);

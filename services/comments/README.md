@@ -22,6 +22,6 @@ Required production secrets are `IP_HASH_SALT` and `ADMIN_TOKEN`; both live in t
 
 ## Moderation
 
-The owner can retrieve `ADMIN_TOKEN` through the service's managed environment settings. Never copy it into the website, a browser bundle, a command argument, or a chat message.
+The owner manages `ADMIN_TOKEN` through the service's managed environment settings. If its value is unavailable, set a new random token and redeploy the existing version before using the moderation API. Never copy it into the website, a browser bundle, a command argument, or a chat message.
 
 With the token supplied privately as an Authorization bearer header, `GET /v1/moderation` returns the most recent 100 comments with their article slugs. `DELETE /v1/moderation/{comment-id}` removes an abusive comment. Both routes reject unauthenticated requests. Ordinary visitors cannot use the moderation routes or delete another reader's comment.

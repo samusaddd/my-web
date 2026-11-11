@@ -160,13 +160,29 @@ function normalizeFrontmatter(
   };
 }
 
-export function getPostSlugs() {
+function getPostFileSlugs() {
   if (!fs.existsSync(postsDirectory)) return [];
   return fs
     .readdirSync(postsDirectory)
     .filter((file) => file.endsWith(".mdx"))
-    .map((file) => file.replace(/\.mdx$/, ""))
-    .filter((slug) => Boolean(getPostBySlug(slug)));
+    .map((file) => file.replace(/\.mdx$/, ""));
+}
+
+export function getPostSlugs() {
+  return getPostFileSlugs().filter((slug) => Boolean(getPostBySlug(slug)));
+}
+
+export function getScheduledRelease(slug: string): string | null {
+  const file = readPostFile(slug);
+  if (!file) return null;
+  const { data } = matter(file.fileContents);
+  if (data.draft === true || typeof data.publishAt !== "string") return null;
+  const release = Date.parse(data.publishAt);
+  return Number.isFinite(release) && release > Date.now() ? data.publishAt : null;
+}
+
+export function getScheduledPostSlugs() {
+  return getPostFileSlugs().filter((slug) => Boolean(getScheduledRelease(slug)));
 }
 
 export function getPostBySlug(slug: string): Post | null {

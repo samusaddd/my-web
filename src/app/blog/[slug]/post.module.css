@@ -738,3 +738,28 @@
 .mobileContents {
   scroll-margin-top: 110px;
 }
+.scheduled {
+  width: min(100%, 46rem);
+  min-height: 60vh;
+  padding-block: 5rem;
+  margin-inline: auto;
+}
+.scheduled h1 {
+  font-size: clamp(3.2rem, 7vw, 6rem);
+  margin-block: 2rem;
+  max-width: 16ch;
+}
+.scheduled > p:not(:first-child) {
+  color: var(--muted);
+  margin-block: 2rem;
+  font-size: 0.9rem;
+}
+.scheduled > a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  min-height: 44px;
+  font-size: 0.8rem;
+  border-bottom: 1px solid var(--line-strong);
+}
