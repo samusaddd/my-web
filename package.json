@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "npm run generate:rss && next build",
+    "build": "node scripts/deployment-receipt.mjs && npm run generate:rss && next build",
     "generate:rss": "node scripts/generate-rss.mjs",
     "start": "serve -s out -l tcp://0.0.0.0:${PORT:-3000}"
   },

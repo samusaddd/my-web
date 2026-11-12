@@ -1,0 +1,18 @@
+{
+  "slug": "im-going-to-destroy-everything-that-disturbs-my-peace",
+  "releaseAt": "2026-11-14T09:00:00.000Z",
+  "timeZone": "Europe/Rome",
+  "bundle": ".github/publication/protecting-peace.enc.json",
+  "bundleSha256": "91981a01e4c791b0ac9e4382ef56b644d7ab33746299101e9ed5683f418e9047",
+  "manuscriptSha256": "c7370b856fd27e461167bd8f3df395f0165c339754c69de37fbae536e78c3b83",
+  "files": {
+    "docs/assets/im-going-to-destroy-everything-that-disturbs-my-peace.md": "185bf44b6e4d5da37d0a8e36499de69da3d27bc0c14faad5f9123494ed00c335",
+    "public/images/articles/protecting-my-peace-hero-1600.webp": "3f167513e5d7841dd6686d01a279d3b407873a58960b7690039da4dbbc256616",
+    "public/images/articles/protecting-my-peace-hero-800.webp": "2a8d244f4318a0972ada3f8ffd6063f8dd1acb54eefb41cef8e41e146927582f",
+    "public/images/articles/protecting-my-peace-hero.webp": "73b5816ab9f30ea0a17682d15ccc4026b21ac3735b5e60c6917375259c988e7d",
+    "public/images/articles/protecting-my-peace-og.jpg": "ce73ad8c52bf888e97c04ed47674541eb91dc47ae585c761a2d1292d63986b52",
+    "public/images/articles/protecting-my-peace-og.webp": "b6047b6c08f386ce472c43a2db4d17df71da479e630fd5e80765d01e86de3352",
+    "public/images/articles/protecting-my-peace-social.webp": "5550b148360cecf9e11fcf9c65a93e65fcdbd0ae5b157c4d203423de255f72c7",
+    "src/content/posts/im-going-to-destroy-everything-that-disturbs-my-peace.mdx": "18e3d306337d32df38999a41abda840ba6de3673534dba1b8685c8d97d1bdd38"
+  }
+}

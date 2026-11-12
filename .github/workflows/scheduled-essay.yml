@@ -1,0 +1,64 @@
+name: Scheduled private essay release
+
+on:
+  schedule:
+    - cron: "35,55 8 14 11 *"
+    - cron: "5,20,40 9 14 11 *"
+    - cron: "15 10 14 11 *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Verify keeps the essay private. Publish refuses to run before its release time."
+        required: true
+        default: verify
+        type: choice
+        options: [verify, publish]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: protecting-peace-publication
+  cancel-in-progress: false
+
+jobs:
+  publication:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write
+      actions: write
+    env:
+      ESSAY_RELEASE_KEY: ${{ secrets.PROTECTING_PEACE_RELEASE_KEY }}
+      NEXT_PUBLIC_SITE_URL: https://samirseddiqi.it
+      RELEASE_MODE: ${{ github.event_name == 'workflow_dispatch' && inputs.mode || 'publish' }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "20.11.1"
+          cache: npm
+      - name: Wait on the cloud runner until 09:00 UTC
+        if: env.RELEASE_MODE == 'publish'
+        run: node scripts/scheduled-release.mjs wait
+      - name: Refresh the default branch after waiting
+        run: git pull --ff-only origin main
+      - run: npm ci --no-audit --no-fund
+      - name: Check publication boundaries and encrypted bundle handling
+        run: node --test test/publication.test.mjs test/release-bundle.test.mjs
+      - name: Validate private payload and prepare the requested state
+        run: node scripts/scheduled-release.mjs "$RELEASE_MODE"
+      - name: Build and verify the resulting publication state
+        run: npm run build
+      - name: Commit only verified publication files
+        id: source
+        run: node scripts/scheduled-release.mjs commit
+      - name: Confirm Render deployment and publication visibility
+        run: node scripts/check-scheduled-deployment.mjs "$RELEASE_MODE" '${{ steps.source.outputs.commit }}'
+      - name: Disable this one-time schedule after confirmed publication
+        if: env.RELEASE_MODE == 'publish'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method PUT 'repos/${{ github.repository }}/actions/workflows/scheduled-essay.yml/disable'
