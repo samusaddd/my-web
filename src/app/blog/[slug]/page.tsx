@@ -437,6 +437,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <div className={`prose-institution ${styles.prose}`} id="essay-content">
                 {content}
               </div>
+              <div className={styles.authorSignature}>
+                <img
+                  src="/images/samir-seddiqi-signature.webp"
+                  alt="Samir Seddiqi’s signature"
+                  width="1086"
+                  height="362"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
               <div className={styles.endline}>
                 <span aria-hidden="true" className={styles.endMark} />
                 <Link href="/blog">

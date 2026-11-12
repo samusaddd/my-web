@@ -20,6 +20,8 @@ The saved cloud task confirms its exact time and enabled status. A separate one-
 
 Cloud task startup and Render build/propagation can add several minutes after 10:00. The release is unattended and strictly no earlier than the requested time; second-exact visibility cannot be guaranteed. Check the cloud task's saved state and its completed verification record before claiming scheduling is operational.
 
+On 12 November the platform confirmed the publication task enabled with its exact Saturday timestamp. The separate cloud verification task completed without creating the expected verification record. Therefore the schedule is saved, but successful unattended publication has not been demonstrated. Do not describe this as a guaranteed release. The private GitHub vault and largest-image base64 transport were separately verified through the connected GitHub app in the authoring session.
+
 ## Article and artwork
 
 The manuscript is preserved exactly. The author's latest instruction places **Outro — M83** immediately after the first opening paragraph, matching the other essays. The official Spotify iframe is lazy, responsive, 152 px tall, starts without autoplay, and has an accessible title and a regular Spotify fallback link. The existing editorial layout supplies HTML headings, reader font choices, navigation, metadata, sharing and public comments.

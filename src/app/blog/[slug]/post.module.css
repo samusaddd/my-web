@@ -399,6 +399,17 @@
 .signature p {
   margin-block: 0.8rem;
 }
+.authorSignature {
+  width: min(24rem, 100%);
+  margin: 1.5rem 0 2rem;
+}
+.authorSignature img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: grayscale(1) contrast(1.2);
+  mix-blend-mode: multiply;
+}
 .endline {
   display: flex;
   align-items: center;
