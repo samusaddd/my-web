@@ -1,8 +1,13 @@
 {
-  "state": "prepared",
+  "state": "scheduled",
   "releaseAt": "2026-11-14T09:00:00.000Z",
   "timeZone": "Europe/Rome",
   "mechanism": "Sites cloud task with connected GitHub app",
   "privateVault": "samusaddd/my-web-scheduled-publications",
+  "privateVaultRevision": "635e238a5ffa1387fe64f2c42e8c70ff799f7c0c",
+  "publicationTaskId": "Automation_d16627e3c9c481918436cf39747057aa",
+  "publicationTaskEnabled": true,
+  "confirmedNextRun": "2026-11-14T10:00:00+01:00",
+  "verificationTaskId": "Automation_971fcb1227388191a824754f20fe1f39",
   "verification": "Awaiting the independent cloud verification run"
 }
