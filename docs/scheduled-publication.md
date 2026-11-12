@@ -1,25 +1,27 @@
 # Private scheduled essay publication
 
-Release: **14 November 2026, 10:00 Europe/Rome (09:00 UTC)**.
+Planned release: **Saturday 14 November 2026, 10:00 Europe/Rome (09:00 UTC)**.
 
 Planned permalink: `/blog/im-going-to-destroy-everything-that-disturbs-my-peace/`.
 
-The website is a Next.js static export, deployed by Render from `samusaddd/my-web` on `main`. A future frontmatter date alone cannot refresh a static deployment. The repository is public, so the unpublished manuscript and artwork are stored in an authenticated AES-256-GCM bundle instead of plaintext source. Its dedicated decryption key is a GitHub Actions repository secret; no hosting credentials or personal GitHub tokens are stored in the workflow.
+The website uses a Next.js static export, deployed automatically by Render from `samusaddd/my-web/main`. A future frontmatter date alone cannot refresh a static deployment. The approved manuscript and artwork are held in the separate PRIVATE repository `samusaddd/my-web-scheduled-publications`; no plaintext article or image is pushed to this public website repository before the release time.
 
-`.github/workflows/scheduled-essay.yml` starts cloud runners at 08:35 and 08:55 UTC on 14 November. A runner waits until 09:00 UTC, refreshes `main`, validates the authenticated payload and every file hash, checks the approved manuscript, installs the existing locked dependencies, runs publication tests, and builds the complete export. Only then does it commit the article, artwork, asset notes, RSS and release status with the repository-scoped `GITHUB_TOKEN`. Render's existing automatic deployment publishes that commit.
+## Cloud publication
 
-Fallback runs are configured at 09:05, 09:20, 09:40 and 10:15 UTC. The release is idempotent and refuses early publication. Existing files that differ from the approved release stop the job for review. The schedule disables itself after the article, artwork, soundtrack, sharing/comments, homepage feature, archive, RSS and sitemap are confirmed live.
+A one-time Sites cloud task is linked to the website's existing reader-comments service (`appgprj_6af3acf153348191a2cd5682ec57184c`). This is a cloud task, independent of the author's computer and Codex desktop. It reads the private vault's saved `CLOUD-PUBLICATION.md` and `release.json`, obtains GitHub access from the connected app at execution time, and copies the eight approved files to the existing website in one atomic commit after the time boundary. No personal token is stored in a prompt, repository or hosting environment. The comments service itself is unchanged.
 
-GitHub cron jobs can start late or be dropped, and Render needs time to build and propagate. This is an unattended release with a strict no-earlier-than boundary, not a guarantee of second-exact visibility at 10:00. The early warm-up runners and later retries reduce those timing risks.
+The release checks each file's content-addressed Git blob SHA, preserves the latest main tree, and updates main with an expected-head lease. It refuses early publication or overwriting a conflicting release file. Render then builds the article, latest-essay feature, archive, RSS and sitemap from that commit. The generated `/deployment.json` receipt identifies the actual deployed source SHA.
 
-## Confirming the schedule
+The original GitHub Actions attempt could not start: GitHub reported `The job was not started because your account is locked due to a billing issue.` That workflow was disabled, its dedicated secret removed, and the unusable workflow/encrypted bundle removed from the current source. It is not the publication mechanism.
 
-The manual `verify` mode decrypts and checks the bundle only in runner memory, never extracting unpublished files. It records `armed` in `.github/publication/protecting-peace-status.json`, commits that status using the same cloud token used for release, and confirms that Render serves the resulting commit via the generated `/deployment.json` receipt. It also verifies the article, artwork, homepage, archive, RSS and sitemap do not expose this release. The status file contains the verification run URL. A successful verification run confirms the cloud-to-Render path today; it is distinct from Saturday's actual publication.
+## Evidence and timing limits
 
-The workflow must remain `active` and the repository secret `PROTECTING_PEACE_RELEASE_KEY` must remain available. A manual `publish` run is time-gated; running it before the warm-up window fails without writing content. To cancel, disable this workflow and remove its dedicated secret. Never replace the encrypted bundle without also updating its matching key and integrity manifest.
+The saved cloud task confirms its exact time and enabled status. A separate one-time cloud verification task checks private vault access, the approved file hashes and soundtrack placement, writes a harmless verification record through the connected GitHub app, and confirms that commit reaches Render while the article and artwork remain hidden. Its record is `.github/publication/protecting-peace-cloud-verification.json`. Verification is distinct from actual Saturday publication.
 
-## Artwork and reading experience
+Cloud task startup and Render build/propagation can add several minutes after 10:00. The release is unattended and strictly no earlier than the requested time; second-exact visibility cannot be guaranteed. Check the cloud task's saved state and its completed verification record before claiming scheduling is operational.
 
-The private release contains a 2560 × 1440 WebP hero, 800/1600 px responsive covers, 1200 × 630 WebP and JPEG previews, and a 1080 × 1350 portrait image. The hero export uses the native 1672 × 941 image; enlarging it does not add photographic detail. At release, the asset note records the original prompt and crop/export details.
+## Article and artwork
 
-The approved manuscript is unchanged. The existing article template supplies the HTML headline, metadata, reader font choices, section navigation, sharing and public comments. The only inserted body component is the official compact, lazy Spotify player for **Outro — M83**, after the introduction and before the first section. Playback remains user initiated, with a regular Spotify fallback link.
+The manuscript is preserved exactly. The author's latest instruction places **Outro — M83** immediately after the first opening paragraph, matching the other essays. The official Spotify iframe is lazy, responsive, 152 px tall, starts without autoplay, and has an accessible title and a regular Spotify fallback link. The existing editorial layout supplies HTML headings, reader font choices, navigation, metadata, sharing and public comments.
+
+Private image outputs: `protecting-my-peace-hero.webp` (2560 × 1440), `protecting-my-peace-og.webp` (1200 × 630), and `protecting-my-peace-social.webp` (1080 × 1350), plus 800/1600 px responsive covers and a JPEG social-preview fallback. The hero is exported from a native 1672 × 941 original; resizing adds no photographic detail. The private asset note records the built-in generation prompt and crop/export details.

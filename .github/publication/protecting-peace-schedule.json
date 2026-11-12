@@ -1,0 +1,8 @@
+{
+  "state": "prepared",
+  "releaseAt": "2026-11-14T09:00:00.000Z",
+  "timeZone": "Europe/Rome",
+  "mechanism": "Sites cloud task with connected GitHub app",
+  "privateVault": "samusaddd/my-web-scheduled-publications",
+  "verification": "Awaiting the independent cloud verification run"
+}
